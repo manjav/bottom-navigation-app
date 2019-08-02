@@ -42,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         res.updateConfiguration(config, res.getDisplayMetrics());
 
         super.onCreate(savedInstanceState);
+
+        FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/IRANSansMobile_Light.ttf");
+
         setContentView(R.layout.activity_main);
 
         mTextMessage = findViewById(R.id.message);
