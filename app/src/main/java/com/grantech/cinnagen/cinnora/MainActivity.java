@@ -51,9 +51,9 @@ public class MainActivity extends AppCompatActivity
         if( startingPosition > -1 )
         {
             if( startingPosition > newPosition )
-                transaction.setCustomAnimations(locale.getLanguage() == "fa" ? R.anim.slide_in_right : R.anim.slide_in_left, locale.getLanguage() == "fa" ? R.anim.slide_out_left : R.anim.slide_out_right );
+                transaction.setCustomAnimations(locale.getLanguage().equals("fa") ? R.anim.slide_in_right : R.anim.slide_in_left, locale.getLanguage().equals("fa") ? R.anim.slide_out_left : R.anim.slide_out_right );
             else
-                transaction.setCustomAnimations(locale.getLanguage() == "fa" ? R.anim.slide_in_left : R.anim.slide_in_right, locale.getLanguage() == "fa" ? R.anim.slide_out_right : R.anim.slide_out_left);
+                transaction.setCustomAnimations(locale.getLanguage().equals("fa") ? R.anim.slide_in_left : R.anim.slide_in_right, locale.getLanguage().equals("fa") ? R.anim.slide_out_right : R.anim.slide_out_left);
         }
 
         transaction.replace(R.id.fragment_container, fragment);
