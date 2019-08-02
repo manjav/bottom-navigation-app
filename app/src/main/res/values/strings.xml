@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">cinnora</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="app_name">CinnoR</string>
+    <string name="title_navi_0">Injection</string>
+    <string name="title_navi_1">Calendar</string>
+    <string name="title_navi_2">Tips</string>
+    <string name="title_navi_3">More</string>
 </resources>
