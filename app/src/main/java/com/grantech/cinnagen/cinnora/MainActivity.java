@@ -32,7 +32,15 @@ public class MainActivity extends AppCompatActivity {
     };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        locale = new Locale("fa");
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        Resources res = getApplicationContext().getResources();
+        res.updateConfiguration(config, res.getDisplayMetrics());
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
