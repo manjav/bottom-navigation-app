@@ -22,6 +22,7 @@ public class InjectionFragment extends Fragment
         //with the fragment you want to inflate
         //like if the class is HomeFragment it should have R.layout.home_fragment
         //if it is DashboardFragment it should have R.layout.fragment_dashboard
-        return inflater.inflate(R.layout.injection_fragment_layout, null);
+        return inflater.inflate(R.layout.main_fragment_layout, null);
+
     }
 }

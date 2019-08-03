@@ -4,4 +4,8 @@
     <string name="title_navi_1">تقویم</string>
     <string name="title_navi_2">نکات آموزشی</string>
     <string name="title_navi_3">بیشتر</string>
+
+    <string name="main_title_welcome">سلام به سولایف خوش اومدی!</string>
+    <string name="main_message_welcome"> این یک نرم افزار دستیار پزشکی نیست و صرفا برای سازماندهی مصرف داروی سینورا می باشد. لطفا قوانین مربوط به استفاده از این نرم افزار رو مطالعه کنید و سپس موافقت خود را با ادامه کار با نرم افزار.اعلام کنید</string>
+    <string name="prep">آماده سازی و تزریق</string>
 </resources>

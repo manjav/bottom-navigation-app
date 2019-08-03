@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.grantech.cinnagen.cinnora.R;
 import com.grantech.cinnagen.cinnora.fragments.CalendarFragment;
 import com.grantech.cinnagen.cinnora.fragments.InjectionFragment;
 import com.grantech.cinnagen.cinnora.fragments.MoreFragment;
@@ -19,8 +20,8 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
 {
-    private int startingPosition = -1;
     private Locale locale;
+    private int startingPosition = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -67,33 +68,40 @@ public class MainActivity extends AppCompatActivity
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item)
         {
-            Fragment fragment = null;
-            int newPosition = 0;
+        Fragment fragment = null;
+        int newPosition = 0;
 
-            switch (item.getItemId()) {
-                case R.id.navi_0:
-                    newPosition = 0;
-                    fragment = new InjectionFragment();
-                    break;
+        switch (item.getItemId())
+        {
+            case R.id.navi_0:
+                newPosition = 0;
+                fragment = new InjectionFragment();
+                break;
 
-                case R.id.navi_1:
-                    newPosition = 1;
-                    fragment = new CalendarFragment();
-                    break;
+            case R.id.navi_1:
+                newPosition = 1;
+                fragment = new CalendarFragment();
+                break;
 
-                case R.id.navi_2:
-                    newPosition = 2;
-                    fragment = new TipsFragment();
-                    break;
+            case R.id.navi_2:
+                newPosition = 2;
+                fragment = new TipsFragment();
+                break;
 
-                case R.id.navi_3:
-                    newPosition = 3;
-                    fragment = new MoreFragment();
-                    break;
+            case R.id.navi_3:
+                newPosition = 3;
+                fragment = new MoreFragment();
+                break;
             }
+
+/*
+            if( item.getItemId() == 0 )
+                getActionBar().hide();
+            else
+                getActionBar().show();
+*/
 
             return loadFragment(fragment, newPosition);
         }
     };
-
 }

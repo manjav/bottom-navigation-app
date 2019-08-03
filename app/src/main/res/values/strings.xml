@@ -4,4 +4,9 @@
     <string name="title_navi_1">Calendar</string>
     <string name="title_navi_2">Tips</string>
     <string name="title_navi_3">More</string>
+
+    <string name="main_title_welcome">Welcome to SoLife!</string>
+    <string name="main_message_welcome">lsdfljl ljl sddfl jdfljsd</string>
+    <string name="prep"><![CDATA[Prep & Injection]]></string>
+
 </resources>
