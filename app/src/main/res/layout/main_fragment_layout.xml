@@ -15,7 +15,8 @@
         <View
             android:id="@+id/main_top_primary"
             android:layout_width="0dp"
-            android:layout_height="280dp"
+            android:layout_height="320dp"
+            android:layout_marginTop="1dp"
             android:background="@drawable/rect_primary"
             android:theme="@style/Base.TextAppearance.AppCompat.Title"
             app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +26,7 @@
 
 
         <TextView
-            android:id="@+id/g"
+            android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_alignParentTop="true"
@@ -33,7 +34,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
 
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="32dp"
             android:text="@string/main_title_welcome"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large.Inverse"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,17 +62,17 @@
             app:layout_constraintEnd_toStartOf="@+id/main_top_primary"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/g"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"
             app:layout_constraintVertical_bias="0.483" />
 
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="0dp"
-            android:layout_height="202dp"
+            android:layout_height="160dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="240dp"
+            android:layout_marginTop="180dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -96,12 +97,12 @@
                 android:id="@+id/imageView"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_marginBottom="2dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/body_main_page_small"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -116,14 +117,15 @@
                 android:id="@+id/prepButton"
                 style="@style/primaryButton"
                 android:layout_width="0dp"
-                android:layout_height="64dp"
+                android:layout_height="60dp"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/prep"
+                android:textSize="24sp"
                 android:theme="@style/primaryButton"
                 app:layout_constraintBottom_toBottomOf="@+id/main_round_white"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -131,7 +133,7 @@
 
         </android.support.constraint.ConstraintLayout>
 
-        <Button
+        <android.support.v7.widget.CardView
             android:id="@+id/leftButton"
             android:layout_width="0dp"
             android:layout_height="110dp"
@@ -140,13 +142,53 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="@string/app_name"
             app:layout_constraintEnd_toStartOf="@+id/rightButton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
-        <Button
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageViewleft"
+                    android:layout_width="73dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/ic_alarm_settings"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.494"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/alarm_settings"
+                    app:fontFamily="monospace"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewleft" />
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
             android:id="@+id/rightButton"
             android:layout_width="0dp"
             android:layout_height="110dp"
@@ -155,10 +197,57 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:text="@string/app_name"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/leftButton"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/ic_medication_settings"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/medication_settings"
+                    app:fontFamily="monospace"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.CardView>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_marginTop="132dp"
+            android:visibility="invisible"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     </android.support.constraint.ConstraintLayout>

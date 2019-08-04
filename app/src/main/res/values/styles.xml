@@ -23,4 +23,12 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
+    <style name="cardButton" parent="Base.CardView">
+        <item name="android:typeface">monospace</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+
 </resources>

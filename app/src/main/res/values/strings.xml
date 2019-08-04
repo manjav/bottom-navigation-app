@@ -7,6 +7,8 @@
 
     <string name="main_title_welcome">Welcome to SoLife!</string>
     <string name="main_message_welcome">lsdfljl ljl sddfl jdfljsd</string>
-    <string name="prep"><![CDATA[Prep & Injection]]></string>
+    <string name="prep">Prep and Injection></string>
+    <string name="medication_settings">Medication Settings</string>
+    <string name="alarm_settings">Alarm Settings</string>
 
 </resources>

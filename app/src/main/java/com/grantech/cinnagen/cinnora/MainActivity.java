@@ -7,10 +7,13 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
-import com.grantech.cinnagen.cinnora.R;
 import com.grantech.cinnagen.cinnora.fragments.CalendarFragment;
 import com.grantech.cinnagen.cinnora.fragments.InjectionFragment;
 import com.grantech.cinnagen.cinnora.fragments.MoreFragment;
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        // default localization is farsi
         locale = new Locale("fa");
         Locale.setDefault(locale);
         Configuration config = new Configuration();
@@ -33,21 +37,26 @@ public class MainActivity extends AppCompatActivity
         Resources res = getApplicationContext().getResources();
         res.updateConfiguration(config, res.getDisplayMetrics());
 
+        // custom action-bar
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.action_bar);
+
         super.onCreate(savedInstanceState);
 
+        // custom fonts
         FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/IRANSansMobile_Light.ttf");
 
         setContentView(R.layout.activity_main);
-        loadFragment(new InjectionFragment(), 0);
+        loadFragment(new InjectionFragment(), 0, R.string.title_navi_0);
         ((BottomNavigationView) findViewById(R.id.navigation)).setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
-    private boolean loadFragment(Fragment fragment, int newPosition)
+    private boolean loadFragment(Fragment fragment, int newPosition, int title)
     {
         if( fragment == null )
             return false;
 
-        //switching fragment
+        // switching fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         if( startingPosition > -1 )
         {
@@ -60,6 +69,18 @@ public class MainActivity extends AppCompatActivity
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
         startingPosition = newPosition;
+
+        // hide action-bar in main page
+        if( newPosition != 0 )
+        {
+            getSupportActionBar().show();
+            ((AppCompatTextView) findViewById(R.id.action_bar_text_view)).setText(title);
+        }
+        else
+        {
+            getSupportActionBar().hide();
+        }
+
         return true;
     }
 
@@ -68,40 +89,38 @@ public class MainActivity extends AppCompatActivity
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item)
         {
-        Fragment fragment = null;
-        int newPosition = 0;
+            Fragment fragment = null;
+            int fragmentTitle = 0;
+            int newPosition = 0;
 
-        switch (item.getItemId())
-        {
-            case R.id.navi_0:
-                newPosition = 0;
-                fragment = new InjectionFragment();
-                break;
+            switch (item.getItemId())
+            {
+                case R.id.navi_0:
+                    newPosition = 0;
+                    fragmentTitle = R.string.title_navi_0;
+                    fragment = new InjectionFragment();
+                    break;
 
-            case R.id.navi_1:
-                newPosition = 1;
-                fragment = new CalendarFragment();
-                break;
+                case R.id.navi_1:
+                    newPosition = 1;
+                    fragmentTitle = R.string.title_navi_1;
+                    fragment = new CalendarFragment();
+                    break;
 
-            case R.id.navi_2:
-                newPosition = 2;
-                fragment = new TipsFragment();
-                break;
+                case R.id.navi_2:
+                    newPosition = 2;
+                    fragmentTitle = R.string.title_navi_2;
+                    fragment = new TipsFragment();
+                    break;
 
-            case R.id.navi_3:
-                newPosition = 3;
-                fragment = new MoreFragment();
-                break;
+                case R.id.navi_3:
+                    newPosition = 3;
+                    fragmentTitle = R.string.title_navi_3;
+                    fragment = new MoreFragment();
+                    break;
             }
 
-/*
-            if( item.getItemId() == 0 )
-                getActionBar().hide();
-            else
-                getActionBar().show();
-*/
-
-            return loadFragment(fragment, newPosition);
+            return loadFragment(fragment, newPosition, fragmentTitle);
         }
     };
 }
