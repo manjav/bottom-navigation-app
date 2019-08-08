@@ -1,4 +1,4 @@
-package com.grantech.cinnagen.cinnora;
+package com.grantech.cinnagen.solife;
 
 import org.junit.Test;
 

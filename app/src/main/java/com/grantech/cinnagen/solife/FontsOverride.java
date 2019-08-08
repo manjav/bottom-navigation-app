@@ -1,4 +1,4 @@
-package com.grantech.cinnagen.cinnora;
+package com.grantech.cinnagen.solife;
 
 import android.content.Context;
 import android.graphics.Typeface;

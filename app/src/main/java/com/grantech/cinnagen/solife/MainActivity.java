@@ -1,23 +1,22 @@
-package com.grantech.cinnagen.cinnora;
+package com.grantech.cinnagen.solife;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatTextView;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
-import com.grantech.cinnagen.cinnora.fragments.CalendarFragment;
-import com.grantech.cinnagen.cinnora.fragments.InjectionFragment;
-import com.grantech.cinnagen.cinnora.fragments.MoreFragment;
-import com.grantech.cinnagen.cinnora.fragments.TipsFragment;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.grantech.cinnagen.solife.fragments.CalendarFragment;
+import com.grantech.cinnagen.solife.fragments.InjectionFragment;
+import com.grantech.cinnagen.solife.fragments.MoreFragment;
+import com.grantech.cinnagen.solife.fragments.TipsFragment;
 
 import java.util.Locale;
 
