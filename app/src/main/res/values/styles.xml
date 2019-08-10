@@ -1,34 +1,23 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:typeface">monospace</item>
+        <item name="android:fontFamily">@font/iransans</item>
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:textColorPrimaryDisableOnly">@color/colorPrimaryLight</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
-
-    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:typeface">monospace</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorPrimary</item>
-    </style>
-
 
     <style name="primaryButton" parent="Base.Widget.AppCompat.Button.Colored">
-        <item name="android:typeface">monospace</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:fontFamily">@font/iransans</item>
+        <item name="color">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorWhite</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:colorButtonNormal" tools:targetApi="lollipop">@color/colorPrimary</item>
     </style>
-
-    <style name="cardButton" parent="Base.CardView">
-        <item name="android:typeface">monospace</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorPrimary</item>
-    </style>
-
 
 </resources>

@@ -42,8 +42,9 @@ public class MainActivity extends AppCompatActivity
 
         super.onCreate(savedInstanceState);
 
-        // custom fonts
-        FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/IRANSansMobile_Light.ttf");
+//         custom fonts
+//        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.O )
+//            FontsOverride.setFont("MONOSPACE", getResources().getFont(R.font.iransansmobile_bold));
 
         setContentView(R.layout.activity_main);
         loadFragment(new InjectionFragment(), 0, R.string.title_navi_0);

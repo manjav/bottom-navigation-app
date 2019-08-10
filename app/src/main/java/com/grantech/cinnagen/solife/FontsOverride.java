@@ -16,14 +16,23 @@ public class FontsOverride
     public static void setFont(Context context, String defaultFontNameToOverride, String fontAssetName)
     {
         final Typeface customFontTypeface = Typeface.createFromAsset(context.getAssets(), fontAssetName);
+        setFont(defaultFontNameToOverride, customFontTypeface);
+    }
+
+    public static void setFont(String defaultFontNameToOverride, Typeface customFontTypeface)
+    {
         try {
             final Field defaultFontTypefaceField = Typeface.class.getDeclaredField(defaultFontNameToOverride);
-            map.put(fontAssetName, customFontTypeface);
+            map.put(defaultFontNameToOverride, customFontTypeface);
             defaultFontTypefaceField.setAccessible(true);
             defaultFontTypefaceField.set(null, customFontTypeface);
         } catch (Exception e) { e.printStackTrace(); }
     }
 
+    public static void setTypeface(String name, Typeface typeface)
+    {
+        map.put(name, typeface);
+    }
     public static Typeface getTypeface(String name)
     {
         return map.get(name);
