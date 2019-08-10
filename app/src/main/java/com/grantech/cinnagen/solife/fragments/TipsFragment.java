@@ -9,9 +9,9 @@ import android.widget.ExpandableListView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.grantech.cinnagen.solife.ExpandableListAdapter;
 import com.grantech.cinnagen.solife.ExpandableListDataPump;
 import com.grantech.cinnagen.solife.R;
+import com.grantech.cinnagen.solife.adapters.ExpandableListAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;

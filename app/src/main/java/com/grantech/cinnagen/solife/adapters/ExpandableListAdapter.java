@@ -1,14 +1,17 @@
-package com.grantech.cinnagen.solife;
+package com.grantech.cinnagen.solife.adapters;
 
-import java.util.HashMap;
-import java.util.List;
 import android.content.Context;
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatTextView;
+
+import com.grantech.cinnagen.solife.R;
+
+import java.util.HashMap;
+import java.util.List;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter
 {
@@ -42,7 +45,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter
             LayoutInflater layoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_item, null);
         }
-        TextView expandedListTextView = convertView.findViewById(R.id.expandedListItem);
+        AppCompatTextView expandedListTextView = convertView.findViewById(R.id.expandedListItem);
         expandedListTextView.setText(expandedListText);
         return convertView;
     }
@@ -76,8 +79,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter
             LayoutInflater layoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_group, null);
         }
-        TextView listTitleTextView =  convertView.findViewById(R.id.listTitle);
-        listTitleTextView.setTypeface(null, Typeface.BOLD);
+        AppCompatTextView listTitleTextView = convertView.findViewById(R.id.listTitle);
         listTitleTextView.setText(listTitle);
         return convertView;
     }
