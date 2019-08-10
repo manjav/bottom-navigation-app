@@ -1,14 +1,13 @@
 <resources>
-    <string name="app_name">CinnoR</string>
+    <string name="app_name">Solife</string>
     <string name="title_navi_0">Injection</string>
     <string name="title_navi_1">Calendar</string>
     <string name="title_navi_2">Tips</string>
     <string name="title_navi_3">More</string>
 
-    <string name="main_title_welcome">Welcome to SoLife!</string>
-    <string name="main_message_welcome">lsdfljl ljl sddfl jdfljsd</string>
-    <string name="prep">Prep and Injection></string>
+    <string name="main_title_welcome">سلام به سولایف خوش اومدی!</string>
+    <string name="main_message_welcome"> این یک نرم افزار دستیار پزشکی نیست و صرفا برای سازماندهی مصرف داروی سینورا می باشد. لطفا قوانین مربوط به استفاده از این نرم افزار رو مطالعه کنید و سپس موافقت خود را با ادامه کار با نرم افزار.اعلام کنید</string>
+    <string name="prep">Prep and Injection</string>
     <string name="medication_settings">Medication Settings</string>
     <string name="alarm_settings">Alarm Settings</string>
-
 </resources>
