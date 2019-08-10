@@ -31,7 +31,6 @@ public class CalendarFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         final PersianCalendarView persianCalendarView = view.findViewById(R.id.persian_calendar);
         final PersianCalendarHandler calendar = persianCalendarView.getCalendar();
         final PersianDate today = calendar.getToday();

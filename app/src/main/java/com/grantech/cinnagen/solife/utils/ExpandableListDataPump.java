@@ -1,4 +1,6 @@
-package com.grantech.cinnagen.solife;
+package com.grantech.cinnagen.solife.utils;
+
+import com.grantech.cinnagen.solife.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
