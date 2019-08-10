@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="aboutListData">
+        <item>alarm_settings</item>
+        <item>tutor_settings</item>
+        <item>safety_info</item>
+        <item>faq_list</item>
+        <item>medication_info</item>
+        <item>terms_conditions</item>
+    </string-array>
+</resources>
