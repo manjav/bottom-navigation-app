@@ -4,34 +4,34 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <TextView
+        android:id="@+id/txt_year_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginTop="16dp"
+        android:text="@string/main_title_welcome"
+        />
+
     <ir.mirrajabi.persiancalendar.PersianCalendarView
         android:id="@+id/persian_calendar"
         android:layout_width="match_parent"
         android:layout_height="290dp"
         android:layout_marginTop="72dp"
-        app:pcv_colorBackground="#292929"
-        app:pcv_colorDayName="#bab6b6"
-        app:pcv_colorHoliday="#ffd506"
-        app:pcv_colorHolidaySelected="#f1f2f3"
-        app:pcv_colorNormalDay="#f3f4f5"
-        app:pcv_colorNormalDaySelected="#d9d9d9"
-        app:pcv_eventUnderlineColor="#02f0f0" />
-
-    <TextView
-        android:id="@+id/txt_day_month"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#f0f2f3"
-        android:layout_gravity="center_horizontal"
-        android:textSize="30sp"/>
-
-    <TextView
-        android:id="@+id/txt_year"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#c6d9e2"
-        android:textSize="20sp"/>
-
+        android:fontFamily="@font/iransans"
+        app:pcv_selectedDayBackground="@drawable/circle_primary_light"
+        app:pcv_todayBackground="@drawable/circle_today"
+        app:pcv_colorBackground="@color/colorLight"
+        app:pcv_colorDayName="@color/colorPrimaryDark"
+        app:pcv_colorHoliday="@color/colorPrimaryDark"
+        app:pcv_colorHolidaySelected="@color/colorWhite"
+        app:pcv_colorNormalDay="@color/colorPrimary"
+        app:pcv_colorNormalDaySelected="@color/colorWhite"
+        app:pcv_eventUnderlineColor="@color/colorWhite"
+        />
 
 </RelativeLayout>
