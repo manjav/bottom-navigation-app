@@ -98,11 +98,10 @@ public class MainActivity extends AppCompatActivity
         int stackCount = fragmentManager.getBackStackEntryCount();
         if( stackCount > 0 )
         {
+            String lastFragmentName = fragmentManager.getBackStackEntryAt(stackCount - 1).getName();
+            Fragments.getInstance().oldPosition = Integer.parseInt(lastFragmentName);
             getSupportActionBar().setDisplayHomeAsUpEnabled(stackCount > 1);
-
             fragmentManager.popBackStack();
-            transaction.setCustomAnimations(Fragments.getInstance().getAnimationIn(true), Fragments.getInstance().getAnimationOut(true), Fragments.getInstance().getAnimationIn(true), Fragments.getInstance().getAnimationOut(true));
-
             transaction.commit();
             return;
         }

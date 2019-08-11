@@ -35,7 +35,7 @@ public class Fragments
 
         transaction.replace(R.id.fragment_container, fragment);
         if( newPosition > 3 )
-            transaction.addToBackStack("tag");
+            transaction.addToBackStack(oldPosition + "");
         transaction.commit();
         oldPosition = newPosition;
 
