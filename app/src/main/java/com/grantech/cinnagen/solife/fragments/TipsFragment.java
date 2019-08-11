@@ -1,12 +1,13 @@
 package com.grantech.cinnagen.solife.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.grantech.cinnagen.solife.R;
@@ -23,16 +24,14 @@ import java.util.List;
 
 public class TipsFragment extends Fragment
 {
-    ExpandableListView expandableListView;
-    ExpandableListAdapter expandableListAdapter;
-    List<Integer> expandableListTitle;
-    HashMap<Integer, List<Integer>> expandableListDetail;
+    private ExpandableListView expandableListView;
+    private ExpandableListAdapter expandableListAdapter;
 
-    @Nullable
+    @SuppressLint("InflateParams")
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_tips_layout, null);
+        return inflater.inflate(R.layout.fragment_tips, null);
     }
 
     @Override
@@ -41,8 +40,8 @@ public class TipsFragment extends Fragment
         super.onViewCreated(view, savedInstanceState);
 
         expandableListView = view.findViewById(R.id.expandableListView);
-        expandableListDetail = ExpandableListDataPump.getData();
-        expandableListTitle = new ArrayList<>(expandableListDetail.keySet());
+        HashMap<Integer, List<Integer>> expandableListDetail = ExpandableListDataPump.getData();
+        List<Integer> expandableListTitle = new ArrayList<>(expandableListDetail.keySet());
         expandableListAdapter = new ExpandableListAdapter(getContext().getApplicationContext(), expandableListTitle, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {

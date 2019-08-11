@@ -44,8 +44,6 @@
             android:layout_height="0dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginTop="48dp"
             android:text="@string/main_title_welcome"
             android:textColor="@color/colorWhite"
@@ -53,8 +51,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/main_top_primary"
-            app:layout_constraintHorizontal_bias="0.475"
-            app:layout_constraintStart_toStartOf="@+id/main_top_primary"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/main_top_primary" />
 
         <TextView
