@@ -15,29 +15,23 @@ public class Fragments
     private static final Fragments ourInstance = new Fragments();
 
     public Locale locale;
-    private int oldPosition = -1;
+    public int oldPosition = -1;
     static public Fragments getInstance() {
         return ourInstance;
     }
 
     private Fragments() {
-
     }
-
 
     public boolean loadFragment(AppCompatActivity activity, Fragment fragment, int newPosition, int title)
     {
-        if( fragment == null )
+        if( fragment == null || oldPosition == newPosition )
             return false;
 
         // switching fragment
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
         if( oldPosition > -1 )
-        {
-            if( newPosition > 3 )
-                transaction.setCustomAnimations(getAnimationIn(oldPosition > newPosition), getAnimationOut(oldPosition > newPosition), getAnimationIn(oldPosition < newPosition), getAnimationOut(oldPosition < newPosition));
-            transaction.setCustomAnimations(getAnimationIn(oldPosition > newPosition), getAnimationOut(oldPosition > newPosition));
-        }
+            transaction.setCustomAnimations(getAnimationIn(oldPosition > newPosition), getAnimationOut(oldPosition > newPosition), getAnimationIn(oldPosition < newPosition), getAnimationOut(oldPosition < newPosition));
 
         transaction.replace(R.id.fragment_container, fragment);
         if( newPosition > 3 )

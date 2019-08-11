@@ -22,7 +22,6 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity
 {
 
-    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         // default localization is farsi
@@ -99,9 +98,10 @@ public class MainActivity extends AppCompatActivity
         int stackCount = fragmentManager.getBackStackEntryCount();
         if( stackCount > 0 )
         {
-//            transaction.setCustomAnimations(Fragments.getInstance().getAnimationIn(true), Fragments.getInstance().getAnimationOut(true));
             getSupportActionBar().setDisplayHomeAsUpEnabled(stackCount > 1);
+
             fragmentManager.popBackStack();
+            transaction.setCustomAnimations(Fragments.getInstance().getAnimationIn(true), Fragments.getInstance().getAnimationOut(true), Fragments.getInstance().getAnimationIn(true), Fragments.getInstance().getAnimationOut(true));
 
             transaction.commit();
             return;
