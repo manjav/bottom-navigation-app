@@ -9,6 +9,11 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
+    <!--Style for Splash Screen-->
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name ="android:windowBackground"> @drawable/splash_screen_background</item>
+    </style>
+
     <style name="primaryButton" parent="Base.Widget.AppCompat.Button.Colored">
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/colorWhite</item>

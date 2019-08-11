@@ -4,6 +4,7 @@
     package="com.grantech.cinnagen.solife">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:fullBackupContent="false"
@@ -15,14 +16,16 @@
         android:roundIcon="@mipmap/ic_launcher_round">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashScreenActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/SplashScreenTheme"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait" android:label="@string/app_name" />
 
     </application>
 
