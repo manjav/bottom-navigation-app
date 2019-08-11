@@ -41,22 +41,22 @@ public class MoreFragment extends Fragment
             switch (position)
             {
                 case 2:
-                    url = "safty_info.html";
+                    url = "file:///android_asset/safty_info.html";
                     title = R.string.title_navi_42;
                     fragment  = new DocsFragment();
                     break;
                 case 3:
-                    url = "faq.html";
+                    url = "file:///android_asset/faq.html";
                     title = R.string.title_navi_43;
                     fragment  = new DocsFragment();
                     break;
                 case 4:
-                    url = "drug_info.html";
+                    url = "file:///android_asset/drug_info.html";
                     title = R.string.title_navi_44;
                     fragment  = new DocsFragment();
                     break;
                 case 5:
-                    url = "terms_conditions.html";
+                    url = "file:///android_asset/terms_conditions.html";
                     title = R.string.title_navi_45;
                     fragment  = new DocsFragment();
                     break;
