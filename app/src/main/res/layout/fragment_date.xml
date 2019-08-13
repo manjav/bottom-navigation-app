@@ -11,10 +11,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:textColor="@color/colorPrimary"
         android:layout_marginTop="16dp"
-        android:text="@string/main_title_welcome"
+        android:text="@string/home_welcome_title"
         />
 
     <ir.mirrajabi.persiancalendar.PersianCalendarView

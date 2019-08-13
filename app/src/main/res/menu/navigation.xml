@@ -4,21 +4,21 @@
     <item
         android:id="@+id/navi_0"
         android:icon="@drawable/ic_navi_injection"
-        android:title="@string/title_navi_0" />
+        android:title="@string/home_injection" />
 
     <item
         android:id="@+id/navi_1"
         android:icon="@drawable/ic_navi_calendar"
-        android:title="@string/title_navi_1" />
+        android:title="@string/home_calendar" />
 
     <item
         android:id="@+id/navi_2"
         android:icon="@drawable/ic_navi_tips"
-        android:title="@string/title_navi_2" />
+        android:title="@string/home_tips" />
 
     <item
         android:id="@+id/navi_3"
         android:icon="@drawable/ic_navi_more"
-        android:title="@string/title_navi_3" />
+        android:title="@string/home_more" />
 
 </menu>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.grantech.cinnagen.solife.R;
@@ -68,5 +69,14 @@ public class Fragments
         if( isBack )
             return locale.getLanguage().equals("fa") ? R.anim.slide_out_left : R.anim.slide_out_right;
         return locale.getLanguage().equals("fa") ? R.anim.slide_out_right : R.anim.slide_out_left;
+    }
+
+    public void clearStack(AppCompatActivity activity)
+    {
+        FragmentManager fragmentManager = activity.getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();       oldPosition = R.dimen.position_home_injection;
+        activity.getSupportActionBar().hide();
+        fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        transaction.commit();
     }
 }

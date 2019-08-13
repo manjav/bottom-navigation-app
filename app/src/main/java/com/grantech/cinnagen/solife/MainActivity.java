@@ -11,13 +11,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.grantech.cinnagen.solife.fragments.CalendarFragment;
+import com.grantech.cinnagen.solife.fragments.DateFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionFragment;
 import com.grantech.cinnagen.solife.fragments.MoreFragment;
 import com.grantech.cinnagen.solife.fragments.TipsFragment;
 import com.grantech.cinnagen.solife.utils.Fragments;
 
 import java.util.Locale;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity
 //            FontsOverride.setFont("normal", getResources().getFont(R.font.iransansmobile_light));
 
         setContentView(R.layout.activity_main);
-        Fragments.getInstance().loadFragment(this, new InjectionFragment(), 0, R.string.title_navi_0);
+        Fragments.getInstance().loadFragment(this, new InjectionFragment(), 0, R.string.home_injection);
         ((BottomNavigationView) findViewById(R.id.navigation)).setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
@@ -57,25 +58,25 @@ public class MainActivity extends AppCompatActivity
         {
             case R.id.navi_0:
                 newPosition = 0;
-                fragmentTitle = R.string.title_navi_0;
+                fragmentTitle = R.string.home_injection;
                 fragment = new InjectionFragment();
                 break;
 
             case R.id.navi_1:
                 newPosition = 1;
-                fragmentTitle = R.string.title_navi_1;
-                fragment = new CalendarFragment();
+                fragmentTitle = R.string.home_calendar;
+                fragment = new DateFragment();
                 break;
 
             case R.id.navi_2:
                 newPosition = 2;
-                fragmentTitle = R.string.title_navi_2;
+                fragmentTitle = R.string.home_tips;
                 fragment = new TipsFragment();
                 break;
 
             case R.id.navi_3:
                 newPosition = 3;
-                fragmentTitle = R.string.title_navi_3;
+                fragmentTitle = R.string.home_more;
                 fragment = new MoreFragment();
                 break;
         }
@@ -100,7 +101,9 @@ public class MainActivity extends AppCompatActivity
         {
             String lastFragmentName = fragmentManager.getBackStackEntryAt(stackCount - 1).getName();
             Fragments.getInstance().oldPosition = Integer.parseInt(lastFragmentName);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(stackCount > 1);
+            Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(stackCount > 1);
+            if( Fragments.getInstance().oldPosition == 0 ) // if home back
+                getSupportActionBar().hide();
             fragmentManager.popBackStack();
             transaction.commit();
             return;

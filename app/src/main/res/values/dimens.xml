@@ -3,9 +3,17 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="fragment_injection">0</dimen>
-    <dimen name="fragment_calendar">1</dimen>
-    <dimen name="fragment_tips">2</dimen>
-    <dimen name="fragment_more">3</dimen>
-    <dimen name="fragment_docs">4</dimen>
+    <dimen name="position_home_injection">0</dimen>
+    <dimen name="position_home_date">1</dimen>
+    <dimen name="position_home_tips">2</dimen>
+    <dimen name="position_home_more">3</dimen>
+    <dimen name="position_docs">4</dimen>
+
+    <dimen name="position_welcome">10</dimen>
+    <dimen name="position_medication_dose">11</dimen>
+    <dimen name="position_medication_time">12</dimen>
+    <dimen name="position_medication_alarms">13</dimen>
+
+    <dimen name="position_injection_start">20</dimen>
+
 </resources>
