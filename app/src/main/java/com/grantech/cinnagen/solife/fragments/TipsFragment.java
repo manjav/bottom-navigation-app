@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 
 import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.adapters.ExpandableListAdapter;
@@ -22,7 +21,7 @@ import java.util.List;
  * Created by Belal on 1/23/2018.
  */
 
-public class TipsFragment extends Fragment
+public class TipsFragment extends BaseFragment
 {
     private ExpandableListView expandableListView;
     private ExpandableListAdapter expandableListAdapter;

@@ -18,7 +18,7 @@ import com.grantech.cinnagen.solife.utils.Fragments;
  * Created by ManJav on 1/23/2018.
  */
 
-public class MoreFragment extends Fragment
+public class MoreFragment extends BaseFragment
 {
     @SuppressLint("InflateParams")
     @Override
@@ -42,22 +42,22 @@ public class MoreFragment extends Fragment
             {
                 case 2:
                     url = "file:///android_asset/docs/safety_info.html";
-                    title = R.string.title_navi_42;
+                    title = R.string.more_safety;
                     fragment  = new DocsFragment();
                     break;
                 case 3:
                     url = "file:///android_asset/docs/faq.html";
-                    title = R.string.title_navi_43;
+                    title = R.string.more_faq;
                     fragment  = new DocsFragment();
                     break;
                 case 4:
                     url = "file:///android_asset/docs/drug_info.html";
-                    title = R.string.title_navi_44;
+                    title = R.string.more_drug;
                     fragment  = new DocsFragment();
                     break;
                 case 5:
                     url = "file:///android_asset/docs/terms_conditions.html";
-                    title = R.string.title_navi_45;
+                    title = R.string.more_terms;
                     fragment  = new DocsFragment();
                     break;
             }
@@ -69,7 +69,7 @@ public class MoreFragment extends Fragment
                 bundle.putString("url", url);
                 fragment.setArguments(bundle);
 
-                Fragments.getInstance().loadFragment((AppCompatActivity) getActivity(), fragment, R.dimen.fragment_docs, title);
+                Fragments.getInstance().loadFragment((AppCompatActivity) getActivity(), fragment, R.dimen.position_docs, title);
             }
 
         });

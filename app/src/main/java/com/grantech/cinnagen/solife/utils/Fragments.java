@@ -12,6 +12,7 @@ import java.util.Locale;
 
 public class Fragments
 {
+    public static String TAG = "solife";
     private static final Fragments ourInstance = new Fragments();
 
     public Locale locale;

@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.grantech.cinnagen.solife.R;
 
-public class DocsFragment extends Fragment
+public class DocsFragment extends BaseFragment
 {
     @SuppressLint("InflateParams")
     @Override
@@ -34,7 +34,7 @@ public class DocsFragment extends Fragment
         settings.setBuiltInZoomControls(false);
         settings.setAllowFileAccessFromFileURLs(true);
         settings.setAllowUniversalAccessFromFileURLs(true);
-//        Log.i("TAGGGG", "Opening PDF=>: " + getArguments().getString("url"));
+//        Log.i(Fragments.TAG, "Opening PDF=>: " + getArguments().getString("url"));
         assert getArguments() != null;
         webView.loadUrl(getArguments().getString("url"));
     }
