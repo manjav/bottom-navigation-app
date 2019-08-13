@@ -22,6 +22,9 @@ import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
 
 public class MedicationDoseFragment extends BaseFragment implements DatePickerDialog.OnDateSetListener
 {
+    private TextView startDoseInput;
+    private TextView maintainDoseInput;
+
     @SuppressLint("InflateParams")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

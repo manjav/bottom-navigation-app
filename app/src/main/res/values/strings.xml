@@ -34,4 +34,5 @@
     <string name="medication_dose_maintain_date">لطفا تاریخ تزریق بعدی خود را انتخاب کنید.</string>
     <string name="gen_next">Next</string>
     <string name="medication_time_title">لطفا ساعت مورد نظر خود برای تزریق را انتخاب کنید. نیم ساعت پیش از زمان انتخاب شده پیام یادآوری تزریق را دریافت خواهید کرد.</string>
+    <string name="medication_time_prompt">What time woks best for injection?</string>
 </resources>

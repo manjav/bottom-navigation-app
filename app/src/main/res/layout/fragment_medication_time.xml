@@ -17,10 +17,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
-        android:layout_marginBottom="8dp"
         android:gravity="center_horizontal"
         android:text="@string/medication_time_title"
         android:textColor="@color/colorPrimary"
@@ -30,30 +29,69 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/dose_time_input"
         android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_height="72dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:hint="@string/medication_dose_start_date"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dose_title" />
+        app:layout_constraintEnd_toEndOf="@+id/dose_title"
+        app:layout_constraintStart_toStartOf="@+id/dose_title"
+        app:layout_constraintTop_toBottomOf="@+id/dose_title"
+        android:background="@drawable/rect_round_white"
+        android:elevation="@dimen/cardview_default_elevation"
+        android:clickable="true"
+        android:focusable="true"
+        tools:targetApi="lollipop"
+        tools:ignore="PrivateResource">
+
+
+        <TextView
+            android:id="@+id/dose_maintain_time_prompt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/medication_time_prompt"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dose_maintain_time_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:singleLine="true"
+            android:text="@string/medication_dose_maintain_date"
+            android:textColor="@color/colorDark"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <Button
         android:id="@+id/dose_time_finish"
         style="@style/primaryButton"
         android:layout_width="0dp"
         android:layout_height="64dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="32dp"
         android:text="@string/gen_next"
-        app:layout_constraintEnd_toEndOf="@+id/dose_time_input"
-        app:layout_constraintStart_toStartOf="@+id/dose_time_input"
+        app:layout_constraintEnd_toEndOf="@+id/dose_title"
+        app:layout_constraintStart_toStartOf="@+id/dose_title"
         app:layout_constraintTop_toBottomOf="@+id/dose_time_input" />
 
     <Space
