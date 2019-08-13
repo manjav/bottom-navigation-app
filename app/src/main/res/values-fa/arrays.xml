@@ -1,5 +1,5 @@
 <resources>
-    <string-array name="aboutListData">
+    <string-array name="about_list_data">
         <item>تنظیمات هشدار</item>
         <item>تنظیمات بخش آموزشی</item>
         <item>توصیه های ایمنی</item>
@@ -7,4 +7,10 @@
         <item>اطلاعات دارویی</item>
         <item>قوانین استفاده از نرم افزار</item>
     </string-array>
+
+    <string-array name="dose_gaps">
+        <item>یک هفته در میان</item>
+        <item>هر هفته</item>
+    </string-array>
+
 </resources>

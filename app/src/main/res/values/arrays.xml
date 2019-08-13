@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="aboutListData">
+    <string-array name="about_list_data">
         <item>alarm_settings</item>
         <item>tutor_settings</item>
         <item>safety_info</item>
@@ -8,4 +8,10 @@
         <item>medication_info</item>
         <item>terms_conditions</item>
     </string-array>
+
+    <string-array name="dose_gaps">
+        <item>Every other week</item>
+        <item>Every Week</item>
+    </string-array>
+
 </resources>

@@ -1,20 +1,37 @@
 <resources>
     <string name="app_name">سولایف</string>
-    <string name="title_navi_0">تزریق</string>
-    <string name="title_navi_1">تقویم</string>
-    <string name="title_navi_2">نکات آموزشی</string>
-    <string name="title_navi_3">سایر موارد</string>
+    <string name="home_injection">تزریق</string>
+    <string name="home_calendar">تقویم</string>
+    <string name="home_tips">نکات آموزشی</string>
+    <string name="home_more">سایر موارد</string>
 
-    <string name="title_navi_43">سؤالات پر تکرار</string>
-    <string name="title_navi_42">توصیه های ایمنی</string>
-    <string name="title_navi_44">اطلاعات دارویی</string>
-    <string name="title_navi_45">قوانین استفاده از نرم افزار</string>
+    <string name="more_faq">سؤالات متداول</string>
+    <string name="more_safety">توصیه های ایمنی</string>
+    <string name="more_drug">اطلاعات دارویی</string>
+    <string name="more_terms">قوانین استفاده از نرم افزار</string>
 
-    <string name="main_title_welcome">سلام به سولایف خوش اومدی!</string>
-    <string name="main_message_welcome"> این یک نرم افزار دستیار پزشکی نیست و صرفا برای سازماندهی مصرف داروی سینورا می باشد. لطفا قوانین مربوط به استفاده از این نرم افزار رو مطالعه کنید و سپس موافقت خود را با ادامه کار با نرم افزار.اعلام کنید</string>
-    <string name="prep">آماده سازی و تزریق</string>
+    <string name="home_welcome_title">به نرم‌افزار سولایف خوش آمدید!</string>
+    <string name="home_prep">آماده سازی و تزریق</string>
     <string name="medication_settings">تنظیمات دارو</string>
-    <string name="alarm_settings">تنظیمات هشدار</string>
+    <string name="home_alarm">تنظیمات هشدار</string>
     <string name="about_text">نسخه 1.0.0\nشرکت سینا ژن\nآدرس آدرس آدرس\nتلفن : 423423423\nپاییز  98</string>
+
+    <string name="welcome_title">سلام به سولایف خوش اومدی!</string>
+    <string name="welcome_message">" این یک نرم افزار دستیار پزشکی نیست و صرفا برای سازماندهی مصرف داروی سینورا می باشد. لطفا قوانین مربوط به استفاده از این نرم افزار رو مطالعه کنید و سپس موافقت خود را با ادامه کار با نرم افزار.اعلام کنید"</string>
+    <string name="welcome_terms">®قوانین استفاده از داروی سینورا</string>
+    <string name="welcome_accept">با قوانین موافقم</string>
+    <string name="medication_dose_title">دوز داروی سینورا</string>
+    <string name="medication_dose_message">در اکثر مواقع دوز اولیه داروی سینورا® با دوز ادامه درمان (درمان نگهدارنده) تفاوت دارد.لطفا اطلاعات دوز اولیه و دوز نگهدارنده تجویز شده برای خود را در ادامه وارد کنید. سوالات احتمالی در این زمینه را می‌توانید با پزشک خود مطرح نمایید.</string>
+    <string name="medication_dose_start_title">دوز اولیه</string>
+    <string name="medication_dose_start_message">دوز اولیه تجویز شده از داروی سینورا® برای شما چند میلی‌گرم است؟ هر فیزیوجکت™ (ابزار دارورسان خودکار) داروی سینورا® حاوی 40 میلی‌گرم داروی آدالیمومب می‌باشد.</string>
+    <string name="medication_dose_80">80 میلی گرم</string>
+    <string name="medication_dose_40">40 میلی گرم</string>
+    <string name="medication_dose_start_date">لطفا تاریخ تزریق دوز اولیه سینورا® را انتخاب کنید.</string>
+    <string name="medication_dose_maintain_title">دوز نگهدارنده (ادامه درمان)</string>
+    <string name="medication_dose_maintain_message">تزریق دوز نگهدارنده خود را با چه فاصله زمانی انجام می‌دهید؟</string>
+    <string name="medication_dose_maintain_date">لطفا تاریخ تزریق بعدی خود را انتخاب کنید.</string>
+    <string name="gen_next">صفحه بعد</string>
+    <string name="medication_time_title">لطفا ساعت مورد نظر خود برای تزریق را انتخاب کنید. نیم ساعت پیش از زمان انتخاب شده پیام یادآوری تزریق را دریافت خواهید کرد.</string>
+    <string name="home_welcome_message">" شما در این قسمت می‌توانید زمان تزریق‌های خود را وارد کنید. همچنین، نکات مهم و سایر موارد مرتبط با دارو و نرم‌افزار در این بخش قابل مشاهده است."</string>
 
 </resources>
