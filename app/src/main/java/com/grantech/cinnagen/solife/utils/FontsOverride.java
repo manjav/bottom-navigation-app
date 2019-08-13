@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class FontsOverride
 {
-    static Map<String, Typeface> map = new HashMap<>();
+    private static Map<String, Typeface> map = new HashMap<>();
     public static void setFont(Context context, String defaultFontNameToOverride, String fontAssetName)
     {
         final Typeface customFontTypeface = Typeface.createFromAsset(context.getAssets(), fontAssetName);
@@ -38,4 +38,18 @@ public class FontsOverride
         return map.get(name);
     }
 
+
+    public static String convertToEnglishDigits(String value)
+    {
+        return value.replace("١", "1").replace("٢", "2").replace("٣", "3").replace("٤", "4").replace("٥", "5")
+                .replace("٦", "6").replace("7", "٧").replace("٨", "8").replace("٩", "9").replace("٠", "0")
+                .replace("۱", "1").replace("۲", "2").replace("۳", "3").replace("۴", "4").replace("۵", "5")
+                .replace("۶", "6").replace("۷", "7").replace("۸", "8").replace("۹", "9").replace("۰", "0");
+    }
+
+    public static String convertToPersianDigits(String value)
+    {
+        return value.replace("1", "۱").replace("2", "۲").replace("3", "۳").replace("4", "۴").replace("5", "۵")
+                .replace("6", "۶").replace("7", "۷").replace("8", "۸").replace("9", "۹").replace("0", "۰");
+    }
 }
