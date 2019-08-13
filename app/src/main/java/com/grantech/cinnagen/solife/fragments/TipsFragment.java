@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.adapters.ExpandableListAdapter;
@@ -16,6 +17,7 @@ import com.grantech.cinnagen.solife.utils.ExpandableListDataPump;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Belal on 1/23/2018.
@@ -34,27 +36,21 @@ public class TipsFragment extends BaseFragment
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState)
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
 
         expandableListView = view.findViewById(R.id.expandableListView);
         HashMap<Integer, List<Integer>> expandableListDetail = ExpandableListDataPump.getData();
         List<Integer> expandableListTitle = new ArrayList<>(expandableListDetail.keySet());
-        expandableListAdapter = new ExpandableListAdapter(getContext().getApplicationContext(), expandableListTitle, expandableListDetail);
+        expandableListAdapter = new ExpandableListAdapter(Objects.requireNonNull(getContext()).getApplicationContext(), expandableListTitle, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
-        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-            @Override
-            public void onGroupExpand(int groupPosition)
-            {
-                if( expandableListAdapter == null )
-                    return;
-                for( int i = 0; i < expandableListAdapter.getGroupCount(); i++ )
-                    if( i != groupPosition )
-                        expandableListView.collapseGroup(i);
-
-//              Toast.makeText(getContext().getApplicationContext(), expandableListTitle.get(groupPosition) + " List Expanded.", Toast.LENGTH_SHORT).show();
-            }
+        expandableListView.setOnGroupExpandListener(groupPosition -> {
+            if( expandableListAdapter == null )
+                return;
+            for( int i = 0; i < expandableListAdapter.getGroupCount(); i++ )
+                if( i != groupPosition )
+                    expandableListView.collapseGroup(i);
         });
 
 /*        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {

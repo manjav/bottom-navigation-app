@@ -9,6 +9,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.grantech.cinnagen.solife.R;
@@ -23,7 +24,7 @@ public class DocsFragment extends BaseFragment
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState)
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
 

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.grantech.cinnagen.solife.R;
@@ -28,7 +28,7 @@ public class MoreFragment extends BaseFragment
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState)
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
 
@@ -69,7 +69,7 @@ public class MoreFragment extends BaseFragment
                 bundle.putString("url", url);
                 fragment.setArguments(bundle);
 
-                Fragments.getInstance().loadFragment((AppCompatActivity) getActivity(), fragment, R.dimen.position_docs, title);
+                Fragments.getInstance().loadFragment(activity, fragment, R.dimen.position_docs, title);
             }
 
         });

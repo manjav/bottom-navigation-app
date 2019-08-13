@@ -1,8 +1,11 @@
 package com.grantech.cinnagen.solife.fragments;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -16,7 +19,15 @@ import com.grantech.cinnagen.solife.utils.Fragments;
 public class BaseFragment extends Fragment implements View.OnClickListener
 {
 
-   @Override
+    AppCompatActivity activity;
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
+    {
+        super.onViewCreated(view, savedInstanceState);
+        activity = (AppCompatActivity) getActivity();
+    }
+        @Override
     public void onClick(View view)
     {
         Log.i(Fragments.TAG, "InjectionFragment id: " + view.getId());
@@ -49,6 +60,6 @@ public class BaseFragment extends Fragment implements View.OnClickListener
         }
 
         if( fragment != null )
-            Fragments.getInstance().loadFragment((AppCompatActivity) getActivity(), fragment, position, title);
+            Fragments.getInstance().loadFragment(activity, fragment, position, title);
     }
 }
