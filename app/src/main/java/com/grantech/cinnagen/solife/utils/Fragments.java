@@ -74,7 +74,8 @@ public class Fragments
     public void clearStack(AppCompatActivity activity)
     {
         FragmentManager fragmentManager = activity.getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();       oldPosition = R.dimen.position_home_injection;
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        oldPosition = (int) activity.getResources().getDimension(R.dimen.position_home_injection);
         activity.getSupportActionBar().hide();
         fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         transaction.commit();
