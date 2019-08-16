@@ -15,7 +15,7 @@
 
     <string name="home_welcome_title">به نرم‌افزار سولایف خوش آمدید!</string>
     <string name="home_prep">آماده سازی و تزریق</string>
-    <string name="medication_settings">تنظیمات دارو</string>
+    <string name="home_medication">تنظیمات دارو</string>
     <string name="home_alarm">تنظیمات هشدار</string>
     <string name="about_text">نسخه 1.0.0\nشرکت سینا ژن\nآدرس آدرس آدرس\nتلفن : 423423423\nپاییز  98</string>
 

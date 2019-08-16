@@ -16,7 +16,7 @@
     <string name="home_welcome_title">سلام به سولایف خوش اومدی!</string>
     <string name="home_welcome_message"> این یک نرم افزار دستیار پزشکی نیست و صرفا برای سازماندهی مصرف داروی سینورا می باشد. لطفا قوانین مربوط به استفاده از این نرم افزار رو مطالعه کنید و سپس موافقت خود را با ادامه کار با نرم افزار.اعلام کنید</string>
     <string name="home_prep">Prep and Injection</string>
-    <string name="medication_settings">Medication Settings</string>
+    <string name="home_medication">Medication Settings</string>
     <string name="home_alarm">Alarm Settings</string>
     <string name="about_text">نسخه 1.0.0\nشرکت سینا ژن\nآدرس ما\nتلفن : 423423423\nپاییز  98</string>
 
