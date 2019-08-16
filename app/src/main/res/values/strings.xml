@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Solife</string>
+    <string name="app_next">Next</string>
+    <string name="app_save">Save</string>
+
     <string name="home_injection">Injection</string>
     <string name="home_calendar">Calendar</string>
     <string name="home_tips">Tips</string>
@@ -17,7 +20,6 @@
     <string name="home_alarm">Alarm Settings</string>
     <string name="about_text">نسخه 1.0.0\nشرکت سینا ژن\nآدرس ما\nتلفن : 423423423\nپاییز  98</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="welcome_title">Welcome to Solife</string>
     <string name="welcome_message">" این یک نرم افزار دستیار پزشکی نیست و صرفا برای سازماندهی مصرف داروی سینورا می باشد. لطفا قوانین مربوط به استفاده از این نرم افزار رو مطالعه کنید و سپس موافقت خود را با ادامه کار با نرم افزار.اعلام کنید"</string>
     <string name="welcome_terms">®قوانین استفاده از داروی سینورا</string>
@@ -32,7 +34,10 @@
     <string name="medication_dose_maintain_title">دوز نگهدارنده (ادامه درمان)</string>
     <string name="medication_dose_maintain_message">تزریق دوز نگهدارنده خود را با چه فاصله زمانی انجام می‌دهید؟</string>
     <string name="medication_dose_maintain_date">لطفا تاریخ تزریق بعدی خود را انتخاب کنید.</string>
-    <string name="gen_next">Next</string>
     <string name="medication_time_title">لطفا ساعت مورد نظر خود برای تزریق را انتخاب کنید. نیم ساعت پیش از زمان انتخاب شده پیام یادآوری تزریق را دریافت خواهید کرد.</string>
     <string name="medication_time_prompt">What time woks best for injection?</string>
+    <string name="medication_alarm_title">پیام‌های یادآوری زیر، توسط نرم‌افزار سولایف  برای شما ارسال خواهند شد. جهت تغییر متن هر پیام می‌توانید روی آن کلیک نمایید.</string>
+    <string name="medication_alarm_list_one">یک روز قبل از تزریق</string>
+    <string name="medication_alarm_list_two">با فرارسیدن زمان تزریق</string>
+    <string name="medication_alarm_list_three">در صورت فراموشی تزریق</string>
 </resources>

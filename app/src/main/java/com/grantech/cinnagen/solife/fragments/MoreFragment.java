@@ -37,9 +37,15 @@ public class MoreFragment extends BaseFragment
 
             String url = null;
             int title = 0;
+            int fragmentPosition = 4;
             Fragment fragment = null;
             switch (position)
             {
+                case 0:
+                    title = R.string.home_alarm;
+                    fragmentPosition = R.dimen.position_medication_alarms;
+                    fragment  = new MedicationAlarmFragment();
+                    break;
                 case 2:
                     url = "file:///android_asset/docs/safety_info.html";
                     title = R.string.more_safety;
@@ -69,7 +75,7 @@ public class MoreFragment extends BaseFragment
                 bundle.putString("url", url);
                 fragment.setArguments(bundle);
 
-                Fragments.getInstance().loadFragment(activity, fragment, R.dimen.position_docs, title);
+                Fragments.getInstance().loadFragment(activity, fragment, fragmentPosition, title);
             }
 
         });

@@ -15,14 +15,13 @@ import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.utils.FontsOverride;
 import com.grantech.cinnagen.solife.utils.Fragments;
 import com.grantech.cinnagen.solife.utils.PatientPrefs;
-import com.grantech.cinnagen.solife.utils.PickerInput;
 import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
 
 /**
  * Created by ManJav on 1/23/2019.
  */
 
-public class MedicationDoseFragment extends BaseFragment implements DatePickerDialog.OnDateSetListener, PickerInput.OnClickListener
+public class MedicationDoseFragment extends BaseFragment implements DatePickerDialog.OnDateSetListener
 {
     private TextView startDoseInput;
     private TextView maintainDoseInput;
@@ -49,7 +48,6 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
 
         view.findViewById(R.id.dose_date_finish).setOnClickListener(this);
     }
-
 
     @Override
     public void onClick(View view)
@@ -97,6 +95,5 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
             PatientPrefs.getInstance().maintainDate.setPersianDate(year, monthOfYear, dayOfMonth);
             maintainDoseInput.setText(FontsOverride.convertToPersianDigits(PatientPrefs.getInstance().maintainDate.getPersianShortDate()));
         }
-
     }
 }

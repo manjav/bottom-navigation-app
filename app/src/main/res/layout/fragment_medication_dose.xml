@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,7 +13,7 @@
         android:minHeight="164dp">
 
         <TextView
-            android:id="@+id/dose_title"
+            android:id="@+id/dose_alarm_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -47,7 +45,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dose_title" />
+            app:layout_constraintTop_toBottomOf="@+id/dose_alarm_title" />
 
         <TextView
             android:id="@+id/dose_start_title"
@@ -309,7 +307,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:text="@string/gen_next"
+            android:text="@string/app_next"
             app:layout_constraintEnd_toEndOf="@+id/dose_message"
             app:layout_constraintStart_toStartOf="@+id/dose_message"
             app:layout_constraintTop_toBottomOf="@+id/dose_maintain_date_input" />

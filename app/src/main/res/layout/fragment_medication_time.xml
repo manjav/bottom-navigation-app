@@ -12,7 +12,7 @@
     >
 
     <TextView
-        android:id="@+id/dose_title"
+        android:id="@+id/dose_alarm_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -35,9 +35,9 @@
         android:layout_width="0dp"
         android:layout_height="72dp"
         android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="@+id/dose_title"
-        app:layout_constraintStart_toStartOf="@+id/dose_title"
-        app:layout_constraintTop_toBottomOf="@+id/dose_title"
+        app:layout_constraintEnd_toEndOf="@+id/dose_alarm_title"
+        app:layout_constraintStart_toStartOf="@+id/dose_alarm_title"
+        app:layout_constraintTop_toBottomOf="@+id/dose_alarm_title"
         android:background="@drawable/rect_round_white"
         android:elevation="@dimen/cardview_default_elevation"
         android:clickable="true"
@@ -88,19 +88,11 @@
         android:layout_width="0dp"
         android:layout_height="64dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/gen_next"
-        app:layout_constraintEnd_toEndOf="@+id/dose_title"
-        app:layout_constraintStart_toStartOf="@+id/dose_title"
-        app:layout_constraintTop_toBottomOf="@+id/dose_time_input" />
-
-    <Space
-        android:id="@+id/space"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dose_time_finish" />
+        android:layout_marginBottom="32dp"
+        android:text="@string/app_next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/dose_alarm_title"
+        app:layout_constraintStart_toStartOf="@+id/dose_alarm_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

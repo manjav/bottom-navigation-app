@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLight"
+    tools:context=".fragments.MedicationAlarmFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/dose_alarm_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center_horizontal"
+            android:text="@string/medication_alarm_title"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/dose_alarm_title_one"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:gravity="start"
+            android:text="@string/medication_alarm_list_one"
+            android:textColor="@color/colorDark"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/dose_alarm_title"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/dose_alarm_title"
+            app:layout_constraintTop_toBottomOf="@+id/dose_alarm_title" />
+
+        <View
+            android:id="@+id/divider_top_one"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toTopOf="@+id/dose_list_one" />
+
+        <ListView
+            android:id="@+id/dose_list_one"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/colorWhite"
+            android:entries="@array/dose_gaps"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dose_alarm_title_one"
+            tools:ignore="NestedScrolling" />
+
+        <View
+            android:id="@+id/divider_bottom_one"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintTop_toBottomOf="@+id/dose_list_one" />
+
+
+        <TextView
+            android:id="@+id/dose_alarm_title_two"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:gravity="start"
+            android:text="@string/medication_alarm_list_two"
+            android:textColor="@color/colorDark"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/dose_alarm_title"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/dose_alarm_title"
+            app:layout_constraintTop_toBottomOf="@+id/dose_list_one" />
+
+        <View
+            android:id="@+id/divider_top_two"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toTopOf="@+id/dose_list_two" />
+
+        <ListView
+            android:id="@+id/dose_list_two"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/colorWhite"
+            android:entries="@array/dose_gaps"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dose_alarm_title_two"
+            tools:ignore="NestedScrolling" />
+
+        <View
+            android:id="@+id/divider_bottom_two"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintTop_toBottomOf="@+id/dose_list_two" />
+
+
+        <TextView
+            android:id="@+id/dose_alarm_title_three"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:gravity="start"
+            android:text="@string/medication_alarm_list_three"
+            android:textColor="@color/colorDark"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/dose_alarm_title"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/dose_alarm_title"
+            app:layout_constraintTop_toBottomOf="@+id/dose_list_two" />
+
+        <View
+            android:id="@+id/divider_top_three"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toTopOf="@+id/dose_list_three" />
+
+        <ListView
+            android:id="@+id/dose_list_three"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/colorWhite"
+            android:entries="@array/dose_gaps"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dose_alarm_title_three"
+            tools:ignore="NestedScrolling" />
+
+        <View
+            android:id="@+id/divider_bottom_three"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintTop_toBottomOf="@+id/dose_list_three" />
+
+
+        <Button
+            android:id="@+id/dose_alarm_finish"
+            style="@style/primaryButton"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/app_save"
+            app:layout_constraintEnd_toEndOf="@+id/dose_alarm_title"
+            app:layout_constraintStart_toStartOf="@+id/dose_alarm_title"
+            app:layout_constraintTop_toBottomOf="@id/dose_list_three" />
+
+        <Space
+            android:id="@+id/space"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dose_alarm_finish" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

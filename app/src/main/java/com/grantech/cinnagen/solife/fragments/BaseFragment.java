@@ -52,11 +52,14 @@ public class BaseFragment extends Fragment implements View.OnClickListener
                 break;
 
             case R.id.alarm_button:
-                position = R.dimen.position_injection_start;
-                title = R.string.welcome_title;
-                fragment = new WelcomeFragment();
+                position = R.dimen.position_medication_alarms;
+                title = R.string.home_alarm;
+                fragment = new MedicationAlarmFragment();
                 break;
 
+            case R.id.dose_alarm_finish:
+                Fragments.getInstance().clearStack(activity);
+                break;
         }
 
         if( fragment != null )
