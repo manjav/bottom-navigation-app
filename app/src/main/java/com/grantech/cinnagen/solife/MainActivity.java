@@ -6,15 +6,10 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.grantech.cinnagen.solife.fragments.DateFragment;
-import com.grantech.cinnagen.solife.fragments.InjectionFragment;
-import com.grantech.cinnagen.solife.fragments.MoreFragment;
-import com.grantech.cinnagen.solife.fragments.TipsFragment;
 import com.grantech.cinnagen.solife.utils.Fragments;
 
 import java.util.Locale;
@@ -45,43 +40,21 @@ public class MainActivity extends AppCompatActivity
 //            FontsOverride.setFont("normal", getResources().getFont(R.font.iransansmobile_light));
 
         setContentView(R.layout.activity_main);
-        Fragments.getInstance().loadFragment(this, new InjectionFragment(), 0, R.string.home_injection);
+        Fragments.getInstance().loadFragment(this, R.dimen.position_home_injection, R.string.home_injection);
         ((BottomNavigationView) findViewById(R.id.navigation)).setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = item -> {
-        Fragment fragment = null;
-        int fragmentTitle = 0;
-        int newPosition = 0;
 
         switch (item.getItemId())
         {
-            case R.id.navi_0:
-                newPosition = 0;
-                fragmentTitle = R.string.home_injection;
-                fragment = new InjectionFragment();
-                break;
-
-            case R.id.navi_1:
-                newPosition = 1;
-                fragmentTitle = R.string.home_calendar;
-                fragment = new DateFragment();
-                break;
-
-            case R.id.navi_2:
-                newPosition = 2;
-                fragmentTitle = R.string.home_tips;
-                fragment = new TipsFragment();
-                break;
-
-            case R.id.navi_3:
-                newPosition = 3;
-                fragmentTitle = R.string.home_more;
-                fragment = new MoreFragment();
-                break;
+            case R.id.navi_0:   return Fragments.getInstance().loadFragment(this, R.dimen.position_home_injection);
+            case R.id.navi_1:   return Fragments.getInstance().loadFragment(this, R.dimen.position_home_date);
+            case R.id.navi_2:   return Fragments.getInstance().loadFragment(this, R.dimen.position_home_tips);
+            case R.id.navi_3:   return Fragments.getInstance().loadFragment(this, R.dimen.position_home_more);
         }
 
-        return Fragments.getInstance().loadFragment(this, fragment, newPosition, fragmentTitle);
+        return false;
     };
 
     @Override

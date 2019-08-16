@@ -9,7 +9,6 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.utils.Fragments;
@@ -35,48 +34,40 @@ public class MoreFragment extends BaseFragment
         ListView listView = view.findViewById(R.id.about_list);
         listView.setOnItemClickListener((parent, view1, position, id) -> {
 
-            String url = null;
             int title = 0;
-            int fragmentPosition = 4;
-            Fragment fragment = null;
+            Bundle bundle = null;
+            String url = null;
+            int fragmentPosition = R.dimen.position_docs;
             switch (position)
             {
                 case 0:
                     title = R.string.home_alarm;
                     fragmentPosition = R.dimen.position_medication_alarms;
-                    fragment  = new MedicationAlarmFragment();
                     break;
                 case 2:
                     url = "file:///android_asset/docs/safety_info.html";
                     title = R.string.more_safety;
-                    fragment  = new DocsFragment();
                     break;
                 case 3:
                     url = "file:///android_asset/docs/faq.html";
                     title = R.string.more_faq;
-                    fragment  = new DocsFragment();
                     break;
                 case 4:
                     url = "file:///android_asset/docs/drug_info.html";
                     title = R.string.more_drug;
-                    fragment  = new DocsFragment();
                     break;
                 case 5:
                     url = "file:///android_asset/docs/terms_conditions.html";
                     title = R.string.more_terms;
-                    fragment  = new DocsFragment();
                     break;
             }
 
-            if( fragment  != null )
+            if( url  != null )
             {
-
-                Bundle bundle = new Bundle();
+                bundle = new Bundle();
                 bundle.putString("url", url);
-                fragment.setArguments(bundle);
-
-                Fragments.getInstance().loadFragment(activity, fragment, fragmentPosition, title);
             }
+            Fragments.getInstance().loadFragment(activity, fragmentPosition, title, bundle);
 
         });
     }

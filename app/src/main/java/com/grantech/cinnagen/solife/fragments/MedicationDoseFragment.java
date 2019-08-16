@@ -63,7 +63,7 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
                 return;
 
             case R.id.dose_date_finish:
-                Fragments.getInstance().loadFragment(activity, new MedicationTimeFragment(), R.dimen.position_medication_time, R.string.medication_settings);
+                Fragments.getInstance().loadFragment(activity, R.dimen.position_medication_time);
         }
     }
 

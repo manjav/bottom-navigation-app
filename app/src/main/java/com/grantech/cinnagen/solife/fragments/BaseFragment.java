@@ -27,42 +27,28 @@ public class BaseFragment extends Fragment implements View.OnClickListener
         super.onViewCreated(view, savedInstanceState);
         activity = (AppCompatActivity) getActivity();
     }
-        @Override
+
+    @Override
     public void onClick(View view)
     {
-        Log.i(Fragments.TAG, "InjectionFragment id: " + view.getId());
-
-        Fragment fragment = null;
-        int title = 0;
-        int position  = 0;
-
         switch( view.getId() )
         {
             case R.id.prep_button:
-                position = R.dimen.position_injection_start;
-                title = R.string.welcome_title;
-                fragment = new WelcomeFragment();
-                break;
+                Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_start);
+                return;
 
             case R.id.medication_button:
             case R.id.welcome_accept_button:
-                position = R.dimen.position_medication_dose;
-                title = R.string.medication_settings;
-                fragment = new MedicationDoseFragment();
-                break;
+                Fragments.getInstance().loadFragment(activity, R.dimen.position_medication_dose);
+                return;
 
             case R.id.alarm_button:
-                position = R.dimen.position_medication_alarms;
-                title = R.string.home_alarm;
-                fragment = new MedicationAlarmFragment();
-                break;
+                Fragments.getInstance().loadFragment(activity, R.dimen.position_medication_alarms);
+                return;
 
             case R.id.dose_alarm_finish:
                 Fragments.getInstance().clearStack(activity);
-                break;
+                return;
         }
-
-        if( fragment != null )
-            Fragments.getInstance().loadFragment(activity, fragment, position, title);
     }
 }

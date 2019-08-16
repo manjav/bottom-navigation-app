@@ -61,7 +61,7 @@ public class MedicationTimeFragment extends BaseFragment implements TimePickerDi
                 return;
 
             case R.id.dose_time_finish:
-                Fragments.getInstance().loadFragment(activity, new MedicationAlarmFragment(), R.dimen.position_medication_alarms, R.string.medication_settings);
+                Fragments.getInstance().loadFragment(activity, R.dimen.position_medication_alarms);
         }
     }
 
