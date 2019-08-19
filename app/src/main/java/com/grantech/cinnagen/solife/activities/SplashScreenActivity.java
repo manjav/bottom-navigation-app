@@ -1,4 +1,4 @@
-package com.grantech.cinnagen.solife;
+package com.grantech.cinnagen.solife.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

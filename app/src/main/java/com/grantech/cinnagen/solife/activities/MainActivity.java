@@ -1,23 +1,21 @@
-package com.grantech.cinnagen.solife;
+package com.grantech.cinnagen.solife.activities;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.utils.Fragments;
 
 import java.util.Locale;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
 {
-
     protected void onCreate(Bundle savedInstanceState)
     {
         // default localization is farsi
@@ -28,16 +26,7 @@ public class MainActivity extends AppCompatActivity
         Resources res = getApplicationContext().getResources();
         res.updateConfiguration(config, res.getDisplayMetrics());
 
-        // custom action-bar
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.action_bar);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_medication_settings);
-
         super.onCreate(savedInstanceState);
-
-//         custom fonts
-//        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.O )
-//            FontsOverride.setFont("normal", getResources().getFont(R.font.iransansmobile_light));
 
         setContentView(R.layout.activity_main);
         Fragments.getInstance().loadFragment(this, R.dimen.position_home_injection, R.string.home_injection);
@@ -56,6 +45,8 @@ public class MainActivity extends AppCompatActivity
 
         return false;
     };
+
+
 
     @Override
     public void onBackPressed()
@@ -84,11 +75,5 @@ public class MainActivity extends AppCompatActivity
         super.onBackPressed();
     }
 
-    @Override
-    public boolean onSupportNavigateUp()
-    {
-        onBackPressed();
-        return true;
-    }
 }
 
