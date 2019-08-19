@@ -1,0 +1,71 @@
+@media only screen and (-webkit-min-device-pixel-ratio: 3){
+    body{
+        direction: rtl;
+        background-color: #fafafa;
+        font-family: sans;
+        color: #6c6c6c;
+        font-size:130%
+    }
+     tbody {
+        font-size:120%
+     }
+}
+@media only screen and (-webkit-device-pixel-ratio: 2) {
+     body{
+        direction: rtl;
+        background-color: #fafafa;
+        font-family: sans;
+        color: #6c6c6c;
+        font-size:120%
+     }
+     tbody {
+        font-size:110%
+     }
+ }
+@media only screen and (-webkit-device-pixel-ratio: 1.5){
+    body{
+        direction: rtl;
+        background-color: #fafafa;
+        font-family: sans;
+        color: #8f8a8a;
+        font-size:100%
+    }
+     tbody {
+        font-size:100%
+     }
+}
+@media only screen and (-webkit-device-pixel-ratio: 1) {
+     body{
+        direction: rtl;
+        background-color: #fafafa;
+        font-family: sans;
+        color: #6c6c6c;
+        font-size:100%
+     }
+     tbody {
+        font-size:100%
+     }
+}
+
+h2{
+    color: #2a2a2a;
+}
+
+h3{
+    color: #2a2a2a;
+}
+
+@font-face{
+    font-family: sans;
+    src: url('file:///android_asset/iransansmobile_light.ttf');
+}
+
+ul li.l1 {
+list-style-image: url('file:///android_asset/images/leaf_icon.jpg');
+}
+ul li.l2 {
+list-style-image: url('file:///android_asset/images/leaf_icon.jpg');
+}
+ul li.l3 {
+list-style-image: url('file:///android_asset/images/leaf_icon.jpg');
+}

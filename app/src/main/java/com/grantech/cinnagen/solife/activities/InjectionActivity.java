@@ -1,7 +1,7 @@
 package com.grantech.cinnagen.solife.activities;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -26,6 +26,7 @@ public class InjectionActivity extends BaseActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         int stackCount = fragmentManager.getBackStackEntryCount();
+        Log.i("ss", "stackCount " + stackCount);
         if( stackCount == 1 )
         {
             Fragments.getInstance().clearStack(this);
@@ -37,6 +38,7 @@ public class InjectionActivity extends BaseActivity
             String lastFragmentName = fragmentManager.getBackStackEntryAt(stackCount - 1).getName();
             Fragments.getInstance().oldPosition = Integer.parseInt(lastFragmentName);
             Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+            fragmentManager.popBackStack();
             transaction.commit();
             return;
         }

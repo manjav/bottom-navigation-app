@@ -34,27 +34,23 @@ public class MoreFragment extends BaseFragment
         ListView listView = view.findViewById(R.id.about_list);
         listView.setOnItemClickListener((parent, view1, position, id) -> {
 
-            int fragmentPosition = R.dimen.position_home_injection;
-            switch (position)
-            {
+            switch (position) {
                 case 0:
-                    fragmentPosition = R.dimen.position_medication_alarms;
-                    break;
+                    Fragments.getInstance().loadFragment(activity, R.dimen.position_medication_alarms);
+                    return;
                 case 2:
-                    fragmentPosition = R.dimen.position_misc_safety;
-                    break;
+                    Fragments.getInstance().loadFragment(activity, R.dimen.position_misc_safety);
+                    return;
                 case 3:
-                    fragmentPosition = R.dimen.position_misc_faq;
-                    break;
+                    Fragments.getInstance().loadFragment(activity, R.dimen.position_misc_faq);
+                    return;
                 case 4:
-                    fragmentPosition = R.dimen.position_misc_prescribing;
-                    break;
+                    Fragments.getInstance().loadFragment(activity, R.dimen.position_misc_prescribing);
+                    return;
                 case 5:
-                    fragmentPosition = R.dimen.position_misc_terms;
-                    break;
+                    Fragments.getInstance().loadFragment(activity, R.dimen.position_misc_terms);
+                    return;
             }
-
-            Fragments.getInstance().loadFragment(activity, fragmentPosition);
 
         });
     }

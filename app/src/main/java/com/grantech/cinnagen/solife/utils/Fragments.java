@@ -121,9 +121,9 @@ public class Fragments
         switch( position )
         {
             case R.dimen.position_injection_start:  bundle.putString("url", "file:///android_asset/docs/injection_start.html");    bundle.putInt("icon", R.drawable.ic_injection_start);   break;
-            case R.dimen.position_injection_prep:  bundle.putString("url", "file:///android_asset/docs/injection_start.html");    bundle.putInt("icon", R.drawable.ic_injection_prep);   break;
-            case R.dimen.position_injection_tips:  bundle.putString("url", "file:///android_asset/docs/injection_start.html");    bundle.putInt("icon", R.drawable.ic_injection_tips);   break;
-            case R.dimen.position_injection_steps:  bundle.putString("url", "file:///android_asset/docs/injection_start.html");    bundle.putInt("icon", R.drawable.ic_injection_steps);   break;
+            case R.dimen.position_injection_prep:  bundle.putString("url", "file:///android_asset/docs/injection_prep.html");    bundle.putInt("icon", R.drawable.ic_injection_prep);   break;
+            case R.dimen.position_injection_tips:  bundle.putString("url", "file:///android_asset/docs/injection_tips.html");    bundle.putInt("icon", R.drawable.ic_injection_tips);   break;
+            case R.dimen.position_injection_steps:  bundle.putString("url", "file:///android_asset/docs/injection_steps.html");    bundle.putInt("icon", R.drawable.ic_injection_steps);   break;
 
             case R.dimen.position_misc_safety:  bundle.putString("url", "file:///android_asset/docs/safety_info.html");        break;
             case R.dimen.position_misc_faq:  bundle.putString("url", "file:///android_asset/docs/faq.html");                break;

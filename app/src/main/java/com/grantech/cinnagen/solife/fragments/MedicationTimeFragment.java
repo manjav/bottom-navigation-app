@@ -43,7 +43,6 @@ public class MedicationTimeFragment extends BaseFragment implements TimePickerDi
         maintainTimeInput.setText(FontsOverride.convertToPersianDigits( PatientPrefs.getInstance().maintainDate.get(PersianCalendar.MINUTE) + " : " + PatientPrefs.getInstance().maintainDate.get(PersianCalendar.HOUR_OF_DAY)) );
 //        maintainTimeInput.setText(FontsOverride.convertToPersianDigits( PatientPrefs.getInstance().maintainDate.getPersianShortDateTime()) );
         view.findViewById(R.id.dose_time_input).setOnClickListener(this);
-
         view.findViewById(R.id.dose_time_finish).setOnClickListener(this);
     }
 

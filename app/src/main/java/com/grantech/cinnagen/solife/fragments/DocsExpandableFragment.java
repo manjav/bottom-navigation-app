@@ -7,11 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.grantech.cinnagen.solife.R;
+import com.grantech.cinnagen.solife.utils.Fragments;
 
 /**
  * Created by ManJav on 1/23/2019.
@@ -41,6 +43,20 @@ public class DocsExpandableFragment extends BaseFragment
         assert getArguments() != null;
         webView.loadUrl(getArguments().getString("url"));
 
+        ((ImageView)view.findViewById(R.id.docs_expandable_image)).setImageResource(getArguments().getInt("icon"));
 
+        view.findViewById(R.id.docs_expandable_finish).setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view)
+    {
+        switch( getArguments().getInt("icon") )
+        {
+            case R.drawable.ic_injection_start: Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_prep);  return;
+            case R.drawable.ic_injection_prep:  Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_tips);  return;
+            case R.drawable.ic_injection_tips:  Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_steps);  return;
+            case R.drawable.ic_injection_steps: Fragments.getInstance().loadFragment(activity, R.dimen.position_home_injection);   return;
+        }
     }
 }

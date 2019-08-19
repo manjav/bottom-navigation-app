@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.grantech.cinnagen.solife.R;
-import com.grantech.cinnagen.solife.utils.Fragments;
 
 /**
  * Created by ManJav on 1/23/2019.
