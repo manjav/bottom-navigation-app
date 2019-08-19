@@ -40,4 +40,6 @@
     <string name="medication_alarm_list_one">یک روز قبل از تزریق</string>
     <string name="medication_alarm_list_two">با فرارسیدن زمان تزریق</string>
     <string name="medication_alarm_list_three">در صورت فراموشی تزریق</string>
+
+    <string name="injection_body_title">Test Test Test</string>
 </resources>
