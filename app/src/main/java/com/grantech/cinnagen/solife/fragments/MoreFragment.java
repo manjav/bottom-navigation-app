@@ -34,40 +34,27 @@ public class MoreFragment extends BaseFragment
         ListView listView = view.findViewById(R.id.about_list);
         listView.setOnItemClickListener((parent, view1, position, id) -> {
 
-            int title = 0;
-            Bundle bundle = null;
-            String url = null;
-            int fragmentPosition = R.dimen.position_docs;
+            int fragmentPosition = R.dimen.position_home_injection;
             switch (position)
             {
                 case 0:
-                    title = R.string.home_alarm;
                     fragmentPosition = R.dimen.position_medication_alarms;
                     break;
                 case 2:
-                    url = "file:///android_asset/docs/safety_info.html";
-                    title = R.string.more_safety;
+                    fragmentPosition = R.dimen.position_misc_safety;
                     break;
                 case 3:
-                    url = "file:///android_asset/docs/faq.html";
-                    title = R.string.more_faq;
+                    fragmentPosition = R.dimen.position_misc_faq;
                     break;
                 case 4:
-                    url = "file:///android_asset/docs/drug_info.html";
-                    title = R.string.more_drug;
+                    fragmentPosition = R.dimen.position_misc_prescribing;
                     break;
                 case 5:
-                    url = "file:///android_asset/docs/terms_conditions.html";
-                    title = R.string.more_terms;
+                    fragmentPosition = R.dimen.position_misc_terms;
                     break;
             }
 
-            if( url  != null )
-            {
-                bundle = new Bundle();
-                bundle.putString("url", url);
-            }
-            Fragments.getInstance().loadFragment(activity, fragmentPosition, title, bundle);
+            Fragments.getInstance().loadFragment(activity, fragmentPosition);
 
         });
     }

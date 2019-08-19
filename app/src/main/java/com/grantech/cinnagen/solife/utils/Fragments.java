@@ -14,6 +14,7 @@ import com.grantech.cinnagen.solife.fragments.BaseFragment;
 import com.grantech.cinnagen.solife.fragments.DateFragment;
 import com.grantech.cinnagen.solife.fragments.DocsFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionFragment;
+import com.grantech.cinnagen.solife.fragments.DocsExpandableFragment;
 import com.grantech.cinnagen.solife.fragments.MedicationAlarmFragment;
 import com.grantech.cinnagen.solife.fragments.MedicationDoseFragment;
 import com.grantech.cinnagen.solife.fragments.MedicationTimeFragment;
@@ -51,12 +52,15 @@ public class Fragments
         BaseFragment fragment = this.getFragment(position);
         if( fragment == null )
             return false;
-        if( title == 0 )
-            title = this.getTitle(position);
         int newPosition = (int) activity.getResources().getDimension(position);
         if( oldPosition == newPosition )
             return false;
 
+        if( title == 0 )
+            title = this.getTitle(position);
+
+        if( arguments == null )
+            arguments = this.getArguments(position);
         fragment.setArguments(arguments);
 
         // switching fragment
@@ -89,35 +93,69 @@ public class Fragments
 
     private int getTitle(int position)
     {
-        switch (position)
+        switch( position )
         {
-            case R.dimen.position_home_injection:       return R.string.home_injection;
-            case R.dimen.position_home_date:            return R.string.home_calendar;
-            case R.dimen.position_home_tips:            return R.string.home_tips;
-            case R.dimen.position_home_more:            return R.string.home_more;
-            case R.dimen.position_welcome:              return R.string.welcome_title;
-            case R.dimen.position_medication_dose:      return R.string.home_medication;
-            case R.dimen.position_medication_time:      return R.string.home_medication;
-            case R.dimen.position_medication_alarms:    return R.string.home_alarm;
-//            case R.dimen.position_injection_start:      return R.string.home_injection;
+            case R.dimen.position_home_injection:    return R.string.home_injection;
+            case R.dimen.position_home_date:    return R.string.home_calendar;
+            case R.dimen.position_home_tips:    return R.string.home_tips;
+            case R.dimen.position_home_more:    return R.string.home_more;
+
+            case R.dimen.position_welcome:   return R.string.welcome_title;
+            case R.dimen.position_medication_dose:   return R.string.home_medication;
+            case R.dimen.position_medication_time:   return R.string.home_medication;
+            case R.dimen.position_medication_alarms:   return R.string.home_alarm;
+
+            case R.dimen.position_injection_start:   return R.string.home_injection;
+
+            case R.dimen.position_misc_safety:   return R.string.more_safety;
+            case R.dimen.position_misc_faq:   return R.string.more_faq;
+            case R.dimen.position_misc_prescribing:   return R.string.more_prescribing;
+            case R.dimen.position_misc_terms:   return R.string.more_terms;
         }
         return R.string.app_name;
     }
 
+    private Bundle getArguments(int position)
+    {
+        Bundle bundle = new Bundle();
+        switch( position )
+        {
+            case R.dimen.position_injection_start:  bundle.putString("url", "file:///android_asset/docs/injection_start.html");    bundle.putInt("icon", R.drawable.ic_injection_start);   break;
+            case R.dimen.position_injection_prep:  bundle.putString("url", "file:///android_asset/docs/injection_start.html");    bundle.putInt("icon", R.drawable.ic_injection_prep);   break;
+            case R.dimen.position_injection_tips:  bundle.putString("url", "file:///android_asset/docs/injection_start.html");    bundle.putInt("icon", R.drawable.ic_injection_tips);   break;
+            case R.dimen.position_injection_steps:  bundle.putString("url", "file:///android_asset/docs/injection_start.html");    bundle.putInt("icon", R.drawable.ic_injection_steps);   break;
+
+            case R.dimen.position_misc_safety:  bundle.putString("url", "file:///android_asset/docs/safety_info.html");        break;
+            case R.dimen.position_misc_faq:  bundle.putString("url", "file:///android_asset/docs/faq.html");                break;
+            case R.dimen.position_misc_prescribing:  bundle.putString("url", "file:///android_asset/docs/prescribing_info.html");   break;
+            case R.dimen.position_misc_terms:  bundle.putString("url", "file:///android_asset/docs/terms_conditions.html");   break;
+        }
+        return bundle;
+    }
+
     private BaseFragment getFragment(int position)
     {
-        switch (position)
+        switch( position )
         {
             case R.dimen.position_home_injection:       return new InjectionFragment();
-            case R.dimen.position_home_date:            return new DateFragment();
-            case R.dimen.position_home_tips:            return new TipsFragment();
-            case R.dimen.position_home_more:            return new MoreFragment();
-            case R.dimen.position_docs:                 return new DocsFragment();
-            case R.dimen.position_welcome:              return new WelcomeFragment();
+            case R.dimen.position_home_date:       return new DateFragment();
+            case R.dimen.position_home_tips:       return new TipsFragment();
+            case R.dimen.position_home_more:       return new MoreFragment();
+
+            case R.dimen.position_welcome:      return new WelcomeFragment();
             case R.dimen.position_medication_dose:      return new MedicationDoseFragment();
             case R.dimen.position_medication_time:      return new MedicationTimeFragment();
-            case R.dimen.position_medication_alarms:    return new MedicationAlarmFragment();
-//            case R.dimen.position_injection_start:      return new MedicationAlarmFragment();
+            case R.dimen.position_medication_alarms:      return new MedicationAlarmFragment();
+
+            case R.dimen.position_injection_start:
+            case R.dimen.position_injection_prep:
+            case R.dimen.position_injection_tips:
+            case R.dimen.position_injection_steps:      return new DocsExpandableFragment();
+
+            case R.dimen.position_misc_faq:
+            case R.dimen.position_misc_terms:
+            case R.dimen.position_misc_safety:
+            case R.dimen.position_misc_prescribing:       return new DocsFragment();
         }
         return null;
     }

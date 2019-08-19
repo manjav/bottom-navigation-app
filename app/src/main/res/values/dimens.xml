@@ -7,7 +7,6 @@
     <dimen name="position_home_date">1px</dimen>
     <dimen name="position_home_tips">2px</dimen>
     <dimen name="position_home_more">3px</dimen>
-    <dimen name="position_docs">4px</dimen>
 
     <dimen name="position_welcome">10px</dimen>
     <dimen name="position_medication_dose">11px</dimen>
@@ -15,5 +14,18 @@
     <dimen name="position_medication_alarms">13px</dimen>
 
     <dimen name="position_injection_start">20px</dimen>
+    <dimen name="position_injection_slides">21px</dimen>
+    <dimen name="position_injection_timers">22px</dimen>
+    <dimen name="position_injection_prep">23px</dimen>
+    <dimen name="position_injection_tips">24px</dimen>
+    <dimen name="position_injection_lasts">24px</dimen>
+    <dimen name="position_injection_steps">25px</dimen>
+    <dimen name="position_injection_body">26px</dimen>
+    <dimen name="position_injection_log">27px</dimen>
+    <dimen name="position_injection_fine">28px</dimen>
 
+    <dimen name="position_misc_safety">31px</dimen>
+    <dimen name="position_misc_faq">32px</dimen>
+    <dimen name="position_misc_prescribing">33px</dimen>
+    <dimen name="position_misc_terms">34px</dimen>
 </resources>
