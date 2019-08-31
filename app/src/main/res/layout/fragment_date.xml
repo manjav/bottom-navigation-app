@@ -19,12 +19,12 @@
 
     <ir.mirrajabi.persiancalendar.PersianCalendarView
         android:id="@+id/persian_calendar"
-        android:layout_width="match_parent"
+        android:layout_width="360dp"
         android:layout_height="290dp"
-        android:layout_marginTop="72dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="64dp"
         android:fontFamily="@font/iransans"
-        app:pcv_selectedDayBackground="@drawable/circle_primary_light"
-        app:pcv_todayBackground="@drawable/circle_today"
         app:pcv_colorBackground="@color/colorLight"
         app:pcv_colorDayName="@color/colorPrimaryDark"
         app:pcv_colorHoliday="@color/colorPrimaryDark"
@@ -32,6 +32,7 @@
         app:pcv_colorNormalDay="@color/colorPrimary"
         app:pcv_colorNormalDaySelected="@color/colorWhite"
         app:pcv_eventUnderlineColor="@color/colorWhite"
-        />
+        app:pcv_selectedDayBackground="@drawable/circle_primary_light"
+        app:pcv_todayBackground="@drawable/circle_today" />
 
 </RelativeLayout>
