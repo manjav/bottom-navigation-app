@@ -47,13 +47,87 @@
         tools:ignore="MissingConstraints" />
 
     <androidx.viewpager.widget.ViewPager
+        android:overScrollMode="never"
         android:id="@+id/date_pager"
-        android:layout_width="320dp"
-        android:layout_height="300dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/line_text_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_year_month"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/line_icon_1"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/line_icon_2"
+        app:layout_constraintStart_toStartOf="@+id/line_icon_2"
+        app:srcCompat="@drawable/circle_today"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/line_text_1"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/date_today"
+        app:layout_constraintBottom_toTopOf="@+id/line_text_2"
+        app:layout_constraintStart_toStartOf="@+id/line_text_2"
+        app:layout_constraintTop_toTopOf="@+id/line_icon_1"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/line_icon_2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/line_icon_3"
+        app:layout_constraintStart_toStartOf="@+id/line_icon_3"
+        app:srcCompat="@drawable/circle_event_next"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/line_text_2"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/date_prev"
+        app:layout_constraintBottom_toTopOf="@+id/line_text_3"
+        app:layout_constraintStart_toStartOf="@+id/line_text_3"
+        app:layout_constraintTop_toTopOf="@+id/line_icon_2"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/line_icon_3"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/date_pager"
+        app:srcCompat="@drawable/circle_event_prev"
+        tools:ignore="MissingConstraints"
+        android:layout_marginLeft="16dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/line_text_3"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/line_icon_3"
+        app:layout_constraintTop_toTopOf="@+id/line_icon_3"
         tools:ignore="MissingConstraints" />
 
 

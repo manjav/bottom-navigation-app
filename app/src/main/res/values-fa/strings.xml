@@ -42,5 +42,8 @@
     <string name="medication_alarm_list_three">در صورت فراموشی تزریق</string>
 
     <string name="injection_body_title">sdfsdfsf</string>
+    <string name="date_today">امروز</string>
+    <string name="date_next">تزریق های آتی</string>
+    <string name="date_prev">انجام شده</string>
 
 </resources>

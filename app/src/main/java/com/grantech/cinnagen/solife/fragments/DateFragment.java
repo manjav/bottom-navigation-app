@@ -1,5 +1,6 @@
 package com.grantech.cinnagen.solife.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.grantech.cinnagen.solife.R;
@@ -42,7 +44,9 @@ public class DateFragment extends BaseFragment implements ViewPager.OnPageChange
         this.calendar.setOnEventUpdateListener(this::createViewPagers);
 
         this.headerView = view.findViewById(R.id.txt_year_month);
-        this.calendar.setOnMonthChangedListener(this::changeHeader);
+        this.calendar.setOnMonthChangedListener(day -> {
+            changeHeader(day);
+        });
 
         this.changeHeader(calendar.getToday());
         this.createViewPagers();
@@ -107,13 +111,13 @@ public class DateFragment extends BaseFragment implements ViewPager.OnPageChange
 
     @Override
     public void onPageSelected(int position) {
-//        mViewPagerPosition = position - Constants.MONTHS_LIMIT / 2;
-//
-//        Intent intent = new Intent(Constants.BROADCAST_INTENT_TO_MONTH_FRAGMENT);
-//        intent.putExtra(Constants.BROADCAST_FIELD_TO_MONTH_FRAGMENT, mViewPagerPosition);
-//        intent.putExtra(Constants.BROADCAST_FIELD_SELECT_DAY, -1);
+        int mViewPagerPosition = position - Constants.MONTHS_LIMIT / 2;
 
-//        LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
+        Intent intent = new Intent(Constants.BROADCAST_INTENT_TO_MONTH_FRAGMENT);
+        intent.putExtra(Constants.BROADCAST_FIELD_TO_MONTH_FRAGMENT, mViewPagerPosition);
+        intent.putExtra(Constants.BROADCAST_FIELD_SELECT_DAY, -1);
+
+        LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
     }
 
     @Override
