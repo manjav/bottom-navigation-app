@@ -8,4 +8,7 @@
     <color name="colorLight">#fafafa</color>
     <color name="colorMedium">#6c6c6c</color>
     <color name="colorDark">#3a3a3a</color>
+
+    <color name="eventNext">#B63D57</color>
+    <color name="eventToday">#E96F8a</color>
 </resources>

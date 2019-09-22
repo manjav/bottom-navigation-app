@@ -28,4 +28,5 @@
     <dimen name="position_misc_faq">32px</dimen>
     <dimen name="position_misc_prescribing">33px</dimen>
     <dimen name="position_misc_terms">34px</dimen>
+
 </resources>
