@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,16 +14,17 @@ import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.utils.FontsOverride;
 import com.grantech.cinnagen.solife.utils.Fragments;
 import com.grantech.cinnagen.solife.utils.PatientPrefs;
+import com.grantech.cinnagen.solife.utils.PickerInput;
 import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
 
 /**
  * Created by ManJav on 1/23/2019.
  */
 
-public class MedicationDoseFragment extends BaseFragment implements DatePickerDialog.OnDateSetListener
+public class MedicationDoseFragment extends BaseFragment implements DatePickerDialog.OnDateSetListener, PickerInput.OnClickListener
 {
-    private TextView startDoseInput;
-    private TextView maintainDoseInput;
+    private PickerInput startDoseInput;
+    private PickerInput maintainDoseInput;
 
     @SuppressLint("InflateParams")
     @Override
@@ -38,13 +38,13 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
     {
         super.onViewCreated(view, savedInstanceState);
 
-        startDoseInput = view.findViewById(R.id.dose_start_date_text);
+        startDoseInput = view.findViewById(R.id.dose_start_date_input);
         startDoseInput.setText(FontsOverride.convertToPersianDigits(PatientPrefs.getInstance().startDate.getPersianShortDate()));
-        view.findViewById(R.id.dose_start_date_input).setOnClickListener(this);
+        startDoseInput.setOnClickListener(this);
 
-        maintainDoseInput = view.findViewById(R.id.dose_maintain_date_text);
+        maintainDoseInput = view.findViewById(R.id.dose_maintain_date_input);
         maintainDoseInput.setText(FontsOverride.convertToPersianDigits(PatientPrefs.getInstance().maintainDate.getPersianShortDate()));
-        view.findViewById(R.id.dose_maintain_date_input).setOnClickListener(this);
+        maintainDoseInput.setOnClickListener(this);
 
         view.findViewById(R.id.dose_date_finish).setOnClickListener(this);
     }
@@ -75,7 +75,6 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
         else
             datePicker = DatePickerDialog.newInstance(this, PatientPrefs.getInstance().maintainDate.getPersianYear(), PatientPrefs.getInstance().maintainDate.getPersianMonth(), PatientPrefs.getInstance().maintainDate.getPersianDay());
 
-//        datePicker.setStyle(R.style.AppTheme, R.style.AppTheme);
         datePicker.setOnCancelListener(dialogInterface -> Log.d(Fragments.TAG, "Dialog was cancelled"));
         datePicker.show(activity.getFragmentManager(), tag);
     }

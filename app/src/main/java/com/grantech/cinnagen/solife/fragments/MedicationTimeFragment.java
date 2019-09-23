@@ -16,6 +16,7 @@ import com.grantech.cinnagen.solife.utils.FontsOverride;
 import com.grantech.cinnagen.solife.utils.Fragments;
 import com.grantech.cinnagen.solife.utils.PatientPrefs;
 import com.grantech.cinnagen.solife.utils.PersianCalendar;
+import com.grantech.cinnagen.solife.utils.PickerInput;
 import com.mohamadamin.persianmaterialdatetimepicker.time.RadialPickerLayout;
 import com.mohamadamin.persianmaterialdatetimepicker.time.TimePickerDialog;
 
@@ -25,7 +26,7 @@ import com.mohamadamin.persianmaterialdatetimepicker.time.TimePickerDialog;
 
 public class MedicationTimeFragment extends BaseFragment implements TimePickerDialog.OnTimeSetListener
 {
-    private TextView maintainTimeInput;
+    private PickerInput maintainTimeInput;
 
     @SuppressLint("InflateParams")
     @Override
@@ -39,10 +40,9 @@ public class MedicationTimeFragment extends BaseFragment implements TimePickerDi
     {
         super.onViewCreated(view, savedInstanceState);
 
-        maintainTimeInput = view.findViewById(R.id.dose_maintain_time_text);
+        maintainTimeInput = view.findViewById(R.id.dose_time_input);
         maintainTimeInput.setText(FontsOverride.convertToPersianDigits( PatientPrefs.getInstance().maintainDate.get(PersianCalendar.MINUTE) + " : " + PatientPrefs.getInstance().maintainDate.get(PersianCalendar.HOUR_OF_DAY)) );
-//        maintainTimeInput.setText(FontsOverride.convertToPersianDigits( PatientPrefs.getInstance().maintainDate.getPersianShortDateTime()) );
-        view.findViewById(R.id.dose_time_input).setOnClickListener(this);
+        maintainTimeInput.setOnClickListener(this);
         view.findViewById(R.id.dose_time_finish).setOnClickListener(this);
     }
 

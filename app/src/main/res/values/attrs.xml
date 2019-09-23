@@ -1,0 +1,6 @@
+<resources>
+    <declare-styleable name="PickerInput">
+        <attr name="prompt" format="string" />
+        <attr name="text" format="string" />
+    </declare-styleable>
+</resources>
