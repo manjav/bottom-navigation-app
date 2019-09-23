@@ -38,20 +38,18 @@ public class DateFragment extends BaseFragment implements ViewPager.OnPageChange
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_date, container, false);
-        this.calendar = PersianCalendarHandler.getInstance(getContext());
-
         this.viewPager = view.findViewById(R.id.date_pager);
-        this.calendar.setOnEventUpdateListener(this::createViewPagers);
-
         this.headerView = view.findViewById(R.id.txt_year_month);
-        this.calendar.setOnMonthChangedListener(day -> {
-            changeHeader(day);
-        });
+
+        this.calendar = PersianCalendarHandler.getInstance(getContext());
+        this.calendar.setOnEventUpdateListener(this::createViewPagers);
+        this.calendar.setOnMonthChangedListener(this::changeHeader);
 
         this.changeHeader(calendar.getToday());
         this.createViewPagers();
         return view;
     }
+
     private void createViewPagers()
     {
         this.viewPager.setAdapter(new CalendarAdapter(getChildFragmentManager()));
