@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/body_view"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:layout_gravity="center"
+    android:background="@drawable/rect_round_white">
+
+    <!--    <androidx.appcompat.widget.AppCompatImageView-->
+<!--        android:id="@+id/docs_expandable_image"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginStart="1dp"-->
+<!--        android:layout_marginLeft="1dp"-->
+<!--        android:layout_marginTop="1dp"-->
+<!--        android:layout_marginEnd="1dp"-->
+<!--        android:layout_marginRight="1dp"-->
+<!--        android:layout_marginBottom="1dp"-->
+<!--        android:adjustViewBounds="true"-->
+<!--        android:baselineAlignBottom="false"-->
+<!--        android:cropToPadding="false"-->
+<!--        android:scaleType="centerInside"-->
+<!--        android:src="@drawable/body_medium"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/prep_button"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="1.0" />-->
+
+    <com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout
+        android:id="@+id/your_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/prep_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:mask="@drawable/rect_round_white"
+        app:porterduffxfermode="DST_IN">
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="320dp"
+            android:src="@drawable/body_medium" />
+
+    </com.christophesmet.android.views.maskableframelayout.MaskableFrameLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/pointImage"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="112dp"
+        app:layout_constraintEnd_toEndOf="@+id/your_id"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/circle_event_prev_dark" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rect_prev"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:background="@drawable/rect_scort_round_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/prevImage"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="6dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/circle_event_prev_dark" />
+
+        <TextView
+            android:id="@+id/body_prev_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="2dp"
+            android:text="@string/date_prev_pos"
+            android:textColor="@color/colorDark"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/prevImage"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SmallSp"
+            android:layout_marginLeft="6dp" />
+
+        <TextView
+            android:id="@+id/body_prev_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/date_today"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/body_prev_label"
+            tools:ignore="SmallSp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Space
+        android:id="@+id/space_negative"
+        android:layout_width="16dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/rect_prev"
+        app:layout_constraintStart_toEndOf="@+id/rect_prev"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rect_next"
+        android:layout_width="102dp"
+        android:layout_height="40dp"
+        android:background="@drawable/rect_scort_round_red"
+        app:layout_constraintStart_toStartOf="@+id/space_negative"
+        tools:ignore="MissingConstraints">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/nextImage"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="6dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_clock"
+            tools:ignore="VectorDrawableCompat" />
+
+        <TextView
+            android:id="@+id/body_next_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="2dp"
+            android:text="@string/date_next"
+            android:textColor="@color/colorWhite"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/nextImage"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/body_next_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/date_today"
+            android:textColor="@color/colorWhite"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/body_next_label"
+            tools:ignore="SmallSp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/prep_button"
+        style="@style/primaryButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
+        android:text="@string/home_prep"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

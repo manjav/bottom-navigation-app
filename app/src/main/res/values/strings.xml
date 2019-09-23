@@ -43,6 +43,8 @@
 
     <string name="injection_body_title">Test Test Test</string>
     <string name="date_today">Today</string>
-    <string name="date_next">Next Injections</string>
+    <string name="date_nexts">Next Injections</string>
     <string name="date_prev">Last Injections</string>
+    <string name="date_prev_pos">Last Injection position</string>
+    <string name="date_next">Next Injection</string>
 </resources>

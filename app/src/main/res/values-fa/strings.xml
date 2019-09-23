@@ -43,7 +43,9 @@
 
     <string name="injection_body_title">sdfsdfsf</string>
     <string name="date_today">امروز</string>
-    <string name="date_next">تزریق های آتی</string>
+    <string name="date_nexts">تزریق های آتی</string>
     <string name="date_prev">انجام شده</string>
+    <string name="date_prev_pos">محل آخرین تزریق</string>
+    <string name="date_next">تزریق بعدی</string>
 
 </resources>
