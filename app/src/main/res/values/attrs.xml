@@ -3,4 +3,13 @@
         <attr name="prompt" format="string" />
         <attr name="text" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="InjectionBoard">
+        <attr name="nextVisibility" format="boolean" />
+        <attr name="prevVisibility" format="boolean" />
+        <attr name="point" format="string" />
+<!--    <attr name="prevX" format="integer" />-->
+<!--        <attr name="prevY" format="integer" />-->
+    </declare-styleable>
+
 </resources>

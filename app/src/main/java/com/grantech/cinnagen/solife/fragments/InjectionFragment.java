@@ -25,6 +25,7 @@ public class InjectionFragment extends BaseFragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         return inflater.inflate(R.layout.fragment_injection, null);
+
     }
 
     @Override
@@ -32,13 +33,8 @@ public class InjectionFragment extends BaseFragment
     {
         super.onViewCreated(view, savedInstanceState);
 
-        Button prepButton = view.findViewById(R.id.prep_button);
-        prepButton.setOnClickListener(this);
-
-        CardView medicationButton = view.findViewById(R.id.medication_button);
-        medicationButton.setOnClickListener(this);
-
-        CardView alarmButton = view.findViewById(R.id.alarm_button);
-        alarmButton.setOnClickListener(this);
+        view.findViewById(R.id.prep_button).setOnClickListener(this);
+        view.findViewById(R.id.medication_button).setOnClickListener(this);
+        view.findViewById(R.id.alarm_button).setOnClickListener(this);
     }
 }
