@@ -130,7 +130,7 @@
 
         </RadioGroup>
 
-        <com.grantech.cinnagen.solife.utils.PickerInput
+        <com.grantech.cinnagen.solife.controls.PickerInput
             android:id="@+id/dose_start_date_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -207,7 +207,7 @@
             android:background="?android:attr/listDivider"
             app:layout_constraintTop_toBottomOf="@+id/dose_gap_list" />
 
-        <com.grantech.cinnagen.solife.utils.PickerInput
+        <com.grantech.cinnagen.solife.controls.PickerInput
             android:id="@+id/dose_maintain_date_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -30,17 +30,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.grantech.cinnagen.solife.utils.PickerInput
+    <com.grantech.cinnagen.solife.controls.PickerInput
         android:id="@+id/dose_time_input"
         android:layout_width="0dp"
         android:layout_height="72dp"
         android:layout_marginTop="32dp"
         android:elevation="@dimen/cardview_default_elevation"
-        app:prompt="@string/medication_time_prompt"
         app:layout_constraintEnd_toEndOf="@+id/dose_alarm_title"
         app:layout_constraintStart_toStartOf="@+id/dose_alarm_title"
         app:layout_constraintTop_toBottomOf="@+id/dose_alarm_title"
-        tools:targetApi="lollipop"/>
+        app:prompt="@string/medication_time_prompt"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/dose_time_finish"
