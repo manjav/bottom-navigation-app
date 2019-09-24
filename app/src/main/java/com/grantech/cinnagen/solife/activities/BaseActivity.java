@@ -14,7 +14,7 @@ public class BaseActivity extends AppCompatActivity
         // custom action-bar
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_bar);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_medication_settings);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
 
         super.onCreate(savedInstanceState);
     }

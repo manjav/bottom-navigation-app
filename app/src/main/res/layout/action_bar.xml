@@ -3,15 +3,16 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:orientation="vertical">
+    android:alpha="100"
+    android:orientation="horizontal">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/action_bar_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/colorWhite"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/iransans"
-        android:gravity="center" />
+        android:textStyle="bold" />
 
 </LinearLayout>
