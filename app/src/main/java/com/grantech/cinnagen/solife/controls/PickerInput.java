@@ -1,4 +1,4 @@
-package com.grantech.cinnagen.solife.utils;
+package com.grantech.cinnagen.solife.controls;
 
 import android.content.Context;
 import android.content.res.TypedArray;
