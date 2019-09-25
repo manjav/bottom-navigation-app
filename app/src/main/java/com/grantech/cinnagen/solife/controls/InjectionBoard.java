@@ -27,6 +27,12 @@ import com.grantech.cinnagen.solife.R;
 
 public class InjectionBoard extends ConstraintLayout implements ConstraintLayout.OnClickListener
 {
+    public static Rect REGION_ABDOMEN;
+    public static Point POINT_RIGHT;
+    public static Rect REGION_RIGHT;
+    public static Point POINT_LEFT;
+    public static Rect REGION_LEFT;
+
     private OnClickListener clickListener;
 
     private boolean prevVisibility = true;
@@ -63,6 +69,16 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
 
     private void init(Context context, AttributeSet attrs, int defStyle)
     {
+        if( REGION_ABDOMEN == null )
+        {
+            float d = getResources().getDisplayMetrics().density;
+            REGION_ABDOMEN = new Rect( (int) (100 * d), (int) (25 * d),     (int) (160 * d), (int) (95 * d));
+            POINT_RIGHT   = new Point( (int) (75 * d),  (int) (-230 * d));
+            REGION_RIGHT   = new Rect( (int) (70 * d),  (int) (250 * d),	(int) (70 * d),	 (int) (95 * d));
+            POINT_LEFT    = new Point( (int) (-75 * d), (int) (-230 * d) );
+            REGION_LEFT    = new Rect( (int) (220 * d), (int) (250 * d),	(int) (70 * d),  (int) (95 * d));
+        }
+
         layout = (ConstraintLayout) inflate(context, R.layout.injection_board, this);
 
         this.prevView = this.findViewById(R.id.prev_view);
@@ -81,13 +97,9 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
     private void loadImage()
     {
         ImageView image = findViewById(R.id.imageView);
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.body_medium);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.body);
         image.setImageBitmap(getRoundedCornerBitmap(bitmap, 8));
         invalidate();
-
-
-//        MaskImage maskImage = new MaskImage(getContext(), 24, BitmapFactory.decodeResource(getResources(), R.drawable.body_medium), layout.getWidth(), layout.getHeight());
-//        layout.addView(maskImage, new LayoutParams( layout.getWidth(), layout.getHeight()));
     }
 
     @Override
@@ -180,9 +192,21 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
         }
         else
         {
-            dstRect.top = -point.y;
+            if( this.point.y >= REGION_RIGHT.top )
+            {
+                if( this.point.x >= REGION_LEFT.left )
+                    dstRect.left = (int) ((layout.getWidth() - bitmap.getWidth()) * 0.5) + POINT_LEFT.x;
+                else
+                    dstRect.left = (int) ((layout.getWidth() - bitmap.getWidth()) * 0.5) + POINT_RIGHT.x;
+                dstRect.top = POINT_RIGHT.y;
+            }
+            else
+            {
+                dstRect.left = (int) ((layout.getWidth() - bitmap.getWidth()) * 0.5);
+                dstRect.top = 0;
+            }
+
             dstRect.bottom = bitmap.getHeight() + dstRect.top;
-            dstRect.left = (int) ((layout.getWidth() - bitmap.getWidth()) * 0.5);
             dstRect.right = dstRect.left + bitmap.getWidth();
         }
 
@@ -195,10 +219,10 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
         canvas.drawBitmap(bitmap, srcRect, dstRect, paint);
         paint.setXfermode(null);
 
-        if( point.x != 0 && point.y != 0 )
+        if( point.x != 0 || point.y != 0 )
         {
             paint.setColor(getResources().getColor(R.color.colorPrimaryDark));
-            canvas.drawCircle(point.x, point.y + dstRect.top, 6 * getResources().getDisplayMetrics().density, paint);
+            canvas.drawCircle(point.x + dstRect.left, point.y + dstRect.top, 6 * getResources().getDisplayMetrics().density, paint);
         }
 
         return output;

@@ -92,7 +92,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/messageTextView"
         app:layout_constraintTop_toTopOf="parent"
-        app:point="0,310">
+        app:point="230,80">
 
     </com.grantech.cinnagen.solife.controls.InjectionBoard>
 
