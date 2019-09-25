@@ -19,7 +19,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/prev_view"
-        android:layout_width="110dp"
+        android:layout_width="104dp"
         android:layout_height="40dp"
         android:background="@drawable/rect_scort_round_white"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,10 +76,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/next_view"
-        android:layout_width="102dp"
+        android:layout_width="104dp"
         android:layout_height="40dp"
         android:background="@drawable/rect_scort_round_red"
-        app:layout_constraintStart_toStartOf="@+id/space_negative"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
         <androidx.appcompat.widget.AppCompatImageView
