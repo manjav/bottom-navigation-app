@@ -5,15 +5,14 @@
     android:id="@+id/scrollView2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorLight"
-    tools:context=".fragments.DocsExpandableFragment">
+    tools:context=".fragments.InjectionDocsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/docs_expandable_image"
+            android:id="@+id/icon_image"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="16dp"
@@ -38,11 +37,11 @@
             android:focusable="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/docs_expandable_image"
+            app:layout_constraintTop_toBottomOf="@+id/icon_image"
             tools:ignore="WebViewLayout" />
 
         <Button
-            android:id="@+id/docs_expandable_finish"
+            android:id="@+id/submit_button"
             style="@style/primaryButton"
             android:layout_width="0dp"
             android:layout_height="64dp"
@@ -65,7 +64,7 @@
             android:layout_marginRight="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/docs_expandable_finish" />
+            app:layout_constraintTop_toBottomOf="@+id/submit_button" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

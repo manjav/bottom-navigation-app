@@ -21,25 +21,19 @@ import com.grantech.cinnagen.solife.utils.Fragments;
  * Created by ManJav on 1/23/2019.
  */
 
-public class DocsExpandableFragment extends BaseFragment
+public class InjectionDocsFragment extends InjectionBaseFragment
 {
     @SuppressLint("InflateParams")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_docs_expandable, null);
+        return inflater.inflate(R.layout.fragment_injection_docs, null);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-
-        ImageView iconDisplay = view.findViewById(R.id.docs_expandable_image);
-        iconDisplay.setImageResource(getArguments().getInt("icon"));
-
-        Button submitButton = view.findViewById(R.id.docs_expandable_finish);
-        submitButton.setOnClickListener(this);
 
         WebView webView = view.findViewById(R.id.webView);
         WebSettings settings = webView.getSettings();
@@ -65,18 +59,5 @@ public class DocsExpandableFragment extends BaseFragment
 
         assert getArguments() != null;
         webView.loadUrl(getArguments().getString("url"));
-
-    }
-
-    @Override
-    public void onClick(View view)
-    {
-        switch( getArguments().getInt("icon") )
-        {
-            case R.drawable.ic_injection_start: Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_prep);  return;
-            case R.drawable.ic_injection_prep:  Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_tips);  return;
-            case R.drawable.ic_injection_tips:  Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_steps);  return;
-            case R.drawable.ic_injection_steps: activity.finish();Fragments.getInstance().clearStack(activity);          return;
-        }
     }
 }

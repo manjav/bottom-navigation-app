@@ -14,7 +14,8 @@ import com.grantech.cinnagen.solife.fragments.BaseFragment;
 import com.grantech.cinnagen.solife.fragments.DateFragment;
 import com.grantech.cinnagen.solife.fragments.DocsFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionFragment;
-import com.grantech.cinnagen.solife.fragments.DocsExpandableFragment;
+import com.grantech.cinnagen.solife.fragments.InjectionDocsFragment;
+import com.grantech.cinnagen.solife.fragments.InjectionStepsFragment;
 import com.grantech.cinnagen.solife.fragments.MedicationAlarmFragment;
 import com.grantech.cinnagen.solife.fragments.MedicationDoseFragment;
 import com.grantech.cinnagen.solife.fragments.MedicationTimeFragment;
@@ -149,8 +150,8 @@ public class Fragments
 
             case R.dimen.position_injection_start:
             case R.dimen.position_injection_prep:
-            case R.dimen.position_injection_tips:
-            case R.dimen.position_injection_steps:      return new DocsExpandableFragment();
+            case R.dimen.position_injection_tips:      return new InjectionDocsFragment();
+            case R.dimen.position_injection_steps:      return new InjectionStepsFragment();
 
             case R.dimen.position_misc_faq:
             case R.dimen.position_misc_terms:
