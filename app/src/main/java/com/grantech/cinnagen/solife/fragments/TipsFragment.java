@@ -12,11 +12,8 @@ import androidx.annotation.Nullable;
 
 import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.adapters.ExpandableListAdapter;
-import com.grantech.cinnagen.solife.utils.ExpandableListDataPump;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -40,10 +37,18 @@ public class TipsFragment extends BaseFragment
     {
         super.onViewCreated(view, savedInstanceState);
 
+        expandableListAdapter = new ExpandableListAdapter(Objects.requireNonNull(getContext()).getApplicationContext());
+        expandableListAdapter.addChild(R.string.tips_0_title, new ArrayList<Integer>(){{add(R.string.tips_0_message);}});
+        expandableListAdapter.addChild(R.string.tips_1_title, new ArrayList<Integer>(){{add(R.string.tips_1_message_0);add(R.string.tips_1_message_1);add(R.string.tips_1_message_2);add(R.string.tips_1_message_3);}});
+        expandableListAdapter.addChild(R.string.tips_2_title, new ArrayList<Integer>(){{add(R.string.tips_2_message);}});
+        expandableListAdapter.addChild(R.string.tips_3_title, new ArrayList<Integer>(){{add(R.string.tips_3_message);}});
+        expandableListAdapter.addChild(R.string.tips_4_title, new ArrayList<Integer>(){{add(R.string.tips_4_message);}});
+        expandableListAdapter.addChild(R.string.tips_5_title, new ArrayList<Integer>(){{add(R.string.tips_5_message);}});
+        expandableListAdapter.addChild(R.string.tips_6_title, new ArrayList<Integer>(){{add(R.string.tips_6_message);}});
+        expandableListAdapter.addChild(R.string.tips_7_title, new ArrayList<Integer>(){{add(R.string.tips_7_message);}});
+        expandableListAdapter.addChild(R.string.tips_8_title, new ArrayList<Integer>(){{add(R.string.tips_8_message);}});
+
         expandableListView = view.findViewById(R.id.expandableListView);
-        HashMap<Integer, List<Integer>> expandableListDetail = ExpandableListDataPump.getData();
-        List<Integer> expandableListTitle = new ArrayList<>(expandableListDetail.keySet());
-        expandableListAdapter = new ExpandableListAdapter(Objects.requireNonNull(getContext()).getApplicationContext(), expandableListTitle, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
         expandableListView.setOnGroupExpandListener(groupPosition -> {
             if( expandableListAdapter == null )

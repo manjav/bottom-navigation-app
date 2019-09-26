@@ -10,6 +10,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.grantech.cinnagen.solife.R;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,18 +18,24 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter
 {
     private Context context;
     private List<Integer> expandableListTitle;
-    private HashMap<Integer, List<Integer>> expandableListDetail;
+    private HashMap<Integer, List<Integer>> expandableListMessages;
 
-    public ExpandableListAdapter(Context context, List<Integer> expandableListTitle, HashMap<Integer, List<Integer>> expandableListDetail)
+    public ExpandableListAdapter(Context context)
     {
         this.context = context;
-        this.expandableListTitle = expandableListTitle;
-        this.expandableListDetail = expandableListDetail;
+        this.expandableListTitle = new ArrayList<>();
+        this.expandableListMessages = new HashMap<>();
+    }
+
+    public void addChild(int title, ArrayList<Integer> messages)
+    {
+        this.expandableListTitle.add(title);
+        this.expandableListMessages.put(title, messages);
     }
 
     @Override
     public Object getChild(int listPosition, int expandedListPosition) {
-        return this.expandableListDetail.get(this.expandableListTitle.get(listPosition)) .get(expandedListPosition);
+        return this.expandableListMessages.get(this.expandableListTitle.get(listPosition)) .get(expandedListPosition);
     }
 
     @Override
@@ -52,7 +59,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter
 
     @Override
     public int getChildrenCount(int listPosition) {
-        return this.expandableListDetail.get(this.expandableListTitle.get(listPosition)).size();
+        return this.expandableListMessages.get(this.expandableListTitle.get(listPosition)).size();
     }
 
     @Override
@@ -93,4 +100,5 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter
     public boolean isChildSelectable(int listPosition, int expandedListPosition) {
         return true;
     }
+
 }
