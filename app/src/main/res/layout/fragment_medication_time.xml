@@ -7,7 +7,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorLight"
     tools:context=".fragments.MedicationTimeFragment"
     >
 
@@ -40,14 +39,14 @@
         app:layout_constraintStart_toStartOf="@+id/dose_alarm_title"
         app:layout_constraintTop_toBottomOf="@+id/dose_alarm_title"
         app:prompt="@string/medication_time_prompt"
-        tools:targetApi="lollipop" />
+        tools:targetApi="lollipop"
+        tools:ignore="PrivateResource" />
 
     <Button
         android:id="@+id/dose_time_finish"
         style="@style/primaryButton"
         android:layout_width="0dp"
         android:layout_height="64dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginBottom="32dp"
         android:text="@string/app_next"
         app:layout_constraintBottom_toBottomOf="parent"

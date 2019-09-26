@@ -13,8 +13,8 @@ import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.fragments.BaseFragment;
 import com.grantech.cinnagen.solife.fragments.DateFragment;
 import com.grantech.cinnagen.solife.fragments.DocsFragment;
-import com.grantech.cinnagen.solife.fragments.InjectionFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionDocsFragment;
+import com.grantech.cinnagen.solife.fragments.InjectionFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionStepsFragment;
 import com.grantech.cinnagen.solife.fragments.MedicationAlarmFragment;
 import com.grantech.cinnagen.solife.fragments.MedicationDoseFragment;
@@ -46,7 +46,7 @@ public class Fragments
     public boolean loadFragment(AppCompatActivity activity, int position, int title) {
         return this.loadFragment(activity, position, title, null);
     }
-    public boolean loadFragment(AppCompatActivity activity, int position, int title, Bundle arguments)
+    private boolean loadFragment(AppCompatActivity activity, int position, int title, Bundle arguments)
     {
         Log.i(TAG, "old " + oldPosition + " new " +  position );//+ " d " +  (int) activity.getResources().getDimension(newPosition) );
 
@@ -77,6 +77,9 @@ public class Fragments
 
         // hide action-bar in main page
         ActionBar actionBar = activity.getSupportActionBar();
+        if( actionBar == null )
+            return true;
+
         if( newPosition != 0 )
         {
             actionBar.show();
@@ -161,13 +164,13 @@ public class Fragments
         return null;
     }
 
-    public int getAnimationIn(boolean isBack)
+    private int getAnimationIn(boolean isBack)
     {
         if( isBack )
             return locale.getLanguage().equals("fa") ? R.anim.slide_in_right : R.anim.slide_in_left;
         return locale.getLanguage().equals("fa") ? R.anim.slide_in_left : R.anim.slide_in_right;
     }
-    public int getAnimationOut(boolean isBack)
+    private int getAnimationOut(boolean isBack)
     {
         if( isBack )
             return locale.getLanguage().equals("fa") ? R.anim.slide_out_left : R.anim.slide_out_right;
@@ -179,6 +182,7 @@ public class Fragments
         FragmentManager fragmentManager = activity.getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         oldPosition = (int) activity.getResources().getDimension(R.dimen.position_home_injection);
+        //noinspection ConstantConditions
         activity.getSupportActionBar().hide();
         fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         transaction.commit();

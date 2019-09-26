@@ -1,5 +1,6 @@
 package com.grantech.cinnagen.solife.controls;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -103,6 +104,7 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
     }
 
     @Override
+    @SuppressLint("DrawAllocation")
     protected void onDraw(Canvas canvas)
     {
         Paint mPaint = new Paint();
@@ -129,7 +131,7 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
         return pointStr;
     }
     public void setPoint(String point) {
-        if( pointStr == point )
+        if( pointStr.equals(point) )
             return;
         this.pointStr = point;
         String[] points = point.split(",");
@@ -138,7 +140,7 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
         float density = getResources().getDisplayMetrics().density;
         this.point.x = (int) (Integer.parseInt(points[0]) * density);
         this.point.y = (int) (Integer.parseInt(points[1]) * density);
-        layout.post(() -> loadImage());
+        layout.post(this::loadImage);
     }
 
     public boolean isPrevVisibility() {
@@ -224,7 +226,6 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
             paint.setColor(getResources().getColor(R.color.colorPrimaryDark));
             canvas.drawCircle(point.x + dstRect.left, point.y + dstRect.top, 6 * getResources().getDisplayMetrics().density, paint);
         }
-
         return output;
     }
 }

@@ -8,14 +8,11 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.grantech.cinnagen.solife.R;
-import com.grantech.cinnagen.solife.utils.Fragments;
 
 /**
  * Created by ManJav on 1/23/2019.

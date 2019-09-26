@@ -47,7 +47,6 @@
     <string name="medication_alarm_list_two">با فرارسیدن زمان تزریق</string>
     <string name="medication_alarm_list_three">در صورت فراموشی تزریق</string>
 
-    <string name="injection_body_title">Test Test Test</string>
     <string name="date_today">Today</string>
     <string name="date_nexts">Next Injections</string>
     <string name="date_prev">Last Injections</string>
