@@ -17,8 +17,10 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="16dp"
+            android:alpha="0"
             android:contentDescription="@string/home_injection"
             android:src="@drawable/ic_injection_start"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,6 +34,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="32dp"
+            android:alpha="0"
             android:focusable="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +47,9 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_marginTop="16dp"
+            android:alpha="0"
             android:text="@string/app_next"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="@+id/webView"
             app:layout_constraintStart_toStartOf="@+id/webView"
             app:layout_constraintTop_toBottomOf="@+id/webView" />

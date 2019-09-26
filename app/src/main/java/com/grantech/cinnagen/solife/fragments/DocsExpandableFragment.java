@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -33,6 +35,12 @@ public class DocsExpandableFragment extends BaseFragment
     {
         super.onViewCreated(view, savedInstanceState);
 
+        ImageView iconDisplay = view.findViewById(R.id.docs_expandable_image);
+        iconDisplay.setImageResource(getArguments().getInt("icon"));
+
+        Button submitButton = view.findViewById(R.id.docs_expandable_finish);
+        submitButton.setOnClickListener(this);
+
         WebView webView = view.findViewById(R.id.webView);
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(false);
@@ -40,12 +48,24 @@ public class DocsExpandableFragment extends BaseFragment
         settings.setBuiltInZoomControls(false);
         settings.setAllowFileAccessFromFileURLs(true);
         settings.setAllowUniversalAccessFromFileURLs(true);
+        webView.setWebViewClient(new WebViewClient() {
+
+            @Override
+            public void onPageFinished(WebView view, String url)
+            {
+                iconDisplay.setVisibility(View.VISIBLE);
+                iconDisplay.animate().alpha(1f).setDuration(600);
+
+                webView.animate().alpha(1f).setDuration(500).setStartDelay(200);
+
+                submitButton.setVisibility(View.VISIBLE);
+                submitButton.animate().alpha(1f).setDuration(500).setStartDelay(300);
+            }
+        });
+
         assert getArguments() != null;
         webView.loadUrl(getArguments().getString("url"));
 
-        ((ImageView)view.findViewById(R.id.docs_expandable_image)).setImageResource(getArguments().getInt("icon"));
-
-        view.findViewById(R.id.docs_expandable_finish).setOnClickListener(this);
     }
 
     @Override
