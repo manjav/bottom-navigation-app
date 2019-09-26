@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/body_view"
     android:layout_width="match_parent"
-    android:layout_height="172dp"
-    android:layout_gravity="center"
-    android:background="@drawable/rect_round_gray">
+    android:layout_height="172dp">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageView"
@@ -43,10 +41,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:layout_marginLeft="6dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="1dp"
             android:text="@string/date_prev_pos"
             android:textColor="@color/colorDark"
-            android:textSize="10sp"
+            android:textSize="11sp"
             app:layout_constraintStart_toEndOf="@+id/prevImage"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SmallSp" />
@@ -58,7 +56,7 @@
             android:layout_marginBottom="4dp"
             android:text="@string/date_today"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="10sp"
+            android:textSize="11sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/body_prev_label"
@@ -101,10 +99,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:layout_marginLeft="6dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="1dp"
             android:text="@string/date_next"
             android:textColor="@color/colorWhite"
-            android:textSize="10sp"
+            android:textSize="11sp"
             app:layout_constraintStart_toEndOf="@+id/nextImage"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SmallSp" />
@@ -116,7 +114,7 @@
             android:layout_marginBottom="4dp"
             android:text="@string/date_today"
             android:textColor="@color/colorWhite"
-            android:textSize="10sp"
+            android:textSize="11sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/body_next_label"
