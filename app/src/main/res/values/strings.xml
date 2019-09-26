@@ -1,4 +1,10 @@
 <resources>
+
+    <string name="num_0">0</string>
+    <string name="num_1">1</string>
+    <string name="num_2">2</string>
+    <string name="num_3">3</string>
+
     <string name="app_name">Solife</string>
     <string name="app_next">Next</string>
     <string name="app_save">Save</string>

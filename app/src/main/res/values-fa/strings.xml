@@ -1,4 +1,10 @@
 <resources>
+
+    <string name="num_0">۰</string>
+    <string name="num_1">۱</string>
+    <string name="num_2">۲</string>
+    <string name="num_3">۳</string>
+
     <string name="app_name">سولایف</string>
     <string name="app_next">صفحه بعد</string>
     <string name="app_save">ذخیره</string>
