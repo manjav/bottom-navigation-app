@@ -80,5 +80,8 @@
     <string name="injection_step_0">دست های خود را با آب و صابون بشویید.</string>
     <string name="injection_step_1">تزریق را انجام دهید.</string>
     <string name="injection_step_2">دستگاه استفاده شده را دور بیاندازید.</string>
+    <string name="injection_prev_title">تزریق قبلی</string>
+    <string name="injection_prev_message">این تصویر محل تزریق قبلی شما را نشان می‌دهد. دقت کنید که تزریق امروز شما باید حداقل ۲.۵ سانتی‌متر با تزریق قبلی فاصله داشته باشد.</string>
+    <string name="injection_pos_abdomen">ناحیه شکم</string>
 
 </resources>

@@ -9,17 +9,24 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 
 import com.grantech.cinnagen.solife.R;
+import com.grantech.cinnagen.solife.utils.Fragments;
 
 /**
  * Created by ManJav on 9/26/2019.
  */
 
-public class InjectionStepsFragment extends InjectionIconFragment
+public class InjectionPrevFragment extends InjectionBaseFragment
 {
-    @SuppressLint("InflateParams")
     @Override
+    @SuppressLint("InflateParams")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_injection_steps, null);
+        return inflater.inflate(R.layout.fragment_injection_prev, null);
+    }
+
+    @Override
+    public void onClick(View view)
+    {
+        Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_steps);
     }
 }

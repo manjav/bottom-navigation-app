@@ -18,11 +18,11 @@
     <dimen name="position_injection_timers">22px</dimen>
     <dimen name="position_injection_prep">23px</dimen>
     <dimen name="position_injection_tips">24px</dimen>
-    <dimen name="position_injection_lasts">24px</dimen>
-    <dimen name="position_injection_steps">25px</dimen>
-    <dimen name="position_injection_body">26px</dimen>
-    <dimen name="position_injection_log">27px</dimen>
-    <dimen name="position_injection_fine">28px</dimen>
+    <dimen name="position_injection_prev">25px</dimen>
+    <dimen name="position_injection_steps">26px</dimen>
+    <dimen name="position_injection_body">27px</dimen>
+    <dimen name="position_injection_log">28px</dimen>
+    <dimen name="position_injection_fine">29px</dimen>
 
     <dimen name="position_misc_safety">31px</dimen>
     <dimen name="position_misc_faq">32px</dimen>

@@ -18,7 +18,7 @@ import com.grantech.cinnagen.solife.R;
  * Created by ManJav on 1/23/2019.
  */
 
-public class InjectionDocsFragment extends InjectionBaseFragment
+public class InjectionDocsFragment extends InjectionIconFragment
 {
     @SuppressLint("InflateParams")
     @Override
