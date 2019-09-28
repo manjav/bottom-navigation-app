@@ -6,13 +6,10 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Point;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
-import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -34,8 +31,10 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
     public static Point POINT_LEFT;
     public static Rect REGION_LEFT;
 
+
     private OnClickListener clickListener;
 
+    private float raduisMask = 8;
     private boolean prevVisibility = true;
     private String prevTime;
     private String pointStr = "0,0";
@@ -49,6 +48,8 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
     private View nextView;
     private TextView nextText;
     private ConstraintLayout layout;
+    private ImageView imageView;
+    private Bitmap bitmap;
 
     public InjectionBoard(Context context)
     {
@@ -82,37 +83,22 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
 
         layout = (ConstraintLayout) inflate(context, R.layout.injection_board, this);
 
-        this.prevView = this.findViewById(R.id.prev_view);
-        this.prevText = this.findViewById(R.id.body_prev_time);
-        this.nextView = this.findViewById(R.id.next_view);
-        this.nextText = this.findViewById(R.id.body_next_time);
+        this.prevView =     this.findViewById(R.id.prev_view);
+        this.prevText =     this.findViewById(R.id.body_prev_time);
+        this.nextView =     this.findViewById(R.id.next_view);
+        this.nextText =     this.findViewById(R.id.body_next_time);
+        this.imageView =    this.findViewById(R.id.imageView);
+        this.bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.body);
 
         // Load attributes
         final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.InjectionBoard, defStyle, 0);
+        this.setRaduisMask(a.getFloat(R.styleable.InjectionBoard_raduisMask, this.raduisMask));
         this.setPrevVisibility(a.getBoolean(R.styleable.InjectionBoard_prevVisibility, this.prevVisibility));
         this.setPoint(a.getString(R.styleable.InjectionBoard_point));
         this.setNextVisibility(a.getBoolean(R.styleable.InjectionBoard_nextVisibility, this.nextVisibility));
         a.recycle();
     }
 
-    private void loadImage()
-    {
-        ImageView image = findViewById(R.id.imageView);
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.body);
-        image.setImageBitmap(getRoundedCornerBitmap(bitmap, 8));
-        invalidate();
-    }
-
-    @Override
-    @SuppressLint("DrawAllocation")
-    protected void onDraw(Canvas canvas)
-    {
-        Paint mPaint = new Paint();
-        int color = Color.BLACK;
-        mPaint.setColor(color);
-        canvas.drawCircle(point.x, point.y, 16, mPaint);
-        super.onDraw(canvas);
-    }
 
     @Override
     public void setOnClickListener(@androidx.annotation.Nullable OnClickListener listener)
@@ -127,21 +113,6 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
             this.clickListener.onClick(this);
     }
 
-    public String getPoint() {
-        return pointStr;
-    }
-    public void setPoint(String point) {
-        if( pointStr.equals(point) )
-            return;
-        this.pointStr = point;
-        String[] points = point.split(",");
-        if( points.length < 2 )
-            return;
-        float density = getResources().getDisplayMetrics().density;
-        this.point.x = (int) (Integer.parseInt(points[0]) * density);
-        this.point.y = (int) (Integer.parseInt(points[1]) * density);
-        layout.post(this::loadImage);
-    }
 
     public boolean isPrevVisibility() {
         return prevVisibility;
@@ -175,15 +146,44 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
         this.nextText.setText(nextTime);
     }
 
-    public Bitmap getRoundedCornerBitmap(Bitmap bitmap, float roundPx)
+
+    public String getPoint() {
+        return pointStr;
+    }
+    public void setPoint(String pointStr) {
+        if( this.pointStr.equals(pointStr) )
+            return;
+        this.pointStr = pointStr;
+        String[] points = pointStr.split(",");
+        if( points.length < 2 )
+            return;
+        float density = getResources().getDisplayMetrics().density;
+        this.point.x = (int) (Integer.parseInt(points[0]) * density);
+        this.point.y = (int) (Integer.parseInt(points[1]) * density);
+//        layout.postInvalidate();
+    }
+
+    public float getRaduisMask() {
+        return raduisMask;
+    }
+    public void setRaduisMask(float raduisMask) {
+        this.raduisMask = raduisMask;
+    }
+
+    @Override
+    @SuppressLint("DrawAllocation")
+    protected void onDraw(Canvas canvas)
     {
-        roundPx *= getResources().getDisplayMetrics().density;
-        Bitmap output = Bitmap.createBitmap(layout.getWidth(), layout.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(output);
+        super.onDraw(canvas);
+        this.drawElements(bitmap, canvas);
+    }
+
+    public void drawElements(Bitmap bitmap, Canvas canvas)
+    {
+        float roundPx = raduisMask * getResources().getDisplayMetrics().density;
 
         final Paint paint = new Paint();
         final Rect srcRect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
-        final RectF rectF = new RectF(0, 0, layout.getWidth(), layout.getHeight());
         final Rect dstRect = new Rect();
         if( point.x == 0 && point.y == 0 )
         {
@@ -209,23 +209,32 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
             }
 
             dstRect.bottom = bitmap.getHeight() + dstRect.top;
-            dstRect.right = dstRect.left + bitmap.getWidth();
+            dstRect.right = bitmap.getWidth() + dstRect.left;
         }
 
+        // mask all elements
         paint.setAntiAlias(true);
-        canvas.drawARGB(0, 0, 0, 0);
-        paint.setColor(0xffaeaeae);
-        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+        Path path = new Path();
+        path.moveTo(0, roundPx);
+        path.cubicTo(0, roundPx, 0, 0, roundPx, 0);
+        path.lineTo( layout.getWidth() - roundPx,0);
+        path.cubicTo(layout.getWidth() - roundPx, 0, layout.getWidth(), 0, layout.getWidth(), roundPx);
+        path.lineTo( layout.getWidth(), layout.getHeight() - roundPx);
+        path.cubicTo(layout.getWidth(), layout.getHeight() - roundPx, layout.getWidth(), layout.getHeight(), layout.getWidth() - roundPx, layout.getHeight());
+        path.lineTo(roundPx, layout.getHeight());
+        path.cubicTo(roundPx, layout.getHeight(), 0, layout.getHeight(), 0, layout.getHeight() - roundPx);
+        path.close();
+        canvas.clipPath(path);
 
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        // draw body image based on position
         canvas.drawBitmap(bitmap, srcRect, dstRect, paint);
-        paint.setXfermode(null);
 
+        // draw point
         if( point.x != 0 || point.y != 0 )
         {
             paint.setColor(getResources().getColor(R.color.colorPrimaryDark));
             canvas.drawCircle(point.x + dstRect.left, point.y + dstRect.top, 6 * getResources().getDisplayMetrics().density, paint);
         }
-        return output;
     }
+
 }
