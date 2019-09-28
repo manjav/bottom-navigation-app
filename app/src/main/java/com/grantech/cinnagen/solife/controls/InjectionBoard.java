@@ -12,7 +12,6 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -34,11 +33,13 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
 
     private OnClickListener clickListener;
 
-    private float raduisMask = 8;
-    private boolean prevVisibility = true;
-    private String prevTime;
+    private float radiusMask = 8;
+    private boolean pointVisibility;
     private String pointStr = "0,0";
     private final Point point = new Point();
+
+    private boolean prevVisibility = true;
+    private String prevTime;
 
     private boolean nextVisibility = true;
     private String nextTime;
@@ -48,7 +49,6 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
     private View nextView;
     private TextView nextText;
     private ConstraintLayout layout;
-    private ImageView imageView;
     private Bitmap bitmap;
 
     public InjectionBoard(Context context)
@@ -87,12 +87,12 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
         this.prevText =     this.findViewById(R.id.body_prev_time);
         this.nextView =     this.findViewById(R.id.next_view);
         this.nextText =     this.findViewById(R.id.body_next_time);
-        this.imageView =    this.findViewById(R.id.imageView);
         this.bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.body);
 
         // Load attributes
         final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.InjectionBoard, defStyle, 0);
-        this.setRaduisMask(a.getFloat(R.styleable.InjectionBoard_raduisMask, this.raduisMask));
+        this.setPointVisibility(a.getBoolean(R.styleable.InjectionBoard_pointVisibility, this.pointVisibility));
+        this.setRadiusMask(a.getFloat(R.styleable.InjectionBoard_raduisMask, this.radiusMask));
         this.setPrevVisibility(a.getBoolean(R.styleable.InjectionBoard_prevVisibility, this.prevVisibility));
         this.setPoint(a.getString(R.styleable.InjectionBoard_point));
         this.setNextVisibility(a.getBoolean(R.styleable.InjectionBoard_nextVisibility, this.nextVisibility));
@@ -115,7 +115,7 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
 
 
     public boolean isPrevVisibility() {
-        return prevVisibility;
+        return this.prevVisibility;
     }
     public void setPrevVisibility(boolean prevVisibility) {
         this.prevVisibility = prevVisibility;
@@ -123,11 +123,18 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
     }
 
     public boolean isNextVisibility() {
-        return nextVisibility;
+        return this.nextVisibility;
     }
     public void setNextVisibility(boolean nextVisibility) {
         this.nextVisibility = nextVisibility;
         this.nextView.setVisibility(nextVisibility ? View.VISIBLE : View.GONE);
+    }
+
+    public boolean isPointVisibility() {
+        return this.pointVisibility;
+    }
+    public void setPointVisibility(boolean pointVisibility) {
+        this.pointVisibility = pointVisibility;
     }
 
     public String getPrevTime() {
@@ -163,11 +170,11 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
 //        layout.postInvalidate();
     }
 
-    public float getRaduisMask() {
-        return raduisMask;
+    public float getRadiusMask() {
+        return radiusMask;
     }
-    public void setRaduisMask(float raduisMask) {
-        this.raduisMask = raduisMask;
+    public void setRadiusMask(float raduisMask) {
+        this.radiusMask = raduisMask;
     }
 
     @Override
@@ -180,7 +187,7 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
 
     public void drawElements(Bitmap bitmap, Canvas canvas)
     {
-        float roundPx = raduisMask * getResources().getDisplayMetrics().density;
+        float roundPx = radiusMask * getResources().getDisplayMetrics().density;
 
         final Paint paint = new Paint();
         final Rect srcRect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
@@ -230,11 +237,10 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
         canvas.drawBitmap(bitmap, srcRect, dstRect, paint);
 
         // draw point
-        if( point.x != 0 || point.y != 0 )
+        if( this.pointVisibility && (point.x != 0 || point.y != 0) )
         {
             paint.setColor(getResources().getColor(R.color.colorPrimaryDark));
             canvas.drawCircle(point.x + dstRect.left, point.y + dstRect.top, 6 * getResources().getDisplayMetrics().density, paint);
         }
     }
-
 }
