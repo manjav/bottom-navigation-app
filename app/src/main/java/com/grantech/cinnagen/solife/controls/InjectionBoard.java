@@ -164,10 +164,12 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
         String[] points = pointStr.split(",");
         if( points.length < 2 )
             return;
+        this.setPoint(Integer.parseInt(points[0]), Integer.parseInt(points[1]));
+    }
+    public void setPoint(int x, int y) {
         float density = getResources().getDisplayMetrics().density;
-        this.point.x = (int) (Integer.parseInt(points[0]) * density);
-        this.point.y = (int) (Integer.parseInt(points[1]) * density);
-//        layout.postInvalidate();
+        this.point.x = (int) (x * density);
+        this.point.y = (int) (y * density);
     }
 
     public float getRadiusMask() {
@@ -217,6 +219,13 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
 
             dstRect.bottom = bitmap.getHeight() + dstRect.top;
             dstRect.right = bitmap.getWidth() + dstRect.left;
+
+            int threshold = bitmap.getHeight() - point.y - layout.getHeight();
+            if( threshold < 0 )
+            {
+                dstRect.top -= threshold;
+                dstRect.bottom -= threshold;
+            }
         }
 
         // mask all elements

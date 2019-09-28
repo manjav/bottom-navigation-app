@@ -13,8 +13,10 @@ import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.fragments.BaseFragment;
 import com.grantech.cinnagen.solife.fragments.DateFragment;
 import com.grantech.cinnagen.solife.fragments.DocsFragment;
+import com.grantech.cinnagen.solife.fragments.InjectionBodyFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionDocsFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionFragment;
+import com.grantech.cinnagen.solife.fragments.InjectionLogFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionPrevFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionStepsFragment;
 import com.grantech.cinnagen.solife.fragments.MedicationAlarmFragment;
@@ -47,7 +49,7 @@ public class Fragments
     public boolean loadFragment(AppCompatActivity activity, int position, int title) {
         return this.loadFragment(activity, position, title, null);
     }
-    private boolean loadFragment(AppCompatActivity activity, int position, int title, Bundle arguments)
+    public boolean loadFragment(AppCompatActivity activity, int position, int title, Bundle arguments)
     {
         Log.i(TAG, "old " + oldPosition + " new " +  position );//+ " d " +  (int) activity.getResources().getDimension(newPosition) );
 
@@ -157,6 +159,8 @@ public class Fragments
             case R.dimen.position_injection_tips:      return new InjectionDocsFragment();
             case R.dimen.position_injection_prev:      return new InjectionPrevFragment();
             case R.dimen.position_injection_steps:      return new InjectionStepsFragment();
+            case R.dimen.position_injection_body:      return new InjectionBodyFragment();
+            case R.dimen.position_injection_log:      return new InjectionLogFragment();
 
             case R.dimen.position_misc_faq:
             case R.dimen.position_misc_terms:
