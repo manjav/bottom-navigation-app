@@ -283,7 +283,7 @@ public class PersianCalendar extends GregorianCalendar
      * @return String of Persian Date ex: شنبه 01 خرداد 1361
      */
     public String getPersianLongDate() {
-        return getPersianWeekDayName() + "  " + this.persianDay + "  " + getPersianMonthName() + "  " + this.persianYear;
+        return getPersianWeekDayName() + "، " + this.persianDay + " " + getPersianMonthName() + " " + this.persianYear;
     }
 
     public String getPersianLongDateAndTime() {

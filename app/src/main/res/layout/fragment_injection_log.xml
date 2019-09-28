@@ -62,7 +62,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:nextVisibility="false"
         app:point="260,300"
-        app:pointVisibility="true"
+        app:pointVisibility="false"
         app:prevVisibility="false"
         app:raduisMask="0">
 
