@@ -61,7 +61,7 @@ public class InjectionSlidesFragment extends InjectionBaseFragment
     @Override
     public void onClick(View view)
     {
-        Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_prep);
+        Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_timer);
     }
 
 }

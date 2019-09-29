@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/inject_slides_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/inject_timer_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/injection_timer_title"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/inject_timer_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/injection_timer_message"
+        android:textColor="@color/colorDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inject_timer_title"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/inject_timer_timer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/iransans"
+        android:text="30:00"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="98sp"
+        app:layout_constraintBottom_toTopOf="@+id/inject_timer_restore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/inject_timer_plus"
+        app:layout_constraintTop_toBottomOf="@+id/inject_timer_message"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/inject_timer_plus"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/rect_round_button_white"
+        android:text="+"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/inject_timer_timer" />
+
+    <Button
+        android:id="@+id/inject_timera_mines"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="42dp"
+        android:background="@drawable/rect_round_button_gray"
+        android:text="-"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/inject_timer_plus"
+        app:layout_constraintTop_toTopOf="@+id/inject_timer_plus" />
+
+
+    <Button
+        android:id="@+id/inject_timer_start"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/rect_round_button_white"
+        android:text="@string/start_label"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/submit_button"
+        app:layout_constraintStart_toStartOf="@+id/inject_timer_plus" />
+
+    <Button
+        android:id="@+id/inject_timer_restore"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:background="@drawable/rect_round_button_gray"
+        android:text="@string/restore_label"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/inject_timer_timer"
+        app:layout_constraintTop_toTopOf="@+id/inject_timer_start" />
+
+    <Button
+        android:id="@+id/submit_button"
+        style="@style/primaryButton"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="28dp"
+        android:text="@string/app_next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
