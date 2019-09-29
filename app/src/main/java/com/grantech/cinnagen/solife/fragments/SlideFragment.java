@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 
 import com.grantech.cinnagen.solife.R;
 
+import java.util.Objects;
+
 /**
  * Created by ManJav on 1/23/2019.
  */
@@ -20,7 +22,7 @@ import com.grantech.cinnagen.solife.R;
 public class SlideFragment extends Fragment
 {
     private final int position;
-    public SlideFragment(int position)
+    SlideFragment(int position)
     {
         this.position = position;
     }
@@ -36,7 +38,7 @@ public class SlideFragment extends Fragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        int id = getResources().getIdentifier("slide_" + (position+1), "mipmap", getContext().getPackageName());
+        int id = getResources().getIdentifier("slide_" + position, "mipmap", Objects.requireNonNull(getContext()).getPackageName());
         ((ImageView)view.findViewById(R.id.slide_image)).setImageResource(id);
     }
 }
