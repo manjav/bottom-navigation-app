@@ -36,7 +36,7 @@ public class InjectionIconFragment extends InjectionBaseFragment
 
         switch( getArguments().getInt("icon") )
         {
-            case R.drawable.ic_injection_start: Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_prep);  return;
+            case R.drawable.ic_injection_start: Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_slides);  return;
             case R.drawable.ic_injection_prep:  Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_tips);  return;
             case R.drawable.ic_injection_tips:  Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_prev);  return;
             case R.drawable.ic_injection_steps: Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_body);

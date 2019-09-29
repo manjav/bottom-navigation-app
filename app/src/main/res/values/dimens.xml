@@ -15,7 +15,7 @@
 
     <dimen name="position_injection_start">20px</dimen>
     <dimen name="position_injection_slides">21px</dimen>
-    <dimen name="position_injection_timers">22px</dimen>
+    <dimen name="position_injection_timer">22px</dimen>
     <dimen name="position_injection_prep">23px</dimen>
     <dimen name="position_injection_tips">24px</dimen>
     <dimen name="position_injection_prev">25px</dimen>

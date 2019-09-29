@@ -75,19 +75,26 @@
     <string name="tips_8_title">تغییر سبک زندگی و پسوریازیس</string>
     <string name="tips_8_message">کشیدن سیگار، چاقی و استرس می‌تواند بر ابتلا و تشدید علائم پسوریازیس تاثیر بگذارد. همچنین برخی از افراد پس از استفاده از برخی مواد غذایی، بدتر شدن علائم پسوریازیس را ذکر نموده‌اند. نحوه استحمام، نحوه برخورد با پوست در هوای سرد و هوای گرم و مواردی از این قبیل می‌تواند در افراد مبتلا به پسوریازیس با سایر افراد متفاوت باشد. جهت دریافت راهنمایی در رابطه با سبک زندگی خود می‌توانید به صفحه اینستاگرام پسوریازیس ارکیدلایف با نام Psoriasis.Orchidlife مراجعه نمایید.</string>
 
+    <string name="injection_slides_title">تزریق صحیح سینورا®</string>
+    <string name="injection_slides_message">در این تصاویر نحوه تزریق صحیح سینورا® نمایش داده شده است.</string>
+
     <string name="injection_steps">مراحل تزریق</string>
     <string name="injection_step_0">دست های خود را با آب و صابون بشویید.</string>
     <string name="injection_step_1">تزریق را انجام دهید.</string>
     <string name="injection_step_2">دستگاه استفاده شده را دور بیاندازید.</string>
+
     <string name="injection_prev_title">تزریق قبلی</string>
     <string name="injection_prev_message">این تصویر محل تزریق قبلی شما را نشان می‌دهد. دقت کنید که تزریق امروز شما باید حداقل ۲.۵ سانتی‌متر با تزریق قبلی فاصله داشته باشد.</string>
+
     <string name="injection_pos_abdomen">ناحیه شکم</string>
+    <string name="injection_pos_lleg">ران چپ</string>
+    <string name="injection_pos_rleg">ران راست</string>
+
     <string name="injection_body_title">انتخاب محل تزریق: مرحله ۱ از ۲</string>
     <string name="injection_body_message">ناحیه تزریق امروز خود را انتخاب کنید تا با بزرگنمایی آن ناحیه، امکان انتخاب دقیق محل تزریق وجود داشته باشد.</string>
     <string name="injection_body_date_prompt">تاریخ و زمان تزریق</string>
-    <string name="injection_pos_lleg">ران چپ</string>
-    <string name="injection_pos_rleg">ران راست</string>
-    <string name="injection_log_tilte">انتخاب محل تزریق: مرحله ۲ از ۲</string>
+
+    <string name="injection_log_title">انتخاب محل تزریق: مرحله ۲ از ۲</string>
     <string name="injection_log_message">جهت نمایش محل تزریق امروز خود، یکی از خانه‌های مربعی شکل زیر را انتخاب کنید.</string>
 
 </resources>

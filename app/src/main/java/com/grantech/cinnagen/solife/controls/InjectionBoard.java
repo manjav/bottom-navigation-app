@@ -30,7 +30,6 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
     public static Point POINT_LEFT;
     public static Rect REGION_LEFT;
 
-
     private OnClickListener clickListener;
 
     private float radiusMask = 8;
