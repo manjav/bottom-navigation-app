@@ -8,6 +8,12 @@
     <string name="app_name">Solife</string>
     <string name="app_next">Next</string>
     <string name="app_save">Save</string>
+    <string name="app_start">شروع</string>
+    <string name="app_restore">بازیابی</string>
+    <string name="app_today">Today</string>
+    <string name="app_plus">+</string>
+    <string name="app_minus">-</string>
+    <string name="app_30_00">30:00</string>
 
     <string name="home_injection">Injection</string>
     <string name="home_calendar">Calendar</string>
@@ -47,7 +53,6 @@
     <string name="medication_alarm_list_two">با فرارسیدن زمان تزریق</string>
     <string name="medication_alarm_list_three">در صورت فراموشی تزریق</string>
 
-    <string name="date_today">Today</string>
     <string name="date_nexts">Next Injections</string>
     <string name="date_prev">Last Injections</string>
     <string name="date_prev_pos">Last Injection position</string>
@@ -82,6 +87,11 @@
     <string name="injection_step_0">دست های خود را با آب و صابون بشویید.</string>
     <string name="injection_step_1">تزریق را انجام دهید.</string>
     <string name="injection_step_2">دستگاه استفاده شده را دور بیاندازید.</string>
+    <string name="injection_steps_submit">ثبت تزریق</string>
+
+    <string name="injection_timer_title">تنظیم هشدار هم‌دماسازی دارو</string>
+    <string name="injection_timer_message">توصیه می‌شود داروی سینورا® ۳۰-۱۵ دقیقه پیش از تزریق، در دمای محیط قرار بگیرد. پس از خارج کردن دارو از یخچال، با انتخاب دکمه شروع در این صفحه می‌توانید مدت زمان حضور دارو در محیط را کنترل نمایید. با انتخاب علامت‌های مثبت و منفی می‌توانید این زمان را در بازه ۳۰-۱۵ دقیقه تغییر دهید.</string>
+    <string name="injection_timer_submit">بدون هشدار</string>
 
     <string name="injection_prev_title">تزریق قبلی</string>
     <string name="injection_prev_message">این تصویر محل تزریق قبلی شما را نشان می‌دهد. دقت کنید که تزریق امروز شما باید حداقل ۲.۵ سانتی‌متر با تزریق قبلی فاصله داشته باشد.</string>
@@ -96,9 +106,5 @@
 
     <string name="injection_log_title">انتخاب محل تزریق: مرحله ۲ از ۲</string>
     <string name="injection_log_message">جهت نمایش محل تزریق امروز خود، یکی از خانه‌های مربعی شکل زیر را انتخاب کنید.</string>
-    <string name="injection_timer_title">تنظیم هشدار هم‌دماسازی دارو</string>
-    <string name="injection_timer_message">توصیه می‌شود داروی سینورا® ۳۰-۱۵ دقیقه پیش از تزریق، در دمای محیط قرار بگیرد. پس از خارج کردن دارو از یخچال، با انتخاب دکمه شروع در این صفحه می‌توانید مدت زمان حضور دارو در محیط را کنترل نمایید. با انتخاب علامت‌های مثبت و منفی می‌توانید این زمان را در بازه ۳۰-۱۵ دقیقه تغییر دهید.</string>
-    <string name="start_label">شروع</string>
-    <string name="restore_label">بازیابی</string>
 
 </resources>

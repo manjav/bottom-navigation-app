@@ -8,24 +8,6 @@
     android:layout_gravity="center"
     >
 
-    <!--    <ir.mirrajabi.persiancalendar.PersianCalendarView-->
-<!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--        android:id="@+id/persian_calendar"-->
-<!--        android:layout_width="320dp"-->
-<!--        android:layout_height="300dp"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_alignParentTop="true"-->
-<!--        android:layout_marginTop="64dp"-->
-<!--        app:pcv_colorBackground="@color/colorLight"-->
-<!--        app:pcv_colorDayName="@color/colorPrimaryDark"-->
-<!--        app:pcv_colorHoliday="@color/colorPrimaryDark"-->
-<!--        app:pcv_colorHolidaySelected="@color/colorWhite"-->
-<!--        app:pcv_colorNormalDay="@color/colorPrimary"-->
-<!--        app:pcv_colorNormalDaySelected="@color/colorWhite"-->
-<!--        app:pcv_eventUnderlineColor="@color/colorWhite"-->
-<!--        app:pcv_selectedDayBackground="@drawable/circle_primary_light"-->
-<!--        app:pcv_todayBackground="@drawable/circle_today" />-->
-
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_year_month"
         android:layout_width="wrap_content"
@@ -78,7 +60,7 @@
         android:layout_width="0dp"
         android:layout_height="24dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/date_today"
+        android:text="@string/app_today"
         app:layout_constraintBottom_toTopOf="@+id/line_text_2"
         app:layout_constraintStart_toStartOf="@+id/line_text_2"
         app:layout_constraintTop_toTopOf="@+id/line_icon_1"
@@ -127,6 +109,5 @@
         app:layout_constraintStart_toEndOf="@+id/line_icon_3"
         app:layout_constraintTop_toTopOf="@+id/line_icon_3"
         tools:ignore="MissingConstraints" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

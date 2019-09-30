@@ -50,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:prompt="@string/injection_body_date_prompt"
-        app:text="@string/date_today" />
+        app:text="@string/app_today" />
 
     <com.grantech.cinnagen.solife.controls.InjectionBoard
         android:id="@+id/inject_body_view"
