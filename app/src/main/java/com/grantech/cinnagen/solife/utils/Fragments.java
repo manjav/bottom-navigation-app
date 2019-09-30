@@ -1,7 +1,9 @@
 package com.grantech.cinnagen.solife.utils;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,6 +53,7 @@ public class Fragments
     public boolean loadFragment(AppCompatActivity activity, int position, int title) {
         return this.loadFragment(activity, position, title, null);
     }
+    @SuppressLint("RestrictedApi")
     public boolean loadFragment(AppCompatActivity activity, int position, int title, Bundle arguments)
     {
         Log.i(TAG, "old " + oldPosition + " new " +  position );//+ " d " +  (int) activity.getResources().getDimension(newPosition) );
@@ -85,12 +88,13 @@ public class Fragments
         if( actionBar == null )
             return true;
 
+        actionBar.setShowHideAnimationEnabled(false);
+        activity.findViewById(R.id.toolbar_action_button).setVisibility(newPosition > 20 && newPosition < 30 ? View.VISIBLE : View.INVISIBLE);
         if( newPosition != 0 )
         {
             actionBar.show();
             actionBar.setDisplayHomeAsUpEnabled(newPosition > 3);
-//            actionBar.setDisplayShowHomeEnabled(newPosition > 3);
-            ((AppCompatTextView) activity.findViewById(R.id.action_bar_text_view)).setText(title);
+            ((AppCompatTextView) activity.findViewById(R.id.toolbar_title)).setText(title);
         }
         else
         {
@@ -102,6 +106,8 @@ public class Fragments
 
     private int getTitle(int position)
     {
+        if( position >= 20 && position < 30 )
+            return R.string.home_injection;
         switch( position )
         {
             case R.dimen.position_home_injection:    return R.string.home_injection;
@@ -110,11 +116,9 @@ public class Fragments
             case R.dimen.position_home_more:    return R.string.home_more;
 
             case R.dimen.position_welcome:   return R.string.welcome_title;
-            case R.dimen.position_medication_dose:   return R.string.home_medication;
+            case R.dimen.position_medication_dose:
             case R.dimen.position_medication_time:   return R.string.home_medication;
             case R.dimen.position_medication_alarms:   return R.string.home_alarm;
-
-            case R.dimen.position_injection_start:   return R.string.home_injection;
 
             case R.dimen.position_misc_safety:   return R.string.more_safety;
             case R.dimen.position_misc_faq:   return R.string.more_faq;

@@ -1,22 +1,24 @@
 package com.grantech.cinnagen.solife.activities;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.grantech.cinnagen.solife.R;
+import com.grantech.cinnagen.solife.utils.Fragments;
 
 public class BaseActivity extends AppCompatActivity
 {
     protected void onCreate(Bundle savedInstanceState)
     {
+        super.onCreate(savedInstanceState);
+        assert getSupportActionBar() != null;
+
         // custom action-bar
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_bar);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
-
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -24,5 +26,14 @@ public class BaseActivity extends AppCompatActivity
     {
         onBackPressed();
         return true;
+    }
+
+    public void clickEvent(View view)
+    {
+        if( view.getId() == R.id.toolbar_action_button )
+        {
+            Fragments.getInstance().clearStack(this);
+            finish();
+        }
     }
 }
