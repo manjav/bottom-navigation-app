@@ -55,7 +55,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter
         {
             LayoutInflater layoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             assert layoutInflater != null;
-            convertView = layoutInflater.inflate(R.layout.list_item, null);
+            convertView = layoutInflater.inflate(R.layout.list_expandable_item, null);
         }
         AppCompatTextView expandedListTextView = convertView.findViewById(R.id.expandedListItem);
         expandedListTextView.setText(expandedListText);
@@ -91,7 +91,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter
         {
             LayoutInflater layoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             assert layoutInflater != null;
-            convertView = layoutInflater.inflate(R.layout.list_group, null);
+            convertView = layoutInflater.inflate(R.layout.list_expandable_group, null);
         }
         AppCompatTextView listTitleTextView = convertView.findViewById(R.id.listTitle);
         listTitleTextView.setText(listTitle);
