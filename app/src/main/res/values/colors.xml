@@ -11,4 +11,8 @@
     <color name="colorMedium">#6c6c6c</color>
     <color name="colorDark">#3a3a3a</color>
     <color name="colorBlack">#000000</color>
+
+    <color name="mdtp_accent_color">@color/colorPrimary</color>
+    <color name="mdtp_accent_color_dark">@color/colorPrimaryDark</color>
+
 </resources>
