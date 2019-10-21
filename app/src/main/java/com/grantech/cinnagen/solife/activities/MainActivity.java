@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.utils.Fragments;
+import com.grantech.cinnagen.solife.utils.Prefs;
 
 import java.util.Objects;
 
@@ -18,7 +19,11 @@ public class MainActivity extends BaseActivity
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        Fragments.getInstance().loadFragment(this, R.dimen.position_home_injection, R.string.home_injection);
+        if( Prefs.getInstance().contains(Prefs.KEY_NUM_RUN) )
+            Fragments.getInstance().loadFragment(this, R.dimen.position_home_injection, R.string.home_injection);
+        else
+            Fragments.getInstance().loadFragment(this, R.dimen.position_welcome);
+
         ((BottomNavigationView) findViewById(R.id.navigation)).setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 

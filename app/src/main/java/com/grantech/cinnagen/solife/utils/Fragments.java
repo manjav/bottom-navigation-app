@@ -56,12 +56,11 @@ public class Fragments
     @SuppressLint("RestrictedApi")
     public boolean loadFragment(AppCompatActivity activity, int position, int title, Bundle arguments)
     {
-        Log.i(TAG, "old " + oldPosition + " new " +  position );//+ " d " +  (int) activity.getResources().getDimension(newPosition) );
-
         BaseFragment fragment = this.getFragment(position);
         if( fragment == null )
             return false;
         int newPosition = (int) activity.getResources().getDimension(position);
+        Log.i(TAG, "old " + oldPosition + " new " +  newPosition );//+ " d " +  (int) activity.getResources().getDimension(newPosition) );
         if( oldPosition == newPosition )
             return false;
 

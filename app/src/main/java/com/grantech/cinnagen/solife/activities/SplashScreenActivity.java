@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.utils.Fragments;
+import com.grantech.cinnagen.solife.utils.Prefs;
 
 import java.util.Locale;
 
@@ -24,6 +25,7 @@ public class SplashScreenActivity extends AppCompatActivity
         config.locale = Fragments.getInstance().locale;
         Resources res = getApplicationContext().getResources();
         res.updateConfiguration(config, res.getDisplayMetrics());
+        Prefs.setInstance(getApplicationContext());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
