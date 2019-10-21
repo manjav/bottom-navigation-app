@@ -1,7 +1,5 @@
 package com.grantech.cinnagen.solife.activities;
 
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.fragment.app.FragmentManager;
@@ -11,21 +9,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.utils.Fragments;
 
-import java.util.Locale;
 import java.util.Objects;
 
 public class MainActivity extends BaseActivity
 {
     protected void onCreate(Bundle savedInstanceState)
     {
-        // default localization is farsi
-        Fragments.getInstance().locale = new Locale("fa");
-        Locale.setDefault(Fragments.getInstance().locale);
-        Configuration config = new Configuration();
-        config.locale = Fragments.getInstance().locale;
-        Resources res = getApplicationContext().getResources();
-        res.updateConfiguration(config, res.getDisplayMetrics());
-
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
