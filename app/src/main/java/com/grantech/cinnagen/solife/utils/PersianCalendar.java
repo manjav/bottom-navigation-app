@@ -145,6 +145,7 @@ public class PersianCalendar extends GregorianCalendar
      */
     public PersianCalendar(long millis) {
         setTimeInMillis(millis);
+        setTimeZone(TimeZone.getTimeZone("GMT"));
     }
 
     /**
@@ -301,7 +302,7 @@ public class PersianCalendar extends GregorianCalendar
     }
 
     public String getPersianShortDateTime() {
-        return "" + formatToMilitary(this.persianYear) + delimiter + formatToMilitary(getPersianMonth()+1) + delimiter + formatToMilitary(this.persianDay) + " " + formatToMilitary(this.get(HOUR_OF_DAY)) + ":" + formatToMilitary(get(MINUTE))
+        return "" + formatToMilitary(this.persianYear) + delimiter + formatToMilitary(getPersianMonth()+1) + delimiter + formatToMilitary(this.persianDay) + " " + formatToMilitary(this.get(HOUR_OF_DAY))/* + ":" + formatToMilitary(get(MINUTE))*/
                 + ":" + formatToMilitary(get(SECOND));
     }
 

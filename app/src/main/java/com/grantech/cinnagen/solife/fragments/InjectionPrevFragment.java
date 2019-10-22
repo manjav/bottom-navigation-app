@@ -13,7 +13,8 @@ import androidx.annotation.Nullable;
 import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.utils.FontsOverride;
 import com.grantech.cinnagen.solife.utils.Fragments;
-import com.grantech.cinnagen.solife.utils.PatientPrefs;
+import com.grantech.cinnagen.solife.utils.PersianCalendar;
+import com.grantech.cinnagen.solife.utils.Prefs;
 
 /**
  * Created by ManJav on 9/26/2019.
@@ -32,7 +33,8 @@ public class InjectionPrevFragment extends InjectionBaseFragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        ((TextView)view.findViewById(R.id.inject_prev_time)).setText(FontsOverride.convertToPersianDigits(PatientPrefs.getInstance().maintainDate.getPersianLongDateAndTime()));
+        PersianCalendar maintainDate = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_DOSE_MAINTAIN, 0));
+        ((TextView)view.findViewById(R.id.inject_prev_time)).setText(FontsOverride.convertToPersianDigits(maintainDate.getPersianLongDateAndTime()));
     }
 
     @Override

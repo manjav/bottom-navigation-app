@@ -13,7 +13,8 @@ import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.controls.PickerInput;
 import com.grantech.cinnagen.solife.utils.FontsOverride;
 import com.grantech.cinnagen.solife.utils.Fragments;
-import com.grantech.cinnagen.solife.utils.PatientPrefs;
+import com.grantech.cinnagen.solife.utils.PersianCalendar;
+import com.grantech.cinnagen.solife.utils.Prefs;
 
 /**
  * Created by ManJav on 9/28/2019.
@@ -35,8 +36,8 @@ public class InjectionBodyFragment extends BaseFragment
         view.findViewById(R.id.inject_body_abdomen_button).setOnClickListener(this);
         view.findViewById(R.id.inject_body_leg_right_button).setOnClickListener(this);
         view.findViewById(R.id.inject_body_leg_left_button).setOnClickListener(this);
-        ((PickerInput)view.findViewById(R.id.inject_body_pickerInput)).setText(FontsOverride.convertToPersianDigits(PatientPrefs.getInstance().maintainDate.getPersianLongDateAndTime()));
-
+        PersianCalendar maintainDate = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_DOSE_MAINTAIN, 0));
+        ((PickerInput)view.findViewById(R.id.inject_body_pickerInput)).setText(FontsOverride.convertToPersianDigits(maintainDate.getPersianLongDateAndTime()));
     }
 
     @Override

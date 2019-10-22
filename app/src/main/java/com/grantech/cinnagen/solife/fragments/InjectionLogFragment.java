@@ -16,7 +16,8 @@ import com.grantech.cinnagen.solife.controls.InjectionBoard;
 import com.grantech.cinnagen.solife.controls.PickerInput;
 import com.grantech.cinnagen.solife.utils.FontsOverride;
 import com.grantech.cinnagen.solife.utils.Fragments;
-import com.grantech.cinnagen.solife.utils.PatientPrefs;
+import com.grantech.cinnagen.solife.utils.PersianCalendar;
+import com.grantech.cinnagen.solife.utils.Prefs;
 
 import java.util.Objects;
 
@@ -51,7 +52,8 @@ public class InjectionLogFragment extends InjectionBaseFragment
         board.setPoint(selectedRegion.x, selectedRegion.y);
         board.setOnClickListener(this);
 
-        ((PickerInput)view.findViewById(R.id.inject_log_pickerInput)).setText(FontsOverride.convertToPersianDigits(PatientPrefs.getInstance().maintainDate.getPersianLongDateAndTime()));
+        PersianCalendar maintainDate = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_DOSE_MAINTAIN, 0));
+        ((PickerInput)view.findViewById(R.id.inject_log_pickerInput)).setText(FontsOverride.convertToPersianDigits(maintainDate.getPersianLongDateAndTime()));
     }
 
     @Override

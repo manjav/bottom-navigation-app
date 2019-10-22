@@ -40,7 +40,6 @@
             android:textAlignment="gravity"
             android:textAllCaps="false"
             android:textColor="@color/colorMedium"
-            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dose_alarm_title" />
@@ -70,7 +69,6 @@
             android:textAlignment="gravity"
             android:textAllCaps="false"
             android:textColor="@color/colorMedium"
-            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/dose_message"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/dose_message"
@@ -82,48 +80,33 @@
             android:layout_height="61dp"
             android:layout_marginTop="16dp"
             android:checkedButton="@id/dose_radio_80"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@+id/dose_message"
             app:layout_constraintStart_toStartOf="@+id/dose_message"
             app:layout_constraintTop_toBottomOf="@+id/dose_start_message">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/radio_group_layout"
-                android:layout_width="match_parent"
+            <RadioButton
+                android:id="@+id/dose_radio_40"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:soundEffectsEnabled="true">
+                android:checked="true"
+                android:text="@string/medication_dose_40"
+                android:textColor="@color/colorDark"
+                android:textIsSelectable="false"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-                <RadioButton
-                    android:id="@+id/dose_radio_80"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:checked="false"
-                    android:text="@string/medication_dose_80"
-                    android:textColor="@color/colorDark"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/dose_radio_40"
-                    tools:layout_editor_absoluteY="0dp" />
-
-                <RadioButton
-                    android:id="@+id/dose_radio_40"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:checked="true"
-                    android:text="@string/medication_dose_40"
-                    android:textColor="@color/colorDark"
-                    android:textIsSelectable="false"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/dose_radio_80"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="0dp" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <RadioButton
+                android:id="@+id/dose_radio_80"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:checked="false"
+                android:text="@string/medication_dose_80"
+                android:textColor="@color/colorDark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </RadioGroup>
 
@@ -190,10 +173,10 @@
             android:layout_height="96dp"
             android:layout_marginTop="16dp"
             android:background="@color/colorWhite"
-            android:entries="@array/dose_gaps"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dose_maintain_message"
+            android:choiceMode="singleChoice"
             tools:ignore="NestedScrolling" />
 
         <View

@@ -6,24 +6,33 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.grantech.cinnagen.solife.R;
+import com.grantech.cinnagen.solife.adapters.CheckableListAdapter;
 import com.grantech.cinnagen.solife.controls.PickerInput;
 import com.grantech.cinnagen.solife.utils.FontsOverride;
 import com.grantech.cinnagen.solife.utils.Fragments;
-import com.grantech.cinnagen.solife.utils.PatientPrefs;
+import com.grantech.cinnagen.solife.utils.PersianCalendar;
+import com.grantech.cinnagen.solife.utils.Prefs;
 import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
+
+import java.util.TimeZone;
 
 /**
  * Created by ManJav on 1/23/2019.
  */
 
-public class MedicationDoseFragment extends BaseFragment implements DatePickerDialog.OnDateSetListener, PickerInput.OnClickListener
+public class MedicationDoseFragment extends BaseFragment implements DatePickerDialog.OnDateSetListener, PickerInput.OnClickListener, AdapterView.OnItemClickListener
 {
+    private PersianCalendar startDate;
     private PickerInput startDoseInput;
+    private PersianCalendar maintainDate;
     private PickerInput maintainDoseInput;
 
     @SuppressLint("InflateParams")
@@ -38,13 +47,29 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
     {
         super.onViewCreated(view, savedInstanceState);
 
+        // select dose by milligrams
+        RadioGroup radioGroup = view.findViewById(R.id.radio_group);
+        radioGroup.setOnCheckedChangeListener((group, checkedId) ->Prefs.getInstance().setInt(Prefs.KEY_DOSE_MG, checkedId==R.id.dose_radio_80 ? 1 : 0));
+
+        // start dose date selection
+        startDate = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_DOSE_START, System.currentTimeMillis()));
         startDoseInput = view.findViewById(R.id.dose_start_date_input);
-        startDoseInput.setText(FontsOverride.convertToPersianDigits(PatientPrefs.getInstance().startDate.getPersianShortDate()));
+        startDoseInput.setText(FontsOverride.convertToPersianDigits(startDate.getPersianShortDate()));
         startDoseInput.setOnClickListener(this);
 
+        // select gap of injections
+        ListView gapList = view.findViewById(R.id.dose_gap_list);
+        gapList.setAdapter(new CheckableListAdapter(getContext(), -1, getResources().getStringArray(R.array.dose_gaps)));
+        gapList.setItemChecked(Prefs.getInstance().getInt(Prefs.KEY_DOSE_GAP, 14) == 7 ? 1 : 0, true);
+        gapList.setOnItemClickListener(this);
+
+        // maintain dose date selection
+        long l = Prefs.getInstance().getLong(Prefs.KEY_DOSE_MAINTAIN, 0);
+        maintainDate = new PersianCalendar(l);
         maintainDoseInput = view.findViewById(R.id.dose_maintain_date_input);
-        maintainDoseInput.setText(FontsOverride.convertToPersianDigits(PatientPrefs.getInstance().maintainDate.getPersianShortDate()));
         maintainDoseInput.setOnClickListener(this);
+        if( l > 0 )
+            maintainDoseInput.setText(FontsOverride.convertToPersianDigits(maintainDate.getPersianShortDate()));
 
         view.findViewById(R.id.dose_date_finish).setOnClickListener(this);
     }
@@ -71,9 +96,9 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
     {
         DatePickerDialog datePicker;
         if( tag.equals("start") )
-            datePicker = DatePickerDialog.newInstance(this, PatientPrefs.getInstance().startDate.getPersianYear(), PatientPrefs.getInstance().startDate.getPersianMonth(), PatientPrefs.getInstance().startDate.getPersianDay());
+            datePicker = DatePickerDialog.newInstance(this, startDate.getPersianYear(), startDate.getPersianMonth(), startDate.getPersianDay());
         else
-            datePicker = DatePickerDialog.newInstance(this, PatientPrefs.getInstance().maintainDate.getPersianYear(), PatientPrefs.getInstance().maintainDate.getPersianMonth(), PatientPrefs.getInstance().maintainDate.getPersianDay());
+            datePicker = DatePickerDialog.newInstance(this, maintainDate.getPersianYear(), maintainDate.getPersianMonth(), maintainDate.getPersianDay());
 
         datePicker.setOnCancelListener(dialogInterface -> Log.d(Fragments.TAG, "Dialog was cancelled"));
         datePicker.show(activity.getFragmentManager(), tag);
@@ -84,15 +109,21 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
     {
         if( view.getTag().equals("start") )
         {
-            PatientPrefs.getInstance().startDate.setPersianDate(year, monthOfYear, dayOfMonth);
-            startDoseInput.setText(FontsOverride.convertToPersianDigits(PatientPrefs.getInstance().startDate.getPersianShortDate()));
-            PatientPrefs.getInstance().maintainDate.setPersianDate(year, monthOfYear, dayOfMonth, 14 * 24, 0, 0);
-            maintainDoseInput.setText(FontsOverride.convertToPersianDigits(PatientPrefs.getInstance().maintainDate.getPersianShortDate()));
+            startDate.setPersianDate(year, monthOfYear, dayOfMonth);
+            startDoseInput.setText(FontsOverride.convertToPersianDigits(startDate.getPersianShortDate()));
+            Prefs.getInstance().setLong(Prefs.KEY_DOSE_START, startDate.getTimeInMillis());
         }
         else
         {
-            PatientPrefs.getInstance().maintainDate.setPersianDate(year, monthOfYear, dayOfMonth);
-            maintainDoseInput.setText(FontsOverride.convertToPersianDigits(PatientPrefs.getInstance().maintainDate.getPersianShortDate()));
+            maintainDate.setPersianDate(year, monthOfYear, dayOfMonth);
+            maintainDoseInput.setText(FontsOverride.convertToPersianDigits(maintainDate.getPersianShortDate()));
+            Prefs.getInstance().setLong(Prefs.KEY_DOSE_MAINTAIN, maintainDate.getTimeInMillis());
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+    {
+        Prefs.getInstance().setInt(Prefs.KEY_DOSE_GAP, position == 1 ? 7 : 14);
     }
 }
