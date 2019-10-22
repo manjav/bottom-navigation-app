@@ -35,7 +35,19 @@ public class SplashScreenActivity extends AppCompatActivity
             //The following code will execute after the 5 seconds.
             try {
                 //Go to next page i.e, start the next activity.
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+
+                Intent intent = null;
+                if( Prefs.getInstance().contains(Prefs.KEY_NUM_RUN) )
+                {
+                    intent = new Intent(getApplicationContext(), MainActivity.class);
+                }
+                else
+                {
+                    intent = new Intent(getApplicationContext(), FragmentsActivity.class);
+                    Bundle b = new Bundle();
+                    b.putInt("position", R.dimen.position_welcome);
+                    intent.putExtras(b);
+                }
                 startActivity(intent);
                 finish();
             } catch (Exception e) { e.printStackTrace(); }

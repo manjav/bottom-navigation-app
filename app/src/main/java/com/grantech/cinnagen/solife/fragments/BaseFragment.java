@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.grantech.cinnagen.solife.R;
-import com.grantech.cinnagen.solife.activities.InjectionActivity;
+import com.grantech.cinnagen.solife.activities.FragmentsActivity;
 import com.grantech.cinnagen.solife.utils.Fragments;
 
 /**
@@ -35,7 +35,11 @@ public class BaseFragment extends Fragment implements View.OnClickListener
         switch( view.getId() )
         {
             case R.id.prep_button:
-                startActivity(new Intent(activity.getApplicationContext(), InjectionActivity.class));
+                Intent intent = new Intent(activity.getApplicationContext(), FragmentsActivity.class);
+                Bundle b = new Bundle();
+                b.putInt("position", R.dimen.position_injection_start);
+                intent.putExtras(b);
+                startActivity(intent);
                 return;
 
             case R.id.medication_button:

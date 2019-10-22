@@ -10,13 +10,18 @@ import com.grantech.cinnagen.solife.utils.Fragments;
 
 import java.util.Objects;
 
-public class InjectionActivity extends BaseActivity
+public class FragmentsActivity extends BaseActivity
 {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_injection);
-        Fragments.getInstance().loadFragment(this, R.dimen.position_injection_start);
+
+        Bundle b = getIntent().getExtras();
+        int position = -1; // or other values
+        if( b != null )
+            position= b.getInt("position");
+        Fragments.getInstance().loadFragment(this, position);
     }
 
     @Override

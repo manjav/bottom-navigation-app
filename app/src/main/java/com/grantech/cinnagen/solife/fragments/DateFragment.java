@@ -14,6 +14,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.grantech.cinnagen.solife.R;
 
+import java.util.Objects;
+
 import ir.mirrajabi.persiancalendar.core.Constants;
 import ir.mirrajabi.persiancalendar.core.PersianCalendarHandler;
 import ir.mirrajabi.persiancalendar.core.adapters.CalendarAdapter;
@@ -115,7 +117,7 @@ public class DateFragment extends BaseFragment implements ViewPager.OnPageChange
         intent.putExtra(Constants.BROADCAST_FIELD_TO_MONTH_FRAGMENT, mViewPagerPosition);
         intent.putExtra(Constants.BROADCAST_FIELD_SELECT_DAY, -1);
 
-        LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
+        LocalBroadcastManager.getInstance(Objects.requireNonNull(getContext())).sendBroadcast(intent);
     }
 
     @Override

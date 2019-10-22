@@ -19,11 +19,7 @@ public class MainActivity extends BaseActivity
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        if( Prefs.getInstance().contains(Prefs.KEY_NUM_RUN) )
-            Fragments.getInstance().loadFragment(this, R.dimen.position_home_injection, R.string.home_injection);
-        else
-            Fragments.getInstance().loadFragment(this, R.dimen.position_welcome);
-
+        Fragments.getInstance().loadFragment(this, R.dimen.position_home_injection, R.string.home_injection);
         ((BottomNavigationView) findViewById(R.id.navigation)).setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
