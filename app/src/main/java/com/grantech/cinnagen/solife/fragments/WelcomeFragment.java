@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.grantech.cinnagen.solife.R;
+import com.grantech.cinnagen.solife.utils.Fragments;
 
 public class WelcomeFragment extends BaseFragment
 {
@@ -26,7 +28,10 @@ public class WelcomeFragment extends BaseFragment
     {
         super.onViewCreated(view, savedInstanceState);
 
-        Button prepButton = view.findViewById(R.id.welcome_accept_button);
-        prepButton.setOnClickListener(this);
+        TextView termsText = view.findViewById(R.id.welcome_terms_text);
+//        termsText.setPaintFlags(termsText.getPaintFlags() |  Paint.UNDERLINE_TEXT_FLAG);
+
+        termsText.setOnClickListener(v -> Fragments.getInstance().loadFragment((AppCompatActivity) getActivity(), R.dimen.position_misc_terms));
+        view.findViewById(R.id.welcome_accept_button).setOnClickListener(this);
     }
 }
