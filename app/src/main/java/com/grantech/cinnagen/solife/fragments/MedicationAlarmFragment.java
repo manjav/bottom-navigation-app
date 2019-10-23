@@ -40,12 +40,13 @@ public class MedicationAlarmFragment extends BaseFragment implements AdapterView
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        view.findViewById(R.id.dose_alarm_finish).setOnClickListener(this);
 
         titleView = view.findViewById(R.id.dose_alarm_title);
         listGroup = view.findViewById(R.id.dose_alarm_lists_group);
 
-        if( getArguments() != null && getArguments().containsKey("s") )
+        boolean settingMode = getArguments() != null && getArguments().containsKey("s");
+        view.findViewById(R.id.dose_alarm_finish).setVisibility(settingMode ? View.GONE : View.VISIBLE);
+        if( settingMode )
         {
             // notifications turn on / off
             Switch alarmSwitch = view.findViewById(R.id.dose_alarm_switch);
@@ -57,6 +58,7 @@ public class MedicationAlarmFragment extends BaseFragment implements AdapterView
         }
         else
         {
+            view.findViewById(R.id.dose_alarm_finish).setOnClickListener(this);
             view.findViewById(R.id.dose_alarm_switch_group).setVisibility(View.GONE);
             titleView.setVisibility(View.VISIBLE);
         }
