@@ -25,4 +25,36 @@ public class CheckableListAdapter extends ArrayAdapter
         ((CheckableItem) convertView).setLabel((String) getItem(position));
         return convertView;
     }
+
+/*
+    public static void autoSize(ListView listView)
+    {
+        ListAdapter listAdapter = listView.getAdapter();
+        if( listAdapter == null )
+            return;
+
+        // Get total height of all items.
+        int numberOfItems = listAdapter.getCount();
+        int totalItemsHeight = 0;
+        for (int i = 0; i < numberOfItems; i++)
+        {
+            CheckableItem item = (CheckableItem) listAdapter.getView(i, null, listView);
+//            item.measureText();
+            item.measure(0,0);//View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.EXACTLY));
+//            Log.i(Fragments.TAG, i +" " + item.getMeasuredHeight() + " " + item.getLayoutParams());
+            totalItemsHeight += item.getMeasuredHeight();
+        }
+
+        // Get total height of all item dividers.
+        int totalDividersHeight = listView.getDividerHeight() * (numberOfItems - 1);
+        // Get padding
+        int totalPadding = listView.getPaddingTop() + listView.getPaddingBottom();
+
+        // Set list height.
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalItemsHeight + totalDividersHeight + totalPadding;
+        listView.setLayoutParams(params);
+        listView.requestLayout();
+    }
+*/
 }

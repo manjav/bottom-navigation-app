@@ -43,9 +43,21 @@ public class CheckableItem extends ConstraintLayout implements Checkable
     public void setLabel(String label)
     {
         this.labelText.setText(label);
+//        measureText();
         // my custom method where I set package id, date, and time
     }
 
+/*
+    public void measureText()
+    {
+        labelText.invalidate();
+
+//      int newHeight = labelText.getLineCount() * (int) (labelText.getPaint().getFontMetrics().bottom - labelText.getPaint().getFontMetrics().top);
+        RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) labelText.getLayoutParams();
+        this.labelText.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+        Log.i(Fragments.TAG, labelText.getMeasuredHeight() + " " + lp.topMargin + " " + lp.bottomMargin + " " + labelText.getLineCount() + " " + labelText.getLineHeight() + " " + labelText.getPaint().getFontMetrics().bottom + " " + labelText.getPaint().getFontMetrics().top);
+    }
+*/
     private Boolean checked = true;
 
     @Override
