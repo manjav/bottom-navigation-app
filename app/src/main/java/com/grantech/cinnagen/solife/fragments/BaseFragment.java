@@ -11,7 +11,9 @@ import androidx.fragment.app.Fragment;
 
 import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.activities.FragmentsActivity;
+import com.grantech.cinnagen.solife.activities.MainActivity;
 import com.grantech.cinnagen.solife.utils.Fragments;
+import com.grantech.cinnagen.solife.utils.Prefs;
 
 /**
  * Created by ManJav on 1/23/2019.
@@ -48,10 +50,20 @@ public class BaseFragment extends Fragment implements View.OnClickListener
                 return;
 
             case R.id.alarm_button:
-                Fragments.getInstance().loadFragment(activity, R.dimen.position_medication_alarms);
+                Bundle args = new Bundle();
+                args.putBoolean("s", true);
+                Fragments.getInstance().loadFragment(activity, R.dimen.position_medication_alarms, 0, args);
                 return;
 
             case R.id.dose_alarm_finish:
+                if( !Prefs.getInstance().contains(Prefs.KEY_NUM_RUN) )
+                {
+                    Prefs.getInstance().setInt(Prefs.KEY_NUM_RUN, 1);
+                    intent = new Intent(activity.getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    activity.finish();
+                    return;
+                }
                 Fragments.getInstance().clearStack(activity);
                 return;
         }

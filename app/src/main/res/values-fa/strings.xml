@@ -28,7 +28,7 @@
     <string name="home_prep">آماده سازی و تزریق</string>
     <string name="home_medication">تنظیمات دارو</string>
     <string name="home_alarm">تنظیمات هشدار</string>
-    <string name="about_text">نسخه 1.0.0\nشرکت سینا ژن\nآدرس آدرس آدرس\nتلفن : 423423423\nپاییز  98</string>
+    <string name="about_text">نسخه ۱.۰.۰\nشرکت سینا ژن\nآدرس آدرس آدرس\nتلفن : ۴۲۳۴۲۳۴۲۳\nپاییز  ۹۸</string>
 
     <string name="welcome_title">سلام به سولایف خوش اومدی!</string>
     <string name="welcome_message">" این یک نرم افزار دستیار پزشکی نیست و صرفا برای سازماندهی مصرف داروی سینورا می باشد. لطفا قوانین مربوط به استفاده از این نرم افزار رو مطالعه کنید و سپس موافقت خود را با ادامه کار با نرم افزار.اعلام کنید"</string>
@@ -37,9 +37,9 @@
     <string name="medication_dose_title">دوز داروی سینورا</string>
     <string name="medication_dose_message">در اکثر مواقع دوز اولیه داروی سینورا® با دوز ادامه درمان (درمان نگهدارنده) تفاوت دارد.لطفا اطلاعات دوز اولیه و دوز نگهدارنده تجویز شده برای خود را در ادامه وارد کنید. سوالات احتمالی در این زمینه را می‌توانید با پزشک خود مطرح نمایید.</string>
     <string name="medication_dose_start_title">دوز اولیه</string>
-    <string name="medication_dose_start_message">دوز اولیه تجویز شده از داروی سینورا® برای شما چند میلی‌گرم است؟ هر فیزیوجکت™ (ابزار دارورسان خودکار) داروی سینورا® حاوی 40 میلی‌گرم داروی آدالیمومب می‌باشد.</string>
-    <string name="medication_dose_80">80 میلی گرم</string>
-    <string name="medication_dose_40">40 میلی گرم</string>
+    <string name="medication_dose_start_message">دوز اولیه تجویز شده از داروی سینورا® برای شما چند میلی‌گرم است؟ هر فیزیوجکت™ (ابزار دارورسان خودکار) داروی سینورا® حاوی ۴۰ میلی‌گرم داروی آدالیمومب می‌باشد.</string>
+    <string name="medication_dose_80">۸۰ میلی گرم</string>
+    <string name="medication_dose_40">۴۰ میلی گرم</string>
     <string name="medication_dose_start_date">لطفا تاریخ تزریق دوز اولیه سینورا® را انتخاب کنید.</string>
     <string name="medication_dose_maintain_title">دوز نگهدارنده (ادامه درمان)</string>
     <string name="medication_dose_maintain_message">تزریق دوز نگهدارنده خود را با چه فاصله زمانی انجام می‌دهید؟</string>
@@ -47,6 +47,7 @@
     <string name="medication_time_title">لطفا ساعت مورد نظر خود برای تزریق را انتخاب کنید. نیم ساعت پیش از زمان انتخاب شده پیام یادآوری تزریق را دریافت خواهید کرد.</string>
     <string name="home_welcome_message">" شما در این قسمت می‌توانید زمان تزریق‌های خود را وارد کنید. همچنین، نکات مهم و سایر موارد مرتبط با دارو و نرم‌افزار در این بخش قابل مشاهده است."</string>
     <string name="medication_time_prompt">.لطفا ساعت مورد نظر برای تزریق خود را انتخاب کنید</string>
+    <string name="medication_alarm_setup">تنظیمات هشدار نرم افزار</string>
     <string name="medication_alarm_title">پیام‌های یادآوری زیر، توسط نرم‌افزار سولایف  برای شما ارسال خواهند شد. جهت تغییر متن هر پیام می‌توانید روی آن کلیک نمایید.</string>
     <string name="medication_alarm_list_one">یک روز قبل از تزریق</string>
     <string name="medication_alarm_list_two">با فرارسیدن زمان تزریق</string>
@@ -106,5 +107,8 @@
 
     <string name="injection_log_title">انتخاب محل تزریق: مرحله ۲ از ۲</string>
     <string name="injection_log_message">جهت نمایش محل تزریق امروز خود، یکی از خانه‌های مربعی شکل زیر را انتخاب کنید.</string>
+    <string name="app_on">روشن</string>
+    <string name="app_off">خاموش</string>
+    <string name="app_alarm">هشدارها</string>
 
 </resources>

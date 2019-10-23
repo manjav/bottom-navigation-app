@@ -36,7 +36,9 @@ public class MoreFragment extends BaseFragment
 
             switch (position) {
                 case 0:
-                    Fragments.getInstance().loadFragment(activity, R.dimen.position_medication_alarms);
+                    Bundle args = new Bundle();
+                    args.putBoolean("s", true);
+                    Fragments.getInstance().loadFragment(activity, R.dimen.position_medication_alarms, 0, args);
                     return;
                 case 2:
                     Fragments.getInstance().loadFragment(activity, R.dimen.position_misc_safety);

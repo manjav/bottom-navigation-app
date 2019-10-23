@@ -13,4 +13,19 @@
         <item>هر هفته</item>
     </string-array>
 
+    <string-array name="dose_alarm_1">
+        <item>فردا نوبت تزریق داروی سینورا® است. دوز بعدی خود را فراموش نکنید!</item>
+        <item>سولایف، فردا یادت نره!</item>
+    </string-array>
+
+    <string-array name="dose_alarm_2">
+        <item>زمان تزریق داروی سینورا برای شما فرا رسیده است!</item>
+        <item>سولایف، وقتشه، یادت نره!</item>
+    </string-array>
+
+    <string-array name="dose_alarm_3">
+        <item>آیا برنامه تزریق شما تغییر کرده است؟ جهت اعمال تغییرات به بخش تنظیم برنامه دارویی مراجعه کنید.</item>
+        <item>سولایف، یادت رفت؟ برای تغییر برنامه به بخش تنظیم برنامه برو!</item>
+    </string-array>
+
 </resources>

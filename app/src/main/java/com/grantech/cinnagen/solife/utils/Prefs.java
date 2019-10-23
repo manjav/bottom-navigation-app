@@ -10,11 +10,15 @@ public class Prefs
     private SharedPreferences sharedPref;
 
     static private Prefs instance;
-    static public String KEY_NUM_RUN = "numRun";
-    static public String KEY_DOSE_MG = "doseMG";
-    static public String KEY_DOSE_GAP = "doseGap";
-    static public String KEY_DOSE_START = "doseTime";
-    static public String KEY_DOSE_MAINTAIN = "doseMaintain";
+    static public final String KEY_NUM_RUN = "numRun";
+    static public final String KEY_DOSE_MG = "doseMG";
+    static public final String KEY_DOSE_GAP = "doseGap";
+    static public final String KEY_DOSE_START = "doseTime";
+    static public final String KEY_DOSE_MAINTAIN = "doseMaintain";
+    static public final String KEY_ALARM_1 = "alarm1";
+    static public final String KEY_ALARM_2 = "alarm2";
+    static public final String KEY_ALARM_3 = "alarm3";
+    public static final String KEY_ALARM_NOTIFICATION = "alarmNotify";
 
     static public Prefs getInstance() {
         return instance;
@@ -60,6 +64,17 @@ public class Prefs
     {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(key, value);
+        editor.apply();
+    }
+
+    public boolean getBoolean(String key, @Nullable boolean defValue)
+    {
+        return sharedPref.getBoolean(key, defValue);
+    }
+    public void setBoolean(String key, boolean value)
+    {
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean(key, value);
         editor.apply();
     }
 }
