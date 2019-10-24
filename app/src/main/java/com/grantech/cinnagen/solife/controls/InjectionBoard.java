@@ -11,6 +11,7 @@ import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -36,19 +37,21 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
     private boolean pointVisibility;
     private String pointStr = "0,0";
     private final Point point = new Point();
-
     private boolean prevVisibility = true;
     private String prevTime;
-
     private boolean nextVisibility = true;
     private String nextTime;
+    private boolean touchable;
 
+    private Rect selectedRegion;
+    private boolean autoRegion = true;
     private View prevView;
     private TextView prevText;
     private View nextView;
     private TextView nextText;
     private ConstraintLayout layout;
     private Bitmap bitmap;
+    private Rect bodyRect;
 
     public InjectionBoard(Context context)
     {
@@ -95,23 +98,9 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
         this.setPrevVisibility(a.getBoolean(R.styleable.InjectionBoard_prevVisibility, this.prevVisibility));
         this.setPoint(a.getString(R.styleable.InjectionBoard_point));
         this.setNextVisibility(a.getBoolean(R.styleable.InjectionBoard_nextVisibility, this.nextVisibility));
+        this.setTouchable(a.getBoolean(R.styleable.InjectionBoard_touchable, this.touchable));
         a.recycle();
     }
-
-
-    @Override
-    public void setOnClickListener(@androidx.annotation.Nullable OnClickListener listener)
-    {
-        this.clickListener = listener;
-        super.setOnClickListener(listener);
-    }
-    @Override
-    public void onClick(View v)
-    {
-        if( this.clickListener != null )
-            this.clickListener.onClick(this);
-    }
-
 
     public boolean isPrevVisibility() {
         return this.prevVisibility;
@@ -153,7 +142,7 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
     }
 
 
-    public String getPoint() {
+    public String getPointString() {
         return pointStr;
     }
     public void setPoint(String pointStr) {
@@ -170,6 +159,9 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
         this.point.x = (int) (x * density);
         this.point.y = (int) (y * density);
     }
+    public Point getPoint() {
+        return this.point;
+    }
 
     public float getRadiusMask() {
         return radiusMask;
@@ -177,6 +169,14 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
     public void setRadiusMask(float raduisMask) {
         this.radiusMask = raduisMask;
     }
+
+    public boolean isTouchable() {
+        return this.touchable;
+    }
+    public void setTouchable(boolean touchable) {
+        this.touchable = touchable;
+    }
+
 
     @Override
     @SuppressLint("DrawAllocation")
@@ -192,38 +192,49 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
 
         final Paint paint = new Paint();
         final Rect srcRect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
-        final Rect dstRect = new Rect();
-        if( point.x == 0 && point.y == 0 )
+        if( autoRegion || bodyRect == null )
         {
-            dstRect.bottom = layout.getHeight();
-            int w = bitmap.getWidth() * layout.getHeight() / bitmap.getHeight();
-            dstRect.left = (int) ((layout.getWidth() - w) * 0.5);
-            dstRect.right = dstRect.left + w;
-        }
-        else
-        {
-            if( this.point.y >= REGION_RIGHT.top )
+            bodyRect = new Rect();
+            if( point.x == 0 && point.y == 0 )
             {
-                if( this.point.x >= REGION_LEFT.left )
-                    dstRect.left = (int) ((layout.getWidth() - bitmap.getWidth()) * 0.5) + POINT_LEFT.x;
-                else
-                    dstRect.left = (int) ((layout.getWidth() - bitmap.getWidth()) * 0.5) + POINT_RIGHT.x;
-                dstRect.top = POINT_RIGHT.y;
+                bodyRect.bottom = layout.getHeight();
+                int w = bitmap.getWidth() * layout.getHeight() / bitmap.getHeight();
+                bodyRect.left = (int) ((layout.getWidth() - w) * 0.5);
+                bodyRect.right = bodyRect.left + w;
+                selectedRegion = null;
             }
             else
             {
-                dstRect.left = (int) ((layout.getWidth() - bitmap.getWidth()) * 0.5);
-                dstRect.top = 0;
-            }
+                if( this.point.y >= REGION_RIGHT.top )
+                {
+                    if( this.point.x >= REGION_LEFT.left )
+                    {
+                        selectedRegion = REGION_LEFT;
+                        bodyRect.left = (int) ((layout.getWidth() - bitmap.getWidth()) * 0.5) + POINT_LEFT.x;
+                    }
+                    else
+                    {
+                        selectedRegion = REGION_RIGHT;
+                        bodyRect.left = (int) ((layout.getWidth() - bitmap.getWidth()) * 0.5) + POINT_RIGHT.x;
+                    }
+                    bodyRect.top = POINT_RIGHT.y;
+                }
+                else
+                {
+                    selectedRegion = REGION_ABDOMEN;
+                    bodyRect.left = (int) ((layout.getWidth() - bitmap.getWidth()) * 0.5);
+                    bodyRect.top = 0;
+                }
 
-            dstRect.bottom = bitmap.getHeight() + dstRect.top;
-            dstRect.right = bitmap.getWidth() + dstRect.left;
+                bodyRect.bottom = bitmap.getHeight() + bodyRect.top;
+                bodyRect.right = bitmap.getWidth() + bodyRect.left;
 
-            int threshold = bitmap.getHeight() - point.y - layout.getHeight();
-            if( threshold < 0 )
-            {
-                dstRect.top -= threshold;
-                dstRect.bottom -= threshold;
+                int threshold = bitmap.getHeight() - point.y - layout.getHeight();
+                if( threshold < 0 )
+                {
+                    bodyRect.top -= threshold;
+                    bodyRect.bottom -= threshold;
+                }
             }
         }
 
@@ -242,13 +253,42 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
         canvas.clipPath(path);
 
         // draw body image based on position
-        canvas.drawBitmap(bitmap, srcRect, dstRect, paint);
+        canvas.drawBitmap(bitmap, srcRect, bodyRect, paint);
 
         // draw point
         if( this.pointVisibility && (point.x != 0 || point.y != 0) )
         {
             paint.setColor(getResources().getColor(R.color.colorPrimaryDark));
-            canvas.drawCircle(point.x + dstRect.left, point.y + dstRect.top, 6 * getResources().getDisplayMetrics().density, paint);
+            canvas.drawCircle(point.x + bodyRect.left, point.y + bodyRect.top, 6 * getResources().getDisplayMetrics().density, paint);
         }
+    }
+
+    @Override
+    public void setOnClickListener(@androidx.annotation.Nullable OnClickListener listener)
+    {
+        this.clickListener = listener;
+        super.setOnClickListener(listener);
+    }
+    @Override
+    public void onClick(View v) {
+        if( this.clickListener != null ) this.clickListener.onClick(this);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event)
+    {
+        if( !touchable || event.getAction() != MotionEvent.ACTION_DOWN )
+            return false;
+        int x = (int)(event.getX() - bodyRect.left);
+        int y = (int)(event.getY() - bodyRect.top);
+        if( x < selectedRegion.left || y < selectedRegion.top || x > selectedRegion.left + selectedRegion.right || y > selectedRegion.top + selectedRegion.bottom )
+            return false;
+
+        this.autoRegion = false;
+        this.setPointVisibility(true);
+        this.setPoint((int) (x / getResources().getDisplayMetrics().density), (int) (y / getResources().getDisplayMetrics().density));
+        this.invalidate();
+//        Log.i(Fragments.TAG, selectedRegion + " == " + point);
+        return super.onTouchEvent(event);
     }
 }

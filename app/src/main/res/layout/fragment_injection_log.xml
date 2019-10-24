@@ -64,7 +64,8 @@
         app:point="260,300"
         app:pointVisibility="false"
         app:prevVisibility="false"
-        app:raduisMask="0">
+        app:raduisMask="0"
+        app:touchable="true">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/inject_log_inner_shadow_top"

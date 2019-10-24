@@ -10,8 +10,7 @@
         <attr name="nextVisibility" format="boolean" />
         <attr name="prevVisibility" format="boolean" />
         <attr name="point" format="string" />
-<!--    <attr name="prevX" format="integer" />-->
-<!--        <attr name="prevY" format="integer" />-->
+        <attr name="touchable" format="boolean" />
     </declare-styleable>
 
 </resources>
