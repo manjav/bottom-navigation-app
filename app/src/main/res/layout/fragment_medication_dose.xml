@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,7 +13,7 @@
         android:minHeight="164dp">
 
         <TextView
-            android:id="@+id/dose_alarm_title"
+            android:id="@+id/dose_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -31,10 +32,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
             android:gravity="fill_horizontal"
             android:text="@string/medication_dose_message"
             android:textAlignment="gravity"
@@ -42,14 +41,14 @@
             android:textColor="@color/colorMedium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dose_alarm_title" />
+            app:layout_constraintTop_toBottomOf="@+id/dose_title" />
 
         <TextView
             android:id="@+id/dose_start_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="36dp"
             android:layout_marginEnd="8dp"
             android:text="@string/medication_dose_start_title"
             android:textColor="@color/colorPrimary"
@@ -75,10 +74,10 @@
             app:layout_constraintTop_toBottomOf="@+id/dose_start_title" />
 
         <RadioGroup
-            android:id="@+id/radio_group"
+            android:id="@+id/dose_radio_group"
             android:layout_width="0dp"
             android:layout_height="61dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:checkedButton="@id/dose_radio_80"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@+id/dose_message"
@@ -111,7 +110,7 @@
         </RadioGroup>
 
         <com.grantech.cinnagen.solife.controls.PickerInput
-            android:id="@+id/dose_start_date_input"
+            android:id="@+id/dose_start_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -122,19 +121,18 @@
             android:elevation="@dimen/cardview_default_elevation"
             app:layout_constraintEnd_toEndOf="@+id/dose_message"
             app:layout_constraintStart_toStartOf="@+id/dose_message"
-            app:layout_constraintTop_toBottomOf="@id/radio_group"
+            app:layout_constraintTop_toBottomOf="@id/dose_radio_group"
             app:prompt="@string/medication_dose_start_date"
             app:text="@string/date_nexts"
             tools:ignore="PrivateResource"
             tools:targetApi="lollipop" />
 
-
         <TextView
-            android:id="@+id/dose_maintain_title"
+            android:id="@+id/dose_next_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="36dp"
             android:layout_marginEnd="8dp"
             android:text="@string/medication_dose_maintain_title"
             android:textColor="@color/colorPrimary"
@@ -142,26 +140,27 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dose_start_date_input" />
+            app:layout_constraintTop_toBottomOf="@+id/dose_start_input" />
 
         <TextView
-            android:id="@+id/dose_maintain_message"
+            android:id="@+id/dose_next_message"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:gravity="fill_horizontal"
             android:text="@string/medication_dose_maintain_message"
             android:textAlignment="gravity"
             android:textAllCaps="false"
             android:textColor="@color/colorMedium"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/dose_message"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/dose_message"
-            app:layout_constraintTop_toBottomOf="@+id/dose_maintain_title" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dose_next_title" />
 
         <View
-            android:id="@+id/divider_top"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="?android:attr/listDivider"
@@ -176,54 +175,60 @@
             android:choiceMode="singleChoice"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/dose_maintain_message"
+            app:layout_constraintTop_toBottomOf="@id/dose_next_message"
             tools:ignore="NestedScrolling" />
 
         <View
-            android:id="@+id/divider_bottom"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintTop_toBottomOf="@+id/dose_gap_list" />
 
         <com.grantech.cinnagen.solife.controls.PickerInput
-            android:id="@+id/dose_maintain_date_input"
+            android:id="@+id/dose_next_date_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             android:elevation="@dimen/cardview_default_elevation"
-            app:layout_constraintEnd_toEndOf="@+id/dose_message"
-            app:layout_constraintStart_toStartOf="@+id/dose_message"
+            app:layout_constraintEnd_toEndOf="@+id/dose_next_message"
+            app:layout_constraintStart_toStartOf="@+id/dose_next_message"
             app:layout_constraintTop_toBottomOf="@+id/dose_gap_list"
             app:prompt="@string/medication_dose_maintain_date"
             tools:ignore="PrivateResource"
             tools:targetApi="lollipop" />
 
+        <com.grantech.cinnagen.solife.controls.PickerInput
+            android:id="@+id/dose_next_time_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:elevation="@dimen/cardview_default_elevation"
+            app:layout_constraintEnd_toEndOf="@+id/dose_next_date_input"
+            app:layout_constraintStart_toStartOf="@+id/dose_next_date_input"
+            app:layout_constraintTop_toBottomOf="@+id/dose_next_date_input"
+            app:prompt="@string/medication_time_prompt"
+            tools:ignore="PrivateResource"
+            tools:targetApi="lollipop" />
+
         <Button
-            android:id="@+id/dose_date_finish"
+            android:id="@+id/dose_finish"
             style="@style/primaryButton"
             android:layout_width="0dp"
             android:layout_height="64dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
             android:text="@string/app_next"
-            app:layout_constraintEnd_toEndOf="@+id/dose_message"
-            app:layout_constraintStart_toStartOf="@+id/dose_message"
-            app:layout_constraintTop_toBottomOf="@+id/dose_maintain_date_input" />
+            app:layout_constraintEnd_toEndOf="@+id/dose_next_date_input"
+            app:layout_constraintStart_toStartOf="@+id/dose_next_date_input"
+            app:layout_constraintTop_toBottomOf="@+id/dose_next_time_input" />
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dose_date_finish" />
+            app:layout_constraintTop_toBottomOf="@+id/dose_finish" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

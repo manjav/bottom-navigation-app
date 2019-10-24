@@ -19,16 +19,14 @@ import com.grantech.cinnagen.solife.utils.Prefs;
 import com.mohamadamin.persianmaterialdatetimepicker.time.RadialPickerLayout;
 import com.mohamadamin.persianmaterialdatetimepicker.time.TimePickerDialog;
 
-import java.util.TimeZone;
-
 /**
  * Created by ManJav on 1/23/2019.
  */
 
 public class MedicationTimeFragment extends BaseFragment implements TimePickerDialog.OnTimeSetListener
 {
-    private PickerInput maintainTimeInput;
-    private PersianCalendar maintainDate;
+    private PickerInput nextTimeInput;
+    private PersianCalendar nextDate;
 
     @SuppressLint("InflateParams")
     @Override
@@ -42,10 +40,10 @@ public class MedicationTimeFragment extends BaseFragment implements TimePickerDi
     {
         super.onViewCreated(view, savedInstanceState);
 
-        maintainDate = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_NEXT, 0));
-        maintainTimeInput = view.findViewById(R.id.dose_time_input);
-        maintainTimeInput.setText(FontsOverride.convertToPersianDigits( maintainDate.get(PersianCalendar.MINUTE) + " : " + maintainDate.get(PersianCalendar.HOUR_OF_DAY)) );
-        maintainTimeInput.setOnClickListener(this);
+        nextDate = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_NEXT, 0));
+        nextTimeInput = view.findViewById(R.id.dose_time_input);
+        nextTimeInput.setText(FontsOverride.convertToPersianDigits( nextDate.get(PersianCalendar.MINUTE) + " : " + nextDate.get(PersianCalendar.HOUR_OF_DAY)) );
+        nextTimeInput.setOnClickListener(this);
         view.findViewById(R.id.dose_time_finish).setOnClickListener(this);
     }
 
@@ -55,7 +53,7 @@ public class MedicationTimeFragment extends BaseFragment implements TimePickerDi
         switch( view.getId() )
         {
             case R.id.dose_time_input:
-                TimePickerDialog tpd = TimePickerDialog.newInstance(this, maintainDate.get(PersianCalendar.HOUR_OF_DAY), maintainDate.get(PersianCalendar.MINUTE), true);
+                TimePickerDialog tpd = TimePickerDialog.newInstance(this, nextDate.get(PersianCalendar.HOUR_OF_DAY), nextDate.get(PersianCalendar.MINUTE), true);
                 tpd.setOnCancelListener(dialogInterface -> Log.d(Fragments.TAG, "Dialog was cancelled"));
                 tpd.show(activity.getFragmentManager(), null);
                 return;
@@ -68,13 +66,13 @@ public class MedicationTimeFragment extends BaseFragment implements TimePickerDi
     @Override
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute)
     {
-        maintainDate.setPersianDate(
-                maintainDate.getPersianYear(),
-                maintainDate.getPersianMonth(),
-                maintainDate.getPersianDay(),
+        nextDate.setPersianDate(
+                nextDate.getPersianYear(),
+                nextDate.getPersianMonth(),
+                nextDate.getPersianDay(),
                 hourOfDay, minute, 0
                 );
-        maintainTimeInput.setText(FontsOverride.convertToPersianDigits( maintainDate.get(PersianCalendar.MINUTE) + " : " + maintainDate.get(PersianCalendar.HOUR_OF_DAY)) );
-        Prefs.getInstance().setLong(Prefs.KEY_NEXT, maintainDate.getTimeInMillis());
+        nextTimeInput.setText(FontsOverride.convertToPersianDigits( nextDate.get(PersianCalendar.MINUTE) + " : " + nextDate.get(PersianCalendar.HOUR_OF_DAY)) );
+        Prefs.getInstance().setLong(Prefs.KEY_NEXT, nextDate.getTimeInMillis());
     }
 }
