@@ -63,7 +63,7 @@ public class InjectionLogFragment extends InjectionBaseFragment
         {
             if( !board.isPointVisibility() )
             {
-                Toast.makeText(getContext(), "اول شما دوست عزیز!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.injection_log_warn, Toast.LENGTH_LONG).show();
                 return;
             }
 

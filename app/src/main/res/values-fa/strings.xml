@@ -110,5 +110,6 @@
     <string name="app_on">روشن</string>
     <string name="app_off">خاموش</string>
     <string name="app_alarm">هشدارها</string>
+    <string name="injection_log_warn">ابتدا محل تزریق را انتخاب کنید!</string>
 
 </resources>
