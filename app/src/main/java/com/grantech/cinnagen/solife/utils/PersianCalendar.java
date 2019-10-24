@@ -288,7 +288,7 @@ public class PersianCalendar extends GregorianCalendar
     }
 
     public String getPersianLongDateAndTime() {
-        return getPersianLongDate() + " ساعت " + get(HOUR_OF_DAY) + ":" + get(MINUTE) + ":" + get(SECOND);
+        return getPersianLongDate() + " ساعت " + get(HOUR_OF_DAY) + ":" + get(MINUTE)/* + ":" + get(SECOND)*/;
     }
 
     /**

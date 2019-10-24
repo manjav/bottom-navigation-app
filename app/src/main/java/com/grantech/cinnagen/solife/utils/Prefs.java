@@ -13,8 +13,10 @@ public class Prefs
     static public final String KEY_NUM_RUN = "numRun";
     static public final String KEY_DOSE_MG = "doseMG";
     static public final String KEY_DOSE_GAP = "doseGap";
-    static public final String KEY_DOSE_START = "doseTime";
-    static public final String KEY_DOSE_MAINTAIN = "doseMaintain";
+    static public final String KEY_PREV = "prev";
+    static public final String KEY_PREV_X = "prevX";
+    static public final String KEY_PREV_Y = "prevY";
+    static public final String KEY_NEXT = "next";
     static public final String KEY_ALARM_1 = "alarm1";
     static public final String KEY_ALARM_2 = "alarm2";
     static public final String KEY_ALARM_3 = "alarm3";

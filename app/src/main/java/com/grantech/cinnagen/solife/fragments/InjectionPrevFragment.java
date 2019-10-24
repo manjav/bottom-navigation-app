@@ -33,8 +33,8 @@ public class InjectionPrevFragment extends InjectionBaseFragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        PersianCalendar maintainDate = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_DOSE_MAINTAIN, 0));
-        ((TextView)view.findViewById(R.id.inject_prev_time)).setText(FontsOverride.convertToPersianDigits(maintainDate.getPersianLongDateAndTime()));
+        PersianCalendar prev = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_PREV, 0));
+        ((TextView)view.findViewById(R.id.inject_prev_time)).setText(FontsOverride.convertToPersianDigits(prev.getPersianLongDateAndTime()));
     }
 
     @Override

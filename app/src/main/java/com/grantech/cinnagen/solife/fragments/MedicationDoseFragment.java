@@ -22,8 +22,6 @@ import com.grantech.cinnagen.solife.utils.PersianCalendar;
 import com.grantech.cinnagen.solife.utils.Prefs;
 import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
 
-import java.util.TimeZone;
-
 /**
  * Created by ManJav on 1/23/2019.
  */
@@ -32,8 +30,8 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
 {
     private PersianCalendar startDate;
     private PickerInput startDoseInput;
-    private PersianCalendar maintainDate;
-    private PickerInput maintainDoseInput;
+    private PersianCalendar nextDate;
+    private PickerInput nextInput;
 
     @SuppressLint("InflateParams")
     @Override
@@ -52,7 +50,7 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
         radioGroup.setOnCheckedChangeListener((group, checkedId) ->Prefs.getInstance().setInt(Prefs.KEY_DOSE_MG, checkedId==R.id.dose_radio_80 ? 1 : 0));
 
         // start dose date selection
-        startDate = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_DOSE_START, System.currentTimeMillis()));
+        startDate = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_PREV, System.currentTimeMillis()));
         startDoseInput = view.findViewById(R.id.dose_start_date_input);
         startDoseInput.setText(FontsOverride.convertToPersianDigits(startDate.getPersianShortDate()));
         startDoseInput.setOnClickListener(this);
@@ -64,12 +62,12 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
         gapList.setOnItemClickListener(this);
 
         // maintain dose date selection
-        long l = Prefs.getInstance().getLong(Prefs.KEY_DOSE_MAINTAIN, 0);
-        maintainDate = new PersianCalendar(l);
-        maintainDoseInput = view.findViewById(R.id.dose_maintain_date_input);
-        maintainDoseInput.setOnClickListener(this);
+        long l = Prefs.getInstance().getLong(Prefs.KEY_NEXT, 0);
+        nextDate = new PersianCalendar(l);
+        nextInput = view.findViewById(R.id.dose_maintain_date_input);
+        nextInput.setOnClickListener(this);
         if( l > 0 )
-            maintainDoseInput.setText(FontsOverride.convertToPersianDigits(maintainDate.getPersianShortDate()));
+            nextInput.setText(FontsOverride.convertToPersianDigits(nextDate.getPersianShortDate()));
 
         view.findViewById(R.id.dose_date_finish).setOnClickListener(this);
     }
@@ -96,10 +94,14 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
     {
         DatePickerDialog datePicker;
         if( tag.equals("start") )
+        {
             datePicker = DatePickerDialog.newInstance(this, startDate.getPersianYear(), startDate.getPersianMonth(), startDate.getPersianDay());
+        }
         else
-            datePicker = DatePickerDialog.newInstance(this, maintainDate.getPersianYear(), maintainDate.getPersianMonth(), maintainDate.getPersianDay());
-
+        {
+            nextDate.setTimeInMillis(startDate.getTimeInMillis() + Prefs.getInstance().getInt(Prefs.KEY_DOSE_GAP, 14) * 24 * 3600000);
+            datePicker = DatePickerDialog.newInstance(this, nextDate.getPersianYear(), nextDate.getPersianMonth(), nextDate.getPersianDay());
+        }
         datePicker.setOnCancelListener(dialogInterface -> Log.d(Fragments.TAG, "Dialog was cancelled"));
         datePicker.show(activity.getFragmentManager(), tag);
     }
@@ -111,13 +113,13 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
         {
             startDate.setPersianDate(year, monthOfYear, dayOfMonth);
             startDoseInput.setText(FontsOverride.convertToPersianDigits(startDate.getPersianShortDate()));
-            Prefs.getInstance().setLong(Prefs.KEY_DOSE_START, startDate.getTimeInMillis());
+            Prefs.getInstance().setLong(Prefs.KEY_PREV, startDate.getTimeInMillis());
         }
         else
         {
-            maintainDate.setPersianDate(year, monthOfYear, dayOfMonth);
-            maintainDoseInput.setText(FontsOverride.convertToPersianDigits(maintainDate.getPersianShortDate()));
-            Prefs.getInstance().setLong(Prefs.KEY_DOSE_MAINTAIN, maintainDate.getTimeInMillis());
+            nextDate.setPersianDate(year, monthOfYear, dayOfMonth);
+            nextInput.setText(FontsOverride.convertToPersianDigits(nextDate.getPersianShortDate()));
+            Prefs.getInstance().setLong(Prefs.KEY_NEXT, nextDate.getTimeInMillis());
         }
     }
 

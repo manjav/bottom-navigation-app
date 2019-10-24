@@ -40,6 +40,7 @@ public class InjectionLogFragment extends InjectionBaseFragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
+        view.setOnClickListener(this);
 
         // set region
         Point selectedRegion = new Point(180, 40);
@@ -50,10 +51,8 @@ public class InjectionLogFragment extends InjectionBaseFragment
         }
         board = view.findViewById(R.id.injection_log_view);
         board.setPoint(selectedRegion.x, selectedRegion.y);
-        board.setOnClickListener(this);
 
-        PersianCalendar maintainDate = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_DOSE_MAINTAIN, 0));
-        ((PickerInput)view.findViewById(R.id.inject_log_pickerInput)).setText(FontsOverride.convertToPersianDigits(maintainDate.getPersianLongDateAndTime()));
+        ((PickerInput)view.findViewById(R.id.inject_log_pickerInput)).setText(FontsOverride.convertToPersianDigits(new PersianCalendar().getPersianLongDateAndTime()));
     }
 
     @Override
@@ -67,13 +66,18 @@ public class InjectionLogFragment extends InjectionBaseFragment
                 return;
             }
 
+            Prefs.getInstance().setLong(Prefs.KEY_PREV, System.currentTimeMillis());
+            Prefs.getInstance().setLong(Prefs.KEY_NEXT, System.currentTimeMillis() + Prefs.getInstance().getInt(Prefs.KEY_DOSE_GAP, 14) * 24 * 3600000);
+            Prefs.getInstance().setInt(Prefs.KEY_PREV_X, (int) (board.getPoint().x/getResources().getDisplayMetrics().density));
+            Prefs.getInstance().setInt(Prefs.KEY_PREV_Y, (int) (board.getPoint().y/getResources().getDisplayMetrics().density));
+//            Log.i(Fragments.TAG, board.getPoint().x + " === " + board.getPoint().y);
+
             activity.finish();
             Fragments.getInstance().clearStack(activity);
             return;
         }
 
         board.setPointVisibility(true);
-        board.invalidate();
         submitButton.setAlpha(1);
     }
 }

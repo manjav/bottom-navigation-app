@@ -42,7 +42,7 @@ public class MedicationTimeFragment extends BaseFragment implements TimePickerDi
     {
         super.onViewCreated(view, savedInstanceState);
 
-        maintainDate = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_DOSE_MAINTAIN, 0));
+        maintainDate = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_NEXT, 0));
         maintainTimeInput = view.findViewById(R.id.dose_time_input);
         maintainTimeInput.setText(FontsOverride.convertToPersianDigits( maintainDate.get(PersianCalendar.MINUTE) + " : " + maintainDate.get(PersianCalendar.HOUR_OF_DAY)) );
         maintainTimeInput.setOnClickListener(this);
@@ -75,6 +75,6 @@ public class MedicationTimeFragment extends BaseFragment implements TimePickerDi
                 hourOfDay, minute, 0
                 );
         maintainTimeInput.setText(FontsOverride.convertToPersianDigits( maintainDate.get(PersianCalendar.MINUTE) + " : " + maintainDate.get(PersianCalendar.HOUR_OF_DAY)) );
-        Prefs.getInstance().setLong(Prefs.KEY_DOSE_MAINTAIN, maintainDate.getTimeInMillis());
+        Prefs.getInstance().setLong(Prefs.KEY_NEXT, maintainDate.getTimeInMillis());
     }
 }
