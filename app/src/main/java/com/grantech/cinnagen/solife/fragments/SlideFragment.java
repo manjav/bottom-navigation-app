@@ -22,6 +22,8 @@ import java.util.Objects;
 public class SlideFragment extends Fragment
 {
     private final int position;
+    private ImageView slideImage;
+
     SlideFragment(int position)
     {
         this.position = position;
@@ -38,7 +40,14 @@ public class SlideFragment extends Fragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
+        slideImage = view.findViewById(R.id.slide_image);
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
         int id = getResources().getIdentifier("slide_" + position, "mipmap", Objects.requireNonNull(getContext()).getPackageName());
-        ((ImageView)view.findViewById(R.id.slide_image)).setImageResource(id);
+        slideImage.setImageResource(id);
     }
 }
