@@ -2,6 +2,7 @@ package com.grantech.cinnagen.solife.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +14,16 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.grantech.cinnagen.solife.R;
+import com.grantech.cinnagen.solife.utils.Fragments;
+import com.grantech.cinnagen.solife.utils.PersianCalendar;
+import com.grantech.cinnagen.solife.utils.Prefs;
 
 import java.util.Objects;
 
 import ir.mirrajabi.persiancalendar.core.Constants;
 import ir.mirrajabi.persiancalendar.core.PersianCalendarHandler;
 import ir.mirrajabi.persiancalendar.core.adapters.CalendarAdapter;
+import ir.mirrajabi.persiancalendar.core.models.CalendarEvent;
 import ir.mirrajabi.persiancalendar.core.models.PersianDate;
 
 /**
@@ -46,6 +51,17 @@ public class DateFragment extends BaseFragment implements ViewPager.OnPageChange
         this.calendar = PersianCalendarHandler.getInstance(getContext());
         this.calendar.setOnEventUpdateListener(this::createViewPagers);
         this.calendar.setOnMonthChangedListener(this::changeHeader);
+
+        // create events
+        int gap = Prefs.getInstance().getInt(Prefs.KEY_DOSE_GAP, 14);
+        long next = Prefs.getInstance().getLong(Prefs.KEY_NEXT, 0);
+        PersianCalendar p = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_PREV, 0));
+        this.calendar.addLocalEvent(new CalendarEvent(new PersianDate(p.getPersianYear(), p.getPersianMonth() + 1, p.getPersianDay()), "", false));
+        for (long i = 0; i <400; i++)
+        {
+            p.setTimeInMillis(next + i * gap * 24 * 3600000);
+            this.calendar.addLocalEvent(new CalendarEvent(new PersianDate(p.getPersianYear(), p.getPersianMonth() + 1, p.getPersianDay()), "", false));
+        }
 
         this.changeHeader(calendar.getToday());
         this.createViewPagers();

@@ -38,7 +38,6 @@ public class MonthFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        Log.i("aa", "MonthFragment=> creted");
         mPersianCalendarHandler = PersianCalendarHandler.getInstance(getContext());
         View view = inflater.inflate(R.layout.fragment_month, container, false);
         assert getArguments() != null;

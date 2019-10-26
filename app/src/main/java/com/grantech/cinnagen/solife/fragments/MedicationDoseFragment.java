@@ -102,11 +102,11 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
         switch( view.getId() )
         {
             case R.id.dose_start_input:
-                changeDate("start");
+                changeDate("prev");
                 return;
 
             case R.id.dose_next_date_input:
-                changeDate("maintain");
+                changeDate("next");
                 return;
 
             case R.id.dose_next_time_input:
@@ -130,7 +130,7 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
     private void changeDate(String tag)
     {
         DatePickerDialog datePicker;
-        if( tag.equals("start") )
+        if( tag.equals("prev") )
         {
             datePicker = DatePickerDialog.newInstance(this, prevDate.getPersianYear(), prevDate.getPersianMonth(), prevDate.getPersianDay());
         }
@@ -146,11 +146,15 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth)
     {
-        if( view.getTag().equals("start") )
+        if( view.getTag().equals("prev") )
         {
             prevDate.setPersianDate(year, monthOfYear, dayOfMonth);
             startDateInput.setText(FontsOverride.convertToPersianDigits(prevDate.getPersianShortDate()));
             Prefs.getInstance().setLong(Prefs.KEY_PREV, prevDate.getTimeInMillis());
+
+            nextDate.setTimeInMillis(prevDate.getTimeInMillis() + Prefs.getInstance().getInt(Prefs.KEY_DOSE_GAP, 14) * 24 * 3600000);
+            nextDateInput.setText(FontsOverride.convertToPersianDigits(nextDate.getPersianShortDate()));
+            Prefs.getInstance().setLong(Prefs.KEY_NEXT, nextDate.getTimeInMillis());
         }
         else
         {
