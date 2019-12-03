@@ -96,6 +96,7 @@ public class InjectionTimerFragment extends InjectionBaseFragment
         {
             timer.cancel();
             toggleButton.setText(R.string.app_start);
+            submitButton.setText(R.string.injection_timer_skip);
             inProgress = false;
             remainingText.setVisibility(View.INVISIBLE);
             return;
@@ -118,6 +119,7 @@ public class InjectionTimerFragment extends InjectionBaseFragment
         toggleButton.setText(R.string.app_pause);
         remainingText.setVisibility(View.VISIBLE);
         restoreButton.setBackgroundResource(R.drawable.rect_round_button_white);
+        submitButton.setText(R.string.injection_timer_continue);
     }
 
     private void resetCountdown() {
@@ -133,6 +135,7 @@ public class InjectionTimerFragment extends InjectionBaseFragment
         toggleButton.setText(R.string.app_start);
         restoreButton.setBackgroundResource(R.drawable.rect_round_button_gray);
         remainingText.setVisibility(View.INVISIBLE);
+        submitButton.setText(R.string.injection_timer_skip);
 
         traceTime();
     }

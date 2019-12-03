@@ -40,11 +40,11 @@
         android:id="@+id/inject_timer_timer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/iransans"
-        android:text="@string/app_30_00"
+        android:gravity="center_horizontal"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="98sp"
@@ -58,22 +58,23 @@
         android:id="@+id/inject_timer_plus"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="44dp"
-        android:background="@drawable/rect_round_button_white"
-        android:text="@string/app_plus"
+        android:background="@drawable/rect_round_button_gray"
+        android:foreground="@drawable/ic_plus"
+        android:gravity="center"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/space4"
         app:layout_constraintTop_toTopOf="@+id/inject_timer_timer" />
 
     <Button
-        android:id="@+id/inject_timera_mines"
+        android:id="@+id/inject_timer_mines"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginTop="42dp"
-        android:background="@drawable/rect_round_button_gray"
-        android:text="@string/app_minus"
+        android:background="@drawable/rect_round_button_white"
+        android:foreground="@drawable/ic_mines"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/inject_timer_plus"
@@ -81,7 +82,7 @@
 
 
     <Button
-        android:id="@+id/inject_timer_start"
+        android:id="@+id/inject_timer_toggle"
         android:layout_width="128dp"
         android:layout_height="48dp"
         android:layout_marginBottom="32dp"
@@ -101,7 +102,23 @@
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/inject_timer_timer"
-        app:layout_constraintTop_toTopOf="@+id/inject_timer_start" />
+        app:layout_constraintTop_toTopOf="@+id/inject_timer_toggle" />
+
+    <TextView
+        android:id="@+id/inject_timer_remainig"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:text="@string/app_remaining"
+        android:textAlignment="center"
+        android:textColor="@color/colorMedium"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/inject_timer_timer"
+        app:layout_constraintStart_toStartOf="@+id/inject_timer_timer"
+        app:layout_constraintTop_toTopOf="@+id/inject_timer_timer"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/submit_button"
@@ -111,10 +128,17 @@
         android:layout_marginStart="28dp"
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="28dp"
-        android:text="@string/injection_timer_submit"
+        android:text="@string/injection_timer_skip"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Space
+        android:id="@+id/space4"
+        android:layout_width="32dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="354dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
