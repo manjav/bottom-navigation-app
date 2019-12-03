@@ -10,11 +10,11 @@
         android:id="@+id/about_text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:lineSpacingExtra="8sp"
         android:text="@string/about_text"
+        app:layout_constraintBottom_toTopOf="@+id/about_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,10 +30,9 @@
         android:id="@+id/about_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:background="@color/colorWhite"
         android:entries="@array/about_list_data"
-        app:layout_constraintTop_toBottomOf="@+id/about_text"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
