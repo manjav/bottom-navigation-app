@@ -177,6 +177,39 @@ public class Fragments
         return null;
     }
 
+    public int getDimId(int position)
+    {
+        switch( position )
+        {
+            case 0: return R.dimen.position_home_injection;
+            case 1: return R.dimen.position_home_date;
+            case 2: return R.dimen.position_home_tips;
+            case 3: return R.dimen.position_home_more;
+
+            case 10: return R.dimen.position_welcome;
+            case 11: return R.dimen.position_medication_dose;
+            case 12: return R.dimen.position_medication_time;
+            case 13: return R.dimen.position_medication_alarms;
+
+            case 21: return R.dimen.position_injection_slides;
+            case 22: return R.dimen.position_injection_timer;
+            case 20: return R.dimen.position_injection_start;
+            case 23: return R.dimen.position_injection_prep;
+            case 24: return R.dimen.position_injection_tips;
+            case 25: return R.dimen.position_injection_prev;
+            case 26: return R.dimen.position_injection_steps;
+            case 27: return R.dimen.position_injection_body;
+            case 28: return R.dimen.position_injection_log;
+
+            case 32: return R.dimen.position_misc_faq;
+            case 34: return R.dimen.position_misc_terms;
+            case 31: return R.dimen.position_misc_safety;
+            case 33: return R.dimen.position_misc_prescribing;
+        }
+        return 0;
+    }
+
+
     private int getAnimationIn(boolean isBack)
     {
         if( isBack )
