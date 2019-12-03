@@ -1,6 +1,8 @@
 package com.grantech.cinnagen.solife.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +33,9 @@ public class MoreFragment extends BaseFragment
     {
         super.onViewCreated(view, savedInstanceState);
 
+        view.findViewById(R.id.about_phone_icon).setOnClickListener(this);
+        view.findViewById(R.id.about_phone_text).setOnClickListener(this);
+
         ListView listView = view.findViewById(R.id.about_list);
         listView.setOnItemClickListener((parent, view1, position, id) -> {
 
@@ -53,7 +58,13 @@ public class MoreFragment extends BaseFragment
                     Fragments.getInstance().loadFragment(activity, R.dimen.position_misc_terms);
                     return;
             }
-
         });
+    }
+
+    @Override
+    public void onClick(View view)
+    {
+        super.onClick(view);
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("tel:+9821-42-593")));
     }
 }

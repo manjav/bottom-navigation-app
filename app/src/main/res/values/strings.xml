@@ -27,7 +27,9 @@
     <string name="home_prep">Prep and Injection</string>
     <string name="home_medication">Medication Settings</string>
     <string name="home_alarm">Alarm Settings</string>
-    <string name="about_text">سولایف نسخه ۱,۰,۰\nتلفن مرکز حمایت از بیمار ارکیدلایف: ۴۲۵۹۳-۰۲۱</string>
+
+    <string name="about_text">سولایف نسخه ۱,۰,۰\nتلفن مرکز حمایت از بیمار ارکیدلایف:</string>
+    <string name="about_tel">۰۲۱-۴۲۵۹۳</string>
 
     <string name="welcome_title">Welcome to Solife</string>
     <string name="welcome_message">" این یک نرم افزار دستیار پزشکی نیست و صرفا برای سازماندهی مصرف داروی سینورا می باشد. لطفا قوانین مربوط به استفاده از این نرم افزار رو مطالعه کنید و سپس موافقت خود را با ادامه کار با نرم افزار.اعلام کنید"</string>
