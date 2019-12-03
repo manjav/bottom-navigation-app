@@ -8,12 +8,9 @@
     <string name="app_name">Solife</string>
     <string name="app_next">Next</string>
     <string name="app_save">Save</string>
-    <string name="app_start">شروع</string>
-    <string name="app_restore">بازیابی</string>
+    <string name="app_start">Start</string>
+    <string name="app_restore">Restore</string>
     <string name="app_today">Today</string>
-    <string name="app_plus">+</string>
-    <string name="app_minus">-</string>
-    <string name="app_30_00">30:00</string>
 
     <string name="home_injection">Injection</string>
     <string name="home_calendar">Calendar</string>
@@ -107,9 +104,11 @@
 
     <string name="injection_log_title">انتخاب محل تزریق: مرحله ۲ از ۲</string>
     <string name="injection_log_message">جهت نمایش محل تزریق امروز خود، یکی از خانه‌های مربعی شکل زیر را انتخاب کنید.</string>
-    <string name="app_on">روشن</string>
-    <string name="app_off">خاموش</string>
-    <string name="app_alarm">هشدارها</string>
+    <string name="app_on">On</string>
+    <string name="app_off">Off</string>
+    <string name="app_alarm">Alarm</string>
+    <string name="app_pause">Pause</string>
+    <string name="app_remaining">Remaining</string>
     <string name="injection_log_warn">ابتدا محل تزریق را انتخاب کنید!</string>
 
 </resources>
