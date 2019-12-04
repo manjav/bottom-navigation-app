@@ -41,6 +41,8 @@
     <string name="medication_dose_start_message">دوز اولیه تجویز شده از داروی سینورا® برای شما چند میلی‌گرم است؟ هر فیزیوجکت™ (ابزار دارورسان خودکار) داروی سینورا® حاوی 40 میلی‌گرم داروی آدالیمومب می‌باشد.</string>
     <string name="medication_dose_40">40 mg</string>
     <string name="medication_dose_80">80 mg</string>
+    <string name="medication_dose_40_d">(یک عدد فیزیوجکت™)</string>
+    <string name="medication_dose_80_d">(دو عدد فیزیوجکت™)</string>
     <string name="medication_dose_start_date">لطفا تاریخ تزریق دوز اولیه سینورا® را انتخاب کنید.</string>
     <string name="medication_dose_maintain_title">دوز نگهدارنده (ادامه درمان)</string>
     <string name="medication_dose_maintain_message">تزریق دوز نگهدارنده خود را با چه فاصله زمانی انجام می‌دهید؟</string>

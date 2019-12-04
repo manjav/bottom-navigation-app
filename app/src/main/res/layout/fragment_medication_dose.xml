@@ -73,6 +73,36 @@
             app:layout_constraintStart_toStartOf="@+id/dose_message"
             app:layout_constraintTop_toBottomOf="@+id/dose_start_title" />
 
+        <TextView
+            android:id="@+id/dose_radio_40_d"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="48dp"
+            android:gravity="fill_horizontal"
+            android:text="@string/medication_dose_40_d"
+            android:textAllCaps="false"
+            android:textColor="@color/colorDark"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/dose_radio_group"
+            app:layout_constraintTop_toTopOf="@+id/dose_radio_group" />
+
+        <TextView
+            android:id="@+id/dose_radio_80_d"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="48dp"
+            android:gravity="fill_horizontal"
+            android:text="@string/medication_dose_80_d"
+            android:textAllCaps="false"
+            android:textColor="@color/colorDark"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/dose_start_title"
+            app:layout_constraintTop_toTopOf="@+id/dose_radio_group" />
+
         <RadioGroup
             android:id="@+id/dose_radio_group"
             android:layout_width="0dp"
