@@ -5,12 +5,15 @@ import android.content.SharedPreferences;
 
 import androidx.annotation.Nullable;
 
+import java.util.TimeZone;
+
 public class Prefs
 {
     private SharedPreferences sharedPref;
 
     static private Prefs instance;
     static public final String KEY_NUM_RUN = "numRun";
+    static public final String KEY_LOC = "loc";
     static public final String KEY_DOSE_MG = "doseMG";
     static public final String KEY_DOSE_GAP = "doseGap";
     static public final String KEY_PREV = "prev";
@@ -30,6 +33,20 @@ public class Prefs
         instance = new Prefs();
         instance.sharedPref = context.getSharedPreferences("solife", Context.MODE_PRIVATE);
 
+        // locale
+        if( !instance.contains(KEY_LOC) )
+            instance.setString(KEY_LOC, getDefaultLocale());
+    }
+
+    private static String getDefaultLocale() {
+        switch( TimeZone.getDefault().getID() )
+        {
+            case "Asia/Kabul":
+            case "Asia/Tehran":
+            case "Asia/Dushanbe":
+                return "fa";
+        }
+        return "en";
     }
 
     public boolean contains(String key)

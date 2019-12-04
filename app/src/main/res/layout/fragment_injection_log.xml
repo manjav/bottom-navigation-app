@@ -31,7 +31,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/injection_log_message"
-        android:textColor="@color/colorDark"
+        android:textColor="@color/colorMedium"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"

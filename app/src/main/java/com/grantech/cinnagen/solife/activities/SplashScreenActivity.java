@@ -18,14 +18,15 @@ public class SplashScreenActivity extends AppCompatActivity
 {
     protected void onCreate(Bundle savedInstanceState)
     {
-        // default localization is farsi
-        Fragments.getInstance().locale = new Locale("fa");
+        Prefs.setInstance(getApplicationContext());
+
+        // change localization
+        Fragments.getInstance().locale = new Locale(Prefs.getInstance().getString(Prefs.KEY_LOC, "fa"));
         Locale.setDefault(Fragments.getInstance().locale);
         Configuration config = new Configuration();
         config.locale = Fragments.getInstance().locale;
         Resources res = getApplicationContext().getResources();
         res.updateConfiguration(config, res.getDisplayMetrics());
-        Prefs.setInstance(getApplicationContext());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
