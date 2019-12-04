@@ -84,6 +84,11 @@
 
     <string name="injection_slides_title">تزریق صحیح سینورا®</string>
     <string name="injection_slides_message">در این تصاویر نحوه تزریق صحیح سینورا® نمایش داده شده است.</string>
+    <string name="injection_slides_0">سطح مورد نظر از پوست را که برای تزریق انتخاب کرده‌اید با پنبه آغشته به الکل ضدعفونی کنید.</string>
+    <string name="injection_slides_1">درپوش دستگاه را به صورت مستقیم به سمت بیرون بکشید و از پیچاندن درپوش به روی دستگاه، جداً خودداری کنید.</string>
+    <string name="injection_slides_2">پوست را با انگشت شست و اشاره گرفته و برآمدگی کوچکی روی آن ایجاد کنید.</string>
+    <string name="injection_slides_3">دستگاه را با زاویه 90 درجه بر روی پوست قرار داده و قسمت شفاف دستگاه را به پوست فشار دهید تا دکمه زرد رنگ بالای دستگاه عمل کند. در صورت عدم اعمال فشار مناسب، دستگاه عمل نخواهد کرد.</string>
+    <string name="injection_slides_4">دکمه زرد رنگ را فشار دهید. تزریق 10 ثانیه به طول می‌انجامد. دستگاه را در این مدت از سطح پوست جابجا نکنید.</string>
 
     <string name="injection_steps">مراحل تزریق</string>
     <string name="injection_step_0">دست های خود را با آب و صابون بشویید.</string>

@@ -84,6 +84,11 @@
 
     <string name="injection_slides_title">تزریق صحیح سینورا®</string>
     <string name="injection_slides_message">در این تصاویر نحوه تزریق صحیح سینورا® نمایش داده شده است.</string>
+    <string name="injection_slides_0">سطح مورد نظر از پوست را که برای تزریق انتخاب کرده‌اید با پنبه آغشته به الکل ضدعفونی کنید.</string>
+    <string name="injection_slides_1">سطح مورد نظر از پوست را که برای تزریق انتخاب کرده‌اید با پنبه آغشته به الکل ضدعفونی کنید.</string>
+    <string name="injection_slides_2">سطح مورد نظر از پوست را که برای تزریق انتخاب کرده‌اید با پنبه آغشته به الکل ضدعفونی کنید.</string>
+    <string name="injection_slides_3">سطح مورد نظر از پوست را که برای تزریق انتخاب کرده‌اید با پنبه آغشته به الکل ضدعفونی کنید.</string>
+    <string name="injection_slides_4">سطح مورد نظر از پوست را که برای تزریق انتخاب کرده‌اید با پنبه آغشته به الکل ضدعفونی کنید.</string>
 
     <string name="injection_steps">مراحل تزریق</string>
     <string name="injection_step_0">دست های خود را با آب و صابون بشویید.</string>

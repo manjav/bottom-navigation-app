@@ -27,7 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:text="@string/injection_slides_message"
         android:textColor="@color/colorDark"
@@ -39,16 +39,37 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/inject_slides_slider"
         android:layout_width="0dp"
-        android:layout_height="240dp"
+        android:layout_height="280dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/inject_slides_indicator"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </androidx.viewpager.widget.ViewPager>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/inject_slides_shadow_top"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:src="@drawable/rect_shadow_bottom"
+        app:layout_constraintBottom_toTopOf="@+id/inject_slides_slider"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/inject_slides_shadow_bot"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:src="@drawable/rect_shadow_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inject_slides_slider" />
 
     <me.relex.circleindicator.CircleIndicator
         android:id="@+id/inject_slides_indicator"
         android:layout_width="0dp"
-        android:layout_height="32dp"
-        android:layout_marginBottom="16dp"
+        android:layout_height="16dp"
         app:ci_drawable="@drawable/circle_event_prev_dark"
         app:ci_drawable_unselected="@drawable/circle_event_prev"
         app:layout_constraintBottom_toTopOf="@+id/submit_button"
