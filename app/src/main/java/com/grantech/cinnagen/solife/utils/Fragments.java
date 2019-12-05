@@ -191,9 +191,9 @@ public class Fragments
             case 12: return R.dimen.position_medication_time;
             case 13: return R.dimen.position_medication_alarms;
 
+            case 20: return R.dimen.position_injection_start;
             case 21: return R.dimen.position_injection_slides;
             case 22: return R.dimen.position_injection_timer;
-            case 20: return R.dimen.position_injection_start;
             case 23: return R.dimen.position_injection_prep;
             case 24: return R.dimen.position_injection_tips;
             case 25: return R.dimen.position_injection_prev;
@@ -201,10 +201,10 @@ public class Fragments
             case 27: return R.dimen.position_injection_body;
             case 28: return R.dimen.position_injection_log;
 
-            case 32: return R.dimen.position_misc_faq;
-            case 34: return R.dimen.position_misc_terms;
             case 31: return R.dimen.position_misc_safety;
+            case 32: return R.dimen.position_misc_faq;
             case 33: return R.dimen.position_misc_prescribing;
+            case 34: return R.dimen.position_misc_terms;
         }
         return 0;
     }
