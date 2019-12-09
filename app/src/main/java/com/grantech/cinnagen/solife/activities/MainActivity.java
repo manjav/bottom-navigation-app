@@ -1,7 +1,9 @@
 package com.grantech.cinnagen.solife.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -58,6 +60,8 @@ public class MainActivity extends BaseActivity
             Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(stackCount > 1);
             if( Fragments.getInstance().oldPosition == 0 ) // if home back
                 getSupportActionBar().hide();
+            else
+                ((AppCompatTextView) findViewById(R.id.toolbar_title)).setText(Fragments.getInstance().getTitle(Fragments.getInstance().getDimId(Fragments.getInstance().oldPosition)));
             fragmentManager.popBackStack();
             transaction.commit();
             return;

@@ -103,7 +103,7 @@ public class Fragments
         return true;
     }
 
-    private int getTitle(int position)
+    public int getTitle(int position)
     {
         if( position >= 20 && position < 30 )
             return R.string.home_injection;
