@@ -50,7 +50,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inject_prev_time"
         app:nextVisibility="false"
-        app:point="260,320"
+        app:point="280,320"
         app:pointVisibility="true"
         app:prevVisibility="false"
         app:raduisMask="0">
