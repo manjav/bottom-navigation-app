@@ -145,7 +145,8 @@ public class PersianCalendar extends GregorianCalendar
      */
     public PersianCalendar(long millis) {
         setTimeInMillis(millis);
-        setTimeZone(TimeZone.getTimeZone("GMT"));
+        setTimeZone(TimeZone.getDefault());
+//        setTimeZone(TimeZone.getTimeZone("GMT"));
     }
 
     /**
@@ -158,7 +159,8 @@ public class PersianCalendar extends GregorianCalendar
      * GregorianCalendar by calling setTimeZone()
      */
     public PersianCalendar() {
-        setTimeZone(TimeZone.getTimeZone("GMT"));
+        setTimeZone(TimeZone.getDefault());
+//        setTimeZone(TimeZone.getTimeZone("GMT"));
     }
 
     /**
@@ -287,8 +289,11 @@ public class PersianCalendar extends GregorianCalendar
         return getPersianWeekDayName() + "، " + this.persianDay + " " + getPersianMonthName() + " " + this.persianYear;
     }
 
+    public String getPersianShortTime() {
+        return formatToMilitary(get(HOUR_OF_DAY)) + ":" + formatToMilitary(get(MINUTE));
+    }
     public String getPersianLongDateAndTime() {
-        return getPersianLongDate() + " ساعت " + get(HOUR_OF_DAY) + ":" + get(MINUTE)/* + ":" + get(SECOND)*/;
+        return getPersianLongDate() + " ساعت " + formatToMilitary(get(HOUR_OF_DAY)) + ":" + formatToMilitary(get(MINUTE))/* + ":" + get(SECOND)*/;
     }
 
     /**

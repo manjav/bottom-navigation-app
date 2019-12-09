@@ -71,7 +71,7 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
             startDateInput.setVisibility(View.GONE);
 
             nextTimeInput.setOnClickListener(this);
-            nextTimeInput.setText(FontsOverride.convertToPersianDigits( nextDate.get(PersianCalendar.MINUTE) + " : " + nextDate.get(PersianCalendar.HOUR_OF_DAY)) );
+            nextTimeInput.setText(FontsOverride.convertToPersianDigits(nextDate.getPersianShortTime()) );
         }
         else
         {
