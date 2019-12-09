@@ -51,7 +51,7 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
 
         Button submitButton = view.findViewById(R.id.dose_finish);
         prevDate = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_PREV, System.currentTimeMillis()));
-        nextDate = new PersianCalendar(prevDate.getTimeInMillis() + Prefs.getInstance().getInt(Prefs.KEY_DOSE_GAP, 14) * 24 * 3600000);
+        nextDate = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_NEXT, prevDate.getTimeInMillis() + Prefs.getInstance().getInt(Prefs.KEY_DOSE_GAP, 14) * 24 * 3600000));
 
         RadioGroup radioGroup = view.findViewById(R.id.dose_radio_group);
         startDateInput = view.findViewById(R.id.dose_start_input);
