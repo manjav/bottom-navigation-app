@@ -92,7 +92,7 @@ public class Fragments
         if( newPosition != 0 )
         {
             actionBar.show();
-            actionBar.setDisplayHomeAsUpEnabled(newPosition > 3);
+            actionBar.setDisplayHomeAsUpEnabled(newPosition > 3 && position != R.dimen.position_welcome );
             ((AppCompatTextView) activity.findViewById(R.id.toolbar_title)).setText(title);
         }
         else
