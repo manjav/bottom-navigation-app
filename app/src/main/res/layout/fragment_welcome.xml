@@ -15,7 +15,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="128dp"
         android:layout_marginEnd="8dp"
-        android:text="@string/welcome_title"
+        android:text="@string/home_welcome_title"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -27,16 +27,14 @@
         android:id="@+id/welcomeMessage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="32dp"
         android:gravity="fill_horizontal"
-        android:textAlignment="gravity"
         android:text="@string/welcome_message"
+        android:textAlignment="gravity"
         android:textColor="@color/colorMedium"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeTitle" />
@@ -45,13 +43,12 @@
         android:id="@+id/welcome_terms_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="8dp"
         android:text="@string/welcome_terms"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/welcome_accept_button"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/welcomeMessage"
         app:layout_constraintTop_toBottomOf="@+id/welcomeMessage" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -69,12 +66,10 @@
         style="@style/primaryButton"
         android:layout_width="0dp"
         android:layout_height="64dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:text="@string/welcome_accept"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/welcomeMessage"
+        app:layout_constraintStart_toStartOf="@+id/welcomeMessage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
