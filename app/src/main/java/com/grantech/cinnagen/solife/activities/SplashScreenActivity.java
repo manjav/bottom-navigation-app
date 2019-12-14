@@ -2,7 +2,6 @@ package com.grantech.cinnagen.solife.activities;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -22,11 +21,10 @@ public class SplashScreenActivity extends AppCompatActivity
 
         // change localization
         Fragments.getInstance().locale = new Locale(Prefs.getInstance().getString(Prefs.KEY_LOC, "fa"));
-        Locale.setDefault(Fragments.getInstance().locale);
-        Configuration config = new Configuration();
-        config.locale = Fragments.getInstance().locale;
-        Resources res = getApplicationContext().getResources();
-        res.updateConfiguration(config, res.getDisplayMetrics());
+        Configuration configuration = getResources().getConfiguration();
+        configuration.setLocale(Fragments.getInstance().locale);
+        configuration.setLayoutDirection(Fragments.getInstance().locale);
+        getResources().updateConfiguration(configuration, getResources().getDisplayMetrics());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
@@ -36,8 +34,7 @@ public class SplashScreenActivity extends AppCompatActivity
             //The following code will execute after the 5 seconds.
             try {
                 //Go to next page i.e, start the next activity.
-
-                Intent intent = null;
+                Intent intent;
                 if( Prefs.getInstance().contains(Prefs.KEY_NUM_RUN) )
                 {
                     intent = new Intent(getApplicationContext(), MainActivity.class);
