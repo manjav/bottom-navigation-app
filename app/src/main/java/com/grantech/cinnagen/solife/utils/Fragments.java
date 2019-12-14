@@ -114,7 +114,7 @@ public class Fragments
             case R.dimen.position_home_tips:    return R.string.home_tips;
             case R.dimen.position_home_more:    return R.string.home_more;
 
-            case R.dimen.position_welcome:   return R.string.welcome_title;
+            case R.dimen.position_welcome:   return R.string.welcome_action;
             case R.dimen.position_medication_dose:
             case R.dimen.position_medication_time:   return R.string.home_medication;
             case R.dimen.position_medication_alarms:   return R.string.home_alarm;
