@@ -14,7 +14,6 @@
     <string name="app_on">روشن</string>
     <string name="app_off">خاموش</string>
     <string name="app_alarm">هشدارها</string>
-    <string name="injection_log_warn">ابتدا محل تزریق را انتخاب کنید!</string>
     <string name="app_remaining">زمان باقیمانده</string>
 
     <string name="home_injection">تزریق</string>
@@ -122,5 +121,6 @@
 
     <string name="injection_log_title">انتخاب محل تزریق: مرحله ۲ از ۲</string>
     <string name="injection_log_message">جهت نمایش محل تزریق امروز خود، یکی از خانه‌های مربعی شکل زیر را انتخاب کنید.</string>
+    <string name="injection_log_warn">ابتدا محل تزریق را انتخاب کنید!</string>
 
 </resources>
