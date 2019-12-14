@@ -11,6 +11,11 @@
     <string name="app_start">Start</string>
     <string name="app_restore">Restore</string>
     <string name="app_today">Today</string>
+    <string name="app_on">On</string>
+    <string name="app_off">Off</string>
+    <string name="app_alarm">Alarm</string>
+    <string name="app_pause">Pause</string>
+    <string name="app_remaining">Remaining</string>
 
     <string name="home_injection">Injection</string>
     <string name="home_calendar">Calendar</string>
@@ -31,10 +36,12 @@
     <string name="about_text">سولایف نسخه ۱,۰,۰\nتلفن مرکز حمایت از بیمار ارکیدلایف:</string>
     <string name="about_tel">۰۲۱-۴۲۵۹۳</string>
 
+    <string name="welcome_action">خوش آمدید</string>
     <string name="welcome_title">Welcome to Solife</string>
     <string name="welcome_message">" این یک نرم افزار دستیار پزشکی نیست و صرفا برای سازماندهی مصرف داروی سینورا می باشد. لطفا قوانین مربوط به استفاده از این نرم افزار رو مطالعه کنید و سپس موافقت خود را با ادامه کار با نرم افزار.اعلام کنید"</string>
     <string name="welcome_terms">®قوانین استفاده از داروی سینورا</string>
     <string name="welcome_accept">Accept</string>
+
     <string name="medication_dose_title">دوز داروی سینورا</string>
     <string name="medication_dose_message">در اکثر مواقع دوز اولیه داروی سینورا® با دوز ادامه درمان (درمان نگهدارنده) تفاوت دارد.لطفا اطلاعات دوز اولیه و دوز نگهدارنده تجویز شده برای خود را در ادامه وارد کنید. سوالات احتمالی در این زمینه را می‌توانید با پزشک خود مطرح نمایید.</string>
     <string name="medication_dose_start_title">دوز اولیه</string>
@@ -67,6 +74,7 @@
     <string name="tips_1_message_1">\n\t\t- به شرایط نگهداری سینورا® توجه داشته باشید. جهت محافظت از دارو در برابر نور، دارو را در جعبه اصلی نگهداری کنید. همچنین توجه داشته باشید که سینورا® دارویی یخچالی است و لازم است در دمای ۸-۲ درجه سانتی‌گراد نگهداری شود. در صورت کوتاه بودن مسیر می‌توانید داروی خود را به همراه یخ (قابل تهیه از داروخانه‌ها) حمل نمایید. دقت نمایید که یخ تهیه شده نباید مستقیما با فیزیوجکت™ (ابزار دارورسان خودکار) در تماس باشد. در صورت طولانی بودن مسیر می‌توانید با مرکز حمایت از بیمار ارکیدلایف تماس حاصل فرمایید.</string>
     <string name="tips_1_message_2">\n\t\t\- کیف مخصوص حمل دارو را از مراکز حمایت از بیمار ارکیدلایف درخواست نمایید.</string>
     <string name="tips_1_message_3">\n\t\t\- در صورت مسافرت با هواپیما، به خاطر داشته باشید که دارو را همراه چمدان به قسمت بار هواپیما نفرستید، زیرا درجه حرارت در محل نگهداری بار هواپیما، بسیار کاهش خواهد یافت و امکان یخ‌زدگی دارو وجود دارد. جهت دریافت اطلاعات بیشتر در این زمینه با مرکز حمایت از بیمار ارکیدلایف تماس حاصل نمایید.</string>
+    <string name="tips_1_message_4">s</string>
     <string name="tips_2_title">هم‌دماسازی سینورا® با محیط</string>
     <string name="tips_2_message">توصیه می‌شود ۳۰-۱۵ دقیقه پیش از تزریق، داروی سینورا® را از یخچال خارج نمایید تا با محیط هم‌دما شود. در اپلیکیشن سولایف برای راحتی شما، محلی جهت تنظیم زمان هم‌دماسازی دارو وجود دارد.</string>
     <string name="tips_3_title">راهنمایی‌های مربوط به بیمه‌</string>
@@ -114,11 +122,6 @@
 
     <string name="injection_log_title">انتخاب محل تزریق: مرحله ۲ از ۲</string>
     <string name="injection_log_message">جهت نمایش محل تزریق امروز خود، یکی از خانه‌های مربعی شکل زیر را انتخاب کنید.</string>
-    <string name="app_on">On</string>
-    <string name="app_off">Off</string>
-    <string name="app_alarm">Alarm</string>
-    <string name="app_pause">Pause</string>
-    <string name="app_remaining">Remaining</string>
     <string name="injection_log_warn">ابتدا محل تزریق را انتخاب کنید!</string>
 
 </resources>

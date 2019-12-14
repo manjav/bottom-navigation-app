@@ -1,9 +1,9 @@
 <resources>
     <string-array name="about_list_data">
-        <item>تنظیمات هشدار</item>
-        <item>تنظیمات بخش آموزشی</item>
-        <item>توصیه های ایمنی</item>
-        <item>سوالات پر تکرار</item>
+        <item>تنظیم یادآوری تزریق</item>
+        <item>تنظیمات نمایش صفحات</item>
+        <item>توصیه های ایمنی دارو</item>
+        <item>سوالات متداول</item>
         <item>اطلاعات دارویی</item>
         <item>قوانین استفاده از نرم افزار</item>
     </string-array>
