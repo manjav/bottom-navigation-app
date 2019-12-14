@@ -49,8 +49,13 @@ public class InjectionFragment extends BaseFragment
 
         PersianCalendar next = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_NEXT, 0));
         board.setNextTime(FontsOverride.convertToPersianDigits(next.getPersianDay()+"") + " " + next.getPersianMonthName());
-        PersianCalendar prev = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_PREV, 0));
-        board.setPrevTime(FontsOverride.convertToPersianDigits(prev.getPersianDay()+"") + " " + prev.getPersianMonthName());
+
+        board.setPrevVisibility(Prefs.getInstance().getInt(Prefs.KEY_PREV_X, 0) != 0);
+        if( board.isPrevVisibility() )
+        {
+            PersianCalendar prev = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_PREV, 0));
+            board.setPrevTime(FontsOverride.convertToPersianDigits(prev.getPersianDay()+"") + " " + prev.getPersianMonthName());
+        }
 
         board.setPoint(Prefs.getInstance().getInt(Prefs.KEY_PREV_X, 0), Prefs.getInstance().getInt(Prefs.KEY_PREV_Y, 0));
     }
