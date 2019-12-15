@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/injection_timer_title"
-        android:textColor="@color/colorBlack"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +66,8 @@
         android:textSize="24sp"
         android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/space4"
-        app:layout_constraintTop_toTopOf="@+id/inject_timer_timer" />
+        app:layout_constraintTop_toTopOf="@+id/inject_timer_timer"
+        tools:ignore="UnusedAttribute" />
 
     <Button
         android:id="@+id/inject_timer_mines"
@@ -78,7 +79,8 @@
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/inject_timer_plus"
-        app:layout_constraintTop_toTopOf="@+id/inject_timer_plus" />
+        app:layout_constraintTop_toTopOf="@+id/inject_timer_plus"
+        tools:ignore="UnusedAttribute" />
 
 
     <Button
@@ -139,6 +141,7 @@
         android:layout_width="32dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="354dp" />
+        tools:layout_editor_absoluteY="354dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
