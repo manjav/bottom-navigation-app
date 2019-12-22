@@ -19,12 +19,8 @@ public class SplashScreenActivity extends AppCompatActivity
     {
         Prefs.setInstance(getApplicationContext());
 
-        // change localization
+        // initialize localization
         Fragments.getInstance().locale = new Locale(Prefs.getInstance().getString(Prefs.KEY_LOC, "fa"));
-        Configuration configuration = getResources().getConfiguration();
-        configuration.setLocale(Fragments.getInstance().locale);
-        configuration.setLayoutDirection(Fragments.getInstance().locale);
-        getResources().updateConfiguration(configuration, getResources().getDisplayMetrics());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
