@@ -53,7 +53,6 @@ public class Fragments
     public boolean loadFragment(AppCompatActivity activity, int position, int title) {
         return this.loadFragment(activity, position, title, null);
     }
-    @SuppressLint("RestrictedApi")
     public boolean loadFragment(AppCompatActivity activity, int position, int title, Bundle arguments)
     {
         BaseFragment fragment = this.getFragment(position);
@@ -82,25 +81,32 @@ public class Fragments
         transaction.commit();
         oldPosition = newPosition;
 
-        // hide action-bar in main page
-        ActionBar actionBar = activity.getSupportActionBar();
-        if( actionBar == null )
-            return true;
-
-        actionBar.setShowHideAnimationEnabled(false);
-        activity.findViewById(R.id.toolbar_action_button).setVisibility(newPosition > 20 && newPosition < 30 ? View.VISIBLE : View.INVISIBLE);
-        if( newPosition != 0 )
-        {
-            actionBar.show();
-            actionBar.setDisplayHomeAsUpEnabled(newPosition > 3 && position != R.dimen.position_welcome );
-            ((AppCompatTextView) activity.findViewById(R.id.toolbar_title)).setText(title);
-        }
-        else
-        {
-            actionBar.hide();
-        }
+        updateActionbar(activity, newPosition, title);
 
         return true;
+    }
+
+    /**
+     * hide action-bar in main page, change title and buttons visibility
+     * @param activity
+     * @param newPosition
+     * @param title
+     */
+    @SuppressLint("RestrictedApi")
+    public void updateActionbar(AppCompatActivity activity, int newPosition, int title) {
+
+        ActionBar actionBar = activity.getSupportActionBar();
+        if( actionBar == null )
+            return;
+        actionBar.setShowHideAnimationEnabled(false);
+        activity.findViewById(R.id.toolbar_action_button).setVisibility(newPosition > 20 && newPosition < 30 ? View.VISIBLE : View.INVISIBLE);
+        if( newPosition != 0 ) {
+            actionBar.show();
+            actionBar.setDisplayHomeAsUpEnabled(newPosition % 10 > 0 );
+            ((AppCompatTextView) activity.findViewById(R.id.toolbar_title)).setText(title);
+        } else {
+            actionBar.hide();
+        }
     }
 
     public int getTitle(int position)
