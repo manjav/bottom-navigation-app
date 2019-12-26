@@ -31,6 +31,7 @@ import com.grantech.cinnagen.solife.fragments.TipsFragment;
 import com.grantech.cinnagen.solife.fragments.WelcomeFragment;
 
 import java.util.Locale;
+import java.util.Objects;
 
 public class Fragments
 {
@@ -71,6 +72,17 @@ public class Fragments
         fragment.setArguments(arguments);
 
         // switching fragment
+        FragmentManager fragmentManager = activity.getSupportFragmentManager();
+        if( oldPosition > newPosition )
+        {
+            int p = newPosition < 10 ? 0 : newPosition;
+            for(int i = fragmentManager.getBackStackEntryCount()-1; i >=0; --i) {
+                if( Integer.parseInt(Objects.requireNonNull(fragmentManager.getBackStackEntryAt(i).getName())) < p )
+                    break;
+                fragmentManager.popBackStackImmediate();
+            }
+        }
+
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
         if( oldPosition > -1 )
             transaction.setCustomAnimations(getAnimationIn(oldPosition > newPosition), getAnimationOut(oldPosition > newPosition), getAnimationIn(oldPosition < newPosition), getAnimationOut(oldPosition < newPosition));
@@ -88,9 +100,6 @@ public class Fragments
 
     /**
      * hide action-bar in main page, change title and buttons visibility
-     * @param activity
-     * @param newPosition
-     * @param title
      */
     @SuppressLint("RestrictedApi")
     public void updateActionbar(AppCompatActivity activity, int newPosition, int title) {
