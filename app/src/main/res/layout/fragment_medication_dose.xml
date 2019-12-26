@@ -36,7 +36,7 @@
             android:layout_marginEnd="16dp"
             android:gravity="fill_horizontal"
             android:text="@string/medication_dose_message"
-            android:textAlignment="gravity"
+            android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/colorMedium"
             app:layout_constraintEnd_toEndOf="parent"
@@ -64,15 +64,30 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:gravity="fill_horizontal"
-            android:text="@string/medication_dose_start_message"
-            android:textAlignment="gravity"
+            android:text="@string/medication_dose_start_message_1"
+            android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/colorMedium"
-            android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="@+id/dose_message"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/dose_message"
             app:layout_constraintTop_toBottomOf="@+id/dose_start_title" />
+
+        <TextView
+            android:id="@+id/dose_start_message2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="fill_horizontal"
+            android:text="@string/medication_dose_start_message_2"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/colorMedium"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/dose_message"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/dose_message"
+            app:layout_constraintTop_toBottomOf="@+id/dose_start_message" />
 
         <TextView
             android:id="@+id/dose_radio_40_d"
@@ -108,12 +123,11 @@
             android:id="@+id/dose_radio_group"
             android:layout_width="0dp"
             android:layout_height="61dp"
-            android:layout_marginTop="8dp"
             android:checkedButton="@id/dose_radio_80"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@+id/dose_message"
             app:layout_constraintStart_toStartOf="@+id/dose_message"
-            app:layout_constraintTop_toBottomOf="@+id/dose_start_message">
+            app:layout_constraintTop_toBottomOf="@+id/dose_start_message2">
 
             <RadioButton
                 android:id="@+id/dose_radio_40"
@@ -182,7 +196,7 @@
             android:layout_marginEnd="16dp"
             android:gravity="fill_horizontal"
             android:text="@string/medication_dose_maintain_message"
-            android:textAlignment="gravity"
+            android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/colorMedium"
             android:textSize="14sp"

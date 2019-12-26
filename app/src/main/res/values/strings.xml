@@ -45,7 +45,8 @@
     <string name="medication_dose_title">دوز داروی سینورا</string>
     <string name="medication_dose_message">در اکثر مواقع دوز اولیه داروی سینورا® با دوز ادامه درمان (درمان نگهدارنده) تفاوت دارد.لطفا اطلاعات دوز اولیه و دوز نگهدارنده تجویز شده برای خود را در ادامه وارد کنید. سوالات احتمالی در این زمینه را می‌توانید با پزشک خود مطرح نمایید.</string>
     <string name="medication_dose_start_title">دوز اولیه</string>
-    <string name="medication_dose_start_message">دوز اولیه تجویز شده از داروی سینورا® برای شما چند میلی‌گرم است؟ هر فیزیوجکت™ (ابزار دارورسان خودکار) داروی سینورا® حاوی 40 میلی‌گرم داروی آدالیمومب می‌باشد.</string>
+    <string name="medication_dose_start_message_1">دوز اولیه تجویز شده از داروی سینورا® برای شما چند میلی‌گرم است؟</string>
+    <string name="medication_dose_start_message_2">هر فیزیوجکت™ (ابزار دارورسان خودکار) داروی سینورا® حاوی ۴۰ میلی‌گرم داروی آدالیمومب است.</string>
     <string name="medication_dose_40">40 mg</string>
     <string name="medication_dose_80">80 mg</string>
     <string name="medication_dose_40_d">(یک عدد فیزیوجکت™)</string>

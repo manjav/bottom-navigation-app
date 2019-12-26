@@ -64,6 +64,7 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
             view.findViewById(R.id.dose_message).setVisibility(View.GONE);
             view.findViewById(R.id.dose_start_title).setVisibility(View.GONE);
             view.findViewById(R.id.dose_start_message).setVisibility(View.GONE);
+            view.findViewById(R.id.dose_start_message2).setVisibility(View.GONE);
             view.findViewById(R.id.dose_radio_40_d).setVisibility(View.GONE);
             view.findViewById(R.id.dose_radio_80_d).setVisibility(View.GONE);
             radioGroup.setVisibility(View.GONE);
