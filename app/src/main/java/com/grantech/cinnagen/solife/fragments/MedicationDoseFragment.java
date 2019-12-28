@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -162,6 +163,10 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
         else
         {
             nextDate.setPersianDate(year, monthOfYear, dayOfMonth);
+            if (nextDate.getNumDays() < prevDate.getNumDays()) {
+                Toast.makeText(getContext(), R.string.medication_dose_maintain_alert, Toast.LENGTH_LONG).show();
+                return;
+            }
             nextDateInput.setText(FontsOverride.convertToPersianDigits(nextDate.getPersianShortDate()));
             Prefs.getInstance().setLong(Prefs.KEY_NEXT, nextDate.getTimeInMillis());
         }
