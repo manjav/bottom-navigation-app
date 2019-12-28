@@ -47,12 +47,13 @@
     <string name="medication_dose_start_message_1">دوز اولیه تجویز شده از داروی سینورا® برای شما چند میلی‌گرم است؟</string>
     <string name="medication_dose_start_message_2">هر فیزیوجکت™ (ابزار دارورسان خودکار) داروی سینورا® حاوی ۴۰ میلی‌گرم داروی آدالیمومب است.</string>
     <string name="medication_dose_80">۸۰ میلی گرم</string>
-    <string name="medication_dose_40">۴۰ میلی گرم</string>
+    <string name="medication_dose_40">۴۰ میلی گرم</string>ظ
     <string name="medication_dose_40_d">یک عدد فیزیوجکت™</string>
     <string name="medication_dose_80_d">دو عدد فیزیوجکت™</string>    <string name="medication_dose_start_date">لطفا تاریخ تزریق دوز اولیه سینورا® را انتخاب کنید.</string>
     <string name="medication_dose_maintain_title">دوز نگهدارنده (ادامه درمان)</string>
     <string name="medication_dose_maintain_message">تزریق دوز نگهدارنده خود را با چه فاصله زمانی انجام می‌دهید؟</string>
     <string name="medication_dose_maintain_date">لطفا تاریخ تزریق بعدی خود را انتخاب کنید.</string>
+    <string name="medication_dose_maintain_alert">تاریخ تزریق بعدی می بایست بعد از آخرین تزریق باشد!</string>
     <string name="medication_time_title">لطفا ساعت مورد نظر خود برای تزریق را انتخاب کنید. نیم ساعت پیش از زمان انتخاب شده پیام یادآوری تزریق را دریافت خواهید کرد.</string>
     <string name="medication_time_prompt">.لطفا ساعت مورد نظر برای تزریق خود را انتخاب کنید</string>
     <string name="medication_alarm_setup">تنظیمات هشدار نرم افزار</string>
