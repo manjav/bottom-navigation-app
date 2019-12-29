@@ -1,6 +1,5 @@
 package com.grantech.cinnagen.solife.fragments;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;

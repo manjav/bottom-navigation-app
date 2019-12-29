@@ -1,6 +1,5 @@
 package com.grantech.cinnagen.solife.fragments;
 
-import android.annotation.SuppressLint;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.LayoutInflater;
