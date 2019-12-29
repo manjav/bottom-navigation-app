@@ -29,6 +29,7 @@ public class InjectionDocsFragment extends InjectionIconFragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
+        submitButton.setText(R.string.app_next);
 
         WebView webView = view.findViewById(R.id.webView);
         webView.setBackgroundColor(0x0000000);
