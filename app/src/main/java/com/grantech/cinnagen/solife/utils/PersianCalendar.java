@@ -1,5 +1,5 @@
-/**
- * Persian Calendar see: http://code.google.com/p/persian-calendar/
+/*
+  Persian Calendar see: http://code.google.com/p/persian-calendar/
  Copyright (C) 2012  Mortezaadi@gmail.com
  PersianCalendar.java
 
@@ -255,6 +255,14 @@ public class PersianCalendar extends GregorianCalendar
     public int getPersianDay() {
         // calculatePersianDate();
         return this.persianDay;
+    }
+
+    public int getNumDays() {
+        return this.getPersianYear() * 365 + this.getPersianMonth() * 30 + this.getPersianDay();
+    }
+
+    public long getNumSconds() {
+        return this.getNumDays() * 3600 * 24 + get(HOUR_OF_DAY) * 3600 + get(MINUTE) * 60;
     }
 
     /**
