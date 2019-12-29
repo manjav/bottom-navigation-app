@@ -39,12 +39,13 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/inject_slides_slider"
         android:layout_width="0dp"
-        android:layout_height="280dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/inject_slides_indicator"
+        android:layout_height="300dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/submit_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inject_slides_message"
+        app:layout_constraintVertical_bias="0.0">
 
     </androidx.viewpager.widget.ViewPager>
 
@@ -70,9 +71,10 @@
         android:id="@+id/inject_slides_indicator"
         android:layout_width="0dp"
         android:layout_height="16dp"
+        android:layout_marginBottom="8dp"
         app:ci_drawable="@drawable/circle_event_prev_dark"
-        app:ci_drawable_unselected="@drawable/circle_event_prev"
-        app:layout_constraintBottom_toTopOf="@+id/submit_button"
+        app:ci_drawable_unselected="@drawable/circle_white"
+        app:layout_constraintBottom_toBottomOf="@+id/inject_slides_slider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />

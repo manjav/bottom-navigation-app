@@ -31,6 +31,8 @@ public class InjectionDocsFragment extends InjectionIconFragment
         super.onViewCreated(view, savedInstanceState);
 
         WebView webView = view.findViewById(R.id.webView);
+        webView.setBackgroundColor(0x0000000);
+
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(false);
         settings.setDomStorageEnabled(false);

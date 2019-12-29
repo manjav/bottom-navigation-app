@@ -5,6 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import androidx.annotation.NonNull;
+
 import com.grantech.cinnagen.solife.controls.CheckableItem;
 
 import java.util.Arrays;
@@ -16,8 +18,9 @@ public class CheckableListAdapter extends ArrayAdapter
         super(context, resource, Arrays.asList(objects));
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent)
+    public View getView(int position, View convertView, @NonNull ViewGroup parent)
     {
         if( convertView == null )
             convertView = new CheckableItem(getContext());

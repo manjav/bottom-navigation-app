@@ -42,7 +42,7 @@ public class PickerInput extends ConstraintLayout implements ConstraintLayout.On
 
     private void init(Context context, AttributeSet attrs, int defStyle)
     {
-        this.inflate(context, R.layout.picker_input, this);
+        inflate(context, R.layout.picker_input, this);
 
         // Load attributes
         final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.PickerInput, defStyle, 0);

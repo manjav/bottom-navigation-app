@@ -1,5 +1,6 @@
 package com.grantech.cinnagen.solife.controls;
 
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -274,6 +275,7 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
         if( this.clickListener != null ) this.clickListener.onClick(this);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
