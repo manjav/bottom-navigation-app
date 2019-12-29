@@ -15,6 +15,8 @@ import com.grantech.cinnagen.solife.activities.MainActivity;
 import com.grantech.cinnagen.solife.utils.Fragments;
 import com.grantech.cinnagen.solife.utils.Prefs;
 
+import java.util.Objects;
+
 /**
  * Created by ManJav on 1/23/2019.
  */
@@ -28,6 +30,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
+        Fragments.getInstance().setLocale(Objects.requireNonNull(getContext()));
         activity = (AppCompatActivity) getActivity();
     }
 

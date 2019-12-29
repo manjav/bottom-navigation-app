@@ -1,5 +1,6 @@
 package com.grantech.cinnagen.solife.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;

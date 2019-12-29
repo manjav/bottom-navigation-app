@@ -1,34 +1,23 @@
 package com.grantech.cinnagen.solife.activities;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.grantech.cinnagen.solife.R;
-import com.grantech.cinnagen.solife.utils.Fragments;
 import com.grantech.cinnagen.solife.utils.Prefs;
-
-import java.util.Locale;
 
 public class SplashScreenActivity extends AppCompatActivity
 {
     protected void onCreate(Bundle savedInstanceState)
     {
+        super.onCreate(savedInstanceState);
+
         // initialize localization
         Prefs.setInstance(getApplicationContext());
-        Fragments.getInstance().locale = new Locale(Prefs.getInstance().getString(Prefs.KEY_LOC, "fa"));
-        Log.i(Fragments.TAG, "loc "+ Fragments.getInstance().locale.getDisplayName());
-        // set layout based on localization
-        Configuration configuration = getResources().getConfiguration();
-        configuration.setLocale(Fragments.getInstance().locale);
-        configuration.setLayoutDirection(Fragments.getInstance().locale);
-        getResources().updateConfiguration(configuration, getResources().getDisplayMetrics());
 
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
         Handler mWaitHandler = new Handler();

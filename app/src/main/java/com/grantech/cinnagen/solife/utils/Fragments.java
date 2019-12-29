@@ -1,6 +1,9 @@
 package com.grantech.cinnagen.solife.utils;
 
+
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,15 +41,14 @@ public class Fragments
     public static String TAG = "solife";
     private static final Fragments ourInstance = new Fragments();
 
-    public Locale locale;
     public int oldPosition = -1;
+
     static public Fragments getInstance() {
         return ourInstance;
     }
 
     private Fragments() {
     }
-
 
     public boolean loadFragment(AppCompatActivity activity, int position) {
         return this.loadFragment(activity, position, 0, null);
@@ -117,6 +119,8 @@ public class Fragments
             actionBar.hide();
         }
     }
+
+
 
     public int getTitle(int position)
     {
@@ -227,15 +231,17 @@ public class Fragments
 
     private int getAnimationIn(boolean isBack)
     {
-        if( isBack )
-            return locale.getLanguage().equals("fa") ? R.anim.slide_in_right : R.anim.slide_in_left;
-        return locale.getLanguage().equals("fa") ? R.anim.slide_in_left : R.anim.slide_in_right;
+        String language = Prefs.getInstance().getString(Prefs.KEY_LOC, "fa");
+        if (isBack)
+            return language.equals("fa") ? R.anim.slide_in_right : R.anim.slide_in_left;
+        return language.equals("fa") ? R.anim.slide_in_left : R.anim.slide_in_right;
     }
     private int getAnimationOut(boolean isBack)
     {
-        if( isBack )
-            return locale.getLanguage().equals("fa") ? R.anim.slide_out_left : R.anim.slide_out_right;
-        return locale.getLanguage().equals("fa") ? R.anim.slide_out_right : R.anim.slide_out_left;
+        String language = Prefs.getInstance().getString(Prefs.KEY_LOC, "fa");
+        if (isBack)
+            return language.equals("fa") ? R.anim.slide_out_left : R.anim.slide_out_right;
+        return language.equals("fa") ? R.anim.slide_out_right : R.anim.slide_out_left;
     }
 
     public void clearStack(AppCompatActivity activity)
@@ -247,5 +253,16 @@ public class Fragments
         activity.getSupportActionBar().hide();
         fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         transaction.commit();
+    }
+
+    public void setLocale(Context context) {
+        Locale locale = new Locale(Prefs.getInstance().getString(Prefs.KEY_LOC, "fa"));
+        Locale.setDefault(locale);
+
+        // set layout based on localization
+        Configuration configuration = context.getResources().getConfiguration();
+        configuration.setLocale(locale);
+        configuration.setLayoutDirection(locale);
+        context.getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
     }
 }

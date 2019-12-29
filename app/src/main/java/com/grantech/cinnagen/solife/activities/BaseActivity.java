@@ -1,39 +1,36 @@
 package com.grantech.cinnagen.solife.activities;
 
+
 import android.annotation.SuppressLint;
-import android.content.ComponentName;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.utils.Fragments;
 
-import java.util.Objects;
-
 @SuppressLint("Registered")
 public class BaseActivity extends AppCompatActivity
 {
     protected void onCreate(Bundle savedInstanceState)
     {
-        // set layout based on localization
-        Configuration configuration = getResources().getConfiguration();
-        configuration.setLocale(Fragments.getInstance().locale);
-        configuration.setLayoutDirection(Fragments.getInstance().locale);
-        getResources().updateConfiguration(configuration, getResources().getDisplayMetrics());
-
         super.onCreate(savedInstanceState);
-        assert getSupportActionBar() != null;
+        Fragments.getInstance().setLocale(getBaseContext());
 
         // custom action-bar
+        assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_bar);
+    }
+
+    @Override
+    protected void onResume() {
+//        Fragments.getInstance().setLocale(getBaseContext());
+        super.onResume();
     }
 
     @Override
