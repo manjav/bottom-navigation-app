@@ -16,11 +16,10 @@ import com.grantech.cinnagen.solife.utils.Fragments;
 
 public class WelcomeFragment extends BaseFragment
 {
-    @SuppressLint("InflateParams")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_welcome, null);
+        return inflater.inflate(R.layout.fragment_welcome, container, false);
     }
 
     @Override

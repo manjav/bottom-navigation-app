@@ -28,11 +28,10 @@ public class MedicationTimeFragment extends BaseFragment implements TimePickerDi
     private PickerInput nextTimeInput;
     private PersianCalendar nextDate;
 
-    @SuppressLint("InflateParams")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_medication_time, null);
+        return inflater.inflate(R.layout.fragment_medication_time, container, false);
     }
 
     @Override

@@ -23,12 +23,10 @@ public class InjectionFragment extends BaseFragment
 {
     private InjectionBoard board;
 
-    @SuppressLint("InflateParams")
-    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_injection, null);
+        return inflater.inflate(R.layout.fragment_injection, container, false);
     }
 
     @Override

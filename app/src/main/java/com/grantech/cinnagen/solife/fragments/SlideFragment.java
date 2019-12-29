@@ -32,10 +32,9 @@ public class SlideFragment extends Fragment
     }
 
     @Override
-    @SuppressLint("InflateParams")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_slide, null);
+        return inflater.inflate(R.layout.fragment_slide, container, false);
     }
 
     @Override

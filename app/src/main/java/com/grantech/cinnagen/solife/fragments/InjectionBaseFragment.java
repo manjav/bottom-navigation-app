@@ -20,11 +20,10 @@ public class InjectionBaseFragment extends BaseFragment
 {
     Button submitButton;
 
-    @SuppressLint("InflateParams")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_injection_docs, null);
+        return inflater.inflate(R.layout.fragment_injection_docs, container, false);
     }
 
     @Override

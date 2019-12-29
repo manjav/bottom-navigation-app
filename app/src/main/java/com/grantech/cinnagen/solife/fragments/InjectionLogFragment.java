@@ -30,10 +30,9 @@ public class InjectionLogFragment extends InjectionBaseFragment
     private InjectionBoard board;
 
     @Override
-    @SuppressLint("InflateParams")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_injection_log, null);
+        return inflater.inflate(R.layout.fragment_injection_log, container, false);
     }
 
     @Override

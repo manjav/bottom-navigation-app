@@ -25,11 +25,10 @@ public class TipsFragment extends BaseFragment
     private ExpandableListView expandableListView;
     private ExpandableListAdapter expandableListAdapter;
 
-    @SuppressLint("InflateParams")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_tips, null);
+        return inflater.inflate(R.layout.fragment_tips, container, false);
     }
 
     @Override

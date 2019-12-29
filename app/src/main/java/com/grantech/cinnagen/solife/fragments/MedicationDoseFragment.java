@@ -38,11 +38,10 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
     private PickerInput nextDateInput;
     private PickerInput nextTimeInput;
 
-    @SuppressLint("InflateParams")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_medication_dose, null);
+        return inflater.inflate(R.layout.fragment_medication_dose, container, false);
     }
 
     @Override

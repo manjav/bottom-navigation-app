@@ -35,10 +35,9 @@ public class InjectionTimerFragment extends InjectionBaseFragment
     private boolean inProgress;
 
     @Override
-    @SuppressLint("InflateParams")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_injection_timer, null);
+        return inflater.inflate(R.layout.fragment_injection_timer, container, false);
     }
 
     @Override

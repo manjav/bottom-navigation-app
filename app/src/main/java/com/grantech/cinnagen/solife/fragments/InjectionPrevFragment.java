@@ -24,10 +24,9 @@ import com.grantech.cinnagen.solife.utils.Prefs;
 public class InjectionPrevFragment extends InjectionBaseFragment
 {
     @Override
-    @SuppressLint("InflateParams")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_injection_prev, null);
+        return inflater.inflate(R.layout.fragment_injection_prev, container, false);
     }
 
     @Override

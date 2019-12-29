@@ -22,10 +22,9 @@ import com.grantech.cinnagen.solife.utils.PersianCalendar;
 public class InjectionBodyFragment extends BaseFragment
 {
     @Override
-    @SuppressLint("InflateParams")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_injection_body, null);
+        return inflater.inflate(R.layout.fragment_injection_body, container, false);
     }
 
     @Override

@@ -29,11 +29,10 @@ public class MedicationAlarmFragment extends BaseFragment implements AdapterView
     private ListView secondList;
     private ListView thirdList;
 
-    @SuppressLint("InflateParams")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_medication_alarm, null);
+        return inflater.inflate(R.layout.fragment_medication_alarm, container, false);
     }
 
     @Override

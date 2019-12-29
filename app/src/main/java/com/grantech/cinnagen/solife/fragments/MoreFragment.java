@@ -21,11 +21,10 @@ import com.grantech.cinnagen.solife.utils.Fragments;
 
 public class MoreFragment extends BaseFragment
 {
-    @SuppressLint("InflateParams")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_more, null);
+        return inflater.inflate(R.layout.fragment_more, container, false);
     }
 
     @Override
