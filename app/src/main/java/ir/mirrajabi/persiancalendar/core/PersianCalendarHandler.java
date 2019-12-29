@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.RawRes;
 
 import com.grantech.cinnagen.solife.R;
+import com.grantech.cinnagen.solife.utils.Prefs;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -313,8 +314,8 @@ public class PersianCalendarHandler {
 
                 if( persianDate.equals(today) )
                     day.setToday(true);
-                else if( persianDate.getYear() * 365 + persianDate.getDayOfYear() > today.getYear() * 365 + today.getDayOfYear())
-                    day.setNext(true);
+
+                day.setNext(System.currentTimeMillis() > Prefs.getInstance().getLong("prev", 0));
 
                 days.add(day);
                 dayOfWeek ++;

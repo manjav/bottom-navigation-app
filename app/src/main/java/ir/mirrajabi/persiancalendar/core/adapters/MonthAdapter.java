@@ -215,7 +215,7 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.ViewHolder> 
     private int getBackgroundId(Day day)
     {
         if( day.isEvent() && day.isToday() )
-            return R.drawable.circle_event_today;
+            return day.isNext() ? R.drawable.circle_event_today : R.drawable.circle_event_prev_today;
         if( day.isEvent()  )
             return day.isNext() ? R.drawable.circle_event_next : R.drawable.circle_event_prev;
         if( day.isToday() )
