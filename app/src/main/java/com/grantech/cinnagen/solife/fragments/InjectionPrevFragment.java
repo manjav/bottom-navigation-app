@@ -33,7 +33,18 @@ public class InjectionPrevFragment extends InjectionBaseFragment
     {
         super.onViewCreated(view, savedInstanceState);
         PersianCalendar prev = new PersianCalendar(Prefs.getInstance().getLong(Prefs.KEY_PREV, 0));
-        ((InjectionBoard)view.findViewById(R.id.injection_view)).setPoint(Prefs.getInstance().getInt(Prefs.KEY_PREV_X, 0), Prefs.getInstance().getInt(Prefs.KEY_PREV_Y, 0));
+
+        InjectionBoard board = view.findViewById(R.id.injection_view);
+        board.setPoint(Prefs.getInstance().getInt(Prefs.KEY_PREV_X, 0), Prefs.getInstance().getInt(Prefs.KEY_PREV_Y, 0));
+
+        TextView positionText = view.findViewById(R.id.inject_prev_position);
+        if (board.selectedRegion.equals(InjectionBoard.REGION_ABDOMEN))
+            positionText.setText(R.string.injection_pos_abdomen);
+        else if (board.selectedRegion.equals(InjectionBoard.REGION_RIGHT))
+            positionText.setText(R.string.injection_pos_rleg);
+        else
+            positionText.setText(R.string.injection_pos_lleg);
+
         ((TextView)view.findViewById(R.id.inject_prev_time)).setText(FontsOverride.convertToPersianDigits(prev.getPersianLongDateAndTime()));
     }
 

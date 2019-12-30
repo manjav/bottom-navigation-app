@@ -44,7 +44,7 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
     private String nextTime;
     private boolean touchable;
 
-    private Rect selectedRegion;
+    public Rect selectedRegion;
     private boolean autoRegion = true;
     private View prevView;
     private TextView prevText;
@@ -159,6 +159,18 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
         float density = getResources().getDisplayMetrics().density;
         this.point.x = (int) (x * density);
         this.point.y = (int) (y * density);
+        if( point.x == 0 && point.y == 0 ) {
+            selectedRegion = null;
+            return;
+        }
+        if( this.point.y >= REGION_RIGHT.top ){
+            if( this.point.x >= REGION_LEFT.left )
+                selectedRegion = REGION_LEFT;
+            else
+                selectedRegion = REGION_RIGHT;
+        } else {
+            selectedRegion = REGION_ABDOMEN;
+        }
     }
     public Point getPoint() {
         return this.point;
@@ -193,46 +205,30 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
 
         final Paint paint = new Paint();
         final Rect srcRect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
-        if( autoRegion || bodyRect == null )
-        {
+        if( autoRegion || bodyRect == null ){
             bodyRect = new Rect();
-            if( point.x == 0 && point.y == 0 )
-            {
+            if( selectedRegion == null ) {
                 bodyRect.bottom = layout.getHeight();
                 int w = bitmap.getWidth() * layout.getHeight() / bitmap.getHeight();
                 bodyRect.left = (int) ((layout.getWidth() - w) * 0.5);
                 bodyRect.right = bodyRect.left + w;
-                selectedRegion = null;
             }
-            else
-            {
-                if( this.point.y >= REGION_RIGHT.top )
-                {
-                    if( this.point.x >= REGION_LEFT.left )
-                    {
-                        selectedRegion = REGION_LEFT;
-                        bodyRect.left = (int) ((layout.getWidth() - bitmap.getWidth()) * 0.5) + POINT_LEFT.x;
-                    }
-                    else
-                    {
-                        selectedRegion = REGION_RIGHT;
-                        bodyRect.left = (int) ((layout.getWidth() - bitmap.getWidth()) * 0.5) + POINT_RIGHT.x;
-                    }
-                    bodyRect.top = POINT_RIGHT.y;
-                }
-                else
-                {
-                    selectedRegion = REGION_ABDOMEN;
+            else {
+                if (selectedRegion.equals(REGION_ABDOMEN)) {
                     bodyRect.left = (int) ((layout.getWidth() - bitmap.getWidth()) * 0.5);
                     bodyRect.top = 0;
+                } else {
+                    if (selectedRegion.equals(REGION_LEFT))
+                        bodyRect.left = (int) ((layout.getWidth() - bitmap.getWidth()) * 0.5) + POINT_LEFT.x;
+                    else
+                        bodyRect.left = (int) ((layout.getWidth() - bitmap.getWidth()) * 0.5) + POINT_RIGHT.x;
+                    bodyRect.top = POINT_RIGHT.y;
                 }
 
                 bodyRect.bottom = bitmap.getHeight() + bodyRect.top;
                 bodyRect.right = bitmap.getWidth() + bodyRect.left;
-
                 int threshold = bitmap.getHeight() - point.y - layout.getHeight();
-                if( threshold < 0 )
-                {
+                if( threshold < 0 ) {
                     bodyRect.top -= threshold;
                     bodyRect.bottom -= threshold;
                 }
