@@ -27,6 +27,7 @@
         </activity>
         <activity android:name=".activities.MainActivity" android:screenOrientation="portrait" android:label="@string/app_name" />
         <activity android:name=".activities.FragmentsActivity" android:screenOrientation="portrait" android:label="@string/home_injection" />
+        <receiver android:name=".utils.AlarmReceiver"/>
 
     </application>
 

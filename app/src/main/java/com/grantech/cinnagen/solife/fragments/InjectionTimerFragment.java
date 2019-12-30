@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.grantech.cinnagen.solife.R;
+import com.grantech.cinnagen.solife.utils.AlarmReceiver;
+import com.grantech.cinnagen.solife.utils.Alarms;
 import com.grantech.cinnagen.solife.utils.Fragments;
 
 /**
@@ -33,6 +35,7 @@ public class InjectionTimerFragment extends InjectionBaseFragment
     private Button restoreButton;
     private CountDownTimer timer;
     private boolean inProgress;
+    private int alarmId;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -93,6 +96,7 @@ public class InjectionTimerFragment extends InjectionBaseFragment
         minesButton.setVisibility(View.GONE);
         if( inProgress )
         {
+            Alarms.cancel(getContext(), AlarmReceiver.class, alarmId);
             timer.cancel();
             toggleButton.setText(R.string.app_start);
             submitButton.setText(R.string.injection_timer_skip);
@@ -100,6 +104,7 @@ public class InjectionTimerFragment extends InjectionBaseFragment
             remainingText.setVisibility(View.INVISIBLE);
             return;
         }
+
         if( timer == null )
         timer = new CountDownTimer(delay * 1000, 1000) {
             @Override
@@ -115,6 +120,7 @@ public class InjectionTimerFragment extends InjectionBaseFragment
 
         inProgress = true;
         timer.start();
+        alarmId = Alarms.schedule(getContext(), AlarmReceiver.class, System.currentTimeMillis() + delay * 1000, 1, "", getResources().getString(R.string.app_name), getResources().getString(R.string.injection_timer_fine));
         toggleButton.setText(R.string.app_pause);
         remainingText.setVisibility(View.VISIBLE);
         restoreButton.setBackgroundResource(R.drawable.rect_round_button_white);
@@ -124,6 +130,7 @@ public class InjectionTimerFragment extends InjectionBaseFragment
     private void resetCountdown() {
         delay = MAX;
         inProgress = false;
+        Alarms.cancel(getContext(), AlarmReceiver.class, alarmId);
         timer.cancel();
         timer = null;
 
