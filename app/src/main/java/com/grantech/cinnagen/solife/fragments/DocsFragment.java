@@ -51,29 +51,10 @@ public class DocsFragment extends BaseFragment
     {
         public boolean shouldOverrideUrlLoading(WebView view, String url)
         {
-            Log.i(Fragments.TAG, url + " " + url.startsWith("ftp://") + " " + url.contains("tel") + " " + url.contains("dim"));
-            if( url.startsWith("ftp://") )
-            {
-                // call to method
-                if( url.contains("tel") )
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("tel:" + url.split("tel-")[1])));
-                // internal page opening
-                else if( url.contains("dim") )
-                    Fragments.getInstance().loadFragment(activity, Fragments.getInstance().getDimId(getInt(url)));
+            if (Fragments.getInstance().organizeURL(url, activity))
                 return true;
-            }
-
             view.loadUrl(url);
             return true;
         }
-    }
-    
-    private int getInt(String url)
-    {
-        Pattern p = Pattern.compile("\\d+");
-        Matcher m = p.matcher(url);
-        while(m.find())
-            return Integer.parseInt(m.group());
-        return 0;
     }
 }

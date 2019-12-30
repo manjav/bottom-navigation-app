@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.grantech.cinnagen.solife.R;
+import com.grantech.cinnagen.solife.utils.Fragments;
 
 /**
  * Created by ManJav on 1/23/2019.
@@ -32,6 +33,7 @@ public class InjectionDocsFragment extends InjectionIconFragment
         submitButton.setText(R.string.app_next);
 
         WebView webView = view.findViewById(R.id.webView);
+        webView.setWebViewClient(new MyWebViewClient());
         webView.setBackgroundColor(0x0000000);
 
         WebSettings settings = webView.getSettings();
@@ -57,5 +59,16 @@ public class InjectionDocsFragment extends InjectionIconFragment
 
         assert getArguments() != null;
         webView.loadUrl(getArguments().getString("url"));
+    }
+
+    private class MyWebViewClient extends WebViewClient
+    {
+        public boolean shouldOverrideUrlLoading(WebView view, String url)
+        {
+            if (Fragments.getInstance().organizeURL(url, activity))
+                return true;
+            view.loadUrl(url);
+            return true;
+        }
     }
 }

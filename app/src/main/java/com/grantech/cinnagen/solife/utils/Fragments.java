@@ -3,7 +3,9 @@ package com.grantech.cinnagen.solife.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -35,6 +37,8 @@ import com.grantech.cinnagen.solife.fragments.WelcomeFragment;
 
 import java.util.Locale;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Fragments
 {
@@ -264,5 +268,29 @@ public class Fragments
         configuration.setLocale(locale);
         configuration.setLayoutDirection(locale);
         context.getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
+    }
+
+
+    public boolean organizeURL(String url, AppCompatActivity activity)
+    {
+//      Log.i(Fragments.TAG, url + " " + url.startsWith("ftp://") + " " + url.contains("tel") + " " + url.contains("dim"));
+        if (url.startsWith("ftp://")) {
+            // call to method
+            if (url.contains("tel"))
+                activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("tel:" + url.split("tel-")[1])));
+                // internal page opening
+            else if (url.contains("dim"))
+                Fragments.getInstance().loadFragment(activity, Fragments.getInstance().getDimId(getInt(url)));
+            return true;
+        }
+        return false;
+    }
+    private int getInt(String url)
+    {
+        Pattern p = Pattern.compile("\\d+");
+        Matcher m = p.matcher(url);
+        while(m.find())
+            return Integer.parseInt(m.group());
+        return 0;
     }
 }
