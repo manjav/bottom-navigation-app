@@ -13,11 +13,9 @@ public class Day {
     public boolean isEvent() {
         return mEvent;
     }
-
     public void setEvent(boolean event) {
         this.mEvent = event;
     }
-
 
     public void setEvent(boolean event, boolean isLocal) {
         this.mEvent = event;
