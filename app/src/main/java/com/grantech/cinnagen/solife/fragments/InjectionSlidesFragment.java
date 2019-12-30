@@ -50,6 +50,13 @@ public class InjectionSlidesFragment extends InjectionBaseFragment
         });
 
         indicator = view.findViewById(R.id.inject_slides_indicator);
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+
         indicator.setScaleX(-1);
         indicator.setViewPager(viewPager);
 
@@ -61,5 +68,4 @@ public class InjectionSlidesFragment extends InjectionBaseFragment
     {
         Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_timer);
     }
-
 }
