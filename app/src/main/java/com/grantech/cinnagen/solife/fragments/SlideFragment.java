@@ -1,6 +1,7 @@
 package com.grantech.cinnagen.solife.fragments;
 
-import android.annotation.SuppressLint;
+
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,7 +55,7 @@ public class SlideFragment extends Fragment
         if (position < 1){
             playerView = view.findViewById(R.id.video_view);
             playerView.setVisibility(View.VISIBLE);
-            exoPlayer = new SimpleExoPlayer.Builder(getContext()).build();
+            exoPlayer = new SimpleExoPlayer.Builder(Objects.requireNonNull(getContext())).build();
             playerView.setPlayer(exoPlayer);
             return;
         }
@@ -70,7 +71,7 @@ public class SlideFragment extends Fragment
         super.onResume();
         if (playerView != null){
             // Produces DataSource instances through which media data is loaded.
-            DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(getContext(), Util.getUserAgent(getContext(), "yourApplicationName"));
+            DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(Objects.requireNonNull(getContext()), Util.getUserAgent(getContext(), "yourApplicationName"));
             // This is the MediaSource representing the media to be played.
             MediaSource videoSource =new ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse("http://blueboxgames.ir/Injection_Fa_360P.mp4"));
             // Prepare the player with the source.

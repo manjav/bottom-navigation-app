@@ -270,7 +270,6 @@ public class Fragments
         context.getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
     }
 
-
     public boolean organizeURL(String url, AppCompatActivity activity)
     {
 //      Log.i(Fragments.TAG, url + " " + url.startsWith("ftp://") + " " + url.contains("tel") + " " + url.contains("dim"));
