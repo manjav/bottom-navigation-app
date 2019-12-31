@@ -1,6 +1,7 @@
 package com.grantech.cinnagen.solife.utils;
 
 import android.app.AlarmManager;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -52,12 +53,15 @@ public class Alarms
         Intent intent = new Intent(context, cls);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, id, intent, 0);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        NotificationManager notificationManager = ((NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE));
         SharedPreferences sharedPreferences = context.getSharedPreferences("messages", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         assert alarmManager != null;
+        assert notificationManager != null;
 
         if(id == -1)
         {
+            @SuppressWarnings("unchecked")
             Map<String, Boolean> messagesMap = (Map<String, Boolean>) sharedPreferences.getAll();
             for (Map.Entry<String, Boolean> entry : messagesMap.entrySet())
             {
@@ -65,6 +69,7 @@ public class Alarms
                 id = Integer.parseInt(entry.getKey());
                 pendingIntent = PendingIntent.getBroadcast(context, id, intent, 0);
                 alarmManager.cancel(pendingIntent);
+                notificationManager.cancel(Integer.parseInt(entry.getKey()));
             }
             editor.clear();
         }
@@ -72,6 +77,7 @@ public class Alarms
         {
             alarmManager.cancel(pendingIntent);
             editor.remove(id+"");
+            notificationManager.cancel(id);
         }
         editor.apply();
         //Toast.makeText(context, notiID+" canceled", Toast.LENGTH_LONG).show();

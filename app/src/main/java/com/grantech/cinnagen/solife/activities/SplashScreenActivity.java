@@ -22,6 +22,7 @@ public class SplashScreenActivity extends AppCompatActivity
 
         // initialize localization
         Prefs.setInstance(getApplicationContext());
+        Alarms.cancel(getApplicationContext(), AlarmReceiver.class, -1);
 
         setContentView(R.layout.activity_splash);
 
