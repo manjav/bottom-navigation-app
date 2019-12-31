@@ -7,7 +7,12 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.grantech.cinnagen.solife.R;
+import com.grantech.cinnagen.solife.utils.AlarmReceiver;
+import com.grantech.cinnagen.solife.utils.Alarms;
+import com.grantech.cinnagen.solife.utils.Fragments;
 import com.grantech.cinnagen.solife.utils.Prefs;
+
+import java.util.Objects;
 
 public class SplashScreenActivity extends AppCompatActivity
 {
@@ -22,6 +27,13 @@ public class SplashScreenActivity extends AppCompatActivity
 
         Handler mWaitHandler = new Handler();
         mWaitHandler.postDelayed(() -> {
+
+            Bundle bundle = getIntent().getExtras();
+            if (bundle != null && bundle.containsKey("data")){
+                Fragments.getInstance().organizeURL(Objects.requireNonNull(bundle.getString("data")), this);
+                return;
+            }
+
             //The following code will execute after the 5 seconds.
             try {
                 //Go to next page i.e, start the next activity.

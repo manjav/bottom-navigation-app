@@ -13,7 +13,12 @@ public class MainActivity extends BaseActivity
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        Fragments.getInstance().loadFragment(this, R.dimen.position_home_injection, R.string.home_injection);
+        Bundle bundle = getIntent().getExtras();
+        int position = R.dimen.position_home_injection; // or other values
+        if( bundle != null && bundle.containsKey("position") )
+            position = bundle.getInt("position");
+
+        Fragments.getInstance().loadFragment(this, position);
         ((BottomNavigationView) findViewById(R.id.navigation)).setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 

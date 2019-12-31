@@ -17,6 +17,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.grantech.cinnagen.solife.R;
+import com.grantech.cinnagen.solife.activities.FragmentsActivity;
+import com.grantech.cinnagen.solife.activities.MainActivity;
 import com.grantech.cinnagen.solife.fragments.BaseFragment;
 import com.grantech.cinnagen.solife.fragments.DateFragment;
 import com.grantech.cinnagen.solife.fragments.DocsFragment;
@@ -278,12 +280,33 @@ public class Fragments
             if (url.contains("tel"))
                 activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("tel:" + url.split("tel-")[1])));
                 // internal page opening
-            else if (url.contains("dim"))
-                Fragments.getInstance().loadFragment(activity, Fragments.getInstance().getDimId(getInt(url)));
+            else if (url.contains("dim")){
+                int dim = getInt(url);
+                Class<?> cls = getActivityByDim(dim);
+                if (!cls.getName().equals(activity.getClass().getName())){
+                    Log.i(Fragments.TAG, dim + " " + cls.getName());
+
+                    Intent intent = new Intent(activity, cls);
+                    Bundle b = new Bundle();
+                    b.putInt("position", getDimId(dim));
+                    intent.putExtras(b);
+                    activity.startActivity(intent);
+                    activity.finish();
+                    return true;
+                }
+                Fragments.getInstance().loadFragment(activity, getDimId(dim));
+            }
             return true;
         }
         return false;
     }
+
+    private Class<?> getActivityByDim(int dim) {
+        if( dim >= 20 && dim < 30 )
+            return FragmentsActivity.class;
+        return MainActivity.class;
+    }
+
     private int getInt(String url)
     {
         Pattern p = Pattern.compile("\\d+");
