@@ -222,7 +222,7 @@ public class PersianCalendar extends GregorianCalendar
         this.persianMonth = persianMonth;
         this.persianDay = persianDay;
         long julianDate = PersianCalendarUtils.persianToJulian(this.persianYear > 0 ? this.persianYear : this.persianYear + 1, this.persianMonth - 1, this.persianDay);
-        setTimeInMillis(PersianCalendarConstants.MILLIS_JULIAN_EPOCH + julianDate * PersianCalendarConstants.MILLIS_OF_A_DAY + (hour * 3600 + minute * 60 + second) * 1000);
+        setTimeInMillis(PersianCalendarConstants.MILLIS_JULIAN_EPOCH + julianDate * PersianCalendarConstants.MILLIS_OF_A_DAY + (hour * 3600 + minute * 60 + second) * 1000 - getTimeZone().getRawOffset());
     }
 
     public int getPersianYear() {
