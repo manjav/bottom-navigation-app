@@ -120,7 +120,7 @@ public class InjectionTimerFragment extends InjectionBaseFragment
 
         inProgress = true;
         timer.start();
-        alarmId = Alarms.schedule(getContext(), AlarmReceiver.class, System.currentTimeMillis() + delay * 1000, 1, "", getResources().getString(R.string.app_name), getResources().getString(R.string.injection_timer_fine));
+        alarmId = Alarms.schedule(getContext(), AlarmReceiver.class, System.currentTimeMillis() + delay * 1000, 1, "", getResources().getString(R.string.app_name), getResources().getString(R.string.injection_timer_fine), null, "ftp://dim-22", null, null);
         toggleButton.setText(R.string.app_pause);
         remainingText.setVisibility(View.VISIBLE);
         restoreButton.setBackgroundResource(R.drawable.rect_round_button_white);
