@@ -74,6 +74,7 @@ public class InjectionLogFragment extends InjectionBaseFragment
             Prefs.getInstance().setInt(Prefs.KEY_PREV_Y, (int) (board.getPoint().y/getResources().getDisplayMetrics().density));
 
             notifyNextInjection(getContext(), next);
+            Toast.makeText(getContext(), R.string.injection_log_fine, Toast.LENGTH_LONG).show();
 
             activity.finish();
             Fragments.getInstance().clearStack(activity);
