@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 
 import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.adapters.CheckableListAdapter;
+import com.grantech.cinnagen.solife.controls.InjectionBoard;
 import com.grantech.cinnagen.solife.controls.PickerInput;
 import com.grantech.cinnagen.solife.utils.FontsOverride;
 import com.grantech.cinnagen.solife.utils.Fragments;
@@ -118,6 +119,7 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
             case R.id.dose_finish:
                 Prefs.getInstance().setLong(Prefs.KEY_PREV, prevDate.getTimeInMillis());
                 Prefs.getInstance().setLong(Prefs.KEY_NEXT, nextDate.getTimeInMillis());
+                InjectionLogFragment.notifyNextInjection(getContext(), nextDate.getTimeInMillis());
                 Fragments.getInstance().loadFragment(activity, R.dimen.position_medication_time);
         }
     }
@@ -168,6 +170,7 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
             nextDateInput.setText(FontsOverride.convertToPersianDigits(nextDate.getPersianShortDate()));
             Prefs.getInstance().setLong(Prefs.KEY_NEXT, nextDate.getTimeInMillis());
         }
+        InjectionLogFragment.notifyNextInjection(getContext(), nextDate.getTimeInMillis());
     }
 
     @Override
@@ -177,6 +180,7 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
         nextDate.setTimeInMillis(prevDate.getTimeInMillis() + Prefs.getInstance().getInt(Prefs.KEY_DOSE_GAP, 14) * 24 * 3600000);
         nextDateInput.setText(FontsOverride.convertToPersianDigits(nextDate.getPersianShortDate()));
         Prefs.getInstance().setLong(Prefs.KEY_NEXT, nextDate.getTimeInMillis());
+        InjectionLogFragment.notifyNextInjection(getContext(), nextDate.getTimeInMillis());
     }
 
     @Override
@@ -190,5 +194,6 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
         );
         nextTimeInput.setText(FontsOverride.convertToPersianDigits( nextDate.get(PersianCalendar.MINUTE) + " : " + nextDate.get(PersianCalendar.HOUR_OF_DAY)) );
         Prefs.getInstance().setLong(Prefs.KEY_NEXT, nextDate.getTimeInMillis());
+        InjectionLogFragment.notifyNextInjection(getContext(), nextDate.getTimeInMillis());
     }
 }

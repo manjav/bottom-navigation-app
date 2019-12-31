@@ -89,6 +89,7 @@ public class MedicationAlarmFragment extends BaseFragment implements AdapterView
             Prefs.getInstance().setInt(Prefs.KEY_ALARM_2, position);
         else if( parent.equals(thirdList) )
             Prefs.getInstance().setInt(Prefs.KEY_ALARM_3, position);
+        InjectionLogFragment.notifyNextInjection(getContext(), Prefs.getInstance().getLong(Prefs.KEY_NEXT, 0));
     }
 
     @Override

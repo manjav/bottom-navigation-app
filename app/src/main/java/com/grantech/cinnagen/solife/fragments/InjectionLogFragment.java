@@ -1,5 +1,6 @@
 package com.grantech.cinnagen.solife.fragments;
 
+import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import androidx.annotation.Nullable;
 import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.controls.InjectionBoard;
 import com.grantech.cinnagen.solife.controls.PickerInput;
+import com.grantech.cinnagen.solife.utils.AlarmReceiver;
+import com.grantech.cinnagen.solife.utils.Alarms;
 import com.grantech.cinnagen.solife.utils.FontsOverride;
 import com.grantech.cinnagen.solife.utils.Fragments;
 import com.grantech.cinnagen.solife.utils.PersianCalendar;
@@ -64,11 +67,13 @@ public class InjectionLogFragment extends InjectionBaseFragment
                 return;
             }
 
+            long next = System.currentTimeMillis() + Prefs.getInstance().getInt(Prefs.KEY_DOSE_GAP, 14) * 86400000;
             Prefs.getInstance().setLong(Prefs.KEY_PREV, System.currentTimeMillis());
-            Prefs.getInstance().setLong(Prefs.KEY_NEXT, System.currentTimeMillis() + Prefs.getInstance().getInt(Prefs.KEY_DOSE_GAP, 14) * 24 * 3600000);
+            Prefs.getInstance().setLong(Prefs.KEY_NEXT, next);
             Prefs.getInstance().setInt(Prefs.KEY_PREV_X, (int) (board.getPoint().x/getResources().getDisplayMetrics().density));
             Prefs.getInstance().setInt(Prefs.KEY_PREV_Y, (int) (board.getPoint().y/getResources().getDisplayMetrics().density));
-//            Log.i(Fragments.TAG, board.getPoint().x + " === " + board.getPoint().y);
+
+            notifyNextInjection(getContext(), next);
 
             activity.finish();
             Fragments.getInstance().clearStack(activity);
@@ -77,5 +82,18 @@ public class InjectionLogFragment extends InjectionBaseFragment
 
         board.setPointVisibility(true);
         submitButton.setAlpha(1);
+    }
+
+    static void notifyNextInjection(Context context, long next) {
+        Alarms.cancel(context, AlarmReceiver.class, -1);
+
+        String message = context.getResources().getStringArray(R.array.dose_alarm_1)[Prefs.getInstance().getInt(Prefs.KEY_ALARM_1, 0)];
+        Alarms.schedule(context, AlarmReceiver.class, next - 86400000, 1, "", context.getResources().getString(R.string.app_name), message, null, "ftp://dim-20", null, null);
+
+        message = context.getResources().getStringArray(R.array.dose_alarm_2)[Prefs.getInstance().getInt(Prefs.KEY_ALARM_2, 0)];
+        Alarms.schedule(context, AlarmReceiver.class, next, 1, "", context.getResources().getString(R.string.app_name), message, null, "ftp://dim-20", null, null);
+
+        message = context.getResources().getStringArray(R.array.dose_alarm_3)[Prefs.getInstance().getInt(Prefs.KEY_ALARM_3, 0)];
+        Alarms.schedule(context, AlarmReceiver.class, next + 86400000, 1, "", context.getResources().getString(R.string.app_name), message);
     }
 }
