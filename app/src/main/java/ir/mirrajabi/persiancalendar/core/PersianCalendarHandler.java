@@ -312,10 +312,13 @@ public class PersianCalendarHandler {
 
                 day.setPersianDate(persianDate.clone());
 
-                if( persianDate.equals(today) )
+                if( persianDate.equals(today) ){
                     day.setToday(true);
-
-                day.setNext(System.currentTimeMillis() > Prefs.getInstance().getLong("prev", 0));
+                    day.setNext(System.currentTimeMillis() > Prefs.getInstance().getLong("prev", 0));
+                }
+                else if( persianDate.getYear() * 365 + persianDate.getDayOfYear() > today.getYear() * 365 + today.getDayOfYear()){
+                    day.setNext(true);
+                }
 
                 days.add(day);
                 dayOfWeek ++;
