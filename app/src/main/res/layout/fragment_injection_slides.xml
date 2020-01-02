@@ -73,7 +73,7 @@
         android:layout_height="16dp"
         android:layout_marginBottom="8dp"
         app:ci_drawable="@drawable/circle_event_prev_dark"
-        app:ci_drawable_unselected="@drawable/circle_white"
+        app:ci_drawable_unselected="@drawable/circle_event_prev_dark"
         app:layout_constraintBottom_toBottomOf="@+id/inject_slides_slider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
