@@ -3,6 +3,7 @@ package com.grantech.cinnagen.solife.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,6 +41,17 @@ public class BaseFragment extends Fragment implements View.OnClickListener
         switch( view.getId() )
         {
             case R.id.prep_button:
+                // prevent double injection in day
+                if (System.currentTimeMillis() - Prefs.getInstance().getLong(Prefs.KEY_PREV, 0) < 86400000)
+                {
+                    Toast.makeText(getContext(), R.string.injection_log_double, Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                // early injection warning
+                if (System.currentTimeMillis() < Prefs.getInstance().getLong(Prefs.KEY_NEXT, 0))
+                    Toast.makeText(getContext(), R.string.injection_log_early, Toast.LENGTH_LONG).show();
+
                 Intent intent = new Intent(activity.getApplicationContext(), FragmentsActivity.class);
                 Bundle b = new Bundle();
                 b.putInt("position", R.dimen.position_injection_start);
