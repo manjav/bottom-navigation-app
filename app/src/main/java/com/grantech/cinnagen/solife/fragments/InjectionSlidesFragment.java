@@ -1,6 +1,7 @@
 package com.grantech.cinnagen.solife.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,8 @@ public class InjectionSlidesFragment extends InjectionBaseFragment
     {
         super.onViewCreated(view, savedInstanceState);
 
+        indicator = view.findViewById(R.id.inject_slides_indicator);
+
         viewPager = view.findViewById(R.id.inject_slides_slider);
         viewPager.setAdapter(new FragmentStatePagerAdapter(getFragmentManager()) {
             @NonNull
@@ -48,8 +51,13 @@ public class InjectionSlidesFragment extends InjectionBaseFragment
                 return 5;
             }
         });
-
-        indicator = view.findViewById(R.id.inject_slides_indicator);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            public void onPageScrollStateChanged(int state) {}
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+            public void onPageSelected(int position) {
+                indicator.setVisibility(position > 0 ? View.VISIBLE : View.INVISIBLE);
+            }
+        });
     }
 
     @Override
