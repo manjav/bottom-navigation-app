@@ -74,6 +74,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener
                 if( !Prefs.getInstance().contains(Prefs.KEY_NUM_RUN) )
                 {
                     Prefs.getInstance().setInt(Prefs.KEY_NUM_RUN, 1);
+                    Toast.makeText(getContext(), R.string.medication_alarm_fine, Toast.LENGTH_LONG).show();
                     intent = new Intent(activity.getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     activity.finish();

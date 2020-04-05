@@ -61,6 +61,7 @@
     <string name="medication_alarm_list_one">یک روز قبل از تزریق</string>
     <string name="medication_alarm_list_two">با فرارسیدن زمان تزریق</string>
     <string name="medication_alarm_list_three">در صورت فراموشی تزریق</string>
+    <string name="medication_alarm_fine">تنظیمات تزریق با موفقیت انجام شد.</string>
 
     <string name="app_today">امروز</string>
     <string name="date_nexts">تزریق های آتی</string>
