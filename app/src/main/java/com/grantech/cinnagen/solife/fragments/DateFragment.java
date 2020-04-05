@@ -48,6 +48,9 @@ public class DateFragment extends BaseFragment implements ViewPager.OnPageChange
         this.viewPager = view.findViewById(R.id.date_pager);
         this.headerView = view.findViewById(R.id.txt_year_month);
 
+        view.findViewById(R.id.date_left_button).setOnClickListener(this);
+        view.findViewById(R.id.date_right_button).setOnClickListener(this);
+
         this.calendar = PersianCalendarHandler.getInstance(getContext());
         this.calendar.setOnEventUpdateListener(this::createViewPagers);
         this.calendar.setOnMonthChangedListener(this::changeHeader);
@@ -75,52 +78,15 @@ public class DateFragment extends BaseFragment implements ViewPager.OnPageChange
         this.viewPager.addOnPageChangeListener(this);
     }
 
-/*    public void changeMonth(int position) {
-        viewPager.setCurrentItem(viewPager.getCurrentItem() + position, true);
+    @Override
+    public void onClick(View view)
+    {
+        if(view.getId() == R.id.date_left_button)
+            this.viewPager.setCurrentItem(this.viewPager.getCurrentItem() - 1);
+        else if(view.getId() == R.id.date_right_button)
+            this.viewPager.setCurrentItem(this.viewPager.getCurrentItem() + 1);
+        super.onClick(view);
     }
-
-    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-    public void addEventOnCalendar(PersianDate persianDate) {
-        Intent intent = new Intent(Intent.ACTION_INSERT);
-        intent.setData(CalendarContract.Events.CONTENT_URI);
-
-        CivilDate civil = DateConverter.persianToCivil(persianDate);
-
-        intent.putExtra(CalendarContract.Events.DESCRIPTION, calendar.dayTitleSummary(persianDate));
-
-        Calendar time = Calendar.getInstance();
-        time.set(civil.getYear(), civil.getMonth() - 1, civil.getDayOfMonth());
-
-        intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, time.getTimeInMillis());
-        intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, time.getTimeInMillis());
-        intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
-
-        startActivity(intent);
-    }
-
-    private void bringTodayYearMonth() {
-        Intent intent = new Intent(Constants.BROADCAST_INTENT_TO_MONTH_FRAGMENT);
-        intent.putExtra(Constants.BROADCAST_FIELD_TO_MONTH_FRAGMENT, Constants.BROADCAST_TO_MONTH_FRAGMENT_RESET_DAY);
-        intent.putExtra(Constants.BROADCAST_FIELD_SELECT_DAY, -1);
-
-        LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
-
-        if (viewPager.getCurrentItem() != Constants.MONTHS_LIMIT / 2) {
-            viewPager.setCurrentItem(Constants.MONTHS_LIMIT / 2);
-        }
-    }
-
-    public void bringDate(PersianDate date) {
-        PersianDate today = calendar.getToday();
-        mViewPagerPosition = (today.getYear() - date.getYear()) * 12 + today.getMonth() - date.getMonth();
-        viewPager.setCurrentItem(mViewPagerPosition + Constants.MONTHS_LIMIT / 2);
-
-        Intent intent = new Intent(Constants.BROADCAST_INTENT_TO_MONTH_FRAGMENT);
-        intent.putExtra(Constants.BROADCAST_FIELD_TO_MONTH_FRAGMENT, mViewPagerPosition);
-        intent.putExtra(Constants.BROADCAST_FIELD_SELECT_DAY, date.getDayOfMonth());
-
-        LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
-    }*/
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}

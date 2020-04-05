@@ -28,6 +28,33 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/date_right_button"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_year_month"
+        app:layout_constraintEnd_toStartOf="@+id/txt_year_month"
+        app:layout_constraintTop_toTopOf="@+id/txt_year_month"
+        app:srcCompat="@drawable/ic_chevron"
+        tools:ignore="MissingConstraints,VectorDrawableCompat" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/date_left_button"
+        android:scaleX="-1"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_year_month"
+        app:layout_constraintStart_toEndOf="@+id/txt_year_month"
+        app:layout_constraintTop_toTopOf="@+id/txt_year_month"
+        app:srcCompat="@drawable/ic_chevron"
+        tools:ignore="MissingConstraints,VectorDrawableCompat" />
+
     <androidx.viewpager.widget.ViewPager
         android:overScrollMode="never"
         android:id="@+id/date_pager"

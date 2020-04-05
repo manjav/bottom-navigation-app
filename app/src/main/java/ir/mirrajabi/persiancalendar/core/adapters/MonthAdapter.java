@@ -27,12 +27,14 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.ViewHolder> 
     private final int TYPE_HEADER = 0;
     private final int TYPE_DAY = 1;
     private List<Day> mDays;
+    private int itemSize;
     private int mSelectedDay = -1;
     private PersianCalendarHandler mCalendarHandler;
     private final int mFirstDayOfWeek;
     private final int mTotalDays;
 
     public MonthAdapter(Context context, MonthFragment monthFragment, List<Day> days) {
+        this.itemSize = (int) (context.getResources().getDisplayMetrics().density * 36);
         mFirstDayOfWeek = days.get(0).getDayOfWeek();
         mTotalDays = days.size();
         this.mMonthFragment = monthFragment;
@@ -47,7 +49,7 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.ViewHolder> 
     }
 
     public void selectDay(int dayOfMonth) {
-        mSelectedDay = dayOfMonth + 6 + mFirstDayOfWeek;
+//        mSelectedDay = dayOfMonth + 6 + mFirstDayOfWeek;
         notifyDataSetChanged();
     }
 
@@ -87,7 +89,6 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.ViewHolder> 
             if (position - 7 - mFirstDayOfWeek >= 0) {
                 mMonthFragment.onClickItem(mDays.get(position - 7 - mFirstDayOfWeek).getPersianDate());
 
-                mSelectedDay = position;
 //                notifyDataSetChanged();
             }
         }
@@ -121,7 +122,8 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.ViewHolder> 
             if( this.backgroundView == null )
             {
                 this.backgroundView = new View(this.itemView.getContext());
-                this.layout.addView(this.backgroundView, 0, new FrameLayout.LayoutParams(96, 96, Gravity.CENTER));
+                float d = this.itemView.getResources().getDisplayMetrics().density;
+                this.layout.addView(this.backgroundView, 0, new FrameLayout.LayoutParams(itemSize, itemSize, Gravity.CENTER));
             }
             else
             {
@@ -138,7 +140,6 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.ViewHolder> 
     @Override
     public MonthAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext).inflate(R.layout.item_day, parent, false);
-
         return new ViewHolder(v);
     }
 
