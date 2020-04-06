@@ -27,6 +27,7 @@ import com.grantech.cinnagen.solife.R;
 public class InjectionBoard extends ConstraintLayout implements ConstraintLayout.OnClickListener
 {
     public static Rect REGION_ABDOMEN;
+    public static Rect REGION_LIMIT;
     public static Point POINT_RIGHT;
     public static Rect REGION_RIGHT;
     public static Point POINT_LEFT;
@@ -77,7 +78,8 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
         if( REGION_ABDOMEN == null )
         {
             float d = getResources().getDisplayMetrics().density;
-            REGION_ABDOMEN = new Rect( (int) (100 * d), (int) (25 * d),     (int) (160 * d), (int) (95 * d));
+            REGION_ABDOMEN = new Rect( (int) (110 * d), (int) (30 * d),     (int) (140 * d), (int) (95 * d));
+            REGION_LIMIT   = new Rect( (int) (140 * d), (int) (50 * d),     (int) (220 * d), (int) (100 * d));
             POINT_RIGHT   = new Point( (int) (75 * d),  (int) (-230 * d));
             REGION_RIGHT   = new Rect( (int) (70 * d),  (int) (250 * d),	(int) (70 * d),	 (int) (95 * d));
             POINT_LEFT    = new Point( (int) (-75 * d), (int) (-230 * d) );
@@ -279,8 +281,18 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
             return false;
         int x = (int)(event.getX() - bodyRect.left);
         int y = (int)(event.getY() - bodyRect.top);
-        if( x < selectedRegion.left || y < selectedRegion.top || x > selectedRegion.left + selectedRegion.right || y > selectedRegion.top + selectedRegion.bottom )
-            return false;
+        if( x < selectedRegion.left )
+            x = selectedRegion.left;
+        if( y < selectedRegion.top )
+            y = selectedRegion.top;
+        if( x > selectedRegion.left + selectedRegion.right)
+            x = selectedRegion.left + selectedRegion.right;
+        if( y > selectedRegion.top + selectedRegion.bottom )
+            y = selectedRegion.top + selectedRegion.bottom;
+        if (selectedRegion.equals(REGION_ABDOMEN)) {
+            if( x > REGION_LIMIT.left && x < REGION_LIMIT.right && y > REGION_LIMIT.top && y < REGION_LIMIT.bottom)
+                y = REGION_LIMIT.top;
+        }
 
         this.autoRegion = false;
         this.setPointVisibility(true);

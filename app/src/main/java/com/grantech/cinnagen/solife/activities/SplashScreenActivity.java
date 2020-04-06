@@ -28,7 +28,7 @@ public class SplashScreenActivity extends AppCompatActivity
 
         Handler mWaitHandler = new Handler();
         mWaitHandler.postDelayed(() -> {
-
+//            Fragments.getInstance().organizeURL("ftp://dim-27", this);
             Bundle bundle = getIntent().getExtras();
             if (bundle != null && bundle.containsKey("data")){
                 Fragments.getInstance().organizeURL(Objects.requireNonNull(bundle.getString("data")), this);
