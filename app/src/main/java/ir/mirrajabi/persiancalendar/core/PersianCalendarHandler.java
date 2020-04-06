@@ -54,8 +54,8 @@ public class PersianCalendarHandler {
     private int mColorDayName = Color.LTGRAY;
     private int mColorEventUnderline = Color.RED;
 
-    private float mDaysFontSize = 20;
-    private float mHeadersFontSize = 20;
+    private float mDaysFontSize = 24;
+    private float mHeadersFontSize = 24;
 
     private boolean mHighlightLocalEvents = true;
     private boolean mHighlightOfficialEvents = false;

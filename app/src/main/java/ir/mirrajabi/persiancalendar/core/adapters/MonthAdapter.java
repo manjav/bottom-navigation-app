@@ -34,7 +34,7 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.ViewHolder> 
     private final int mTotalDays;
 
     public MonthAdapter(Context context, MonthFragment monthFragment, List<Day> days) {
-        this.itemSize = (int) (context.getResources().getDisplayMetrics().density * 36);
+        this.itemSize = (int) (context.getResources().getDisplayMetrics().density * 40);
         mFirstDayOfWeek = days.get(0).getDayOfWeek();
         mTotalDays = days.size();
         this.mMonthFragment = monthFragment;
