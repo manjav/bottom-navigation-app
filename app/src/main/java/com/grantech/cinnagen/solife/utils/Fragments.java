@@ -96,7 +96,7 @@ public class Fragments
             transaction.setCustomAnimations(getAnimationIn(oldPosition > newPosition), getAnimationOut(oldPosition > newPosition), getAnimationIn(oldPosition < newPosition), getAnimationOut(oldPosition < newPosition));
 
         transaction.replace(R.id.fragment_container, fragment);
-        if( newPosition > 3 )
+        if( newPosition > 9 || oldPosition == 0 )
             transaction.addToBackStack(oldPosition + "");
         transaction.commit();
         oldPosition = newPosition;

@@ -130,4 +130,5 @@
     <string name="injection_log_fine">ثبت تزریق با موفقین انجام شد.</string>
     <string name="injection_log_early">توجه داشته باشید که تزریق شما زودتر از موعد انجام می گیرد.</string>
     <string name="injection_log_double">تزریق دوباره برای شما امکان پذیر نیست!</string>
+    <string name="app_exit_alert">برای خروج دوباره بازگشت رو بزنید</string>
 </resources>
