@@ -37,7 +37,7 @@ public class SlideFragment extends Fragment
     private SimpleExoPlayer exoPlayer;
     private int[] captions = new int[]{R.string.injection_slides_0, R.string.injection_slides_1, R.string.injection_slides_2, R.string.injection_slides_3, R.string.injection_slides_4};
 
-    SlideFragment(int position)
+    public SlideFragment(int position)
     {
         this.position = position;
     }
@@ -57,19 +57,7 @@ public class SlideFragment extends Fragment
             playerView.setVisibility(View.VISIBLE);
             exoPlayer = new SimpleExoPlayer.Builder(Objects.requireNonNull(getContext())).build();
             playerView.setPlayer(exoPlayer);
-            return;
-        }
-        slideImage = view.findViewById(R.id.slide_image);
-        slideImage.setVisibility(View.VISIBLE);
-        slideText = view.findViewById(R.id.slide_text);
-        slideText.setVisibility(View.VISIBLE);
-    }
 
-    @Override
-    public void onResume()
-    {
-        super.onResume();
-        if (playerView != null){
             // Produces DataSource instances through which media data is loaded.
             DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(Objects.requireNonNull(getContext()), Util.getUserAgent(getContext(), "yourApplicationName"));
             // This is the MediaSource representing the media to be played.
@@ -78,8 +66,19 @@ public class SlideFragment extends Fragment
             exoPlayer.prepare(videoSource);
             return;
         }
+
         int id = getResources().getIdentifier("slide_" + position, "mipmap", Objects.requireNonNull(getContext()).getPackageName());
+        slideImage = view.findViewById(R.id.slide_image);
+        slideImage.setVisibility(View.VISIBLE);
         slideImage.setImageResource(id);
+
+        slideText = view.findViewById(R.id.slide_text);
+        slideText.setVisibility(View.VISIBLE);
         slideText.setText(captions[captions.length - position - 1]);
+    }
+
+    public void onHidden() {
+        if (exoPlayer != null)
+            exoPlayer.stop();
     }
 }
