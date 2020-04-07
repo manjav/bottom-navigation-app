@@ -8,12 +8,30 @@
     android:layout_height="match_parent"
     tools:context=".fragments.WelcomeFragment">
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:srcCompat="@drawable/ic_logo"
+        tools:ignore="MissingConstraints,VectorDrawableCompat" />
+
     <TextView
         android:id="@+id/welcomeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:text="@string/home_welcome_title"
         android:textColor="@color/colorPrimary"
@@ -21,7 +39,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
 
     <TextView
         android:id="@+id/welcomeMessage"
@@ -42,14 +60,12 @@
     <TextView
         android:id="@+id/welcome_terms_text"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_height="21dp"
         android:layout_marginBottom="8dp"
         android:text="@string/welcome_terms"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/welcome_accept_button"
-        app:layout_constraintStart_toStartOf="@+id/welcomeMessage"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeMessage" />
+        app:layout_constraintStart_toStartOf="@+id/welcomeMessage" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/welcome_underline_image"
