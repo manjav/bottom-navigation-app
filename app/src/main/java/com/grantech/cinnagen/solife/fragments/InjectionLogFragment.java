@@ -45,7 +45,11 @@ public class InjectionLogFragment extends InjectionBaseFragment
 
         // set region
         Point selectedRegion = new Point(180, 40);
-        switch ( Objects.requireNonNull(getArguments()).getInt("pos") )
+        int pos = Objects.requireNonNull(getArguments()).getInt("pos");
+        view.findViewById(R.id.inject_log_inner_shadow_bottom).setVisibility(pos == R.id.inject_body_abdomen_button ? View.VISIBLE : View.INVISIBLE);
+        view.findViewById(R.id.inject_log_inner_shadow_right).setVisibility(pos == R.id.inject_body_leg_right_button ? View.VISIBLE : View.INVISIBLE);
+        view.findViewById(R.id.inject_log_inner_shadow_left).setVisibility(pos == R.id.inject_body_leg_left_button ? View.VISIBLE : View.INVISIBLE);
+        switch ( pos )
         {
             case R.id.inject_body_leg_right_button: selectedRegion = new Point(100, 300); break;
             case R.id.inject_body_leg_left_button: selectedRegion = new Point(260, 300); break;

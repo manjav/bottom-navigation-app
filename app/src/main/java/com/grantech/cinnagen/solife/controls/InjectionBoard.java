@@ -78,12 +78,12 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
         if( REGION_ABDOMEN == null )
         {
             float d = getResources().getDisplayMetrics().density;
-            REGION_ABDOMEN = new Rect( (int) (110 * d), (int) (30 * d),     (int) (140 * d), (int) (95 * d));
+            REGION_ABDOMEN = new Rect( (int) (110 * d), (int) (30 * d),     (int) (140 * d), (int) (90 * d));
             REGION_LIMIT   = new Rect( (int) (140 * d), (int) (50 * d),     (int) (220 * d), (int) (100 * d));
-            POINT_RIGHT   = new Point( (int) (75 * d),  (int) (-230 * d));
-            REGION_RIGHT   = new Rect( (int) (70 * d),  (int) (250 * d),	(int) (70 * d),	 (int) (95 * d));
-            POINT_LEFT    = new Point( (int) (-75 * d), (int) (-230 * d) );
-            REGION_LEFT    = new Rect( (int) (220 * d), (int) (250 * d),	(int) (70 * d),  (int) (95 * d));
+            POINT_RIGHT   = new Point( (int) (75 * d),  (int) (-250 * d));
+            REGION_RIGHT   = new Rect( (int) (80 * d),  (int) (250 * d),	(int) (50 * d),	 (int) (90 * d));
+            POINT_LEFT    = new Point( (int) (-75 * d), (int) (-250 * d) );
+            REGION_LEFT    = new Rect( (int) (230 * d), (int) (250 * d),	(int) (50 * d),  (int) (90 * d));
         }
 
         layout = (ConstraintLayout) inflate(context, R.layout.injection_board, this);

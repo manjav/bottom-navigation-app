@@ -82,7 +82,8 @@
             android:id="@+id/inject_body_leg_right_button"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_marginEnd="104dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginEnd="68dp"
             android:layout_marginBottom="96dp"
             android:background="@drawable/rect_round_cyan"
             android:text="@string/injection_pos_rleg"
@@ -90,13 +91,14 @@
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/inject_body_abdomen_button" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/inject_body_leg_left_button"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_marginStart="104dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginEnd="68dp"
             android:layout_marginBottom="96dp"
             android:background="@drawable/rect_round_cyan"
             android:text="@string/injection_pos_lleg"
@@ -104,7 +106,7 @@
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="@+id/inject_body_abdomen_button" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/inject_body_inner_shadow_top"
