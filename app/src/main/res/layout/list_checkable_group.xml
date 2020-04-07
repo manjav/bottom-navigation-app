@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/checkable_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="64dp">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/checkable_image"
@@ -20,10 +20,13 @@
         android:id="@+id/checkable_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="center|fill_horizontal"
         android:textColor="@color/colorDark" />
 
 </RelativeLayout>

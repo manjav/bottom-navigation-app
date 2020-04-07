@@ -214,7 +214,7 @@
         <ListView
             android:id="@+id/dose_gap_list"
             android:layout_width="match_parent"
-            android:layout_height="112dp"
+            android:layout_height="128dp"
             android:layout_marginTop="16dp"
             android:background="@color/colorWhite"
             android:choiceMode="singleChoice"

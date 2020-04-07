@@ -145,7 +145,7 @@
             <ListView
                 android:id="@+id/dose_alarm_list_one"
                 android:layout_width="match_parent"
-                android:layout_height="132dp"
+                android:layout_height="128dp"
                 android:layout_marginTop="8dp"
                 android:background="@color/colorWhite"
                 android:choiceMode="singleChoice"
@@ -187,7 +187,7 @@
             <ListView
                 android:id="@+id/dose_alarm_list_two"
                 android:layout_width="match_parent"
-                android:layout_height="112dp"
+                android:layout_height="128dp"
                 android:layout_marginTop="8dp"
                 android:background="@color/colorWhite"
                 android:choiceMode="singleChoice"
@@ -229,7 +229,7 @@
             <ListView
                 android:id="@+id/dose_alarm_list_three"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="128dp"
                 android:layout_marginTop="8dp"
                 android:background="@color/colorWhite"
                 android:choiceMode="singleChoice"
