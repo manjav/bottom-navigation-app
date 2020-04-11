@@ -42,6 +42,11 @@ public class SplashScreenActivity extends AppCompatActivity
                 if( Prefs.getInstance().contains(Prefs.KEY_NUM_RUN) )
                 {
                     intent = new Intent(getApplicationContext(), MainActivity.class);
+                    if(Prefs.getInstance().getLong("alarm", 0) > System.currentTimeMillis()){
+                        Bundle b = new Bundle();
+                        b.putInt("position", R.dimen.position_injection_timer);
+                        intent.putExtras(b);
+                    }
                 }
                 else
                 {

@@ -3,6 +3,7 @@ package com.grantech.cinnagen.solife.fragments;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.utils.AlarmReceiver;
 import com.grantech.cinnagen.solife.utils.Alarms;
 import com.grantech.cinnagen.solife.utils.Fragments;
+import com.grantech.cinnagen.solife.utils.Prefs;
 
 /**
  * Created by ManJav on 9/26/2019.
@@ -61,6 +63,13 @@ public class InjectionTimerFragment extends InjectionBaseFragment
 
         restoreButton = view.findViewById(R.id.inject_timer_restore);
         restoreButton.setOnClickListener(this);
+
+        if( Prefs.getInstance().getLong("alarm", 0) > System.currentTimeMillis() )
+        {
+            delay = (int) ((Prefs.getInstance().getLong("alarm", 0) - System.currentTimeMillis()) / 1000);
+            Log.i(Fragments.TAG, delay + " ____ " + (Prefs.getInstance().getLong("alarm", 0) - System.currentTimeMillis()));
+            toggleCountdown();
+        }
 
         traceTime();
     }
@@ -125,6 +134,7 @@ public class InjectionTimerFragment extends InjectionBaseFragment
         remainingText.setVisibility(View.VISIBLE);
         restoreButton.setBackgroundResource(R.drawable.rect_round_button_white);
         submitButton.setText(R.string.injection_timer_continue);
+        Prefs.getInstance().setLong("alarm", System.currentTimeMillis() + delay * 1000);
     }
 
     private void resetCountdown() {
