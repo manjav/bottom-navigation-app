@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,7 +58,16 @@ public class MedicationTimeFragment extends BaseFragment implements TimePickerDi
                 return;
 
             case R.id.dose_time_finish:
-                Fragments.getInstance().loadFragment(activity, R.dimen.position_medication_alarms);
+                if( Prefs.getInstance().contains(Prefs.KEY_NUM_RUN) )
+                {
+                    Toast.makeText(getContext(), R.string.medication_alarm_fine, Toast.LENGTH_LONG).show();
+                    Fragments.getInstance().clearStack(activity);
+                }
+                else
+                {
+                    Fragments.getInstance().loadFragment(activity, R.dimen.position_medication_alarms);
+                }
+
         }
     }
 

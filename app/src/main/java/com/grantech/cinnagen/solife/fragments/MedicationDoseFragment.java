@@ -16,7 +16,6 @@ import androidx.annotation.Nullable;
 
 import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.adapters.CheckableListAdapter;
-import com.grantech.cinnagen.solife.controls.InjectionBoard;
 import com.grantech.cinnagen.solife.controls.PickerInput;
 import com.grantech.cinnagen.solife.utils.FontsOverride;
 import com.grantech.cinnagen.solife.utils.Fragments;
@@ -58,33 +57,14 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
         nextDateInput = view.findViewById(R.id.dose_next_date_input);
         nextTimeInput = view.findViewById(R.id.dose_next_time_input);
 
-        if( Prefs.getInstance().contains(Prefs.KEY_NUM_RUN) )
-        {
-            view.findViewById(R.id.dose_title).setVisibility(View.GONE);
-            view.findViewById(R.id.dose_message).setVisibility(View.GONE);
-            view.findViewById(R.id.dose_start_title).setVisibility(View.GONE);
-            view.findViewById(R.id.dose_start_message).setVisibility(View.GONE);
-            view.findViewById(R.id.dose_start_message2).setVisibility(View.GONE);
-            view.findViewById(R.id.dose_radio_40_d).setVisibility(View.GONE);
-            view.findViewById(R.id.dose_radio_80_d).setVisibility(View.GONE);
-            radioGroup.setVisibility(View.GONE);
-            submitButton.setVisibility(View.GONE);
-            startDateInput.setVisibility(View.GONE);
+        // select dose by milli-grams
+        radioGroup.setOnCheckedChangeListener((group, checkedId) ->Prefs.getInstance().setInt(Prefs.KEY_DOSE_MG, checkedId==R.id.dose_radio_80 ? 1 : 0));
 
-            nextTimeInput.setOnClickListener(this);
-            nextTimeInput.setText(FontsOverride.convertToPersianDigits(nextDate.getPersianShortTime()) );
-        }
-        else
-        {
-            // select dose by milli-grams
-            radioGroup.setOnCheckedChangeListener((group, checkedId) ->Prefs.getInstance().setInt(Prefs.KEY_DOSE_MG, checkedId==R.id.dose_radio_80 ? 1 : 0));
+        // start dose date selection
+        startDateInput.setText(FontsOverride.convertToPersianDigits(prevDate.getPersianShortDate()));
+        startDateInput.setOnClickListener(this);
 
-            // start dose date selection
-            startDateInput.setText(FontsOverride.convertToPersianDigits(prevDate.getPersianShortDate()));
-            startDateInput.setOnClickListener(this);
-
-            nextTimeInput.setVisibility(View.GONE);
-        }
+        nextTimeInput.setVisibility(View.GONE);
 
         // select gap of injections
         ListView gapList = view.findViewById(R.id.dose_gap_list);
