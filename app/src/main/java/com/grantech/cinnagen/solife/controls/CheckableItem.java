@@ -38,6 +38,8 @@ public class CheckableItem extends ConstraintLayout implements Checkable
         View view = inflater.inflate(R.layout.list_checkable_group, this, true);
         checkImage = view.findViewById(R.id.checkable_image);
         labelText = view.findViewById(R.id.checkable_text);
+        this.setBackgroundResource(R.color.colorPrimaryLight);
+
     }
 
     public void setLabel(String label)
@@ -78,8 +80,7 @@ public class CheckableItem extends ConstraintLayout implements Checkable
         // since I choose not to have check box in my layout, I change background color
         // according to checked state
         this.checkImage.setVisibility(this.checked ? View.VISIBLE : View.INVISIBLE);
-        // if I had checkbox in my layout I could
-        // testCheckBox.setChecked(checked);
+        this.setBackgroundResource(this.checked ? R.color.colorPrimaryLight : R.color.colorWhite);
     }
 
     @Override
