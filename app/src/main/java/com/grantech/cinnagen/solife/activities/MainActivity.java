@@ -1,6 +1,7 @@
 package com.grantech.cinnagen.solife.activities;
 
 import android.os.Bundle;
+import android.os.Handler;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.grantech.cinnagen.solife.R;
@@ -14,12 +15,11 @@ public class MainActivity extends BaseActivity
 
         setContentView(R.layout.activity_main);
         Bundle bundle = getIntent().getExtras();
-        int position = R.dimen.position_home_injection; // or other values
-        if( bundle != null && bundle.containsKey("position") )
-            position = bundle.getInt("position");
-
-        Fragments.getInstance().loadFragment(this, position);
+        Fragments.getInstance().loadFragment(this, R.dimen.position_home_injection);
         ((BottomNavigationView) findViewById(R.id.navigation)).setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        if( bundle != null && bundle.containsKey("position") )
+            Fragments.getInstance().loadFragment(this, bundle.getInt("position"));
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = item -> {
