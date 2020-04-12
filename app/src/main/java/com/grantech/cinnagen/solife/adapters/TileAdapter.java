@@ -17,13 +17,15 @@ import java.util.List;
 import java.util.Objects;
 
 public class TileAdapter extends RecyclerView.Adapter<TileAdapter.ViewHolder> {
-    private Context context;
-    private List<Boolean> data;
+    private final Context context;
+    private final List<Boolean> data;
+    private final List<Integer> captions;
 
-    public TileAdapter(Context context, Fragment fragment, List<Boolean> data) {
+    public TileAdapter(Context context, Fragment fragment, List<Boolean> data, List<Integer> captions) {
 //        this.itemSize = (int) (context.getResources().getDisplayMetrics().density * 40);
         this.context = context;
         this.data = data;
+        this.captions = captions;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
@@ -56,6 +58,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.ViewHolder> {
             imageView.setImageResource(id);
             imageView.setAlpha(data.get(position) ? 1.0f : 0.6f);
             hideView.setVisibility(data.get(position) ? View.INVISIBLE : View.VISIBLE);
+            textView.setText(captions.get(position));
         }
     }
 

@@ -93,6 +93,12 @@
     <string name="tips_8_title">تغییر سبک زندگی و پسوریازیس</string>
     <string name="tips_8_message">کشیدن سیگار، چاقی و استرس می‌تواند بر ابتلا یا تشدید علائم پسوریازیس تاثیر بگذارد. همچنین برخی افراد پس از استفاده از برخی مواد غذایی، بدتر شدن علائم پسوریازیس را گزارش کرده‌اند. نحوه استحمام، نحوه مراقبت از پوست در هوای سرد یا گرم و مواردی از این قبیل می‌تواند در افراد مبتلا به پسوریازیس با سایر افراد متفاوت باشد. جهت دریافت راهنمایی در رابطه با سبک زندگی خود می‌توانید به صفحه اینستاگرام پسوریازیس ارکیدلایف با نام Psoriasis.Orchidlife مراجعه فرمایید.</string>
 
+    <string name="injection_start_title">شروع مراحل تزریق</string>
+    <string name="injection_slide_title">آموزش تصویری</string>
+    <string name="injection_tips_title">یک توصیه مهم</string>
+    <string name="injection_preps_title">آماده‌سازی</string>
+    <string name="injection_logs_title">ثبت تزریق</string>
+
     <string name="injection_slides_title">تزریق صحیح سینورا®</string>
     <string name="injection_slides_message">در این تصاویر نحوه تزریق صحیح سینورا® نمایش داده شده است.</string>
     <string name="injection_slides_0">سطح مورد نظر از پوست را که برای تزریق انتخاب کرده‌اید با پنبه آغشته به الکل ضدعفونی کنید.</string>
@@ -101,7 +107,7 @@
     <string name="injection_slides_3">دستگاه را با زاویه 90 درجه بر روی پوست قرار داده و قسمت شفاف دستگاه را به پوست فشار دهید تا دکمه زرد رنگ بالای دستگاه عمل کند. در صورت عدم اعمال فشار مناسب، دستگاه عمل نخواهد کرد.</string>
     <string name="injection_slides_4">دکمه زرد رنگ را فشار دهید. تزریق 10 ثانیه به طول می‌انجامد. دستگاه را در این مدت از سطح پوست جابجا نکنید.</string>
 
-    <string name="injection_steps">مراحل تزریق</string>
+    <string name="injection_steps_title">مراحل تزریق</string>
     <string name="injection_step_0">دست های خود را با آب و صابون بشویید.</string>
     <string name="injection_step_1">تزریق را انجام دهید.</string>
     <string name="injection_step_2">دستگاه استفاده شده را دور بیاندازید.</string>
@@ -124,10 +130,12 @@
     <string name="injection_body_message">ناحیه تزریق امروز خود را انتخاب کنید تا با بزرگنمایی آن ناحیه، امکان انتخاب دقیق محل تزریق وجود داشته باشد.</string>
     <string name="injection_body_date_prompt">تاریخ و زمان تزریق</string>
 
-    <string name="injection_log_title">انتخاب محل تزریق: مرحله ۲ از ۲</string>
+    <string name="injection_log_title">انتخاب محل تزریق</string>
     <string name="injection_log_message">جهت نمایش محل تزریق امروز خود، یکی از خانه‌های مربعی شکل زیر را انتخاب کنید.</string>
     <string name="injection_log_warn">ابتدا محل تزریق را انتخاب کنید!</string>
     <string name="injection_log_fine">ثبت تزریق با موفقیت انجام شد.</string>
     <string name="injection_log_early">توجه داشته باشید که تزریق شما زودتر از موعد انجام می گیرد.</string>
     <string name="injection_log_double">تزریق دوباره برای شما امکان پذیر نیست!</string>
+
+    <string name="injection_settings_message">سولایف این امکان را برای شما فراهم می‌کند که نحوه نمایش صفحات مربوط به تزریق را انتخاب کنید. با انتخاب هر یک از صفحات زیر و مشاهده تیک سبزرنگ، صفحه مورد نظر برای نمایش انتخاب می‌شود.</string>
 </resources>

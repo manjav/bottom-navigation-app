@@ -27,6 +27,7 @@ import com.grantech.cinnagen.solife.fragments.InjectionDocsFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionLogFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionPrevFragment;
+import com.grantech.cinnagen.solife.fragments.InjectionSettingsFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionSlidesFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionStepsFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionTimerFragment;
@@ -193,6 +194,7 @@ public class Fragments
             case R.dimen.position_injection_steps:      return new InjectionStepsFragment();
             case R.dimen.position_injection_body:      return new InjectionBodyFragment();
             case R.dimen.position_injection_log:      return new InjectionLogFragment();
+            case R.dimen.position_injection_settings:      return new InjectionSettingsFragment();
 
             case R.dimen.position_misc_faq:
             case R.dimen.position_misc_terms:
@@ -225,6 +227,7 @@ public class Fragments
             case 26: return R.dimen.position_injection_steps;
             case 27: return R.dimen.position_injection_body;
             case 28: return R.dimen.position_injection_log;
+            case 30: return R.dimen.position_injection_settings;
 
             case 31: return R.dimen.position_misc_safety;
             case 32: return R.dimen.position_misc_faq;

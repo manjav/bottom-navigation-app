@@ -38,10 +38,19 @@ public class InjectionSettingsFragment extends BaseFragment
 
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 3);
         recyclerView.setLayoutManager(layoutManager);
+        List<Integer> captions = new ArrayList<>();
+        captions.add(R.string.injection_start_title);
+        captions.add(R.string.injection_slide_title);
+        captions.add(R.string.injection_timer_title);
+        captions.add(R.string.injection_preps_title);
+        captions.add(R.string.injection_tips_title);
+        captions.add(R.string.injection_steps_title);
+        captions.add(R.string.injection_logs_title);
+
         List<Boolean> pages = new ArrayList<>();
         for(int i=0; i<7; i++)
             pages.add(true);
-        recyclerView.setAdapter(new TileAdapter(getContext(), this, pages));
+        recyclerView.setAdapter(new TileAdapter(getContext(), this, pages, captions));
     }
 
     @Override
