@@ -18,6 +18,8 @@ public class Alarms
         return schedule(context, cls, time, interval, ticker, title, text, null, null, null, null);
     }
     public static int schedule(Context context, Class<?> cls, long time, long interval, String ticker, String title, String text, String info, String data, String icon, String sound){
+        if(time < System.currentTimeMillis() && interval == 1 )
+            return -1;
         Bundle bundle = new Bundle();
         bundle.putString("ticker", ticker);
         bundle.putString("title", title);

@@ -143,7 +143,7 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
         else
         {
             nextDate.setPersianDate(year, monthOfYear, dayOfMonth);
-            if (nextDate.getNumDays() < prevDate.getNumDays()) {
+            if (nextDate.getNumDays() <= prevDate.getNumDays()) {
                 Toast.makeText(getContext(), R.string.medication_dose_maintain_alert, Toast.LENGTH_LONG).show();
                 return;
             }

@@ -67,7 +67,7 @@ public class InjectionTimerFragment extends InjectionBaseFragment
         if( Prefs.getInstance().getLong("alarm", 0) > System.currentTimeMillis() )
         {
             delay = (int) ((Prefs.getInstance().getLong("alarm", 0) - System.currentTimeMillis()) / 1000);
-            Log.i(Fragments.TAG, delay + " ____ " + (Prefs.getInstance().getLong("alarm", 0) - System.currentTimeMillis()));
+//            Log.i(Fragments.TAG, delay + " ____ " + (Prefs.getInstance().getLong("alarm", 0) - System.currentTimeMillis()));
             toggleCountdown();
         }
 
