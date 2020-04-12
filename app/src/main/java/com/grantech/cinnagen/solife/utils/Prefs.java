@@ -24,6 +24,7 @@ public class Prefs
     static public final String KEY_ALARM_2 = "alarm2";
     static public final String KEY_ALARM_3 = "alarm3";
     public static final String KEY_ALARM_NOTIFICATION = "alarmNotify";
+    public static final String KEY_INJECT_SETTINGS = "injectSettings";
 
     static public Prefs getInstance() {
         return instance;

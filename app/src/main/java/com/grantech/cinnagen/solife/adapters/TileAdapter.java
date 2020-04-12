@@ -54,6 +54,8 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.ViewHolder> {
         }
 
         void update(int position) {
+            if( position > 5 )
+                return;
             int id = context.getResources().getIdentifier("settings_" + position, "mipmap", Objects.requireNonNull(context).getPackageName());
             imageView.setImageResource(id);
             imageView.setAlpha(data.get(position) ? 1.0f : 0.6f);
