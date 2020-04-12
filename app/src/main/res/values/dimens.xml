@@ -23,6 +23,7 @@
     <dimen name="position_injection_body">27px</dimen>
     <dimen name="position_injection_log">28px</dimen>
     <dimen name="position_injection_fine">29px</dimen>
+    <dimen name="position_injection_settings">30px</dimen>
 
     <dimen name="position_misc_safety">31px</dimen>
     <dimen name="position_misc_faq">32px</dimen>

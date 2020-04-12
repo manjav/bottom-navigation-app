@@ -43,6 +43,9 @@ public class MoreFragment extends BaseFragment
                     args.putBoolean("s", true);
                     Fragments.getInstance().loadFragment(activity, R.dimen.position_medication_alarms, 0, args);
                     return;
+                case 1:
+                    Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_settings);
+                    return;
                 case 2:
                     Fragments.getInstance().loadFragment(activity, R.dimen.position_misc_safety);
                     return;
