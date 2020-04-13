@@ -205,11 +205,8 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
     }
 
     private Rect getRegion(int x, int y) {
-        if( y >= REGION_RIGHT.top ){
-            if( x >= REGION_LEFT.left )
-                return REGION_LEFT;
-            return REGION_RIGHT;
-        }
+        if( y >= REGION_RIGHT.top )
+            return x < 180 * getResources().getDisplayMetrics().density ? REGION_RIGHT : REGION_LEFT;
         return REGION_ABDOMEN;
     }
 
