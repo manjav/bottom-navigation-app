@@ -18,6 +18,7 @@ import java.util.TimeZone;
 
 public class Prefs
 {
+    public List<Boolean> pages;
     private SharedPreferences sharedPref;
 
     static private Prefs instance;
@@ -33,7 +34,7 @@ public class Prefs
     static public final String KEY_ALARM_2 = "alarm2";
     static public final String KEY_ALARM_3 = "alarm3";
     public static final String KEY_ALARM_NOTIFICATION = "alarmNotify";
-    public static final String KEY_INJECT_SETTINGS = "injectSettings";
+    public static final String KEY_SETTINGS_PAGES = "settingsPages";
 
     static public Prefs getInstance() {
         return instance;
@@ -46,6 +47,14 @@ public class Prefs
         // locale
         if( !instance.contains(KEY_LOC) )
             instance.setString(KEY_LOC, getDefaultLocale());
+
+        // pages
+        if( instance.contains(KEY_SETTINGS_PAGES) ) {
+            instance.pages = (List<Boolean>) instance.getObject(KEY_SETTINGS_PAGES, null);
+        } else {
+            instance.pages = Arrays.asList(true,true,true,true,true,true);
+            instance.setObject(KEY_SETTINGS_PAGES, instance.pages);
+        }
     }
 
     private static String getDefaultLocale() {

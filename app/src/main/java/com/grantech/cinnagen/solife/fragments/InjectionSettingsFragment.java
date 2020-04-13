@@ -23,8 +23,6 @@ import java.util.List;
 
 public class InjectionSettingsFragment extends BaseFragment
 {
-    private List<Boolean> pages;
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -49,11 +47,7 @@ public class InjectionSettingsFragment extends BaseFragment
         captions.add(R.string.injection_tips_title);
         captions.add(R.string.injection_steps_title);
 
-        String[] settings = Prefs.getInstance().getString(Prefs.KEY_INJECT_SETTINGS, "1,1,1,1,1,1").split(",");
-        pages = new ArrayList<>();
-        for(int i=0; i<settings.length; i++)
-            pages.add(settings[i].equals("1"));
-        recyclerView.setAdapter(new TileAdapter(getContext(), this, pages, captions));
+        recyclerView.setAdapter(new TileAdapter(getContext(), this, Prefs.getInstance().pages, captions));
 
         view.findViewById(R.id.inject_settings_submit).setOnClickListener(this);
     }
@@ -61,10 +55,7 @@ public class InjectionSettingsFragment extends BaseFragment
     @Override
     public void onClick(View view)
     {
-        String settings = "";
-        for(int i=0; i<pages.size(); i++)
-            settings += (pages.get(i) ? "1" : "0") + (i < pages.size() -1 ? "," : "");
-        Prefs.getInstance().setString(Prefs.KEY_INJECT_SETTINGS, settings);
+        Prefs.getInstance().setObject(Prefs.KEY_SETTINGS_PAGES, Prefs.getInstance().pages);
         activity.onBackPressed();
     }
 }
