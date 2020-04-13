@@ -88,6 +88,13 @@ public class InjectionLogFragment extends InjectionBaseFragment
                 return;
             }
 
+            double distance = Math.sqrt((board.getPrevPoint().x - board.getNextPoint().x) * (board.getPrevPoint().x - board.getNextPoint().x) + (board.getPrevPoint().y - board.getNextPoint().y) * (board.getPrevPoint().y - board.getNextPoint().y));
+            if( distance < 100 && distance > -100 )
+            {
+                Toast.makeText(getContext(), R.string.injection_log_near, Toast.LENGTH_LONG).show();
+                return;
+            }
+
             long next = System.currentTimeMillis() + Prefs.getInstance().getInt(Prefs.KEY_DOSE_GAP, 14) * 86400000;
             Prefs.getInstance().setLong(Prefs.KEY_PREV, System.currentTimeMillis());
             Prefs.getInstance().setLong(Prefs.KEY_NEXT, next);
