@@ -1,8 +1,9 @@
 package com.grantech.cinnagen.solife.fragments;
 
 import android.content.Context;
-import android.graphics.Point;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.controls.InjectionBoard;
@@ -20,8 +22,6 @@ import com.grantech.cinnagen.solife.utils.FontsOverride;
 import com.grantech.cinnagen.solife.utils.Fragments;
 import com.grantech.cinnagen.solife.utils.PersianCalendar;
 import com.grantech.cinnagen.solife.utils.Prefs;
-
-import java.util.Objects;
 
 /**
  * Created by ManJav on 9/28/2019.
@@ -43,21 +43,39 @@ public class InjectionLogFragment extends InjectionBaseFragment
         super.onViewCreated(view, savedInstanceState);
         view.setOnClickListener(this);
 
-        // set region
-        Point selectedRegion = new Point(180, 40);
-        int pos = Objects.requireNonNull(getArguments()).getInt("pos");
-        view.findViewById(R.id.inject_log_inner_shadow_bottom).setVisibility(pos == R.id.inject_body_abdomen_button ? View.VISIBLE : View.INVISIBLE);
-        view.findViewById(R.id.inject_log_inner_shadow_right).setVisibility(pos == R.id.inject_body_leg_right_button ? View.VISIBLE : View.INVISIBLE);
-        view.findViewById(R.id.inject_log_inner_shadow_left).setVisibility(pos == R.id.inject_body_leg_left_button ? View.VISIBLE : View.INVISIBLE);
-        switch ( pos )
-        {
-            case R.id.inject_body_leg_right_button: selectedRegion = new Point(100, 300); break;
-            case R.id.inject_body_leg_left_button: selectedRegion = new Point(260, 300); break;
-        }
+        DisplayMetrics dm = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
+        boolean isTall = ((float)dm.heightPixels / (float)dm.widthPixels) > 1.8;
+
+        view.findViewById(R.id.inject_log_pickerInput).setVisibility(isTall ? View.VISIBLE : View.INVISIBLE);
+
         board = view.findViewById(R.id.injection_log_view);
-        board.setPrevPoint(Prefs.getInstance().getInt(Prefs.KEY_PREV_X, 0), Prefs.getInstance().getInt(Prefs.KEY_PREV_Y, 0));
+
+        ConstraintLayout.LayoutParams boardLayout = (ConstraintLayout.LayoutParams) board.getLayoutParams();
+        boardLayout.matchConstraintPercentHeight = isTall ? 0.59f : 0.7f;
+        board.setLayoutParams(boardLayout);
+
+        ConstraintLayout.LayoutParams buttonLayout = (ConstraintLayout.LayoutParams) submitButton.getLayoutParams();
+        if( isTall ){
+            buttonLayout.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID;
+            buttonLayout.bottomMargin = (int) (32 * getContext().getResources().getDisplayMetrics().density);
+        }
+        else {
+            buttonLayout.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
+            buttonLayout.topMargin = (int) (132 * getContext().getResources().getDisplayMetrics().density);
+        }
+        submitButton.setLayoutParams(buttonLayout);
+
         ((PickerInput)view.findViewById(R.id.inject_log_pickerInput)).setText(FontsOverride.convertToPersianDigits(new PersianCalendar().getPersianLongDateAndTime()));
+
+        board.autoRegion = false;
+        Handler mWaitHandler = new Handler();
+        board.setPrevPoint(Prefs.getInstance().getInt(Prefs.KEY_PREV_X, 0), Prefs.getInstance().getInt(Prefs.KEY_PREV_Y, 0));
+        board.invalidate();
+        mWaitHandler.postDelayed(() -> {
+        }, 100);  // Give 100 milliseconds delay.
     }
+
 
     @Override
     public void onClick(View view)
