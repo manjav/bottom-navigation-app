@@ -85,7 +85,7 @@ public class InjectionTimerFragment extends InjectionBaseFragment
     public void onClick(View view)
     {
         switch( view.getId() ) {
-            case R.id.submit_button: Fragments.getInstance().loadFragment(activity, R.dimen.position_injection_prep); break;
+            case R.id.submit_button: Fragments.getInstance().loadFragment(activity, Fragments.getInstance().getNextPosition(R.dimen.position_injection_timer)); break;
             case R.id.inject_timer_plus: changeDelay(STEP); break;
             case R.id.inject_timer_mines: changeDelay(-STEP); break;
             case R.id.inject_timer_toggle: toggleCountdown(); break;

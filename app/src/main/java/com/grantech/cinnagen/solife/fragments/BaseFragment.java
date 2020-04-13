@@ -54,7 +54,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener
 
                 Intent intent = new Intent(activity.getApplicationContext(), FragmentsActivity.class);
                 Bundle b = new Bundle();
-                b.putInt("position", R.dimen.position_injection_start);
+                b.putInt("position", Fragments.getInstance().getNextPosition(0));
                 intent.putExtras(b);
                 startActivity(intent);
                 return;

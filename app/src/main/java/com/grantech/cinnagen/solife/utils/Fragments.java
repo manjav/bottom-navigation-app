@@ -38,6 +38,8 @@ import com.grantech.cinnagen.solife.fragments.MoreFragment;
 import com.grantech.cinnagen.solife.fragments.TipsFragment;
 import com.grantech.cinnagen.solife.fragments.WelcomeFragment;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -47,6 +49,7 @@ public class Fragments
 {
     public static String TAG = "solife";
     private static final Fragments ourInstance = new Fragments();
+    private final List<Integer> positions;
 
     public int oldPosition = -1;
 
@@ -55,6 +58,7 @@ public class Fragments
     }
 
     private Fragments() {
+        positions = Arrays.asList(R.dimen.position_injection_start, R.dimen.position_injection_slides, R.dimen.position_injection_timer, R.dimen.position_injection_prep, R.dimen.position_injection_tips, R.dimen.position_injection_steps, R.dimen.position_injection_log);
     }
 
     public boolean loadFragment(AppCompatActivity activity, int position) {
@@ -237,6 +241,19 @@ public class Fragments
         return 0;
     }
 
+    public int getNextPosition(int position)
+    {
+        int index = positions.indexOf(position) + 1;
+        while(true)
+        {
+            if( index > 5)
+                return positions.get(6);
+            if( Prefs.getInstance().pages.get(index))
+                return positions.get(index);
+            index ++;
+
+        }
+    }
 
     private int getAnimationIn(boolean isBack)
     {
