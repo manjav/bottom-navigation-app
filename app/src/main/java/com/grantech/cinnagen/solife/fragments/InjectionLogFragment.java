@@ -55,8 +55,7 @@ public class InjectionLogFragment extends InjectionBaseFragment
             case R.id.inject_body_leg_left_button: selectedRegion = new Point(260, 300); break;
         }
         board = view.findViewById(R.id.injection_log_view);
-        board.setPoint(selectedRegion.x, selectedRegion.y);
-
+        board.setPrevPoint(Prefs.getInstance().getInt(Prefs.KEY_PREV_X, 0), Prefs.getInstance().getInt(Prefs.KEY_PREV_Y, 0));
         ((PickerInput)view.findViewById(R.id.inject_log_pickerInput)).setText(FontsOverride.convertToPersianDigits(new PersianCalendar().getPersianLongDateAndTime()));
     }
 
@@ -65,7 +64,7 @@ public class InjectionLogFragment extends InjectionBaseFragment
     {
         if( view.getId() == R.id.submit_button )
         {
-            if( !board.isPointVisibility() )
+            if( !board.isNextPointVisibility() )
             {
                 Toast.makeText(getContext(), R.string.injection_log_warn, Toast.LENGTH_LONG).show();
                 return;
@@ -74,8 +73,8 @@ public class InjectionLogFragment extends InjectionBaseFragment
             long next = System.currentTimeMillis() + Prefs.getInstance().getInt(Prefs.KEY_DOSE_GAP, 14) * 86400000;
             Prefs.getInstance().setLong(Prefs.KEY_PREV, System.currentTimeMillis());
             Prefs.getInstance().setLong(Prefs.KEY_NEXT, next);
-            Prefs.getInstance().setInt(Prefs.KEY_PREV_X, (int) (board.getPoint().x/getResources().getDisplayMetrics().density));
-            Prefs.getInstance().setInt(Prefs.KEY_PREV_Y, (int) (board.getPoint().y/getResources().getDisplayMetrics().density));
+            Prefs.getInstance().setInt(Prefs.KEY_PREV_X, (int) (board.getNextPoint().x/getResources().getDisplayMetrics().density));
+            Prefs.getInstance().setInt(Prefs.KEY_PREV_Y, (int) (board.getNextPoint().y/getResources().getDisplayMetrics().density));
 
             notifyNextInjection(getContext(), next);
             Toast.makeText(getContext(), R.string.injection_log_fine, Toast.LENGTH_LONG).show();
@@ -85,7 +84,7 @@ public class InjectionLogFragment extends InjectionBaseFragment
             return;
         }
 
-        board.setPointVisibility(true);
+        board.setNextPointVisibility(true);
         submitButton.setAlpha(1);
     }
 

@@ -54,6 +54,6 @@ public class InjectionFragment extends BaseFragment
             board.setPrevTime(FontsOverride.convertToPersianDigits(prev.getPersianDay()+"") + " " + prev.getPersianMonthName());
         }
 
-        board.setPoint(Prefs.getInstance().getInt(Prefs.KEY_PREV_X, 0), Prefs.getInstance().getInt(Prefs.KEY_PREV_Y, 0));
+        board.setPrevPoint(Prefs.getInstance().getInt(Prefs.KEY_PREV_X, 0), Prefs.getInstance().getInt(Prefs.KEY_PREV_Y, 0));
     }
 }
