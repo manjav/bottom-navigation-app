@@ -1,10 +1,19 @@
 package com.grantech.cinnagen.solife.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.List;
 import java.util.TimeZone;
 
 public class Prefs
@@ -84,6 +93,42 @@ public class Prefs
     {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(key, value);
+        editor.apply();
+    }
+
+    @SuppressLint("NewApi")
+    public Object getObject(String key, @Nullable Object defValue)
+    {
+        String str = sharedPref.getString(key, null);
+        Log.i(Fragments.TAG, " get   " + str);
+        byte[] data = Base64.getDecoder().decode(str);
+        ObjectInputStream ois = null;
+        Object o = null;
+        try {
+            ois = new ObjectInputStream(new ByteArrayInputStream(data));
+            o = ois.readObject();
+            ois.close();
+        } catch (Exception e) { e.printStackTrace(); }
+        Log.i(Fragments.TAG, " get   " + o);
+        return o;
+    }
+
+    @SuppressLint("NewApi")
+    public void setObject(String key, Object value)
+    {
+        Log.i(Fragments.TAG, " set   " + value);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = null;
+        try {
+            oos = new ObjectOutputStream( baos );
+            oos.writeObject(value);
+            oos.close();
+        } catch (Exception e) { e.printStackTrace(); }
+        String str = Base64.getEncoder().encodeToString(baos.toByteArray());
+        Log.i(Fragments.TAG, " set   " + str);
+
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(key, str);
         editor.apply();
     }
 
