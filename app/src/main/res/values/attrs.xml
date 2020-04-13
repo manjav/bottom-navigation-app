@@ -6,10 +6,12 @@
 
     <declare-styleable name="InjectionBoard">
         <attr name="raduisMask" format="float" />
-        <attr name="pointVisibility" format="boolean" />
+        <attr name="nextPointVisibility" format="boolean" />
+        <attr name="prevPointVisibility" format="boolean" />
         <attr name="nextVisibility" format="boolean" />
         <attr name="prevVisibility" format="boolean" />
-        <attr name="point" format="string" />
+        <attr name="prevPoint" format="string" />
+        <attr name="nextPoint" format="string" />
         <attr name="touchable" format="boolean" />
     </declare-styleable>
 

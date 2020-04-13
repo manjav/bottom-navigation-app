@@ -59,9 +59,9 @@
         app:layout_constraintBottom_toBottomOf="@+id/inject_body_space"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:nextVisibility="false"
-        app:point="0,0"
+        app:prevPoint="0,0"
         app:prevVisibility="false"
+        app:nextVisibility="false"
         app:raduisMask="0">
 
         <androidx.appcompat.widget.AppCompatButton

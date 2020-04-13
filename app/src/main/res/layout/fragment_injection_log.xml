@@ -59,10 +59,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:nextVisibility="false"
-        app:point="260,300"
-        app:pointVisibility="false"
-        app:prevVisibility="false"
+        app:nextVisibility="true"
+        app:nextPointVisibility="true"
+        app:prevPoint="0,1"
+        app:prevPointVisibility="true"
+        app:prevVisibility="true"
+        app:nextPoint="100,82"
         app:raduisMask="0"
         app:touchable="true">
 

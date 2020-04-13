@@ -12,6 +12,7 @@ import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.grantech.cinnagen.solife.R;
+import com.grantech.cinnagen.solife.utils.Fragments;
 
 /**
  * Created by ManJav on 1/23/2019.
@@ -35,18 +37,23 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
 
     private OnClickListener clickListener;
 
-    private float radiusMask = 8;
-    private boolean pointVisibility;
-    private String pointStr = "0,0";
-    private final Point point = new Point();
-    private boolean prevVisibility = true;
-    private String prevTime;
-    private boolean nextVisibility = true;
-    private String nextTime;
     private boolean touchable;
+    private float radiusMask = 8;
+
+    private String prevTime;
+    private boolean prevVisibility = true;
+    private boolean prevPointVisibility = true;
+    private String prevPointStr = "0,0";
+    private final Point prevPoint = new Point();
+
+    private String nextTime;
+    private boolean nextVisibility = true;
+    private boolean nextPointVisibility = true;
+    private String nextPointStr = "0,0";
+    private final Point nextPoint = new Point();
 
     public Rect selectedRegion;
-    private boolean autoRegion = true;
+    public boolean autoRegion = true;
     private View prevView;
     private TextView prevText;
     private View nextView;
@@ -96,12 +103,17 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
 
         // Load attributes
         final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.InjectionBoard, defStyle, 0);
-        this.setPointVisibility(a.getBoolean(R.styleable.InjectionBoard_pointVisibility, this.pointVisibility));
-        this.setRadiusMask(a.getFloat(R.styleable.InjectionBoard_raduisMask, this.radiusMask));
-        this.setPrevVisibility(a.getBoolean(R.styleable.InjectionBoard_prevVisibility, this.prevVisibility));
-        this.setPoint(a.getString(R.styleable.InjectionBoard_point));
-        this.setNextVisibility(a.getBoolean(R.styleable.InjectionBoard_nextVisibility, this.nextVisibility));
         this.setTouchable(a.getBoolean(R.styleable.InjectionBoard_touchable, this.touchable));
+        this.setRadiusMask(a.getFloat(R.styleable.InjectionBoard_raduisMask, this.radiusMask));
+
+        this.setPrevPointVisibility(a.getBoolean(R.styleable.InjectionBoard_prevPointVisibility, this.prevPointVisibility));
+        this.setPrevVisibility(a.getBoolean(R.styleable.InjectionBoard_prevVisibility, this.prevVisibility));
+        this.setPrevPoint(a.getString(R.styleable.InjectionBoard_prevPoint));
+
+        this.setNextPointVisibility(a.getBoolean(R.styleable.InjectionBoard_nextPointVisibility, this.nextPointVisibility));
+        this.setNextVisibility(a.getBoolean(R.styleable.InjectionBoard_nextVisibility, this.nextVisibility));
+        this.setNextPoint(a.getString(R.styleable.InjectionBoard_nextPoint));
+
         a.recycle();
     }
 
@@ -121,11 +133,18 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
         this.nextView.setVisibility(nextVisibility ? View.VISIBLE : View.GONE);
     }
 
-    public boolean isPointVisibility() {
-        return this.pointVisibility;
+    public boolean isNextPointVisibility() {
+        return this.nextPointVisibility;
     }
-    public void setPointVisibility(boolean pointVisibility) {
-        this.pointVisibility = pointVisibility;
+    public void setNextPointVisibility(boolean pointVisibility) {
+        this.nextPointVisibility = pointVisibility;
+    }
+
+    public boolean isPrevPointVisibility() {
+        return this.prevPointVisibility;
+    }
+    public void setPrevPointVisibility(boolean pointVisibility) {
+        this.prevPointVisibility = pointVisibility;
     }
 
     public String getPrevTime() {
@@ -145,37 +164,60 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
     }
 
 
-    public String getPointString() {
-        return pointStr;
+    public String getPrevPointString() {
+        return prevPointStr;
     }
-    public void setPoint(String pointStr) {
-        if( this.pointStr.equals(pointStr) )
+    public void setPrevPoint(String pointStr) {
+        if( this.prevPointStr.equals(pointStr) )
             return;
-        this.pointStr = pointStr;
+        this.prevPointStr = pointStr;
         String[] points = pointStr.split(",");
         if( points.length < 2 )
             return;
-        this.setPoint(Integer.parseInt(points[0]), Integer.parseInt(points[1]));
+        this.setPrevPoint(Integer.parseInt(points[0]), Integer.parseInt(points[1]));
     }
-    public void setPoint(int x, int y) {
+    public void setPrevPoint(int x, int y) {
         float density = getResources().getDisplayMetrics().density;
-        this.point.x = (int) (x * density);
-        this.point.y = (int) (y * density);
-        if( point.x == 0 && point.y == 0 ) {
+        this.prevPoint.x = (int) (x * density);
+        this.prevPoint.y = (int) (y * density);
+        if( prevPoint.x == 0 && prevPoint.y == 0 )
             selectedRegion = null;
-            return;
-        }
-        if( this.point.y >= REGION_RIGHT.top ){
-            if( this.point.x >= REGION_LEFT.left )
-                selectedRegion = REGION_LEFT;
-            else
-                selectedRegion = REGION_RIGHT;
-        } else {
-            selectedRegion = REGION_ABDOMEN;
-        }
+        else
+            selectedRegion = getRegion(prevPoint.x, prevPoint.y);
     }
-    public Point getPoint() {
-        return this.point;
+
+    public String getNextPointString() {
+        return nextPointStr;
+    }
+    public void setNextPoint(String pointStr) {
+        if( this.nextPointStr.equals(pointStr) )
+            return;
+        this.nextPointStr = pointStr;
+        String[] points = pointStr.split(",");
+        if( points.length < 2 )
+            return;
+        this.setNextPoint(Integer.parseInt(points[0]), Integer.parseInt(points[1]));
+    }
+    public void setNextPoint(int x, int y) {
+        float density = getResources().getDisplayMetrics().density;
+        this.nextPoint.x = (int) (x * density);
+        this.nextPoint.y = (int) (y * density);
+    }
+
+    private Rect getRegion(int x, int y) {
+        if( y >= REGION_RIGHT.top ){
+            if( x >= REGION_LEFT.left )
+                return REGION_LEFT;
+            return REGION_RIGHT;
+        }
+        return REGION_ABDOMEN;
+    }
+
+    public Point getNextPoint() {
+        return this.nextPoint;
+    }
+    public Point getPrevPoint() {
+        return this.prevPoint;
     }
 
     public float getRadiusMask() {
@@ -229,7 +271,7 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
 
                 bodyRect.bottom = bitmap.getHeight() + bodyRect.top;
                 bodyRect.right = bitmap.getWidth() + bodyRect.left;
-                int threshold = bitmap.getHeight() - point.y - layout.getHeight();
+                int threshold = bitmap.getHeight() - prevPoint.y - layout.getHeight();
                 if( threshold < 0 ) {
                     bodyRect.top -= threshold;
                     bodyRect.bottom -= threshold;
@@ -254,11 +296,18 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
         // draw body image based on position
         canvas.drawBitmap(bitmap, srcRect, bodyRect, paint);
 
-        // draw point
-        if( this.pointVisibility && (point.x != 0 || point.y != 0) )
+        // draw prev prevPoint
+        if( this.isPrevPointVisibility() )
         {
             paint.setColor(getResources().getColor(R.color.colorPrimaryDark));
-            canvas.drawCircle(point.x + bodyRect.left, point.y + bodyRect.top, 6 * getResources().getDisplayMetrics().density, paint);
+            canvas.drawCircle(prevPoint.x + bodyRect.left, prevPoint.y + bodyRect.top, 6 * getResources().getDisplayMetrics().density, paint);
+        }
+
+        // draw next prevPoint
+        if( this.isNextPointVisibility() )
+        {
+            paint.setColor(getResources().getColor(R.color.colorAccentLight));
+            canvas.drawCircle(nextPoint.x + bodyRect.left, nextPoint.y + bodyRect.top, 6 * getResources().getDisplayMetrics().density, paint);
         }
     }
 
@@ -281,24 +330,26 @@ public class InjectionBoard extends ConstraintLayout implements ConstraintLayout
             return false;
         int x = (int)(event.getX() - bodyRect.left);
         int y = (int)(event.getY() - bodyRect.top);
-        if( x < selectedRegion.left )
-            x = selectedRegion.left;
-        if( y < selectedRegion.top )
-            y = selectedRegion.top;
-        if( x > selectedRegion.left + selectedRegion.right)
-            x = selectedRegion.left + selectedRegion.right;
-        if( y > selectedRegion.top + selectedRegion.bottom )
-            y = selectedRegion.top + selectedRegion.bottom;
-        if (selectedRegion.equals(REGION_ABDOMEN)) {
+        Log.i(Fragments.TAG, x + " " + event.getX() + "   " + y + " " + event.getY());
+
+        Rect region = getRegion(x, y);
+        if( x < region.left )
+            x = region.left;
+        if( y < region.top )
+            y = region.top;
+        if( x > region.left + region.right)
+            x = region.left + region.right;
+        if( y > region.top + region.bottom )
+            y = region.top + region.bottom;
+        if (region.equals(REGION_ABDOMEN)) {
             if( x > REGION_LIMIT.left && x < REGION_LIMIT.right && y > REGION_LIMIT.top && y < REGION_LIMIT.bottom)
                 y = REGION_LIMIT.top;
         }
 
         this.autoRegion = false;
-        this.setPointVisibility(true);
-        this.setPoint((int) (x / getResources().getDisplayMetrics().density), (int) (y / getResources().getDisplayMetrics().density));
+        this.setNextPointVisibility(true);
+        this.setNextPoint((int) (x / getResources().getDisplayMetrics().density), (int) (y / getResources().getDisplayMetrics().density));
         this.invalidate();
-//        Log.i(Fragments.TAG, selectedRegion + " == " + point);
         return super.onTouchEvent(event);
     }
 }
