@@ -70,9 +70,9 @@ public class InjectionLogFragment extends InjectionBaseFragment
 
         board.autoRegion = false;
         Handler mWaitHandler = new Handler();
-        board.setPrevPoint(Prefs.getInstance().getInt(Prefs.KEY_PREV_X, 0), Prefs.getInstance().getInt(Prefs.KEY_PREV_Y, 0));
-        board.invalidate();
         mWaitHandler.postDelayed(() -> {
+            board.setPrevPoint(Prefs.getInstance().getInt(Prefs.KEY_PREV_X, 0), Prefs.getInstance().getInt(Prefs.KEY_PREV_Y, 0));
+            board.invalidate();
         }, 100);  // Give 100 milliseconds delay.
     }
 
