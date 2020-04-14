@@ -33,8 +33,12 @@
     <string name="home_medication">تنظیم برنامه دارویی</string>
     <string name="home_alarm">تنظیم یادآوری تزریق</string>
 
-    <string name="about_text">سولایف نسخه ۱,۰,۰\nتلفن مرکز حمایت از بیمار ارکیدلایف:</string>
-    <string name="about_tel">۰۲۱-۴۲۵۹۳</string>
+    <string name="about_tel_message">سولایف نسخه ۱,۰,۰\nتلفن مرکز حمایت از بیمار ارکیدلایف:</string>
+    <string name="about_tel_button">۰۲۱-۴۲۵۹۳</string>
+    <string name="about_tel_value">tel:+9821-42-593</string>
+    <string name="about_web_message">برای دسترسی به اطلاعات کامل داروی سینورا، به وب سایت رسمی سینورا مراجعه فرمایید.</string>
+    <string name="about_web_button">مشاهده وب سایت سینورا</string>
+    <string name="about_web_value">http://www.cinnora.com</string>
 
     <string name="welcome_action">خوش آمدید</string>
     <string name="welcome_title">به سولایف خوش آمدید</string>

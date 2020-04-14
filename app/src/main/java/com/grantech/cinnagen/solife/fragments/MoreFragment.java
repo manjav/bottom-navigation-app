@@ -3,6 +3,7 @@ package com.grantech.cinnagen.solife.fragments;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,8 +32,21 @@ public class MoreFragment extends BaseFragment
     {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.about_phone_icon).setOnClickListener(this);
-        view.findViewById(R.id.about_phone_text).setOnClickListener(this);
+        DisplayMetrics dm = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
+        boolean isTall = ((float)dm.heightPixels / (float)dm.widthPixels) > 1.8;
+
+        view.findViewById(R.id.about_call_icon).setOnClickListener(this);
+        view.findViewById(R.id.about_call_button).setOnClickListener(this);
+
+        if(isTall){
+            view.findViewById(R.id.about_web_icon).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.about_web_button).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.about_web_message).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.about_web_icon).setOnClickListener(this);
+            view.findViewById(R.id.about_web_button).setOnClickListener(this);
+        }
+
 
         ListView listView = view.findViewById(R.id.about_list);
         listView.setOnItemClickListener((parent, view1, position, id) -> {
@@ -66,6 +80,9 @@ public class MoreFragment extends BaseFragment
     public void onClick(View view)
     {
         super.onClick(view);
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("tel:+9821-42-593")));
+        if( view.getId() == R.id.about_call_icon || view.getId() == R.id.about_call_button )
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getContext().getString(R.string.about_tel_value))));
+        else
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getContext().getString(R.string.about_web_value))));
     }
 }
