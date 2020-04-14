@@ -50,8 +50,7 @@ public class InjectionSettingsFragment extends BaseFragment
         captions.add(R.string.injection_steps_title);
 
         pages = new ArrayList<>();
-        for (boolean p:Prefs.getInstance().pages)
-            pages.add(p);
+        pages.addAll(Prefs.getInstance().pages);
 
         recyclerView.setAdapter(new TileAdapter(getContext(), this, pages, captions));
 
