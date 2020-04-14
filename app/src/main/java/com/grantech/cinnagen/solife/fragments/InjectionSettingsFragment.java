@@ -23,6 +23,8 @@ import java.util.List;
 
 public class InjectionSettingsFragment extends BaseFragment
 {
+    private List<Boolean> pages;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -47,7 +49,11 @@ public class InjectionSettingsFragment extends BaseFragment
         captions.add(R.string.injection_tips_title);
         captions.add(R.string.injection_steps_title);
 
-        recyclerView.setAdapter(new TileAdapter(getContext(), this, Prefs.getInstance().pages, captions));
+        pages = new ArrayList<>();
+        for (boolean p:Prefs.getInstance().pages)
+            pages.add(p);
+
+        recyclerView.setAdapter(new TileAdapter(getContext(), this, pages, captions));
 
         view.findViewById(R.id.inject_settings_submit).setOnClickListener(this);
     }
@@ -55,7 +61,8 @@ public class InjectionSettingsFragment extends BaseFragment
     @Override
     public void onClick(View view)
     {
-        Prefs.getInstance().setObject(Prefs.KEY_SETTINGS_PAGES, Prefs.getInstance().pages);
+        Prefs.getInstance().pages = pages;
+        Prefs.getInstance().setObject(Prefs.KEY_SETTINGS_PAGES, pages);
         activity.onBackPressed();
     }
 }
