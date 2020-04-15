@@ -17,6 +17,7 @@
     <string name="app_pause">Pause</string>
     <string name="app_remaining">Remaining</string>
     <string name="app_exit_alert">Repeat press back fot exit</string>
+    <string name="mdtp_cancel">انصراف</string>
 
     <string name="home_injection">Injection</string>
     <string name="home_calendar">Calendar</string>

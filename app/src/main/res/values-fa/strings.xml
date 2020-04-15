@@ -16,6 +16,7 @@
     <string name="app_alarm">هشدارها</string>
     <string name="app_remaining">زمان باقیمانده</string>
     <string name="app_exit_alert">برای خروج دوباره بازگشت رو بزنید</string>
+    <string name="mdtp_cancel">انصراف</string>
 
     <string name="home_injection">تزریق</string>
     <string name="home_calendar">تقویم</string>
