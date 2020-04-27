@@ -11,9 +11,14 @@ import androidx.annotation.Nullable;
 
 import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.adapters.ExpandableListAdapter;
+import com.grantech.cinnagen.solife.adapters.InboxAdapter;
+import com.grantech.cinnagen.solife.utils.Prefs;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Created by Belal on 1/23/2018.
@@ -21,8 +26,8 @@ import java.util.Objects;
 
 public class InboxFragment extends BaseFragment
 {
-    private ExpandableListView expandableListView;
-    private ExpandableListAdapter expandableListAdapter;
+    private ExpandableListView inboxList;
+    private InboxAdapter inboxAdapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -35,50 +40,18 @@ public class InboxFragment extends BaseFragment
     {
         super.onViewCreated(view, savedInstanceState);
 
-        expandableListAdapter = new ExpandableListAdapter(Objects.requireNonNull(getContext()).getApplicationContext());
-        expandableListAdapter.addChild(R.string.tips_0_title, new ArrayList<Integer>(){{add(R.string.tips_0_message);}});
-        expandableListAdapter.addChild(R.string.tips_4_title, new ArrayList<Integer>(){{add(R.string.tips_4_message);}});
-        expandableListAdapter.addChild(R.string.tips_7_title, new ArrayList<Integer>(){{add(R.string.tips_7_message);}});
-        expandableListAdapter.addChild(R.string.tips_8_title, new ArrayList<Integer>(){{add(R.string.tips_8_message);}});
-        expandableListAdapter.addChild(R.string.tips_1_title, new ArrayList<Integer>(){{add(R.string.tips_1_message_0);add(R.string.tips_1_message_1);add(R.string.tips_1_message_2);add(R.string.tips_1_message_3);add(R.string.tips_1_message_4);}});
-        expandableListAdapter.addChild(R.string.tips_2_title, new ArrayList<Integer>(){{add(R.string.tips_2_message);}});
-        expandableListAdapter.addChild(R.string.tips_5_title, new ArrayList<Integer>(){{add(R.string.tips_5_message);}});
-        expandableListAdapter.addChild(R.string.tips_6_title, new ArrayList<Integer>(){{add(R.string.tips_6_message);}});
-        expandableListAdapter.addChild(R.string.tips_3_title, new ArrayList<Integer>(){{add(R.string.tips_3_message);}});
-
-        expandableListView = view.findViewById(R.id.expandableListView);
-        expandableListView.setAdapter(expandableListAdapter);
-        expandableListView.setOnGroupExpandListener(groupPosition -> {
-            if( expandableListAdapter == null )
+        Set<Map.Entry<String, String>> messages = Prefs.getInstance().messages.entrySet();
+        inboxAdapter = new InboxAdapter(Objects.requireNonNull(getContext()).getApplicationContext());
+        for (Map.Entry<String, String> e:messages)
+            inboxAdapter.addChild(e.getKey(), Arrays.asList(e.getValue()));
+        inboxList = view.findViewById(R.id.expandableListView);
+        inboxList.setAdapter(inboxAdapter);
+        inboxList.setOnGroupExpandListener(groupPosition -> {
+            if( inboxAdapter == null )
                 return;
-            for( int i = 0; i < expandableListAdapter.getGroupCount(); i++ )
+            for(int i = 0; i < inboxAdapter.getGroupCount(); i++ )
                 if( i != groupPosition )
-                    expandableListView.collapseGroup(i);
+                    inboxList.collapseGroup(i);
         });
-
-/*        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-            @Override
-            public void onGroupCollapse(int groupPosition)
-            {
-              Toast.makeText(getContext().getApplicationContext(), expandableListTitle.get(groupPosition) + " List Collapsed.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-                Toast.makeText(
-                        getContext().getApplicationContext(),
-                        expandableListTitle.get(groupPosition)
-                                + " -> "
-                                + expandableListDetail.get(
-                                expandableListTitle.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT
-                )
-                        .show();
-                return false;
-            }
-        });*/
     }
 }
