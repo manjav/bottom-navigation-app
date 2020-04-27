@@ -6,22 +6,27 @@ import android.util.Base64;
 
 import androidx.annotation.Nullable;
 
+import com.grantech.cinnagen.solife.R;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
 
 public class Prefs
 {
     public List<Boolean> pages;
+    public Map<String, String> messages;
     private SharedPreferences sharedPref;
 
     static private Prefs instance;
+    static final String KEY_LOC = "loc";
     static public final String KEY_NUM_RUN = "numRun";
-    static public final String KEY_LOC = "loc";
     static public final String KEY_DOSE_MG = "doseMG";
     static public final String KEY_DOSE_GAP = "doseGap";
     static public final String KEY_PREV = "prev";
@@ -31,8 +36,9 @@ public class Prefs
     static public final String KEY_ALARM_1 = "alarm1";
     static public final String KEY_ALARM_2 = "alarm2";
     static public final String KEY_ALARM_3 = "alarm3";
-    public static final String KEY_ALARM_NOTIFICATION = "alarmNotify";
-    public static final String KEY_SETTINGS_PAGES = "settingsPages";
+    static public final String KEY_ALARM_NOTIFICATION = "alarmNotify";
+    static public final String KEY_SETTINGS_PAGES = "settingsPages";
+    private static final String KEY_MESSAGES = "message";
 
     static public Prefs getInstance() {
         return instance;
@@ -45,6 +51,15 @@ public class Prefs
         // locale
         if( !instance.contains(KEY_LOC) )
             instance.setString(KEY_LOC, getDefaultLocale());
+
+        // messages
+        if( instance.contains(KEY_MESSAGES) ) {
+            instance.messages = (Map<String, String>) instance.getObject(KEY_MESSAGES, null);
+        } else {
+            instance.messages = new HashMap<>();
+            instance.messages.put(context.getResources().getString(R.string.inbox_0_title), context.getResources().getString(R.string.inbox_0_message));
+            instance.setObject(KEY_MESSAGES, instance.messages);
+        }
 
         // pages
         if( instance.contains(KEY_SETTINGS_PAGES) ) {
