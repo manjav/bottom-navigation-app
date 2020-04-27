@@ -6,7 +6,8 @@
     <dimen name="position_home_injection">0px</dimen>
     <dimen name="position_home_date">1px</dimen>
     <dimen name="position_home_tips">2px</dimen>
-    <dimen name="position_home_more">3px</dimen>
+    <dimen name="position_home_inbox">3px</dimen>
+    <dimen name="position_home_more">4px</dimen>
 
     <dimen name="position_welcome">10px</dimen>
     <dimen name="position_medication_dose">11px</dimen>

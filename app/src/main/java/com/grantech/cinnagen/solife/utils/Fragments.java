@@ -22,6 +22,7 @@ import com.grantech.cinnagen.solife.activities.MainActivity;
 import com.grantech.cinnagen.solife.fragments.BaseFragment;
 import com.grantech.cinnagen.solife.fragments.DateFragment;
 import com.grantech.cinnagen.solife.fragments.DocsFragment;
+import com.grantech.cinnagen.solife.fragments.InboxFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionBodyFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionDocsFragment;
 import com.grantech.cinnagen.solife.fragments.InjectionFragment;
@@ -142,6 +143,7 @@ public class Fragments
             case R.dimen.position_home_injection:    return R.string.home_injection;
             case R.dimen.position_home_date:    return R.string.home_calendar;
             case R.dimen.position_home_tips:    return R.string.home_tips;
+            case R.dimen.position_home_inbox:    return R.string.home_inbox;
             case R.dimen.position_home_more:    return R.string.home_more;
 
             case R.dimen.position_welcome:   return R.string.welcome_action;
@@ -182,6 +184,7 @@ public class Fragments
             case R.dimen.position_home_injection:       return new InjectionFragment();
             case R.dimen.position_home_date:       return new DateFragment();
             case R.dimen.position_home_tips:       return new TipsFragment();
+            case R.dimen.position_home_inbox:       return new InboxFragment();
             case R.dimen.position_home_more:       return new MoreFragment();
 
             case R.dimen.position_welcome:      return new WelcomeFragment();
@@ -215,7 +218,8 @@ public class Fragments
             case 0: return R.dimen.position_home_injection;
             case 1: return R.dimen.position_home_date;
             case 2: return R.dimen.position_home_tips;
-            case 3: return R.dimen.position_home_more;
+            case 3: return R.dimen.position_home_inbox;
+            case 4: return R.dimen.position_home_more;
 
             case 10: return R.dimen.position_welcome;
             case 11: return R.dimen.position_medication_dose;

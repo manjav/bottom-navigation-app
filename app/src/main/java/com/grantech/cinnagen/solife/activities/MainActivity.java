@@ -27,7 +27,8 @@ public class MainActivity extends BaseActivity
             case R.id.navi_0:   return Fragments.getInstance().loadFragment(this, R.dimen.position_home_injection);
             case R.id.navi_1:   return Fragments.getInstance().loadFragment(this, R.dimen.position_home_date);
             case R.id.navi_2:   return Fragments.getInstance().loadFragment(this, R.dimen.position_home_tips);
-            case R.id.navi_3:   return Fragments.getInstance().loadFragment(this, R.dimen.position_home_more);
+            case R.id.navi_3:   return Fragments.getInstance().loadFragment(this, R.dimen.position_home_inbox);
+            case R.id.navi_4:   return Fragments.getInstance().loadFragment(this, R.dimen.position_home_more);
         }
         return false;
     };

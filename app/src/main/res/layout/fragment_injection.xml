@@ -75,10 +75,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/messageTextView"
-        app:prevPoint="232,80"
-        app:prevPointVisibility="true"
-        app:nextPoint="132,80"
+        app:nextPoint="116,80"
         app:nextPointVisibility="false"
+        app:prevPoint="116,80"
+        app:prevPointVisibility="true"
         app:raduisMask="8" />
 
     <androidx.appcompat.widget.AppCompatButton

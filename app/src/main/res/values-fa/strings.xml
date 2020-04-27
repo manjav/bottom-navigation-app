@@ -21,12 +21,13 @@
     <string name="home_injection">تزریق</string>
     <string name="home_calendar">تقویم</string>
     <string name="home_tips">نکات مهم</string>
+    <string name="home_inbox">پیام‌ها</string>
     <string name="home_more">سایر موارد</string>
 
     <string name="more_faq">سؤالات متداول</string>
-    <string name="more_safety">توصیه های ایمنی</string>
+    <string name="more_safety">توصیه‌های ایمنی</string>
     <string name="more_prescribing">اطلاعات دارویی</string>
-    <string name="more_terms">قوانین استفاده از نرم افزار</string>
+    <string name="more_terms">قوانین استفاده از نرم‌افزار</string>
 
     <string name="home_welcome_title">به نرم‌افزار سولایف خوش آمدید</string>
     <string name="home_welcome_message">" شما در این قسمت می‌توانید زمان تزریق‌های خود را وارد کنید. همچنین، نکات مهم و سایر موارد مرتبط با دارو و نرم‌افزار در این بخش قابل مشاهده است."</string>
