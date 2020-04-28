@@ -24,6 +24,18 @@ public class InboxAdapter extends BaseExpandableListAdapter
     private AppCompatActivity activity;
     private List<String> expandableListTitle;
     private HashMap<String, List<String>> expandableListMessages;
+    public OnDeleteListener onDeleteListener;
+
+
+    /**
+     * Classes that wish to be notified when delete button confirm.
+     */
+    public interface OnDeleteListener {
+        /**
+         * Called when delete confirm.
+         */
+        void onDelete(String group);
+    }
 
     @SuppressLint("UseSparseArrays")
     public InboxAdapter(AppCompatActivity activity)
@@ -115,7 +127,8 @@ public class InboxAdapter extends BaseExpandableListAdapter
                 .setTitle(R.string.about_tel_button)
                 .setMessage(R.string.about_tel_message)
                 .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> {
-
+                    onDeleteListener.onDelete(group);
+                    removeChild(group);
                 })
                 .setNegativeButton(android.R.string.no, null)
                 .show();

@@ -38,7 +38,7 @@ public class Prefs
     static public final String KEY_ALARM_3 = "alarm3";
     static public final String KEY_ALARM_NOTIFICATION = "alarmNotify";
     static public final String KEY_SETTINGS_PAGES = "settingsPages";
-    private static final String KEY_MESSAGES = "message";
+    static public final String KEY_MESSAGES = "message";
 
     static public Prefs getInstance() {
         return instance;
