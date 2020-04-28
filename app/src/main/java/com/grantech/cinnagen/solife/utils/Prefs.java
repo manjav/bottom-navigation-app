@@ -7,21 +7,21 @@ import android.util.Base64;
 import androidx.annotation.Nullable;
 
 import com.grantech.cinnagen.solife.R;
+import com.grantech.cinnagen.solife.adapters.InboxAdapter;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.TimeZone;
 
 public class Prefs
 {
     public List<Boolean> pages;
-    public Map<String, String> messages;
+    public List<InboxAdapter.Message> messages;
     private SharedPreferences sharedPref;
 
     static private Prefs instance;
@@ -54,10 +54,10 @@ public class Prefs
 
         // messages
         if( instance.contains(KEY_MESSAGES) ) {
-            instance.messages = (Map<String, String>) instance.getObject(KEY_MESSAGES, null);
+            instance.messages = (List<InboxAdapter.Message>) instance.getObject(KEY_MESSAGES, null);
         } else {
-            instance.messages = new HashMap<>();
-            instance.messages.put(context.getResources().getString(R.string.inbox_0_title), context.getResources().getString(R.string.inbox_0_message));
+            instance.messages = new ArrayList<>();
+            instance.messages.add(new InboxAdapter.Message(context.getResources().getString(R.string.inbox_0_title), context.getResources().getString(R.string.inbox_0_message) , System.currentTimeMillis(), false));
             instance.setObject(KEY_MESSAGES, instance.messages);
         }
 

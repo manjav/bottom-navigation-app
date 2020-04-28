@@ -14,16 +14,14 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.grantech.cinnagen.solife.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 public class InboxAdapter extends BaseExpandableListAdapter
 {
+    private List<Message> messages;
     private AppCompatActivity activity;
-    private List<String> expandableListTitle;
-    private HashMap<String, List<String>> expandableListMessages;
     public OnDeleteListener onDeleteListener;
 
 
@@ -34,37 +32,73 @@ public class InboxAdapter extends BaseExpandableListAdapter
         /**
          * Called when delete confirm.
          */
-        void onDelete(String group);
+        void onDelete(Message group);
     }
 
     @SuppressLint("UseSparseArrays")
     public InboxAdapter(AppCompatActivity activity)
     {
         this.activity = activity;
-        this.expandableListTitle = new ArrayList<>();
-        this.expandableListMessages = new HashMap<>();
+        this.messages = new ArrayList<>();
     }
 
-    public void addChild(String title, List<String> messages)
+    public void addGroup(Message message)
     {
-        this.expandableListTitle.add(title);
-        this.expandableListMessages.put(title, messages);
+        this.messages.add(message);
     }
 
-    public void removeChild(String title)
+    public void removeGroup(Message message)
     {
-        this.expandableListTitle.remove(title);
-        this.expandableListMessages.remove(title);
+        this.messages.remove(message);
+    }
+
+
+    @Override
+    public Object getGroup(int listPosition) {
+        return this.messages.get(listPosition);
     }
 
     @Override
+    public int getGroupCount() {
+        return this.messages.size();
+    }
+
+    @Override
+    public long getGroupId(int listPosition) {
+        return listPosition;
+    }
+
+    @Override
+    @SuppressLint({"InflateParams", "ClickableViewAccessibility"})
+    public View getGroupView(int listPosition, boolean isExpanded, View convertView, ViewGroup parent)
+    {
+        Message message = (Message) getGroup(listPosition);
+        if( convertView == null )
+        {
+            LayoutInflater layoutInflater = (LayoutInflater) this.activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            assert layoutInflater != null;
+            convertView = layoutInflater.inflate(R.layout.list_expandable_group, null);
+        }
+        AppCompatTextView listTitleTextView = convertView.findViewById(R.id.listTitle);
+        listTitleTextView.setText(message.title);
+        return convertView;
+    }
+
+
+
+    @Override
     public Object getChild(int listPosition, int expandedListPosition) {
-        return Objects.requireNonNull(this.expandableListMessages.get(this.expandableListTitle.get(listPosition))).get(expandedListPosition);
+        return messages.get(listPosition).text;
     }
 
     @Override
     public long getChildId(int listPosition, int expandedListPosition) {
         return expandedListPosition;
+    }
+
+    @Override
+    public int getChildrenCount(int listPosition) {
+        return 1;
     }
 
     @Override
@@ -81,54 +115,18 @@ public class InboxAdapter extends BaseExpandableListAdapter
         AppCompatTextView expandedListTextView = convertView.findViewById(R.id.expandedListItem);
         expandedListTextView.setText(expandedListText);
 
-        convertView.findViewById(R.id.inbox_share_button).setOnClickListener(v -> Toast.makeText(activity, "share", Toast.LENGTH_SHORT).show());
-        convertView.findViewById(R.id.inbox_delete_button).setOnClickListener(v -> confirmDelete((String) getGroup(listPosition)));
+//        convertView.findViewById(R.id.inbox_share_button).setOnClickListener(v -> Toast.makeText(activity, "share", Toast.LENGTH_SHORT).show());
+        convertView.findViewById(R.id.inbox_delete_button).setOnClickListener(v -> confirmDelete((Message) getGroup(listPosition)));
         return convertView;
     }
 
-    @Override
-    public int getChildrenCount(int listPosition) {
-        return Objects.requireNonNull(this.expandableListMessages.get(this.expandableListTitle.get(listPosition))).size();
-    }
-
-    @Override
-    public Object getGroup(int listPosition) {
-        return this.expandableListTitle.get(listPosition);
-    }
-
-    @Override
-    public int getGroupCount() {
-        return this.expandableListTitle.size();
-    }
-
-    @Override
-    public long getGroupId(int listPosition) {
-        return listPosition;
-    }
-
-    @Override
-    @SuppressLint({"InflateParams", "ClickableViewAccessibility"})
-    public View getGroupView(int listPosition, boolean isExpanded, View convertView, ViewGroup parent)
-    {
-        String listTitle = (String) getGroup(listPosition);
-        if( convertView == null )
-        {
-            LayoutInflater layoutInflater = (LayoutInflater) this.activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            assert layoutInflater != null;
-            convertView = layoutInflater.inflate(R.layout.list_expandable_group, null);
-        }
-        AppCompatTextView listTitleTextView = convertView.findViewById(R.id.listTitle);
-        listTitleTextView.setText(listTitle);
-        return convertView;
-    }
-
-    private void confirmDelete(String group) {
+    private void confirmDelete(Message group) {
         new AlertDialog.Builder(activity)
                 .setTitle(R.string.about_tel_button)
                 .setMessage(R.string.about_tel_message)
                 .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> {
                     onDeleteListener.onDelete(group);
-                    removeChild(group);
+                    removeGroup(group);
                 })
                 .setNegativeButton(android.R.string.no, null)
                 .show();
@@ -144,4 +142,19 @@ public class InboxAdapter extends BaseExpandableListAdapter
         return true;
     }
 
+    public static class Message implements Serializable {
+        private static final long serialVersionUID = 7829136421234571165L;
+        public String title;
+        public boolean read;
+        public long receivedAt;
+        public String text;
+        public Message(String title, String text, long receivedAt, boolean read){
+            super();
+            this.read = read;
+            this.title = title;
+            this.text = text;
+            this.receivedAt = receivedAt;
+        }
+
+    }
 }

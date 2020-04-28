@@ -13,8 +13,7 @@ import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.adapters.InboxAdapter;
 import com.grantech.cinnagen.solife.utils.Prefs;
 
-import java.util.Arrays;
-import java.util.Map;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -37,10 +36,10 @@ public class InboxFragment extends BaseFragment
     {
         super.onViewCreated(view, savedInstanceState);
 
-        Map<String, String> messages = Prefs.getInstance().messages;
+        List<InboxAdapter.Message> messages = Prefs.getInstance().messages;
         inboxAdapter = new InboxAdapter(Objects.requireNonNull(activity));
-        for (Map.Entry<String, String> e:messages.entrySet())
-            inboxAdapter.addChild(e.getKey(), Arrays.asList(e.getValue()));
+        for (InboxAdapter.Message message:messages)
+            inboxAdapter.addGroup(message);
         inboxList = view.findViewById(R.id.expandableListView);
         inboxList.setAdapter(inboxAdapter);
         inboxList.setOnGroupExpandListener(groupPosition -> {
@@ -51,7 +50,7 @@ public class InboxFragment extends BaseFragment
                     inboxList.collapseGroup(i);
         });
 
-        inboxAdapter.onDeleteListener = (String group) -> {
+        inboxAdapter.onDeleteListener = (InboxAdapter.Message group) -> {
             inboxList.setAdapter(inboxAdapter);
             messages.remove(group);
             Prefs.getInstance().setObject(Prefs.KEY_MESSAGES, messages);
