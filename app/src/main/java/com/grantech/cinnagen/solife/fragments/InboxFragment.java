@@ -55,5 +55,10 @@ public class InboxFragment extends BaseFragment
             messages.remove(group);
             Prefs.getInstance().setObject(Prefs.KEY_MESSAGES, messages);
         };
+
+        inboxAdapter.onReadListener = (int position) -> {
+            Prefs.getInstance().setObject(Prefs.KEY_MESSAGES, messages);
+        };
+
     }
 }

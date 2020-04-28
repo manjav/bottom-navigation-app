@@ -2,17 +2,19 @@ package com.grantech.cinnagen.solife.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.grantech.cinnagen.solife.R;
+import com.grantech.cinnagen.solife.utils.FontsOverride;
+import com.grantech.cinnagen.solife.utils.PersianCalendar;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,7 +25,18 @@ public class InboxAdapter extends BaseExpandableListAdapter
     private List<Message> messages;
     private AppCompatActivity activity;
     public OnDeleteListener onDeleteListener;
+    public OnReadListener onReadListener;
 
+
+    /**
+     * Classes that wish to be notified when delete button confirm.
+     */
+    public interface OnReadListener {
+        /**
+         * Called when delete confirm.
+         */
+        void onRead(int position);
+    }
 
     /**
      * Classes that wish to be notified when delete button confirm.
@@ -79,11 +92,15 @@ public class InboxAdapter extends BaseExpandableListAdapter
             assert layoutInflater != null;
             convertView = layoutInflater.inflate(R.layout.list_expandable_group, null);
         }
+        if( isExpanded && !message.read){
+            message.read = true;
+            this.onReadListener.onRead(listPosition);
+        }
         AppCompatTextView listTitleTextView = convertView.findViewById(R.id.listTitle);
+        listTitleTextView.setTypeface(listTitleTextView.getTypeface(), message.read ? Typeface.ITALIC : Typeface.BOLD);
         listTitleTextView.setText(message.title);
         return convertView;
     }
-
 
 
     @Override
@@ -105,18 +122,23 @@ public class InboxAdapter extends BaseExpandableListAdapter
     @SuppressLint({"InflateParams", "ClickableViewAccessibility"})
     public View getChildView(int listPosition, final int expandedListPosition, boolean isLastChild, View convertView, ViewGroup parent)
     {
-        final String expandedListText = (String) getChild(listPosition, expandedListPosition);
-        if( convertView == null )
-        {
+        Message message = (Message) getGroup(listPosition);
+        if( convertView == null ) {
             LayoutInflater layoutInflater = (LayoutInflater) this.activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             assert layoutInflater != null;
             convertView = layoutInflater.inflate(R.layout.list_inbox_item, null);
         }
-        AppCompatTextView expandedListTextView = convertView.findViewById(R.id.expandedListItem);
-        expandedListTextView.setText(expandedListText);
+
+        AppCompatTextView messageText = convertView.findViewById(R.id.inbox_message_text);
+        messageText.setText(message.text);
+
+        AppCompatTextView receivedAtText = convertView.findViewById(R.id.inbox_receive_text);
+        PersianCalendar date = new PersianCalendar();
+        date.setTimeInMillis(message.receivedAt);
+        receivedAtText.setText(FontsOverride.convertToPersianDigits(date.getPersianLongDateAndTime()));
 
 //        convertView.findViewById(R.id.inbox_share_button).setOnClickListener(v -> Toast.makeText(activity, "share", Toast.LENGTH_SHORT).show());
-        convertView.findViewById(R.id.inbox_delete_button).setOnClickListener(v -> confirmDelete((Message) getGroup(listPosition)));
+        convertView.findViewById(R.id.inbox_delete_button).setOnClickListener(v -> confirmDelete(message));
         return convertView;
     }
 

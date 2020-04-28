@@ -58,6 +58,8 @@ public class Prefs
         } else {
             instance.messages = new ArrayList<>();
             instance.messages.add(new InboxAdapter.Message(context.getResources().getString(R.string.inbox_0_title), context.getResources().getString(R.string.inbox_0_message) , System.currentTimeMillis(), false));
+            instance.messages.add(new InboxAdapter.Message(context.getResources().getString(R.string.inbox_0_title), context.getResources().getString(R.string.inbox_0_message) , System.currentTimeMillis(), false));
+            instance.messages.add(new InboxAdapter.Message(context.getResources().getString(R.string.inbox_0_title), context.getResources().getString(R.string.inbox_0_message) , System.currentTimeMillis(), false));
             instance.setObject(KEY_MESSAGES, instance.messages);
         }
 
