@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- * Created by Belal on 1/23/2018.
+ * Created by Mansour Djawadi on 1/23/2019.
  */
 
 public class TipsFragment extends BaseFragment

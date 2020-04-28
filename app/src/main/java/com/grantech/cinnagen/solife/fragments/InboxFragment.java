@@ -10,18 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.grantech.cinnagen.solife.R;
-import com.grantech.cinnagen.solife.adapters.ExpandableListAdapter;
 import com.grantech.cinnagen.solife.adapters.InboxAdapter;
 import com.grantech.cinnagen.solife.utils.Prefs;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
 /**
- * Created by Belal on 1/23/2018.
+ * Created by Mansour Djawadi on 1/23/2018.
  */
 
 public class InboxFragment extends BaseFragment
@@ -40,9 +37,9 @@ public class InboxFragment extends BaseFragment
     {
         super.onViewCreated(view, savedInstanceState);
 
-        Set<Map.Entry<String, String>> messages = Prefs.getInstance().messages.entrySet();
-        inboxAdapter = new InboxAdapter(Objects.requireNonNull(getContext()).getApplicationContext());
-        for (Map.Entry<String, String> e:messages)
+        Map<String, String> messages = Prefs.getInstance().messages;
+        inboxAdapter = new InboxAdapter(Objects.requireNonNull(activity));
+        for (Map.Entry<String, String> e:messages.entrySet())
             inboxAdapter.addChild(e.getKey(), Arrays.asList(e.getValue()));
         inboxList = view.findViewById(R.id.expandableListView);
         inboxList.setAdapter(inboxAdapter);
@@ -53,5 +50,11 @@ public class InboxFragment extends BaseFragment
                 if( i != groupPosition )
                     inboxList.collapseGroup(i);
         });
+
+        inboxAdapter.onDeleteListener = (String group) -> {
+            inboxList.setAdapter(inboxAdapter);
+            messages.remove(group);
+            Prefs.getInstance().setObject(Prefs.KEY_MESSAGES, messages);
+        };
     }
 }
