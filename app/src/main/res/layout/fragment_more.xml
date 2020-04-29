@@ -24,7 +24,7 @@
     <TextView
         android:id="@+id/about_call_button"
         android:layout_width="wrap_content"
-        android:layout_height="33dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:text="@string/about_tel_button"
@@ -67,7 +67,7 @@
         android:id="@+id/about_web_button"
         style="@style/primaryButton"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="24dp"
         android:text="@string/about_web_button"
