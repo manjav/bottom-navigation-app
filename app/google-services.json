@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "139954166657",
+    "firebase_url": "https://solife-102c8.firebaseio.com",
+    "project_id": "solife-102c8",
+    "storage_bucket": "solife-102c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139954166657:android:000f39e3f383558e3c6680",
+        "android_client_info": {
+          "package_name": "com.grantech.cinnagen.solife"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "139954166657-e6n0ve482iagegdd58sqt09rjh1fg5vd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grantech.cinnagen.solife",
+            "certificate_hash": "7e187f98eb9e7df15f7476d0f6443f5a8dd34642"
+          }
+        },
+        {
+          "client_id": "139954166657-5ojikuru72dmcf44eaecno1p3il3gbgp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBumCr2yqaGHCowRzHLkNvHK7ekG4zyieU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "139954166657-5ojikuru72dmcf44eaecno1p3il3gbgp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
