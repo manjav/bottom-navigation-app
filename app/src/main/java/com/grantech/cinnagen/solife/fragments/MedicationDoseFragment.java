@@ -21,15 +21,17 @@ import com.grantech.cinnagen.solife.utils.FontsOverride;
 import com.grantech.cinnagen.solife.utils.Fragments;
 import com.grantech.cinnagen.solife.utils.PersianCalendar;
 import com.grantech.cinnagen.solife.utils.Prefs;
-import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
 import com.mohamadamin.persianmaterialdatetimepicker.time.RadialPickerLayout;
 import com.mohamadamin.persianmaterialdatetimepicker.time.TimePickerDialog;
+
+import ir.hamsaa.persiandatepicker.Listener;
+import ir.hamsaa.persiandatepicker.PersianDatePickerDialog;
 
 /**
  * Created by ManJav on 1/23/2019.
  */
 
-public class MedicationDoseFragment extends BaseFragment implements DatePickerDialog.OnDateSetListener, PickerInput.OnClickListener, AdapterView.OnItemClickListener, TimePickerDialog.OnTimeSetListener
+public class MedicationDoseFragment extends BaseFragment implements PickerInput.OnClickListener, AdapterView.OnItemClickListener, TimePickerDialog.OnTimeSetListener
 {
     private PersianCalendar prevDate;
     private PersianCalendar nextDate;
@@ -113,24 +115,36 @@ public class MedicationDoseFragment extends BaseFragment implements DatePickerDi
 
     private void changeDate(String tag)
     {
-        DatePickerDialog datePicker;
-        if( tag.equals("prev") )
-        {
-            datePicker = DatePickerDialog.newInstance(this, prevDate.getPersianYear(), prevDate.getPersianMonth(), prevDate.getPersianDay());
-        }
-        else
-        {
-            nextDate.setTimeInMillis(prevDate.getTimeInMillis() + Prefs.getInstance().getInt(Prefs.KEY_DOSE_GAP, 14) * 24 * 3600000);
-            datePicker = DatePickerDialog.newInstance(this, nextDate.getPersianYear(), nextDate.getPersianMonth(), nextDate.getPersianDay());
-        }
-        datePicker.setOnCancelListener(dialogInterface -> Log.d(Fragments.TAG, "Dialog was cancelled"));
-        datePicker.show(activity.getFragmentManager(), tag);
+
+        ir.hamsaa.persiandatepicker.util.PersianCalendar initDate = new ir.hamsaa.persiandatepicker.util.PersianCalendar(prevDate.getTimeInMillis());
+        if( tag.equals("next") )
+            initDate = new ir.hamsaa.persiandatepicker.util.PersianCalendar(prevDate.getTimeInMillis() + Prefs.getInstance().getInt(Prefs.KEY_DOSE_GAP, 14) * 24 * 3600000);
+
+        PersianDatePickerDialog picker = new PersianDatePickerDialog(getContext())
+                .setTodayButtonVisible(true)
+                .setMinYear(1300)
+                .setMaxYear(PersianDatePickerDialog.THIS_YEAR)
+                .setInitDate(initDate)
+                .setActionTextColor(getResources().getColor(R.color.colorPrimary))
+                .setTitleType(PersianDatePickerDialog.WEEKDAY_DAY_MONTH_YEAR)
+                .setShowInBottomSheet(true)
+                .setListener(new Listener() {
+                    @Override
+                    public void onDateSelected(ir.hamsaa.persiandatepicker.util.PersianCalendar persianCalendar) {
+                        onDateSet(tag, persianCalendar.getPersianYear(),persianCalendar.getPersianMonth() - 1, persianCalendar.getPersianDay() );
+                    }
+
+                    @Override
+                    public void onDismissed() {
+                    }
+                });
+
+        picker.show();
     }
 
-    @Override
-    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth)
+    void onDateSet(String tag, int year, int monthOfYear, int dayOfMonth)
     {
-        if( view.getTag().equals("prev") )
+        if( tag.equals("prev") )
         {
             prevDate.setPersianDate(year, monthOfYear, dayOfMonth);
             startDateInput.setText(FontsOverride.convertToPersianDigits(prevDate.getPersianShortDate()));
