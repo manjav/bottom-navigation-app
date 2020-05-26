@@ -3,9 +3,11 @@ package com.grantech.cinnagen.solife.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.grantech.cinnagen.solife.R;
 import com.grantech.cinnagen.solife.utils.AlarmReceiver;
 import com.grantech.cinnagen.solife.utils.Alarms;
@@ -25,6 +27,20 @@ public class SplashScreenActivity extends AppCompatActivity
         Alarms.cancel(getApplicationContext(), AlarmReceiver.class, -1);
 
         setContentView(R.layout.activity_splash);
+
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.w(Fragments.TAG, "getInstanceId failed", task.getException());
+                        return;
+                    }
+
+                    // Get new Instance ID token
+                    String token = task.getResult().getToken();
+
+                    // Log and toast
+                    Log.d(Fragments.TAG, " token ===> " + token);
+                });
 
         Handler mWaitHandler = new Handler();
         mWaitHandler.postDelayed(() -> {
