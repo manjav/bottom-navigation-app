@@ -16,10 +16,10 @@
         android:icon="@drawable/ic_navi_tips"
         android:title="@string/home_tips" />
 
-    <item
-        android:id="@+id/navi_3"
-        android:icon="@drawable/ic_navi_inbox"
-        android:title="@string/home_inbox" />
+<!--    <item-->
+<!--        android:id="@+id/navi_3"-->
+<!--        android:icon="@drawable/ic_navi_inbox"-->
+<!--        android:title="@string/home_inbox" />-->
 
     <item
         android:id="@+id/navi_4"
