@@ -24,11 +24,8 @@ import ir.mirrajabi.persiancalendar.core.models.Day;
 public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.ViewHolder> {
     private Context mContext;
     private MonthFragment mMonthFragment;
-    private final int TYPE_HEADER = 0;
-    private final int TYPE_DAY = 1;
     private List<Day> mDays;
     private int itemSize;
-    private int mSelectedDay = -1;
     private PersianCalendarHandler mCalendarHandler;
     private final int mFirstDayOfWeek;
     private final int mTotalDays;
@@ -44,7 +41,7 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.ViewHolder> 
     }
 
     public void clearSelectedDay() {
-        mSelectedDay = -1;
+//        mSelectedDay = -1;
         notifyDataSetChanged();
     }
 
@@ -100,7 +97,7 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.ViewHolder> 
         }
 
         public void setText(String text) {
-            if( this.text == text )
+            if( this.text.equals(text) )
                 return;
             this.textView.setText(this.text = text);
         }
@@ -143,7 +140,7 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(MonthAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MonthAdapter.ViewHolder holder, int position) {
 //        Log.i("a", position+"");
 //        holder.mToday.setBackgroundResource(mCalendarHandler.getTodayBackground());
 //        holder.mSelectDay.setBackgroundResource(mCalendarHandler.getSelectedDayBackground());
@@ -192,7 +189,7 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.ViewHolder> 
 //                    holder.mSelectDay.setVisibility(View.GONE);
 //                }
 
-            } else {
+//            } else {
 //                holder.mToday.setVisibility(View.GONE);
 //                holder.mSelectDay.setVisibility(View.GONE);
 //                holder.textView.setVisibility(View.GONE);
@@ -231,9 +228,9 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.ViewHolder> 
     @Override
     public int getItemViewType(int position) {
         if (isPositionHeader(position)) {
-            return TYPE_HEADER;
+            return 0; // header
         } else {
-            return TYPE_DAY;
+            return 1; // day
         }
     }
 
