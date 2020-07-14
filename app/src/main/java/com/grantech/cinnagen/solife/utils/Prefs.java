@@ -124,10 +124,9 @@ public class Prefs
     public Object getObject(String key, @Nullable Object defValue)
     {
         byte[] data = Base64.decode(sharedPref.getString(key, null), Base64.DEFAULT);
-        ObjectInputStream ois = null;
         Object o = null;
         try {
-            ois = new ObjectInputStream(new ByteArrayInputStream(data));
+            ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data));
             o = ois.readObject();
             ois.close();
         } catch (Exception e) { e.printStackTrace(); }
@@ -137,9 +136,8 @@ public class Prefs
     public void setObject(String key, Object value)
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ObjectOutputStream oos = null;
         try {
-            oos = new ObjectOutputStream( baos );
+            ObjectOutputStream oos = new ObjectOutputStream( baos );
             oos.writeObject(value);
             oos.close();
         } catch (Exception e) { e.printStackTrace(); }
@@ -149,7 +147,7 @@ public class Prefs
         editor.apply();
     }
 
-    public boolean getBoolean(String key, @Nullable boolean defValue)
+    public boolean getBoolean(String key, boolean defValue)
     {
         return sharedPref.getBoolean(key, defValue);
     }

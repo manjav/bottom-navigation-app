@@ -36,7 +36,7 @@ public class SplashScreenActivity extends AppCompatActivity
                     }
 
                     // Get new Instance ID token
-                    String token = task.getResult().getToken();
+                    String token = Objects.requireNonNull(task.getResult()).getToken();
 
                     // Log and toast
                     Log.d(Fragments.TAG, " token ===> " + token);
@@ -58,7 +58,7 @@ public class SplashScreenActivity extends AppCompatActivity
                 if( Prefs.getInstance().contains(Prefs.KEY_NUM_RUN) )
                 {
                     intent = new Intent(getApplicationContext(), MainActivity.class);
-                    if(Prefs.getInstance().getLong("alarm", 0) > System.currentTimeMillis()){
+                    if(Prefs.getInstance().getLong(Prefs.KEY_TIMER, 0) > System.currentTimeMillis()){
                         Bundle b = new Bundle();
                         b.putInt("position", R.dimen.position_injection_timer);
                         intent.putExtras(b);

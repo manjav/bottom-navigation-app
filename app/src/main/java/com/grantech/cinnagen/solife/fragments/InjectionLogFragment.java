@@ -100,6 +100,7 @@ public class InjectionLogFragment extends InjectionBaseFragment
             Prefs.getInstance().setLong(Prefs.KEY_NEXT, next);
             Prefs.getInstance().setInt(Prefs.KEY_PREV_X, (int) (board.getNextPoint().x/getResources().getDisplayMetrics().density));
             Prefs.getInstance().setInt(Prefs.KEY_PREV_Y, (int) (board.getNextPoint().y/getResources().getDisplayMetrics().density));
+            Prefs.getInstance().setLong(Prefs.KEY_TIMER, 0);
 
             notifyNextInjection(getContext(), next);
             Toast.makeText(getContext(), R.string.injection_log_fine, Toast.LENGTH_LONG).show();
