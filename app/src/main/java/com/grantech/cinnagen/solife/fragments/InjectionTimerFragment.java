@@ -64,10 +64,10 @@ public class InjectionTimerFragment extends InjectionBaseFragment
         restoreButton = view.findViewById(R.id.inject_timer_restore);
         restoreButton.setOnClickListener(this);
 
-        if( Prefs.getInstance().getLong("alarm", 0) > System.currentTimeMillis() )
+        if( Prefs.getInstance().getLong(Prefs.KEY_TIMER, 0) > System.currentTimeMillis() )
         {
-            delay = (int) ((Prefs.getInstance().getLong("alarm", 0) - System.currentTimeMillis()) / 1000);
-//            Log.i(Fragments.TAG, delay + " ____ " + (Prefs.getInstance().getLong("alarm", 0) - System.currentTimeMillis()));
+            delay = (int) ((Prefs.getInstance().getLong(Prefs.KEY_TIMER, 0) - System.currentTimeMillis()) / 1000);
+//            Log.i(Fragments.TAG, delay + " ____ " + (Prefs.getInstance().getLong(Prefs.KEY_TIMER, 0) - System.currentTimeMillis()));
             toggleCountdown();
         }
 
@@ -134,7 +134,7 @@ public class InjectionTimerFragment extends InjectionBaseFragment
         remainingText.setVisibility(View.VISIBLE);
         restoreButton.setBackgroundResource(R.drawable.rect_round_button_white);
         submitButton.setText(R.string.injection_timer_continue);
-        Prefs.getInstance().setLong("alarm", System.currentTimeMillis() + delay * 1000);
+        Prefs.getInstance().setLong(Prefs.KEY_TIMER, System.currentTimeMillis() + delay * 1000);
     }
 
     private void resetCountdown() {

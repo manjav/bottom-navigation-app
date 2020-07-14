@@ -33,6 +33,7 @@ public class Prefs
     static public final String KEY_PREV_X = "prevX";
     static public final String KEY_PREV_Y = "prevY";
     static public final String KEY_NEXT = "next";
+    static public final String KEY_TIMER = "alarm";
     static public final String KEY_ALARM_1 = "alarm1";
     static public final String KEY_ALARM_2 = "alarm2";
     static public final String KEY_ALARM_3 = "alarm3";
