@@ -45,17 +45,21 @@ public class AlarmReceiver extends BroadcastReceiver
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationManager notificationManager =(NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationCompat.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel notificationChannel = new NotificationChannel("solife-injection", "Injection Channel", NotificationManager.IMPORTANCE_HIGH);
+            notificationChannel.setShowBadge(true);
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.BLUE);
+            notificationChannel.enableVibration(true);
+            notificationChannel.setVibrationPattern(new long[]{100, 350, 500});
+            notificationManager.createNotificationChannel(notificationChannel);
 
-        NotificationChannel notificationChannel = new NotificationChannel("solife-injection", "Injection Channel", NotificationManager.IMPORTANCE_HIGH);
-        notificationChannel.setShowBadge(true);
-        notificationChannel.enableLights(true);
-        notificationChannel.setLightColor(Color.BLUE);
-        notificationChannel.enableVibration(true);
-        notificationChannel.setVibrationPattern(new long[]{100, 350, 500});
-        notificationManager.createNotificationChannel(notificationChannel);
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, notificationChannel.getId())
-                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
+            builder = new NotificationCompat.Builder(context, notificationChannel.getId());
+        }else{
+            builder = new NotificationCompat.Builder(context);
+        }
+        builder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
                 .setSmallIcon(R.mipmap.ic_launcher_mono)
                 .setContentTitle(title)
                 .setContentText(text)
