@@ -78,8 +78,8 @@ public class MedicationTimeFragment extends BaseFragment implements TimePickerDi
                 nextDate.getPersianYear(),
                 nextDate.getPersianMonth(),
                 nextDate.getPersianDay(),
-                hourOfDay, minute, 0
-                );
+                hourOfDay-(nextDate.getPersianMonth() < 6 ?1 : 0)//daylight
+                , minute, 0);
         nextTimeInput.setText(FontsOverride.convertToPersianDigits( nextDate.get(PersianCalendar.MINUTE) + " : " + nextDate.get(PersianCalendar.HOUR_OF_DAY)) );
         Prefs.getInstance().setLong(Prefs.KEY_NEXT, nextDate.getTimeInMillis());
         InjectionLogFragment.notifyNextInjection(getContext(), nextDate.getTimeInMillis());
