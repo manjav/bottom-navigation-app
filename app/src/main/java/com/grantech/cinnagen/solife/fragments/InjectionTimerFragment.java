@@ -63,6 +63,12 @@ public class InjectionTimerFragment extends InjectionBaseFragment
 
         restoreButton = view.findViewById(R.id.inject_timer_restore);
         restoreButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
 
         if( Prefs.getInstance().getLong(Prefs.KEY_TIMER, 0) > System.currentTimeMillis() )
         {
@@ -76,7 +82,7 @@ public class InjectionTimerFragment extends InjectionBaseFragment
 
     @SuppressLint("SetTextI18n")
     private void traceTime() {
-        int min  = (int) Math.floor(delay / 60);
+        int min  = (int) Math.floor(delay / 60d);
         int sec = delay % 60;
         timerText.setText( (min < 10 ? "0"+min : min) + ":" + (sec < 10 ? "0"+sec : sec));
     }
@@ -124,6 +130,7 @@ public class InjectionTimerFragment extends InjectionBaseFragment
 
             @Override
             public void onFinish() {
+                resetCountdown();
             }
         };
 
@@ -141,7 +148,8 @@ public class InjectionTimerFragment extends InjectionBaseFragment
         delay = MAX;
         inProgress = false;
         Alarms.cancel(getContext(), AlarmReceiver.class, alarmId);
-        timer.cancel();
+        if(timer != null)
+            timer.cancel();
         timer = null;
 
         plusButton.setVisibility(View.VISIBLE);
