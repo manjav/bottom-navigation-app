@@ -59,7 +59,7 @@ public class SlideFragment extends Fragment
             playerView.setPlayer(exoPlayer);
 
             // Produces DataSource instances through which media data is loaded.
-            DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(Objects.requireNonNull(getContext()), Util.getUserAgent(getContext(), "yourApplicationName"));
+            DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(Objects.requireNonNull(getContext()), Util.getUserAgent(getContext(), getResources().getString(R.string.app_name)));
             // This is the MediaSource representing the media to be played.
             MediaSource videoSource =new ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse("http://smartadmin.orchidpharmed.ir/Cinnora-360p.mp4"));
             // Prepare the player with the source.
