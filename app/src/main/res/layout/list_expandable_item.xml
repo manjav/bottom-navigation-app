@@ -18,7 +18,7 @@
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/iransans"
         android:gravity="start|fill_horizontal|center_vertical"
-        android:text="@string/tips_1_message_1"
+        android:text="@string/tips_1_message"
         android:textColor="@color/colorMedium"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
